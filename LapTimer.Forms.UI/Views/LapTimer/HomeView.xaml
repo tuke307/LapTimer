@@ -55,15 +55,15 @@
         <StackLayout HorizontalOptions="Center"
                      Grid.Row="2">
 
-            <material:MaterialCheckbox x:Name="RoutesEnabled"
+            <material:MaterialCheckbox IsSelected="{Binding RoutesEnabled}"
                                        IsVisible="{Binding TrackSelected}"
                                        Text="{x:Static res:resources.STR_CHOOSETRACK}" />
 
-            <material:MaterialCheckbox x:Name="RoutesEnabled"
-                                       IsVisible="{Binding LapSelected}"
+            <material:MaterialCheckbox IsVisible="{Binding LapSelected}"
+                                       IsSelected="{Binding RoutesEnabled}"
                                        Text="{x:Static res:resources.STR_CHOOSELAP}" />
 
-            <material:MaterialTextField IsEnabled="{Binding IsSelected, Source={x:Reference RoutesEnabled}}"
+            <material:MaterialTextField IsVisible="{Binding RoutesEnabled}"
                                         Placeholder="Placeholder"
                                         HelperText="Helper Text"
                                         ErrorText="Error Text"
