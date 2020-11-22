@@ -11,13 +11,29 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="XF.Material" Version="1.7.6" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\LapTimer\DriveInView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    <Compile Update="Resx\resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rides\DetailledRideView.xaml.cs">
+      <DependentUpon>DetailledRideView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Routes\DetailledRouteView.xaml.cs">
+      <DependentUpon>DetailledRouteView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resx\resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LapTimer\HomeView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -28,13 +44,13 @@
     <EmbeddedResource Update="Views\LapTimer\TimerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Rides\RidesDetailledView.xaml">
+    <EmbeddedResource Update="Views\Rides\DetailledRideView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Rides\RidesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Routes\RoutesDetailledView.xaml">
+    <EmbeddedResource Update="Views\Routes\DetailledRouteView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Routes\RoutesView.xaml">

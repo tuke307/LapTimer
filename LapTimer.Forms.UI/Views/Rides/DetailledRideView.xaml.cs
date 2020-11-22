@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LapTimer.Forms.UI.Views.LapTimer
+namespace LapTimer.Forms.UI.Views.Rides
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DriveInView : ContentView
+    public partial class DetailledRideView : ContentView
     {
-        public DriveInView()
+        public DetailledRideView()
         {
             InitializeComponent();
         }

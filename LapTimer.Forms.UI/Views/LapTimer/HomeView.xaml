@@ -1,10 +1,104 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              x:Class="LapTimer.Forms.UI.Views.LapTimer.HomeView">
-    <ContentView.Content>
-        <StackLayout>
-            <Label Text="Hello Xamarin.Forms!" />
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <material:MaterialIconButton Grid.Row="0"
+                                     HorizontalOptions="End"
+                                     Command="{Binding OpenSettingsCommand}">
+        </material:MaterialIconButton>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <material:MaterialCard Grid.Column="0"
+                                   CornerRadius="2"
+                                   Elevation="2"
+                                   Margin="5"
+                                   HeightRequest="150"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <material:MaterialLabel Text="{x:Static res:resources.STR_LAP}" />
+                    <Image />
+                </StackLayout>
+            </material:MaterialCard>
+
+            <material:MaterialCard Grid.Column="1"
+                                   CornerRadius="2"
+                                   Elevation="2"
+                                   Margin="5"
+                                   HeightRequest="150"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <material:MaterialLabel Text="{x:Static res:resources.STR_TRACK}" />
+                    <Image />
+                </StackLayout>
+            </material:MaterialCard>
+        </Grid>
+
+        <StackLayout HorizontalOptions="Center"
+                     Grid.Row="2">
+
+            <material:MaterialCheckbox x:Name="RoutesEnabled"
+                                       IsVisible="{Binding TrackSelected}"
+                                       Text="{x:Static res:resources.STR_CHOOSETRACK}" />
+
+            <material:MaterialCheckbox x:Name="RoutesEnabled"
+                                       IsVisible="{Binding LapSelected}"
+                                       Text="{x:Static res:resources.STR_CHOOSELAP}" />
+
+            <material:MaterialTextField IsEnabled="{Binding IsSelected, Source={x:Reference RoutesEnabled}}"
+                                        Placeholder="Placeholder"
+                                        HelperText="Helper Text"
+                                        ErrorText="Error Text"
+                                        Text="Input Text"
+                                        InputType="Choice"
+                                        Choices="{Binding Routes}"
+                                        SelectedChoice="{Binding Route}" />
         </StackLayout>
-    </ContentView.Content>
+
+        <StackLayout Grid.Row="3"
+                     HorizontalOptions="Center"
+                     Orientation="Horizontal">
+            <material:MaterialLabel FontFamily="H1"
+                                    FontSize="Caption"
+                                    TypeScale="H5"
+                                    Text="{x:Static res:resources.STR_STARTINSTRUCTION}">
+            </material:MaterialLabel>
+
+            <material:MaterialLabel FontAttributes="Bold"
+                                    TypeScale="H5"
+                                    IsVisible="{Binding LapSelected}"
+                                    Text="{x:Static res:resources.STR_LAP}">
+            </material:MaterialLabel>
+
+            <material:MaterialLabel FontAttributes="Bold"
+                                    TypeScale="H5"
+                                    IsVisible="{Binding TrackSelected}"
+                                    Text="{x:Static res:resources.STR_TRACK}">
+            </material:MaterialLabel>
+        </StackLayout>
+
+        <material:MaterialIconButton Grid.Row="4"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     Command="{Binding StartTimerCommand}">
+        </material:MaterialIconButton>
+    </Grid>
 </ContentView>

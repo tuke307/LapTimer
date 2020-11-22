@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace LapTimer.Forms.UI.Views.Routes
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RoutesDetailledView : ContentView
+    public partial class DetailledRouteView : ContentView
     {
-        public RoutesDetailledView()
+        public DetailledRouteView()
         {
             InitializeComponent();
         }
