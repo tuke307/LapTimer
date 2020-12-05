@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace LapTimer.Forms.UI.Views.LapTimer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResultView : MvxContentPage
+    public partial class RideView : MvxContentPage
     {
-        public ResultView()
+        public RideView()
         {
             InitializeComponent();
         }

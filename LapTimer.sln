@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LapTimer.Forms.Android", "LapTimer.Forms.UI.Android\LapTimer.Forms.Android.csproj", "{F6CF8587-AEE2-4172-92AB-C7550400C9A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LapTimer.Forms.UI", "LapTimer.Forms.UI\LapTimer.Forms.UI.csproj", "{440B0443-E381-4162-B49E-C4C46D9BEBB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LapTimer.Forms.UI", "LapTimer.Forms.UI\LapTimer.Forms.UI.csproj", "{440B0443-E381-4162-B49E-C4C46D9BEBB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0486218D-FCDA-41EA-A567-ACEE28066C88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{D4A6D182-84A9-4507-AC0F-453CEF377BF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +30,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F6CF8587-AEE2-4172-92AB-C7550400C9A4} = {D4A6D182-84A9-4507-AC0F-453CEF377BF8}
+		{440B0443-E381-4162-B49E-C4C46D9BEBB6} = {0486218D-FCDA-41EA-A567-ACEE28066C88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {52350CA1-8FBE-4D45-90B5-2656E82F082C}

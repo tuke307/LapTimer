@@ -61,6 +61,9 @@
     <PackageReference Include="MvvmCross">
       <Version>7.1.2</Version>
     </PackageReference>
+    <PackageReference Include="MvvmCross.Forms">
+      <Version>7.1.2</Version>
+    </PackageReference>
     <PackageReference Include="MvvmCross.Plugin.Messenger">
       <Version>7.1.2</Version>
     </PackageReference>

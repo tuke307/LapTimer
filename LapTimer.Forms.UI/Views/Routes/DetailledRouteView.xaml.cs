@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using MvvmCross.Forms.Views;
 using Xamarin.Forms.Xaml;
 
 namespace LapTimer.Forms.UI.Views.Routes
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailledRouteView : ContentView
+    public partial class DetailledRouteView : MvxContentPage
     {
         public DetailledRouteView()
         {
