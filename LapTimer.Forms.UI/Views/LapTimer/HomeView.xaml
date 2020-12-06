@@ -80,7 +80,7 @@
             <material:MaterialLabel FontFamily="H1"
                                     FontSize="Caption"
                                     TypeScale="H5"
-                                    Text="{x:Static res:resources.STR_STARTINSTRUCTION}">
+                                    Text="{x:Static res:resources.INS_DRIVETOSTART}">
             </material:MaterialLabel>
 
             <material:MaterialLabel FontAttributes="Bold"

@@ -127,12 +127,12 @@
     <value>Temperatur</value>
   </data>
   <data name="STR_ROUTES" xml:space="preserve">
-    <value>Strecken</value>
+    <value>Routen</value>
   </data>
   <data name="STR_TRACK" xml:space="preserve">
     <value>Strecke</value>
   </data>
-  <data name="STR_GOINSTRUCTION" xml:space="preserve">
+  <data name="INS_PREPARESTART" xml:space="preserve">
     <value>Startposition einnehmen</value>
   </data>
   <data name="STR_START" xml:space="preserve">
@@ -165,7 +165,7 @@
   <data name="STR_RIDES" xml:space="preserve">
     <value>Fahrten</value>
   </data>
-  <data name="STR_DRIVEINSTRUCTION" xml:space="preserve">
+  <data name="INS_DRIVETOEND" xml:space="preserve">
     <value>Fahr zum Ende der</value>
   </data>
   <data name="STR_END" xml:space="preserve">
@@ -183,13 +183,22 @@
   <data name="STR_GROUND" xml:space="preserve">
     <value>Boden</value>
   </data>
-  <data name="STR_STARTINSTRUCTION" xml:space="preserve">
-    <value>Begib dich zum Start der</value>
+  <data name="INS_DRIVETOSTART" xml:space="preserve">
+    <value>Fahr zum Start der</value>
   </data>
   <data name="STR_CHOOSETRACK" xml:space="preserve">
     <value>Strecke auswählen</value>
   </data>
   <data name="STR_CHOOSELAP" xml:space="preserve">
     <value>Runde auswählen</value>
+  </data>
+  <data name="STR_RIDE" xml:space="preserve">
+    <value>Fahrt</value>
+  </data>
+  <data name="STR_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="STR_CONDITIONS" xml:space="preserve">
+    <value>Verhältnisse</value>
   </data>
 </root>

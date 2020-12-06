@@ -70,6 +70,33 @@ namespace LapTimer.Forms.UI.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to drive to the end of the.
+        /// </summary>
+        public static string INS_DRIVETOEND {
+            get {
+                return ResourceManager.GetString("INS_DRIVETOEND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to drive to the start of the.
+        /// </summary>
+        public static string INS_DRIVETOSTART {
+            get {
+                return ResourceManager.GetString("INS_DRIVETOSTART", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to take up the starting position.
+        /// </summary>
+        public static string INS_PREPARESTART {
+            get {
+                return ResourceManager.GetString("INS_PREPARESTART", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you really want to delete the entry?.
         /// </summary>
         public static string QES_DELETE {
@@ -79,11 +106,29 @@ namespace LapTimer.Forms.UI.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to choose.
+        ///   Looks up a localized string similar to choose lap.
         /// </summary>
-        public static string STR_CHOOSE {
+        public static string STR_CHOOSELAP {
             get {
-                return ResourceManager.GetString("STR_CHOOSE", resourceCulture);
+                return ResourceManager.GetString("STR_CHOOSELAP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to choose track.
+        /// </summary>
+        public static string STR_CHOOSETRACK {
+            get {
+                return ResourceManager.GetString("STR_CHOOSETRACK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to conditions.
+        /// </summary>
+        public static string STR_CONDITIONS {
+            get {
+                return ResourceManager.GetString("STR_CONDITIONS", resourceCulture);
             }
         }
         
@@ -93,15 +138,6 @@ namespace LapTimer.Forms.UI.Resx {
         public static string STR_DRIVEIN {
             get {
                 return ResourceManager.GetString("STR_DRIVEIN", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to drive to the end of the.
-        /// </summary>
-        public static string STR_DRIVEINSTRUCTION {
-            get {
-                return ResourceManager.GetString("STR_DRIVEINSTRUCTION", resourceCulture);
             }
         }
         
@@ -133,15 +169,6 @@ namespace LapTimer.Forms.UI.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to take up the starting position.
-        /// </summary>
-        public static string STR_GOINSTRUCTION {
-            get {
-                return ResourceManager.GetString("STR_GOINSTRUCTION", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ground.
         /// </summary>
         public static string STR_GROUND {
@@ -169,11 +196,29 @@ namespace LapTimer.Forms.UI.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to name.
+        /// </summary>
+        public static string STR_NAME {
+            get {
+                return ResourceManager.GetString("STR_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to no.
         /// </summary>
         public static string STR_NO {
             get {
                 return ResourceManager.GetString("STR_NO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ride.
+        /// </summary>
+        public static string STR_RIDE {
+            get {
+                return ResourceManager.GetString("STR_RIDE", resourceCulture);
             }
         }
         
@@ -219,15 +264,6 @@ namespace LapTimer.Forms.UI.Resx {
         public static string STR_START {
             get {
                 return ResourceManager.GetString("STR_START", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to go to the start of the.
-        /// </summary>
-        public static string STR_STARTINSTRUCTION {
-            get {
-                return ResourceManager.GetString("STR_STARTINSTRUCTION", resourceCulture);
             }
         }
         

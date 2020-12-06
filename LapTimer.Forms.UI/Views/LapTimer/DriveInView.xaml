@@ -7,32 +7,34 @@
                        x:Class="LapTimer.Forms.UI.Views.LapTimer.DriveInView">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="0" />
-
-        <material:MaterialLabel Text="{Binding Speed}"
-                                Grid.Column="0"
-                                Grid.Row="1" />
-
-        <StackLayout Grid.Column="1"
-                     Grid.Row="1">
-            <material:MaterialLabel Text="{Binding LapTime}" />
-            <material:MaterialLabel Text="{Binding TotalTime}" />
+        <StackLayout Grid.Row="0"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center">
+            <material:MaterialLabel TypeScale="H2"
+                                    Text="{x:Static res:resources.STR_DRIVEIN}" />
+            <material:MaterialLabel TypeScale="H2"
+                                    Text=" - " />
+            <material:MaterialLabel TypeScale="H2"
+                                    IsVisible="{Binding IsTrack}"
+                                    Text="{x:Static res:resources.STR_TRACK}" />
+            <material:MaterialLabel TypeScale="H2"
+                                    IsVisible="{Binding IsLap}"
+                                    Text="{x:Static res:resources.STR_LAP}" />
         </StackLayout>
 
-        <!--Icon für GPS-Signalstärke-->
-        <material:MaterialIconButton Grid.Column="2"
-                                     Grid.Row="1"
-                                     HorizontalOptions="End">
+        <material:MaterialIconButton Grid.Row="1"
+                                     HorizontalOptions="Start"
+                                     Command="{Binding ResetCommand}">
+        </material:MaterialIconButton>
+
+        <material:MaterialIconButton Grid.Row="1"
+                                     HorizontalOptions="Center"
+                                     Command="{Binding StartCommand}">
         </material:MaterialIconButton>
     </Grid>
 </views:MvxContentPage>

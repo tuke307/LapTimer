@@ -4,7 +4,7 @@
                        xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
-                       x:Class="LapTimer.Forms.UI.Views.LapTimer.RideView">
+                       x:Class="LapTimer.Forms.UI.Views.LapTimer.RouteView">
 
     <Grid>
         <Grid.ColumnDefinitions>

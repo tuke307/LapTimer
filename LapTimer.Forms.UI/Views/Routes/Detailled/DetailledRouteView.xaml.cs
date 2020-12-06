@@ -1,12 +1,12 @@
 ﻿using MvvmCross.Forms.Views;
 using Xamarin.Forms.Xaml;
 
-namespace LapTimer.Forms.UI.Views.Rides
+namespace LapTimer.Forms.UI.Views.Routes
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailledRideLapView : MvxContentPage
+    public partial class DetailledRouteView : MvxContentPage
     {
-        public DetailledRideLapView()
+        public DetailledRouteView()
         {
             InitializeComponent();
         }

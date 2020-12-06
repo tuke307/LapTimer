@@ -4,23 +4,19 @@
                        xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
-                       x:Class="LapTimer.Forms.UI.Views.LapTimer.CountdownView">
-
+                       x:Class="LapTimer.Forms.UI.Views.Routes.DetailledRouteView">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <material:MaterialLabel TypeScale="H2"
-                                Grid.Row="0"
-                                Text="{Binding Countdown}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center" />
+        <Image Grid.Row="0" />
 
-        <material:MaterialIconButton Grid.Row="1"
-                                     HorizontalOptions="Start"
-                                     Command="{Binding ResetCommand}">
+        <material:MaterialIconButton Grid.Row="2"
+                                     HorizontalOptions="Center"
+                                     Command="{Binding PlusCommand}">
         </material:MaterialIconButton>
     </Grid>
 </views:MvxContentPage>

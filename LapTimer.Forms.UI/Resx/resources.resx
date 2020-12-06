@@ -170,8 +170,9 @@
   <data name="STR_SLIPPERY" xml:space="preserve">
     <value>slippery</value>
   </data>
-  <data name="STR_STARTINSTRUCTION" xml:space="preserve">
-    <value>go to the start of the</value>
+  <data name="INS_DRIVETOSTART" xml:space="preserve">
+    <value>drive to the start of the</value>
+    <comment>Aufforderung zum Start zu fahren</comment>
   </data>
   <data name="STR_CHOOSETRACK" xml:space="preserve">
     <value>choose track</value>
@@ -179,10 +180,11 @@
   <data name="STR_DRIVEIN" xml:space="preserve">
     <value>driveIn</value>
   </data>
-  <data name="STR_DRIVEINSTRUCTION" xml:space="preserve">
+  <data name="INS_DRIVETOEND" xml:space="preserve">
     <value>drive to the end of the</value>
+    <comment>Aufforderung zum Ende zu fahren</comment>
   </data>
-  <data name="STR_GOINSTRUCTION" xml:space="preserve">
+  <data name="INS_PREPARESTART" xml:space="preserve">
     <value>take up the starting position</value>
   </data>
   <data name="STR_DURATION" xml:space="preserve">
@@ -196,5 +198,16 @@
   </data>
   <data name="STR_CHOOSELAP" xml:space="preserve">
     <value>choose lap</value>
+  </data>
+  <data name="STR_RIDE" xml:space="preserve">
+    <value>ride</value>
+  </data>
+  <data name="STR_NAME" xml:space="preserve">
+    <value>name</value>
+    <comment>name</comment>
+  </data>
+  <data name="STR_CONDITIONS" xml:space="preserve">
+    <value>conditions</value>
+    <comment>conditions</comment>
   </data>
 </root>

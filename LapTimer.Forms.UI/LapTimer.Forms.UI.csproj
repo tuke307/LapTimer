@@ -37,14 +37,11 @@
     <Compile Update="Views\LapTimer\DriveInView.xaml.cs">
       <DependentUpon>DriveInView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\RideView.xaml.cs">
-      <DependentUpon>RideView.xaml</DependentUpon>
+    <Compile Update="Views\LapTimer\RouteView.xaml.cs">
+      <DependentUpon>RouteView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Rides\Detailled\DetailledRideLapView.xaml.cs">
-      <DependentUpon>DetailledRideLapView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Rides\Detailled\DetailledRideTrackView.xaml.cs">
-      <DependentUpon>DetailledRideTrackView.xaml</DependentUpon>
+    <Compile Update="Views\Rides\Detailled\DetailledRideView.xaml.cs">
+      <DependentUpon>DetailledRideView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Rides\Tab\RideLapsView.xaml.cs">
       <DependentUpon>RideLapsView.xaml</DependentUpon>
@@ -55,11 +52,8 @@
     <Compile Update="Views\Rides\Tab\RideTracksView.xaml.cs">
       <DependentUpon>RideTracksView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Routes\Detailled\DetailledRouteTrackView.xaml.cs">
-      <DependentUpon>DetailledRouteTrackView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Routes\Detailled\DetailledRouteLapView.xaml.cs">
-      <DependentUpon>DetailledRouteLapView.xaml</DependentUpon>
+    <Compile Update="Views\Routes\Detailled\DetailledRouteView.xaml.cs">
+      <DependentUpon>DetailledRouteView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Routes\Tab\RouteTracksView.xaml.cs">
       <DependentUpon>RouteTracksView.xaml</DependentUpon>
@@ -83,7 +77,7 @@
     <EmbeddedResource Update="Views\LapTimer\ResultView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Rides\Detailled\DetailledRideTrackView.xaml">
+    <EmbeddedResource Update="Views\Rides\Detailled\DetailledRideView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Rides\Tab\RideTracksView.xaml">
