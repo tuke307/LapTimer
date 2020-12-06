@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage  xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                       xmlns="http://xamarin.com/schemas/2014/forms"
+                       xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+                       x:Class="LapTimer.Forms.UI.Views.LapTimer.CountdownView">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" />
+
+        <material:MaterialLabel Text="{Binding Speed}"
+                                Grid.Column="0"
+                                Grid.Row="1" />
+
+        <StackLayout Grid.Column="1"
+                     Grid.Row="1">
+            <material:MaterialLabel Text="{Binding LapTime}" />
+            <material:MaterialLabel Text="{Binding TotalTime}" />
+        </StackLayout>
+
+        <!--Icon für GPS-Signalstärke-->
+        <material:MaterialIconButton Grid.Column="2"
+                                     Grid.Row="1"
+                                     HorizontalOptions="End">
+        </material:MaterialIconButton>
+    </Grid>
+</views:MvxContentPage>

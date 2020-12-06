@@ -1,12 +1,12 @@
 ﻿using MvvmCross.Forms.Views;
 using Xamarin.Forms.Xaml;
 
-namespace LapTimer.Forms.UI.Views.LapTimer
+namespace LapTimer.Forms.UI.Views.Rides
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TimerView : MvxContentPage
+    public partial class DetailledRideLapView : MvxContentPage
     {
-        public TimerView()
+        public DetailledRideLapView()
         {
             InitializeComponent();
         }

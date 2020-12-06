@@ -2,5 +2,12 @@
 <views:MvxContentPage  xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                        xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
                        x:Class="LapTimer.Forms.UI.Views.Settings.SettingsView">
+    <material:MaterialTextField InputType="Choice"
+                                Margin="10, 10, 10, 10"
+                                FloatingPlaceholderEnabled="true"
+                                Placeholder="Theme"
+                                Choices="{Binding BaseThemeList}"
+                                SelectedChoice="{Binding BaseThemeValue}" />
 </views:MvxContentPage>
