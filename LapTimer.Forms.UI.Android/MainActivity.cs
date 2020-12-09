@@ -4,7 +4,6 @@
     using Android.Content.PM;
     using Android.Content.Res;
     using Android.OS;
-    using Android.Support.V7.App;
     using LapTimer.Forms.UI.Services;
     using LapTimer.Forms.UI.Themes;
     using MvvmCross;

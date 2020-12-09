@@ -64,13 +64,34 @@
     <PackageReference Include="MvvmCross.Forms">
       <Version>7.1.2</Version>
     </PackageReference>
-    <PackageReference Include="MvvmCross.Plugin.Messenger">
-      <Version>7.1.2</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="XF.Material">
-      <Version>1.7.6</Version>
+      <Version>1.7.7</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>4.1.0-beta</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Annotations">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Compat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Core.UI">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Core.Utils">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Media.Compat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat">
+      <Version>28.0.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.MediaRouter">
+      <Version>1.2.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -112,9 +133,6 @@
       <Project>{D2A34567-F469-4111-9F29-28839CC5B6CF}</Project>
       <Name>LapTimer.Forms.UI</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-night-xxhdpi\history.png" />

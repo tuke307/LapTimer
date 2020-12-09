@@ -3,7 +3,6 @@
     using Android.App;
     using Android.Content.PM;
     using Android.OS;
-    using LapTimer.Forms.Droid;
     using LapTimer.Forms.UI;
     using MvvmCross.Forms.Platforms.Android.Views;
     using MvvmCross.Platforms.Android.Presenters.Attributes;
