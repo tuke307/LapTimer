@@ -14,11 +14,15 @@
 
         <StackLayout Grid.Row="0"
                      VerticalOptions="Center"
-                     HorizontalOptions="Center">
+                     HorizontalOptions="Center"
+                     Orientation="Horizontal">
             <material:MaterialLabel TypeScale="H2"
                                     Text="{x:Static res:resources.STR_DRIVEIN}" />
+
             <material:MaterialLabel TypeScale="H2"
                                     Text=" - " />
+
+            <!--TRACK OR LAP-->
             <material:MaterialLabel TypeScale="H2"
                                     IsVisible="{Binding IsTrack}"
                                     Text="{x:Static res:resources.STR_TRACK}" />

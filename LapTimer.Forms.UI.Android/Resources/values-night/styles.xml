@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+  <!-- Base theme applied no matter what API -->
+  <style name="AppTheme.Base"
+         parent="Theme.MaterialComponents.NoActionBar">
+
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="windowActionModeOverlay">false</item>
+
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="AppTheme.Splash"
+        parent="AppTheme.Base">
+    <item name="android:windowBackground">@color/launcher_background</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:windowTranslucentStatus">false</item>
+    <item name="android:windowTranslucentNavigation">false</item>
+  </style>
+</resources>

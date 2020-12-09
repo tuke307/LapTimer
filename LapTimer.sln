@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{0486218D-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Targets", "Targets", "{D4A6D182-84A9-4507-AC0F-453CEF377BF8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{48C99F2B-1F84-41BF-93FA-E52CA5E37C50}"
+	ProjectSection(SolutionItems) = preProject
+		Code Rules.ruleset = Code Rules.ruleset
+		CodeMaid.config = CodeMaid.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

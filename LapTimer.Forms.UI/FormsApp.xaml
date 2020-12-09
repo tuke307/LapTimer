@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:accent="clr-namespace:LapTimer.Forms.UI.Themes.Accent"
+             xmlns:theme="clr-namespace:LapTimer.Forms.UI.Themes.Base"
+             xmlns:primary="clr-namespace:LapTimer.Forms.UI.Themes.Primary"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             x:Class="LapTimer.Forms.UI.FormsApp">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <!--Primary COLOR-->
+        <primary:Cyan />
+        <!--<ResourceDictionary Source="Themes/Primary/Cyan.xaml" />-->
+
+        <!--Secondary COLOR-->
+        <accent:Teal />
+        <!--<ResourceDictionary Source="Themes/Accent/Teal.xaml" />-->
+
+        <!--BASE THEME-->
+        <theme:Light x:Name="Light" />
+        <!--<ResourceDictionary Source="Themes/Base/Light.xaml" />-->
+      </ResourceDictionary.MergedDictionaries>
+
+      <mtrl:MaterialColorConfiguration x:Key="Theme"
+                                       OnBackground="{StaticResource MaterialDesignBody}"
+                                       OnError="{StaticResource MaterialDesignBody}"
+                                       OnPrimary="{StaticResource Primary700Foreground}"
+                                       OnSecondary="{StaticResource Accent700Foreground}"
+                                       OnSurface="{StaticResource MaterialDesignBody}"
+                                       Background="{StaticResource MaterialDesignPaper}"
+                                       Error="{StaticResource ValidationErrorColor}"
+                                       Primary="{StaticResource Primary200}"
+                                       PrimaryVariant="{StaticResource Primary700}"
+                                       Secondary="{StaticResource Accent200}"
+                                       SecondaryVariant="{StaticResource Accent700}"
+                                       Surface="{StaticResource MaterialDesignCardBackground}" />
+    </ResourceDictionary>
+
+    <mtrl:MaterialConfiguration x:Key="Material.Configuration"
+                                ColorConfiguration="{StaticResource Theme}" />
+
+    <!--<OnPlatform x:Key="FontFamily.RobotoRegular"
+                    x:TypeArguments="x:String"
+                    Android="Fonts/Roboto-Regular.ttf#Roboto-Regular"
+                    iOS="Roboto-Regular" />
+        <OnPlatform x:Key="FontFamily.RobotoMedium"
+                    x:TypeArguments="x:String"
+                    Android="Fonts/Roboto-Medium.ttf#Roboto-Medium"
+                    iOS="Roboto-Medium" />-->
+
+    <!--<mtrltypo:MaterialFontConfiguration x:Key="Material.Font"
+                                            Body1="{StaticResource FontFamily.RobotoRegular}"
+                                            Body2="{StaticResource FontFamily.RobotoRegular}"
+                                            Button="{StaticResource FontFamily.RobotoMedium}"
+                                            Caption="{StaticResource FontFamily.RobotoRegular}"
+                                            H1="{StaticResource FontFamily.RobotoRegular}"
+                                            H2="{StaticResource FontFamily.RobotoRegular}"
+                                            H3="{StaticResource FontFamily.RobotoRegular}"
+                                            H4="{StaticResource FontFamily.RobotoRegular}"
+                                            H5="{StaticResource FontFamily.RobotoRegular}"
+                                            H6="{StaticResource FontFamily.RobotoMedium}"
+                                            Overline="{StaticResource FontFamily.RobotoRegular}"
+                                            Subtitle1="{StaticResource FontFamily.RobotoRegular}"
+                                            Subtitle2="{StaticResource FontFamily.RobotoMedium}" />-->
+
+    <!--<Style TargetType="{x:Type views:MvxContentPage}">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignPaper}" />
+        </Style>-->
+    <Style TargetType="{x:Type material:MaterialLabel}">
+      <Setter Property="TextColor"
+              Value="{DynamicResource MaterialDesignBody}" />
+    </Style>
+
+    <!--<Style TargetType="{x:Type Editor}">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+        </Style>-->
+  </Application.Resources>
+</Application>
