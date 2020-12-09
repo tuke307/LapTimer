@@ -23959,46 +23959,49 @@ namespace LapTimer.Forms.UI.Droid
 			public const int signal_cellular_outline = 2131165543;
 			
 			// aapt resource value: 0x7F070168
-			public const int stop = 2131165544;
+			public const int SplashScreen = 2131165544;
 			
 			// aapt resource value: 0x7F070169
-			public const int timer_outline = 2131165545;
+			public const int stop = 2131165545;
 			
 			// aapt resource value: 0x7F07016A
-			public const int tooltip_frame_dark = 2131165546;
+			public const int timer_outline = 2131165546;
 			
 			// aapt resource value: 0x7F07016B
-			public const int tooltip_frame_light = 2131165547;
+			public const int tooltip_frame_dark = 2131165547;
 			
 			// aapt resource value: 0x7F07016C
-			public const int trash_can_outline = 2131165548;
+			public const int tooltip_frame_light = 2131165548;
 			
 			// aapt resource value: 0x7F07016D
-			public const int xf_arrow_dropdown = 2131165549;
+			public const int trash_can_outline = 2131165549;
 			
 			// aapt resource value: 0x7F07016E
-			public const int xf_arrow_right = 2131165550;
+			public const int xf_arrow_dropdown = 2131165550;
 			
 			// aapt resource value: 0x7F07016F
-			public const int xf_check = 2131165551;
+			public const int xf_arrow_right = 2131165551;
 			
 			// aapt resource value: 0x7F070170
-			public const int xf_checkbox_selected = 2131165552;
+			public const int xf_check = 2131165552;
 			
 			// aapt resource value: 0x7F070171
-			public const int xf_checkbox_unselected = 2131165553;
+			public const int xf_checkbox_selected = 2131165553;
 			
 			// aapt resource value: 0x7F070172
-			public const int xf_clear = 2131165554;
+			public const int xf_checkbox_unselected = 2131165554;
 			
 			// aapt resource value: 0x7F070173
-			public const int xf_error = 2131165555;
+			public const int xf_clear = 2131165555;
 			
 			// aapt resource value: 0x7F070174
-			public const int xf_radio_button_selected = 2131165556;
+			public const int xf_error = 2131165556;
 			
 			// aapt resource value: 0x7F070175
-			public const int xf_radio_button_unselected = 2131165557;
+			public const int xf_radio_button_selected = 2131165557;
+			
+			// aapt resource value: 0x7F070176
+			public const int xf_radio_button_unselected = 2131165558;
 			
 			static Drawable()
 			{
