@@ -1,5 +1,9 @@
 ﻿namespace LapTimer.Forms.UI
 {
+    /// <summary>
+    /// FormsApp.
+    /// </summary>
+    /// <seealso cref="Xamarin.Forms.Application" />
     public partial class FormsApp : Xamarin.Forms.Application
     {
         /// <summary>

@@ -4,5 +4,6 @@
                      xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                      x:Class="LapTimer.Forms.UI.Views.Routes.RoutesTabView"
+                     NavigationPage.HasNavigationBar="False"
                      x:TypeArguments="viewModels:Routes.RoutesTabViewModel">
 </views:MvxTabbedPage>

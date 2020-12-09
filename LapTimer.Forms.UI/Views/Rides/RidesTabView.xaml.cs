@@ -2,6 +2,7 @@
 {
     using MvvmCross.Forms.Presenters.Attributes;
     using MvvmCross.Forms.Views;
+    using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     /// <summary>
@@ -15,6 +16,7 @@
         public RidesTabView()
         {
             InitializeComponent();
+            //NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

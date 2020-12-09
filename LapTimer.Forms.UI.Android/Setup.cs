@@ -7,13 +7,7 @@
     using MvvmCross.Plugin;
 
     public class Setup : MvxFormsAndroidSetup<MvxApp, FormsApp>
-    // No Splash Screen with this; MvxAndroidSetup<App>
     {
-        public override void LoadPlugins(IMvxPluginManager pluginManager)
-        {
-            base.LoadPlugins(pluginManager);
-        }
-
         protected override void InitializeLastChance()
         {
             base.InitializeLastChance();

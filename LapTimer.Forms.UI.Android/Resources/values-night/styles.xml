@@ -3,7 +3,7 @@
 
   <!-- Base theme applied no matter what API -->
   <style name="AppTheme.Base"
-         parent="Theme.MaterialComponents.NoActionBar">
+         parent="Theme.AppCompat.NoActionBar">
 
     <item name="windowNoTitle">true</item>
     <item name="windowActionBar">false</item>
@@ -17,9 +17,7 @@
   <style name="AppTheme.Splash"
         parent="AppTheme.Base">
     <item name="android:windowBackground">@color/launcher_background</item>
-    <item name="android:statusBarColor">@android:color/transparent</item>
-    <item name="android:navigationBarColor">@android:color/transparent</item>
-    <item name="android:windowTranslucentStatus">false</item>
-    <item name="android:windowTranslucentNavigation">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
   </style>
 </resources>

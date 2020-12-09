@@ -1,14 +1,11 @@
 ﻿using Plugin.Settings;
 using Plugin.Settings.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LapTimer.Forms.UI
 {
     public static class ColorSettings
     {
-        private const string userFile = "user";
+        private const string userFile = "color";
 
         /// <summary>
         /// Gets or sets the MaterialDesignColors.PrimaryColor.

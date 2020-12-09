@@ -1,10 +1,13 @@
-﻿using MvvmCross;
-using MvvmCross.IoC;
-using MvvmCross.ViewModels;
-using System.Threading.Tasks;
-
-namespace LapTimer.Forms.UI
+﻿namespace LapTimer.Forms.UI
 {
+    using MvvmCross;
+    using MvvmCross.ViewModels;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// MvxApp.
+    /// </summary>
+    /// <seealso cref="MvvmCross.ViewModels.MvxApplication" />
     public class MvxApp : MvxApplication
     {
         /// <summary>
@@ -12,7 +15,7 @@ namespace LapTimer.Forms.UI
         /// </summary>
         public override void Initialize()
         {
-            //this.RegisterAppStart<MainPageViewModel>();
+            this.RegisterAppStart<ViewModels.MainPageViewModel>();
 
             Mvx.IoCProvider.RegisterSingleton(Plugin.Settings.CrossSettings.Current);
 

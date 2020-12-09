@@ -2,19 +2,21 @@
 {
     using MvvmCross.Forms.Presenters.Attributes;
     using MvvmCross.Forms.Views;
+    using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     /// <summary>
-    /// MainView.
+    /// MainPageView.
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxTabbedPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Root)]
-    public partial class MainView : MvxTabbedPage<ViewModels.MainViewModel>
+    public partial class MainPageView : MvxTabbedPage<ViewModels.MainPageViewModel>
     {
-        public MainView()
+        public MainPageView()
         {
             InitializeComponent();
+            //NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

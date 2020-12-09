@@ -4,6 +4,7 @@
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -41,9 +42,37 @@
             base.Prepare();
         }
 
+        /// <summary>
+        /// Views the appearing.
+        /// </summary>
+        public override void ViewAppearing()
+        {
+            if (this._firstTime)
+            {
+                this.ShowInitialViewModels();
+                this._firstTime = false;
+            }
+        }
+
+        /// <summary>
+        /// Shows the initial view models.
+        /// </summary>
+        /// <returns></returns>
+        private Task ShowInitialViewModels()
+        {
+            var tasks = new List<Task>
+            {
+                this.NavigationService.Navigate<ViewModels.Rides.RideLapsViewModel>(),
+                this.NavigationService.Navigate<ViewModels.Rides.RideTracksViewModel>(),
+            };
+            return Task.WhenAll(tasks);
+        }
+
         #endregion Methods
 
         #region Values
+
+        private bool _firstTime = true;
 
         public IMvxAsyncCommand SampleCommand { get; protected set; }
 

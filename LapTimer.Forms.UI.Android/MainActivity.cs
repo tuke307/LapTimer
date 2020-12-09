@@ -18,9 +18,6 @@
        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
        LaunchMode = LaunchMode.SingleTask)]
     public class MainActivity : MvxFormsAppCompatActivity
-
-    // No Splash Screen with this; MvxFormsAppCompatActivity<MvxFormsAndroidSetup<App,
-    // FormsApp>, App, FormsApp>
     {
         /// <summary>
         /// Called when [configuration changed].
@@ -65,6 +62,8 @@
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            //this.SupportActionBar.Hide();
+            //ActionBar.Hide();
 
             Xamarin.Essentials.Platform.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);
