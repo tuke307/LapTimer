@@ -10,7 +10,7 @@
     /// <seealso cref="MvvmCross.Forms.Views.MvxTabbedPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Root)]
-    public partial class MainView : MvxTabbedPage
+    public partial class MainView : MvxTabbedPage<ViewModels.MainViewModel>
     {
         public MainView()
         {

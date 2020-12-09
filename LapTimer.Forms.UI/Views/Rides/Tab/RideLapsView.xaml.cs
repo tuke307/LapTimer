@@ -10,7 +10,7 @@
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Laps")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RideLapsView : MvxContentPage
+    public partial class RideLapsView : MvxContentPage<ViewModels.Rides.RideLapsViewModel>
     {
         //public const string _title = Functions.Functions.GetLocalisedRes(typeof(Resx.resources), "STR_TRACK");
         public RideLapsView()

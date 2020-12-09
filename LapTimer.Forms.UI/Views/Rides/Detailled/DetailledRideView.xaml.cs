@@ -10,7 +10,7 @@
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [MvxModalPresentationAttribute(WrapInNavigationPage = true, NoHistory = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailledRideView : MvxContentPage
+    public partial class DetailledRideView : MvxContentPage<ViewModels.Rides.DetailledRideViewModel>
     {
         public DetailledRideView()
         {

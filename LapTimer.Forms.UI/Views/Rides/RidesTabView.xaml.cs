@@ -10,7 +10,7 @@
     /// <seealso cref="MvvmCross.Forms.Views.MvxTabbedPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Icon = "history")]
-    public partial class RidesTabView : MvxTabbedPage
+    public partial class RidesTabView : MvxTabbedPage<ViewModels.Rides.RidesTabViewModel>
     {
         public RidesTabView()
         {

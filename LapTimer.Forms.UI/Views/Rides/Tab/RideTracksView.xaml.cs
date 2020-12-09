@@ -10,7 +10,7 @@
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Tracks")]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RideTracksView : MvxContentPage
+    public partial class RideTracksView : MvxContentPage<ViewModels.Rides.RideTracksViewModel>
     {
         //public const string _title = Functions.Functions.GetLocalisedRes(typeof(Resx.resources), "STR_TRACK");
         public RideTracksView()

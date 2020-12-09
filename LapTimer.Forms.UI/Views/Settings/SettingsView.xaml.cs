@@ -10,7 +10,7 @@
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [MvxModalPresentationAttribute(WrapInNavigationPage = true, NoHistory = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SettingsView : MvxContentPage
+    public partial class SettingsView : MvxContentPage<ViewModels.Settings.SettingsViewModel>
     {
         public SettingsView()
         {
