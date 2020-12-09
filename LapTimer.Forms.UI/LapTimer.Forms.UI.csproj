@@ -29,19 +29,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\StartingPositionView.xaml.cs">
+    <Compile Update="Views\LapTimer\LapTimerTabView.xaml.cs">
+      <DependentUpon>LapTimerTabView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LapTimer\Modals\StartingPositionView.xaml.cs">
       <DependentUpon>StartingPositionView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\CountdownView.xaml.cs">
+    <Compile Update="Views\LapTimer\Modals\CountdownView.xaml.cs">
       <DependentUpon>CountdownView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\LapTimerView.xaml.cs">
+    <Compile Update="Views\LapTimer\Modals\LapTimerView.xaml.cs">
       <DependentUpon>LapTimerView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\DriveInView.xaml.cs">
+    <Compile Update="Views\LapTimer\Modals\DriveInView.xaml.cs">
       <DependentUpon>DriveInView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\RouteView.xaml.cs">
+    <Compile Update="Views\LapTimer\Modals\RouteView.xaml.cs">
       <DependentUpon>RouteView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Rides\Detailled\DetailledRideView.xaml.cs">
@@ -75,10 +78,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LapTimer\HomeView.xaml">
+    <EmbeddedResource Update="Views\LapTimer\LapTimerTabView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LapTimer\ResultView.xaml">
+    <EmbeddedResource Update="Views\LapTimer\Modals\ResultView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MainView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Rides\Detailled\DetailledRideView.xaml">

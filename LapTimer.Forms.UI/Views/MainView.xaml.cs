@@ -1,18 +1,18 @@
-﻿namespace LapTimer.Forms.UI.Views.Rides
+﻿namespace LapTimer.Forms.UI.Views
 {
     using MvvmCross.Forms.Presenters.Attributes;
     using MvvmCross.Forms.Views;
     using Xamarin.Forms.Xaml;
 
     /// <summary>
-    /// RidesTabView.
+    /// MainView.
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxTabbedPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Icon = "history")]
-    public partial class RidesTabView : MvxTabbedPage
+    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Root)]
+    public partial class MainView : MvxTabbedPage
     {
-        public RidesTabView()
+        public MainView()
         {
             InitializeComponent();
         }

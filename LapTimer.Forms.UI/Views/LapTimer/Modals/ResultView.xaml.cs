@@ -1,18 +1,18 @@
-﻿namespace LapTimer.Forms.UI.Views.Routes
+﻿namespace LapTimer.Forms.UI.Views.LapTimer
 {
     using MvvmCross.Forms.Presenters.Attributes;
     using MvvmCross.Forms.Views;
     using Xamarin.Forms.Xaml;
 
     /// <summary>
-    /// DetailledRouteView.
+    /// ResultView.
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [MvxModalPresentationAttribute(WrapInNavigationPage = true, NoHistory = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailledRouteView : MvxContentPage
+    public partial class ResultView : MvxContentPage
     {
-        public DetailledRouteView()
+        public ResultView()
         {
             InitializeComponent();
         }

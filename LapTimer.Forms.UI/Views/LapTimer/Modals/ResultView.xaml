@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+                      x:Class="LapTimer.Forms.UI.Views.LapTimer.ResultView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--Cancel-->
+        <material:MaterialIconButton Grid.Row="0"
+                                     HorizontalOptions="Start"
+                                     Image="close"
+                                     Command="{Binding CloseSiteCommand}">
+        </material:MaterialIconButton>
+
+        <!--Save-->
+        <material:MaterialIconButton Grid.Row="0"
+                                     HorizontalOptions="End"
+                                     Image="check"
+                                     Command="{Binding SaveDataCommand}">
+        </material:MaterialIconButton>
+
+        <StackLayout Grid.Row="1">
+            <!--Fahrt-->
+            <material:MaterialLabel TypeScale="H3"
+                                    Text="{x:Static res:resources.STR_RIDE}" />
+
+            <!--Name-->
+            <material:MaterialTextField InputType="Text"
+                                        Placeholder="{x:Static res:resources.STR_NAME}"
+                                        Text="{Binding Name}" />
+
+            <material:MaterialLabel TypeScale="H4"
+                                    Text="{x:Static res:resources.STR_CONDITIONS}" />
+
+            <!--Temperatur-->
+            <material:MaterialTextField InputType="Numeric"
+                                        FloatingPlaceholderEnabled="True"
+                                        Placeholder="{x:Static res:resources.STR_TEMP}"
+                                        Text="{Binding Temperature}" />
+
+            <!--Boden-->
+            <material:MaterialLabel Text="{x:Static res:resources.STR_GROUND}" />
+            <material:MaterialCheckboxGroup SelectedIndices="{Binding SelectedIndices}"
+                                            Choices="{Binding Choices}">
+                <!--<material:MaterialCheckboxGroup.Choices>
+                <x:String xmlns="{x:Static res:resources.STR_SLIPPERY}" />
+                <x:String xmlns="{x:Static res:resources.STR_WET}" />
+                <x:String xmlns="{x:Static res:resources.STR_DRY}" />
+            </material:MaterialCheckboxGroup.Choices>-->
+            </material:MaterialCheckboxGroup>
+
+            <!--Strecke-->
+            <material:MaterialLabel TypeScale="H3"
+                                    Text="{x:Static res:resources.STR_TRACK}" />
+
+            <!--Strecke neu oder zuweisen-->
+            <material:MaterialRadioButtonGroup Choices="{Binding Routes}"
+                                               SelectedIndex="{Binding Route}" />
+
+            <!--Name-->
+            <material:MaterialTextField IsVisible="{Binding RouteNameVis}"
+                                        InputType="Text"
+                                        Placeholder="{x:Static res:resources.STR_NAME}"
+                                        Text="{Binding Name}" />
+
+            <!--Strecken-->
+            <material:MaterialTextField IsVisible="{Binding RouteChoicesVis}"
+                                        InputType="Choice"
+                                        Placeholder="{x:Static res:resources.STR_NAME}"
+                                        FloatingPlaceholderEnabled="True"
+                                        Choices="{Binding Routes}"
+                                        SelectedChoice="{Binding Route}" />
+        </StackLayout>
+    </Grid>
+</views:MvxContentPage>
