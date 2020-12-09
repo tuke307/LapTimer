@@ -15,7 +15,7 @@
     [MvxActivityPresentation]
     [Activity(
          Label = "LapTimer",
-         Icon = "@mipmap/logo",
+         Icon = "@mipmap/icon",
          Theme = "@style/AppTheme.Splash",
          MainLauncher = true,
          NoHistory = true,

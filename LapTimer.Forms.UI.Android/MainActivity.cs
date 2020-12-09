@@ -12,7 +12,7 @@
 
     [Activity(
        Label = "LapTimer",
-       Icon = "@mipmap/logo",
+       Icon = "@mipmap/icon",
        Theme = "@style/AppTheme",
        MainLauncher = false,
        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
