@@ -8,17 +8,17 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RidesTabViewModel.
+    /// RidesTabHosterViewModel.
     /// </summary>
     /// <seealso cref="MvvmCross.ViewModels.MvxNavigationViewModel" />
-    public class RidesTabViewModel : MvxNavigationViewModel
+    public class RidesTabHosterViewModel : MvxNavigationViewModel
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RidesTabViewModel" /> class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RidesTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public RidesTabHosterViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
         }
@@ -47,7 +47,21 @@
         /// </summary>
         public override void ViewAppearing()
         {
-            this.ShowInitialViewModels();
+            if (this._firstTime)
+            {
+                this.ShowInitialViewModels();
+                this._firstTime = false;
+            }
+        }
+
+        /// <summary>
+        /// Views the disappeared.
+        /// </summary>
+        public override void ViewDisappeared()
+        {
+            base.ViewDisappeared();
+            this.NavigationService.Navigate<ViewModels.MainPageViewModel>();
+            //this.NavigationService.Navigate<ViewModels.LapTimer.LapTimerTabViewModel>();
         }
 
         /// <summary>
@@ -58,7 +72,8 @@
         {
             var tasks = new List<Task>
             {
-                this.NavigationService.Navigate<ViewModels.Rides.RidesTabHosterViewModel>(),
+                this.NavigationService.Navigate<ViewModels.Rides.RideLapsViewModel>(),
+                this.NavigationService.Navigate<ViewModels.Rides.RideTracksViewModel>(),
             };
             return Task.WhenAll(tasks);
         }
@@ -66,6 +81,8 @@
         #endregion Methods
 
         #region Values
+
+        private bool _firstTime = true;
 
         public IMvxAsyncCommand SampleCommand { get; protected set; }
 

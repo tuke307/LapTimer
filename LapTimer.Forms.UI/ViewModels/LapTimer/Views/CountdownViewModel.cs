@@ -1,26 +1,27 @@
-﻿namespace LapTimer.Forms.UI.ViewModels.Rides
+﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
-    using System.Collections.Generic;
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RidesTabViewModel.
+    /// CountdownViewModel.
     /// </summary>
     /// <seealso cref="MvvmCross.ViewModels.MvxNavigationViewModel" />
-    public class RidesTabViewModel : MvxNavigationViewModel
+    public class CountdownViewModel : MvxNavigationViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RidesTabViewModel" /> class.
+        /// Initializes a new instance of the <see cref="LapTimerTabViewModel" /> class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RidesTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public CountdownViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
+            //ResetCommand = new MvxCommand(() => );
         }
 
         #region Methods
@@ -42,32 +43,23 @@
             base.Prepare();
         }
 
-        /// <summary>
-        /// Views the appearing.
-        /// </summary>
-        public override void ViewAppearing()
-        {
-            this.ShowInitialViewModels();
-        }
-
-        /// <summary>
-        /// Shows the initial view models.
-        /// </summary>
-        /// <returns></returns>
-        private Task ShowInitialViewModels()
-        {
-            var tasks = new List<Task>
-            {
-                this.NavigationService.Navigate<ViewModels.Rides.RidesTabHosterViewModel>(),
-            };
-            return Task.WhenAll(tasks);
-        }
-
         #endregion Methods
 
         #region Values
 
-        public IMvxAsyncCommand SampleCommand { get; protected set; }
+        #region Commands
+
+        public IMvxCommand ResetCommand { get; protected set; }
+
+        #endregion Commands
+
+        private TimeSpan _timeSpanCountdown;
+
+        public TimeSpan TimeSpanCountdown
+        {
+            get => this._timeSpanCountdown;
+            set => this.SetProperty(ref _timeSpanCountdown, value);
+        }
 
         #endregion Values
     }

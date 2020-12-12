@@ -4,20 +4,21 @@
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// LapTimerTabViewModel.
+    /// RouteViewModel.
     /// </summary>
     /// <seealso cref="MvvmCross.ViewModels.MvxNavigationViewModel" />
-    public class LapTimerTabViewModel : MvxNavigationViewModel
+    public class RouteViewModel : MvxNavigationViewModel
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LapTimerTabViewModel" /> class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public LapTimerTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public RouteViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
         }
@@ -45,7 +46,39 @@
 
         #region Values
 
-        public IMvxAsyncCommand SampleCommand { get; protected set; }
+        #region Commands
+
+        public IMvxAsyncCommand OpenSettingsCommand { get; protected set; }
+
+        public IMvxCommand SelectLapCommand { get; protected set; }
+
+        public IMvxCommand SelectTrackCommand { get; protected set; }
+
+        public IMvxAsyncCommand StartTimerCommand { get; protected set; }
+
+        #endregion Commands
+
+        private TimeSpan _lapTime;
+        private double _speed;
+        private TimeSpan _totalTime;
+
+        public TimeSpan LapTime
+        {
+            get => this._lapTime;
+            set => this.SetProperty(ref _lapTime, value);
+        }
+
+        public double Speed
+        {
+            get => this._speed;
+            set => this.SetProperty(ref _speed, value);
+        }
+
+        public TimeSpan TotalTime
+        {
+            get => this._totalTime;
+            set => this.SetProperty(ref _totalTime, value);
+        }
 
         #endregion Values
     }

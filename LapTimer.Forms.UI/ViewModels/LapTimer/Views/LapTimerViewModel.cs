@@ -1,26 +1,28 @@
-﻿namespace LapTimer.Forms.UI.ViewModels.Rides
+﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RidesTabViewModel.
+    /// LapTimerViewModel.
     /// </summary>
     /// <seealso cref="MvvmCross.ViewModels.MvxNavigationViewModel" />
-    public class RidesTabViewModel : MvxNavigationViewModel
+    public class LapTimerViewModel : MvxNavigationViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RidesTabViewModel" /> class.
+        /// Initializes a new instance of the <see cref="LapTimerTabViewModel" /> class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RidesTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public LapTimerViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
+            //ResetCommand = new MvxCommand(() => );
+            //PlusCommand = new MvxCommand(() => );
+            //StopCommand = new MvxCommand(() => );
         }
 
         #region Methods
@@ -42,32 +44,19 @@
             base.Prepare();
         }
 
-        /// <summary>
-        /// Views the appearing.
-        /// </summary>
-        public override void ViewAppearing()
-        {
-            this.ShowInitialViewModels();
-        }
-
-        /// <summary>
-        /// Shows the initial view models.
-        /// </summary>
-        /// <returns></returns>
-        private Task ShowInitialViewModels()
-        {
-            var tasks = new List<Task>
-            {
-                this.NavigationService.Navigate<ViewModels.Rides.RidesTabHosterViewModel>(),
-            };
-            return Task.WhenAll(tasks);
-        }
-
         #endregion Methods
 
         #region Values
 
-        public IMvxAsyncCommand SampleCommand { get; protected set; }
+        #region Commands
+
+        public IMvxCommand PlusCommand { get; protected set; }
+
+        public IMvxCommand ResetCommand { get; protected set; }
+
+        public IMvxCommand StopCommand { get; protected set; }
+
+        #endregion Commands
 
         #endregion Values
     }

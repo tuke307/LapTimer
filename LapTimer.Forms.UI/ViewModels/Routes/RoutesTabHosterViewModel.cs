@@ -1,4 +1,4 @@
-﻿namespace LapTimer.Forms.UI.ViewModels.Rides
+﻿namespace LapTimer.Forms.UI.ViewModels.Routes
 {
     using MvvmCross.Commands;
     using MvvmCross.Logging;
@@ -8,17 +8,18 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RidesTabViewModel.
+    /// RoutesTabHosterViewModel.
     /// </summary>
     /// <seealso cref="MvvmCross.ViewModels.MvxNavigationViewModel" />
-    public class RidesTabViewModel : MvxNavigationViewModel
+    public class RoutesTabHosterViewModel : MvxNavigationViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RidesTabViewModel" /> class.
+        /// Initializes a new instance of the <see cref="RoutesTabHosterViewModel" />
+        /// class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RidesTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public RoutesTabHosterViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
         }
@@ -47,7 +48,21 @@
         /// </summary>
         public override void ViewAppearing()
         {
-            this.ShowInitialViewModels();
+            if (this._firstTime)
+            {
+                this.ShowInitialViewModels();
+                this._firstTime = false;
+            }
+        }
+
+        /// <summary>
+        /// Views the disappeared.
+        /// </summary>
+        public override void ViewDisappeared()
+        {
+            base.ViewDisappeared();
+            this.NavigationService.Navigate<ViewModels.MainPageViewModel>();
+            //this.NavigationService.Navigate<ViewModels.LapTimer.LapTimerTabViewModel>();
         }
 
         /// <summary>
@@ -58,7 +73,8 @@
         {
             var tasks = new List<Task>
             {
-                this.NavigationService.Navigate<ViewModels.Rides.RidesTabHosterViewModel>(),
+                this.NavigationService.Navigate<ViewModels.Routes.RouteLapsViewModel>(),
+                this.NavigationService.Navigate<ViewModels.Routes.RouteTracksViewModel>(),
             };
             return Task.WhenAll(tasks);
         }
@@ -67,7 +83,7 @@
 
         #region Values
 
-        public IMvxAsyncCommand SampleCommand { get; protected set; }
+        private bool _firstTime = true;
 
         #endregion Values
     }

@@ -47,11 +47,7 @@
         /// </summary>
         public override void ViewAppearing()
         {
-            if (this._firstTime)
-            {
-                this.ShowInitialViewModels();
-                this._firstTime = false;
-            }
+            this.ShowInitialViewModels();
         }
 
         /// <summary>
@@ -62,8 +58,7 @@
         {
             var tasks = new List<Task>
             {
-                this.NavigationService.Navigate<ViewModels.Routes.RouteLapsViewModel>(),
-                this.NavigationService.Navigate<ViewModels.Routes.RouteTracksViewModel>(),
+                this.NavigationService.Navigate<ViewModels.Routes.RoutesTabHosterViewModel>()
             };
             return Task.WhenAll(tasks);
         }
@@ -71,8 +66,6 @@
         #endregion Methods
 
         #region Values
-
-        private bool _firstTime = true;
 
         public IMvxAsyncCommand SampleCommand { get; protected set; }
 

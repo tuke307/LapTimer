@@ -62,7 +62,6 @@
                 this.NavigationService.Navigate<ViewModels.LapTimer.LapTimerTabViewModel>(),
                 this.NavigationService.Navigate<ViewModels.Rides.RidesTabViewModel>(),
                 this.NavigationService.Navigate<ViewModels.Routes.RoutesTabViewModel>()
-                
             };
             return Task.WhenAll(tasks);
         }
