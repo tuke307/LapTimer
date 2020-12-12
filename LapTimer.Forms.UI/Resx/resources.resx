@@ -174,8 +174,8 @@
     <value>drive to the start of the</value>
     <comment>Aufforderung zum Start zu fahren</comment>
   </data>
-  <data name="STR_CHOOSETRACK" xml:space="preserve">
-    <value>choose track</value>
+  <data name="STR_CHOOSEROUTE" xml:space="preserve">
+    <value>choose route</value>
   </data>
   <data name="STR_DRIVEIN" xml:space="preserve">
     <value>driveIn</value>
@@ -195,9 +195,6 @@
   </data>
   <data name="STR_END" xml:space="preserve">
     <value>end</value>
-  </data>
-  <data name="STR_CHOOSELAP" xml:space="preserve">
-    <value>choose lap</value>
   </data>
   <data name="STR_RIDE" xml:space="preserve">
     <value>ride</value>

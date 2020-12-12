@@ -186,11 +186,8 @@
   <data name="INS_DRIVETOSTART" xml:space="preserve">
     <value>drive to the start of the</value>
   </data>
-  <data name="STR_CHOOSETRACK" xml:space="preserve">
-    <value>choose track</value>
-  </data>
-  <data name="STR_CHOOSELAP" xml:space="preserve">
-    <value>choose lap</value>
+  <data name="STR_CHOOSEROUTE" xml:space="preserve">
+    <value>choose route</value>
   </data>
   <data name="STR_RIDE" xml:space="preserve">
     <value>ride</value>

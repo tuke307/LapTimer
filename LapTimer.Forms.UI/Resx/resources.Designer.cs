@@ -106,20 +106,11 @@ namespace LapTimer.Forms.UI.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to choose lap.
+        ///   Looks up a localized string similar to choose route.
         /// </summary>
-        public static string STR_CHOOSELAP {
+        public static string STR_CHOOSEROUTE {
             get {
-                return ResourceManager.GetString("STR_CHOOSELAP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to choose track.
-        /// </summary>
-        public static string STR_CHOOSETRACK {
-            get {
-                return ResourceManager.GetString("STR_CHOOSETRACK", resourceCulture);
+                return ResourceManager.GetString("STR_CHOOSEROUTE", resourceCulture);
             }
         }
         
