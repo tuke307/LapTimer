@@ -1,11 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:converters="clr-namespace:LapTimer.Forms.UI.Converters"
                       xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
+                      xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
-                      x:Class="LapTimer.Forms.UI.Views.LapTimer.RouteView">
-
+                      x:Class="LapTimer.Forms.UI.Views.LapTimer.RouteView"
+                      x:TypeArguments="viewModels:LapTimer.RouteViewModel">
+    <views:MvxContentView.Resources>
+        <!--CONVERTER-->
+        <converters:TimeSpanToStringConverter x:Key="TimeSpanToString" />
+    </views:MvxContentView.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -25,8 +31,8 @@
 
         <StackLayout Grid.Column="1"
                      Grid.Row="1">
-            <material:MaterialLabel Text="{Binding LapTime}" />
-            <material:MaterialLabel Text="{Binding TotalTime}" />
+            <material:MaterialLabel Text="{Binding LapTime, Converter={StaticResource TimeSpanToString}}" />
+            <material:MaterialLabel Text="{Binding TotalTime, Converter={StaticResource TimeSpanToString}}" />
         </StackLayout>
 
         <!--Icon für GPS-Signalstärke-->
@@ -36,4 +42,4 @@
                                      HorizontalOptions="End">
         </material:MaterialIconButton>
     </Grid>
-</views:MvxContentPage>
+</views:MvxContentView>

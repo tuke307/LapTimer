@@ -1,19 +1,18 @@
-﻿namespace LapTimer.Forms.UI.Views.Rides
+﻿namespace LapTimer.Forms.UI.Views.LapTimer
 {
     using MvvmCross.Forms.Presenters.Attributes;
     using MvvmCross.Forms.Views;
     using Xamarin.Forms.Xaml;
 
     /// <summary>
-    /// DetailledRideView.
+    /// LapTimerHosterView.
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
-
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxModalPresentationAttribute(WrapInNavigationPage = true, NoHistory = true)]
-    public partial class DetailledRideView : MvxContentPage<ViewModels.Rides.DetailledRideViewModel>
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class LapTimerHosterView : MvxContentPage<ViewModels.LapTimer.LapTimerHosterViewModel>
     {
-        public DetailledRideView()
+        public LapTimerHosterView()
         {
             InitializeComponent();
         }

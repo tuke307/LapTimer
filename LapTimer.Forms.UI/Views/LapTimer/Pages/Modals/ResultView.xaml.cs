@@ -10,7 +10,7 @@
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [MvxModalPresentationAttribute(WrapInNavigationPage = true, NoHistory = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResultView : MvxContentPage
+    public partial class ResultView : MvxContentPage<ViewModels.LapTimer.ResultViewModel>
     {
         public ResultView()
         {

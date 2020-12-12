@@ -9,7 +9,7 @@
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Tracks")]
+    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Tracks", WrapInNavigationPage = true, NoHistory = false/*, HostViewModelType = typeof(RoutesTabHosterView)*/)]
     public partial class RouteTracksView : MvxContentPage<ViewModels.Routes.RouteTracksViewModel>
     {
         //public const string _title = Functions.Functions.GetLocalisedRes(typeof(Resx.resources), "STR_TRACK");

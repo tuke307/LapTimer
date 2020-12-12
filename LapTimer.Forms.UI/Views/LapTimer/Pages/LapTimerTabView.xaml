@@ -12,15 +12,16 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <material:MaterialIconButton Grid.Row="0"
                                      HorizontalOptions="End"
                                      Image="cog"
+                                     BackgroundColor="Transparent"
                                      Command="{Binding OpenSettingsCommand}">
         </material:MaterialIconButton>
 
@@ -34,12 +35,13 @@
                                    CornerRadius="2"
                                    Elevation="2"
                                    Margin="5"
-                                   HeightRequest="150"
+                                   IsClickable="True"
+                                   ClickCommand="{Binding SelectLapCommand}"
                                    VerticalOptions="FillAndExpand"
                                    HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <material:MaterialLabel Text="{x:Static res:resources.STR_LAP}" />
-                    <Image />
+                    <Image Source="lap_structure" />
                 </StackLayout>
             </material:MaterialCard>
 
@@ -47,64 +49,63 @@
                                    CornerRadius="2"
                                    Elevation="2"
                                    Margin="5"
-                                   HeightRequest="150"
+                                   IsClickable="True"
+                                   ClickCommand="{Binding SelectTrackCommand}"
                                    VerticalOptions="FillAndExpand"
                                    HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <material:MaterialLabel Text="{x:Static res:resources.STR_TRACK}" />
-                    <Image />
+                    <Image Source="track_structure" />
                 </StackLayout>
             </material:MaterialCard>
         </Grid>
 
-        <StackLayout HorizontalOptions="Center"
-                     Grid.Row="2">
+        <StackLayout Grid.Row="2">
 
             <material:MaterialCheckbox IsSelected="{Binding RoutesEnabled}"
-                                       IsVisible="{Binding TrackSelected}"
-                                       Text="{x:Static res:resources.STR_CHOOSETRACK}" />
-
-            <material:MaterialCheckbox IsVisible="{Binding LapSelected}"
-                                       IsSelected="{Binding RoutesEnabled}"
-                                       Text="{x:Static res:resources.STR_CHOOSELAP}" />
+                                       Text="{x:Static res:resources.STR_CHOOSEROUTE}"
+                                       HorizontalOptions="Center" />
 
             <material:MaterialTextField IsVisible="{Binding RoutesEnabled}"
-                                        Placeholder="Placeholder"
-                                        HelperText="Helper Text"
-                                        ErrorText="Error Text"
-                                        Text="Input Text"
+                                        Placeholder="{x:Static res:resources.STR_ROUTES}"
+                                        FloatingPlaceholderEnabled="True"
                                         InputType="Choice"
+                                        HorizontalOptions="Center"
+                                        ChoicesBindingName="Name"
                                         Choices="{Binding Routes}"
                                         SelectedChoice="{Binding Route}" />
         </StackLayout>
 
-        <StackLayout Grid.Row="3"
-                     HorizontalOptions="Center"
-                     Orientation="Horizontal">
-            <material:MaterialLabel FontFamily="H1"
-                                    FontSize="Caption"
-                                    TypeScale="H5"
+        <StackLayout Grid.Row="3">
+
+            <material:MaterialLabel TypeScale="H4"
+                                    HorizontalOptions="Center"
                                     Text="{x:Static res:resources.INS_DRIVETOSTART}">
             </material:MaterialLabel>
 
             <material:MaterialLabel FontAttributes="Bold"
-                                    TypeScale="H5"
+                                    TypeScale="H4"
+                                    HorizontalOptions="Center"
                                     IsVisible="{Binding LapSelected}"
                                     Text="{x:Static res:resources.STR_LAP}">
             </material:MaterialLabel>
 
             <material:MaterialLabel FontAttributes="Bold"
-                                    TypeScale="H5"
+                                    TypeScale="H4"
+                                    HorizontalOptions="Center"
                                     IsVisible="{Binding TrackSelected}"
                                     Text="{x:Static res:resources.STR_TRACK}">
             </material:MaterialLabel>
         </StackLayout>
 
-        <material:MaterialIconButton Grid.Row="4"
-                                     HorizontalOptions="Center"
-                                     VerticalOptions="CenterAndExpand"
-                                     Image="motion_play_outline"
-                                     Command="{Binding StartTimerCommand}">
-        </material:MaterialIconButton>
+        <material:MaterialButton Grid.Row="4"
+                                 HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Image="motion_play_outline"
+                                 WidthRequest="100"
+                                 HeightRequest="100"
+                                 BackgroundColor="Transparent"
+                                 Command="{Binding StartTimerCommand}">
+        </material:MaterialButton>
     </Grid>
 </views:MvxContentPage>
