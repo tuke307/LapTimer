@@ -29,22 +29,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\LapTimerTabView.xaml.cs">
+    <Compile Update="Views\LapTimer\Pages\LapTimerTabView.xaml.cs">
       <DependentUpon>LapTimerTabView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\Modals\StartingPositionView.xaml.cs">
+    <Compile Update="Views\LapTimer\Pages\Modals\LapTimerHosterView.xaml.cs">
+      <DependentUpon>LapTimerHosterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LapTimer\Views\StartingPositionView.xaml.cs">
       <DependentUpon>StartingPositionView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\Modals\CountdownView.xaml.cs">
+    <Compile Update="Views\LapTimer\Views\CountdownView.xaml.cs">
       <DependentUpon>CountdownView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\Modals\LapTimerView.xaml.cs">
+    <Compile Update="Views\LapTimer\Views\LapTimerView.xaml.cs">
       <DependentUpon>LapTimerView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\Modals\DriveInView.xaml.cs">
+    <Compile Update="Views\LapTimer\Views\DriveInView.xaml.cs">
       <DependentUpon>DriveInView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LapTimer\Modals\RouteView.xaml.cs">
+    <Compile Update="Views\LapTimer\Views\RouteView.xaml.cs">
       <DependentUpon>RouteView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\MainPageView.xaml.cs">
@@ -52,6 +55,9 @@
     </Compile>
     <Compile Update="Views\Rides\Detailled\DetailledRideView.xaml.cs">
       <DependentUpon>DetailledRideView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Rides\RidesTabHosterView.xaml.cs">
+      <DependentUpon>RidesTabHosterView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Rides\Tab\RideLapsView.xaml.cs">
       <DependentUpon>RideLapsView.xaml</DependentUpon>
@@ -65,6 +71,9 @@
     <Compile Update="Views\Routes\Detailled\DetailledRouteView.xaml.cs">
       <DependentUpon>DetailledRouteView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Routes\RoutesTabHosterView.xaml.cs">
+      <DependentUpon>RoutesTabHosterView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Routes\Tab\RouteTracksView.xaml.cs">
       <DependentUpon>RouteTracksView.xaml</DependentUpon>
     </Compile>
@@ -77,14 +86,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resx\resources.de-DE.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\resources.de.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\resources.en-US.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\resources.en.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resx\resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LapTimer\LapTimerTabView.xaml">
+    <EmbeddedResource Update="Views\LapTimer\Pages\LapTimerTabView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LapTimer\Modals\ResultView.xaml">
+    <EmbeddedResource Update="Views\LapTimer\Pages\Modals\ResultView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MainPageView.xaml">
