@@ -8,6 +8,14 @@
 
     public class Setup : MvxFormsAndroidSetup<MvxApp, FormsApp>
     {
+        public override void LoadPlugins(IMvxPluginManager pluginManager)
+        {
+            base.LoadPlugins(pluginManager);
+
+            pluginManager.EnsurePluginLoaded<MvvmCross.Plugin.Messenger.Plugin>();
+            pluginManager.EnsurePluginLoaded<MvvmCross.Plugin.Location.Fused.Plugin>();
+        }
+
         protected override void InitializeLastChance()
         {
             base.InitializeLastChance();
