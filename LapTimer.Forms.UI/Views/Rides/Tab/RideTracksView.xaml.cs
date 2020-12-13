@@ -8,7 +8,7 @@
     /// RideTracksView.
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
-    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Tracks", WrapInNavigationPage = true, NoHistory = true)]
+    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Tracks", WrapInNavigationPage = true, NoHistory = false)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RideTracksView : MvxContentPage<ViewModels.Rides.RideTracksViewModel>
     {

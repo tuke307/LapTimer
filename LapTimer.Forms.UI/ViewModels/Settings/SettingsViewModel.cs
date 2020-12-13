@@ -20,6 +20,7 @@
         public SettingsViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
+            CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
         }
 
         #region Methods
@@ -45,7 +46,11 @@
 
         #region Values
 
-        public IMvxAsyncCommand SampleCommand { get; protected set; }
+        #region Commands
+
+        public MvxAsyncCommand CloseSiteCommand { get; protected set; }
+
+        #endregion Commands
 
         #endregion Values
     }

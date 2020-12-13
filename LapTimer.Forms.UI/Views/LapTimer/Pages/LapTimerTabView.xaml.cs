@@ -10,13 +10,12 @@
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Icon = "timer_outline")]
+    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Icon = "timer_outline", WrapInNavigationPage = true, NoHistory = false)]
     public partial class LapTimerTabView : MvxContentPage<ViewModels.LapTimer.LapTimerTabViewModel>
     {
         public LapTimerTabView()
         {
             InitializeComponent();
-            // NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

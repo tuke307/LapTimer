@@ -23,7 +23,7 @@
             SelectLapCommand = new MvxCommand(() => this.LapSelected = true);
             SelectTrackCommand = new MvxCommand(() => this.TrackSelected = true);
             OpenSettingsCommand = new MvxAsyncCommand(() => this.NavigationService.Navigate<ViewModels.Settings.SettingsViewModel>());
-            //StartTimerCommand = new MvxAsyncCommand();
+            OpenLapTimerHosterCommand = new MvxAsyncCommand(() => this.NavigationService.Navigate<ViewModels.LapTimer.LapTimerHosterViewModel>());
             TrackSelected = true;
 
             //Routes
@@ -55,13 +55,13 @@
 
         #region Commands
 
+        public IMvxAsyncCommand OpenLapTimerHosterCommand { get; protected set; }
+
         public IMvxAsyncCommand OpenSettingsCommand { get; protected set; }
 
         public IMvxCommand SelectLapCommand { get; protected set; }
 
         public IMvxCommand SelectTrackCommand { get; protected set; }
-
-        public IMvxAsyncCommand StartTimerCommand { get; protected set; }
 
         #endregion Commands
 

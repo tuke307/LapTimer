@@ -17,6 +17,7 @@
         <material:MaterialIconButton Grid.Row="1"
                                      HorizontalOptions="Start"
                                      Image="restore"
+                                     BackgroundColor="Transparent"
                                      Command="{Binding ResetCommand}">
         </material:MaterialIconButton>
 

@@ -36,10 +36,10 @@
         </StackLayout>
 
         <!--Icon für GPS-Signalstärke-->
-        <material:MaterialIconButton Grid.Column="2"
-                                     Grid.Row="1"
-                                     Image="signal_cellular_outline"
-                                     HorizontalOptions="End">
-        </material:MaterialIconButton>
+        <material:MaterialIcon Grid.Column="2"
+                               Grid.Row="1"
+                               Source="signal_cellular_outline"
+                               HorizontalOptions="End">
+        </material:MaterialIcon>
     </Grid>
 </views:MvxContentView>

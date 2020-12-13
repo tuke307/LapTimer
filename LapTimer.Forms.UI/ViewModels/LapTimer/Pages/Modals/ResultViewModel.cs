@@ -20,7 +20,7 @@
         public ResultViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
-            //CloseSiteCommand = new MvxCommand(() => );
+            CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
             //SaveDataCommand = new MvxCommand(() => );
         }
 
@@ -49,7 +49,7 @@
 
         #region Commands
 
-        public IMvxCommand CloseSiteCommand { get; protected set; }
+        public MvxAsyncCommand CloseSiteCommand { get; protected set; }
 
         public IMvxCommand SaveDataCommand { get; protected set; }
 

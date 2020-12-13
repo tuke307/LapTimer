@@ -20,7 +20,7 @@
         public LapTimerHosterViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
-            //CloseSiteCommand = new MvxCommand(() =>);
+            CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
         }
 
         #region Methods
@@ -48,7 +48,7 @@
 
         #region Commands
 
-        public IMvxCommand CloseSiteCommand { get; protected set; }
+        public MvxAsyncCommand CloseSiteCommand { get; protected set; }
 
         #endregion Commands
 

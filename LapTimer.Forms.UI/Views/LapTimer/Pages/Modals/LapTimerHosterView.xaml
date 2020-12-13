@@ -2,9 +2,11 @@
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
+                      xmlns:local="clr-namespace:LapTimer.Forms.UI.Views.LapTimer"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
                       x:Class="LapTimer.Forms.UI.Views.LapTimer.LapTimerHosterView"
+                      NavigationPage.HasNavigationBar="False"
                       x:TypeArguments="viewModels:LapTimer.LapTimerHosterViewModel">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,7 +19,14 @@
         <material:MaterialIconButton Grid.Row="0"
                                      HorizontalOptions="Start"
                                      Image="close"
+                                     BackgroundColor="Transparent"
                                      Command="{Binding CloseSiteCommand}">
         </material:MaterialIconButton>
+
+        <!--Route view-->
+        <local:RouteView Grid.Row="1" />
+
+        <!--swipable views-->
+        <local:DriveInView Grid.Row="2" />
     </Grid>
 </views:MvxContentPage>

@@ -8,7 +8,7 @@
     /// SettingsView.
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
-    [MvxModalPresentationAttribute(WrapInNavigationPage = true, NoHistory = true)]
+    [MvxModalPresentationAttribute(WrapInNavigationPage = true, NoHistory = false)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsView : MvxContentPage<ViewModels.Settings.SettingsViewModel>
     {

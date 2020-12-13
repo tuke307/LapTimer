@@ -8,7 +8,7 @@
     /// RideLapsView.
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
-    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Laps", WrapInNavigationPage = true, NoHistory = true)]
+    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Laps", WrapInNavigationPage = true, NoHistory = false)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RideLapsView : MvxContentPage<ViewModels.Rides.RideLapsViewModel>
     {

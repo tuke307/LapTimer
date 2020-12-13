@@ -104,8 +104,7 @@
                                  Image="motion_play_outline"
                                  WidthRequest="100"
                                  HeightRequest="100"
-                                 BackgroundColor="Transparent"
-                                 Command="{Binding StartTimerCommand}">
+                                 Command="{Binding OpenLapTimerHosterCommand}">
         </material:MaterialButton>
     </Grid>
 </views:MvxContentPage>
