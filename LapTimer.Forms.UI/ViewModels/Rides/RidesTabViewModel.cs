@@ -4,7 +4,6 @@
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -40,27 +39,6 @@
         public override void Prepare()
         {
             base.Prepare();
-        }
-
-        /// <summary>
-        /// Views the appearing.
-        /// </summary>
-        public override void ViewAppearing()
-        {
-            this.ShowInitialViewModels();
-        }
-
-        /// <summary>
-        /// Shows the initial view models.
-        /// </summary>
-        /// <returns></returns>
-        private Task ShowInitialViewModels()
-        {
-            var tasks = new List<Task>
-            {
-                this.NavigationService.Navigate<ViewModels.Rides.RidesTabHosterViewModel>(),
-            };
-            return Task.WhenAll(tasks);
         }
 
         #endregion Methods

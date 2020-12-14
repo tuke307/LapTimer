@@ -1,7 +1,9 @@
 ﻿namespace LapTimer.Forms.UI.Views.Routes
 {
+    using MvvmCross;
     using MvvmCross.Forms.Presenters.Attributes;
     using MvvmCross.Forms.Views;
+    using MvvmCross.ViewModels;
     using Xamarin.Forms.Xaml;
 
     /// <summary>
@@ -9,13 +11,30 @@
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Laps", WrapInNavigationPage = true, NoHistory = false/*, HostViewModelType = typeof(RoutesTabHosterView)*/)]
-    public partial class RouteLapsView : MvxContentPage<ViewModels.Routes.RouteLapsViewModel>
+    //[MvxContentPagePresentation(Title = "Laps", WrapInNavigationPage = true, NoHistory = false)]
+    //[MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Laps", WrapInNavigationPage = true, NoHistory = false/*, HostViewModelType = typeof(RoutesTabHosterView)*/)]
+    public partial class RouteLapsView : MvxContentView<ViewModels.Routes.RouteLapsViewModel>
     {
-        //public const string _title = Functions.Functions.GetLocalisedRes(typeof(Resx.resources), "STR_TRACK");
         public RouteLapsView()
         {
             InitializeComponent();
+
+            if (!(ViewModel is ViewModels.Routes.RouteLapsViewModel))
+            {
+                if (Mvx.IoCProvider.TryResolve<ViewModels.Routes.RouteLapsViewModel>(out var miniPlayerViewModel))
+                {
+                    ViewModel = miniPlayerViewModel;
+                    return;
+                }
+
+                var _viewModelLoader = Mvx.IoCProvider.Resolve<IMvxViewModelLoader>(); var
+                request = new
+                MvxViewModelInstanceRequest(typeof(ViewModels.Routes.RouteLapsViewModel));
+                request.ViewModelInstance = _viewModelLoader.LoadViewModel(request, null);
+                ViewModel = request.ViewModelInstance as ViewModels.Routes.RouteLapsViewModel;
+
+                Mvx.IoCProvider.RegisterSingleton<ViewModels.Routes.RouteLapsViewModel>(ViewModel);
+            }
         }
     }
 }
