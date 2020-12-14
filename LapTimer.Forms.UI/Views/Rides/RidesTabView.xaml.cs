@@ -16,7 +16,6 @@
         public RidesTabView()
         {
             InitializeComponent();
-            //NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

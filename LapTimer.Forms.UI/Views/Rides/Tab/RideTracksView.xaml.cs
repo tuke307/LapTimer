@@ -12,7 +12,6 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RideTracksView : MvxContentView<ViewModels.Rides.RideTracksViewModel>
     {
-        //public const string _title = Functions.Functions.GetLocalisedRes(typeof(Resx.resources), "STR_TRACK");
         public RideTracksView()
         {
             InitializeComponent();
