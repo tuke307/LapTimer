@@ -27,7 +27,8 @@
         <material:MaterialIconButton Grid.Row="1"
                                      HorizontalOptions="Start"
                                      Image="restore"
-                                     Command="{Binding ResetCommand}">
+                                     Command="{Binding ResetCommand}"
+                                     BackgroundColor="Transparent">
         </material:MaterialIconButton>
     </Grid>
 </views:MvxContentView>

@@ -14,11 +14,13 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <material:MaterialLabel TypeScale="H2"
-                                Grid.Row="0"
-                                Text="{x:Static res:resources.INS_PREPARESTART}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center" />
+        <StackLayout Grid.Row="0"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     Orientation="Horizontal">
+            <material:MaterialLabel TypeScale="H4"
+                                    Text="{x:Static res:resources.INS_PREPARESTART}" />
+        </StackLayout>
 
         <material:MaterialIconButton Grid.Row="1"
                                      HorizontalOptions="Center"

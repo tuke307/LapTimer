@@ -22,7 +22,8 @@
         </material:MaterialIconButton>
 
         <StackLayout Grid.Row="1"
-                     HorizontalOptions="Center">
+                     HorizontalOptions="Center" 
+                     Orientation="Horizontal">
             <material:MaterialIconButton HorizontalOptions="Center"
                                          Image="plus"
                                          Command="{Binding PlusCommand}">
