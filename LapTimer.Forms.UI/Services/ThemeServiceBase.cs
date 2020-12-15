@@ -1,8 +1,6 @@
 ﻿namespace LapTimer.Forms.UI.Services
 {
     using LapTimer.Forms.UI.Themes;
-    using LapTimer.Forms.UI.Themes.Base;
-    using System.Linq;
     using Xamarin.Forms;
 
     public class ThemeServiceBase : IThemeService
@@ -15,9 +13,9 @@
             {
                 case (int)BaseTheme.Inherit:
                     if (themeMode == BaseTheme.Dark)
-                        goto case BaseTheme.Dark;
+                        goto case (int)BaseTheme.Dark;
                     else
-                        goto case BaseTheme.Light;
+                        goto case (int)BaseTheme.Light;
                 case (int)BaseTheme.Dark:
                     SetTheme(BaseTheme.Dark);
                     break;
