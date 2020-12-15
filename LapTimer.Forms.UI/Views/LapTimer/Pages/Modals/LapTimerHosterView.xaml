@@ -4,6 +4,7 @@
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:local="clr-namespace:LapTimer.Forms.UI.Views.LapTimer"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:tab="clr-namespace:Xam.Plugin.TabView;assembly=Xam.Plugin.TabView"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
                       x:Class="LapTimer.Forms.UI.Views.LapTimer.LapTimerHosterView"
                       NavigationPage.HasNavigationBar="False"
@@ -12,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -26,7 +28,32 @@
         <!--Route view-->
         <local:RouteView Grid.Row="1" />
 
+        <BoxView Color="{DynamicResource MaterialDesignDivider}"
+                 HeightRequest="2"
+                 Grid.Row="2"
+                 HorizontalOptions="Fill"
+                 Margin="5, 0, 5, 0" />
+
         <!--swipable views-->
-        <local:DriveInView Grid.Row="2" />
+        <tab:TabViewControl Grid.Row="3"
+                            IsSwipeEnabled="False"
+                            TabSizeOption="0"
+                            HeaderBackgroundColor="Transparent"
+                            HeaderSelectionUnderlineColor="Transparent">
+            <tab:TabViewControl.ItemSource>
+                <tab:TabItem>
+                    <local:DriveInView />
+                </tab:TabItem>
+                <tab:TabItem>
+                    <local:StartingPositionView />
+                </tab:TabItem>
+                <tab:TabItem>
+                    <local:CountdownView />
+                </tab:TabItem>
+                <tab:TabItem>
+                    <local:LapTimerView />
+                </tab:TabItem>
+            </tab:TabViewControl.ItemSource>
+        </tab:TabViewControl>
     </Grid>
 </views:MvxContentPage>
