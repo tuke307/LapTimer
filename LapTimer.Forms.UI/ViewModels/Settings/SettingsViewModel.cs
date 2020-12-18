@@ -1,9 +1,13 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Settings
 {
+    using global::LapTimer.Forms.UI.Services;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -17,9 +21,12 @@
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public SettingsViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public SettingsViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IThemeService themeService)
             : base(logProvider, navigationService)
         {
+            this._themeService = themeService;
+            BaseThemeValue = (Themes.BaseTheme)ColorSettings.Theme;
+
             CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
         }
 
@@ -51,6 +58,38 @@
         public MvxAsyncCommand CloseSiteCommand { get; protected set; }
 
         #endregion Commands
+
+        private readonly IThemeService _themeService;
+        private Array _baseTheme = Enum.GetValues(typeof(Themes.BaseTheme));
+
+        private Themes.BaseTheme? _baseThemeValue;
+
+        public List<Themes.BaseTheme> BaseThemeList
+        {
+            get => _baseTheme.OfType<Themes.BaseTheme>().ToList();
+        }
+
+        /// <summary>
+        /// Gets or sets the base theme value.
+        /// </summary>
+        /// <value>The base theme value.</value>
+        public Themes.BaseTheme? BaseThemeValue
+        {
+            get => _baseThemeValue;
+            set
+            {
+                if (_baseThemeValue != null)
+                {
+                    if (ColorSettings.Theme != (int)value.Value)
+                    {
+                        ColorSettings.Theme = (int)value.Value;
+                        _themeService.UpdateTheme(value.Value);
+                    }
+                }
+
+                this.SetProperty(ref _baseThemeValue, value);
+            }
+        }
 
         #endregion Values
     }
