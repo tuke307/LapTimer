@@ -7,7 +7,7 @@ namespace LapTimer.Forms.UI.Services
     /// <summary>
     /// IActivityService.
     /// </summary>
-    public interface IActivityService
+    public interface IDbActivityService
     {
         /// <summary>
         /// Gets the lap rides asynchronous.

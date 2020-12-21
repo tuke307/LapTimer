@@ -10,7 +10,7 @@ namespace LapTimer.Forms.UI.Services
     /// <summary>
     /// ActivityConverter.
     /// </summary>
-    public static class ActivityConverter
+    public static class DbActivityConverter
     {
         /// <summary>
         /// Converts to activityheader.

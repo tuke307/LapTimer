@@ -11,8 +11,8 @@ namespace LapTimer.Forms.UI.Services
     /// <summary>
     /// ActivityService.
     /// </summary>
-    /// <seealso cref="LapTimer.Forms.UI.Services.IActivityService" />
-    public class ActivityService : IActivityService
+    /// <seealso cref="LapTimer.Forms.UI.Services.IDbActivityService" />
+    public class DbActivityService : IDbActivityService
     {
         private readonly List<RideModel> _rides = new List<RideModel>();
 
