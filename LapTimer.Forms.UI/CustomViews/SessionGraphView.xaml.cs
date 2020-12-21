@@ -1,5 +1,5 @@
-﻿using LapTimer.Forms.UI.Themes;
-using LapTimer.Forms.UI.ViewModels;
+﻿using LapTimer.Forms.UI.Models;
+using LapTimer.Forms.UI.Themes;
 using LapTimer.Forms.UI.ViewModels.Rides;
 using LapTimer.Forms.UI.Views.Rides;
 using SkiaSharp;
@@ -362,12 +362,12 @@ namespace LapTimer.Forms.UI.CustomViews
                     SpeedColor,
                     sessionPoint => sessionPoint.Speed);
 
-                DrawCurve(
-                    canvas,
-                    sessionGraphInfo.SessionPoints,
-                    sessionGraphInfo.HeartRate,
-                    BpmColor,
-                    sessionPoint => sessionPoint.HeartRate);
+                //DrawCurve(
+                //    canvas,
+                //    sessionGraphInfo.SessionPoints,
+                //   sessionGraphInfo.HeartRate,
+                //    BpmColor,
+                //    sessionPoint => sessionPoint.HeartRate);
 
                 _curvesPicture = pictureRecorder.EndRecording();
                 pictureRecorder.Dispose();
