@@ -37,9 +37,7 @@
         <!--swipable views-->
         <tab:TabViewControl Grid.Row="3"
                             IsSwipeEnabled="False"
-                            TabSizeOption="0"
-                            HeaderBackgroundColor="Transparent"
-                            HeaderSelectionUnderlineColor="Transparent">
+                            SelectedTabIndex="{Binding SelectedTabIndex}">
             <tab:TabViewControl.ItemSource>
                 <tab:TabItem>
                     <local:DriveInView />

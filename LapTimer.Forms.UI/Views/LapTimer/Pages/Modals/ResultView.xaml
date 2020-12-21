@@ -17,6 +17,7 @@
         <material:MaterialIconButton Grid.Row="0"
                                      HorizontalOptions="Start"
                                      Image="close"
+                                     BackgroundColor="Transparent"
                                      Command="{Binding CloseSiteCommand}">
         </material:MaterialIconButton>
 
@@ -24,6 +25,7 @@
         <material:MaterialIconButton Grid.Row="0"
                                      HorizontalOptions="End"
                                      Image="check"
+                                     BackgroundColor="Transparent"
                                      Command="{Binding SaveDataCommand}">
         </material:MaterialIconButton>
 

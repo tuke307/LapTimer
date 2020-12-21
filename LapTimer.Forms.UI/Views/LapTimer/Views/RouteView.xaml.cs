@@ -16,20 +16,23 @@
     {
         public RouteView()
         {
-            InitializeComponent(); if (!(ViewModel is ViewModels.LapTimer.RouteViewModel))
+            InitializeComponent();
+
+            if (!(ViewModel is ViewModels.LapTimer.RouteViewModel))
             {
-                if (Mvx.IoCProvider.TryResolve<ViewModels.LapTimer.RouteViewModel>(out var driveInViewModel))
+                if (MvvmCross.Mvx.IoCProvider.TryResolve<ViewModels.LapTimer.RouteViewModel>(out var miniPlayerViewModel))
                 {
-                    ViewModel = driveInViewModel;
+                    ViewModel = miniPlayerViewModel;
                     return;
                 }
 
-                var _viewModelLoader = Mvx.IoCProvider.Resolve<IMvxViewModelLoader>();
-                var request = new MvxViewModelInstanceRequest(typeof(ViewModels.LapTimer.RouteViewModel));
+                var _viewModelLoader = MvvmCross.Mvx.IoCProvider.Resolve<MvvmCross.ViewModels.IMvxViewModelLoader>(); var
+                request = new
+                MvvmCross.ViewModels.MvxViewModelInstanceRequest(typeof(ViewModels.LapTimer.RouteViewModel));
                 request.ViewModelInstance = _viewModelLoader.LoadViewModel(request, null);
                 ViewModel = request.ViewModelInstance as ViewModels.LapTimer.RouteViewModel;
 
-                Mvx.IoCProvider.RegisterSingleton<ViewModels.LapTimer.RouteViewModel>(ViewModel);
+                MvvmCross.Mvx.IoCProvider.RegisterSingleton<ViewModels.LapTimer.RouteViewModel>(ViewModel);
             }
         }
     }

@@ -2,7 +2,69 @@
 <views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
+                      xmlns:views1="clr-namespace:LapTimer.Forms.UI.Views"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:skiaSharp="clr-namespace:SkiaSharpnado.SkiaSharp;assembly=SkiaSharpnado"
                       x:Class="LapTimer.Forms.UI.Views.Rides.RideTracksView"
                       x:TypeArguments="viewModels:Rides.RideTracksViewModel">
+    <views:MvxContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ActivityHeaderTemplate">
+                <ViewCell>
+                    <Frame CornerRadius="6"
+                           Padding="15, 10"
+                           HasShadow="False"
+                           Margin="15, 7">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="3*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--<Image Grid.Row="0"
+                                   Grid.Column="0"
+                                   Source="{Binding Sport, Converter={StaticResource SportToIconConverter}}" />-->
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="1"
+                                   Text="{Binding Name}" />
+
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding DisplayableStartTime}" />
+
+                            <skiaSharp:SKColorDispersionBarView Grid.Row="1"
+                                                                Grid.Column="0"
+                                                                Grid.ColumnSpan="3"
+                                                                Margin="0, 10"
+                                                                Dispersion="{Binding Dispersion}" />
+
+                            <views1:MainIndicatorsView Grid.Row="2"
+                                                       Grid.Column="0"
+                                                       Grid.ColumnSpan="3"
+                                                       Margin="0, 10, 0, 0" />
+                        </Grid>
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </views:MvxContentView.Resources>
+
+    <views:MvxContentView.Content>
+        <ListView x:Name="ListView"
+                  ItemTemplate="{StaticResource ActivityHeaderTemplate}"
+                  ItemsSource="{Binding Loader.Result}"
+                  BackgroundColor="Transparent"
+                  SeparatorVisibility="None"
+                  ItemTapped="ListView_ItemTapped"
+                  Margin="0, -5"
+                  RowHeight="150">
+        </ListView>
+    </views:MvxContentView.Content>
 </views:MvxContentView>

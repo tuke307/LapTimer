@@ -62,8 +62,6 @@
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-            //this.SupportActionBar.Hide();
-            //ActionBar.Hide();
 
             Xamarin.Essentials.Platform.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);

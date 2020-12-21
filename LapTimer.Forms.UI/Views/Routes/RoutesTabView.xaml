@@ -12,10 +12,12 @@
     <views:MvxContentPage.Content>
         <local:TabViewControl>
             <local:TabViewControl.ItemSource>
-                <local:TabItem HeaderText="{x:Static res:resources.STR_TRACK}">
+                <local:TabItem HeaderText="{x:Static res:resources.STR_TRACK}"
+                               HeaderIcon="track_structure">
                     <routes:RouteTracksView />
                 </local:TabItem>
-                <local:TabItem HeaderText="{x:Static res:resources.STR_LAP}">
+                <local:TabItem HeaderText="{x:Static res:resources.STR_LAP}"
+                               HeaderIcon="lap_structure">
                     <routes:RouteLapsView />
                 </local:TabItem>
             </local:TabViewControl.ItemSource>

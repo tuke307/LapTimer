@@ -20,18 +20,19 @@
 
             if (!(ViewModel is ViewModels.LapTimer.DriveInViewModel))
             {
-                if (Mvx.IoCProvider.TryResolve<ViewModels.LapTimer.DriveInViewModel>(out var driveInViewModel))
+                if (MvvmCross.Mvx.IoCProvider.TryResolve<ViewModels.LapTimer.DriveInViewModel>(out var miniPlayerViewModel))
                 {
-                    ViewModel = driveInViewModel;
+                    ViewModel = miniPlayerViewModel;
                     return;
                 }
 
-                var _viewModelLoader = Mvx.IoCProvider.Resolve<IMvxViewModelLoader>();
-                var request = new MvxViewModelInstanceRequest(typeof(ViewModels.LapTimer.DriveInViewModel));
+                var _viewModelLoader = MvvmCross.Mvx.IoCProvider.Resolve<MvvmCross.ViewModels.IMvxViewModelLoader>(); var
+                request = new
+                MvvmCross.ViewModels.MvxViewModelInstanceRequest(typeof(ViewModels.LapTimer.DriveInViewModel));
                 request.ViewModelInstance = _viewModelLoader.LoadViewModel(request, null);
                 ViewModel = request.ViewModelInstance as ViewModels.LapTimer.DriveInViewModel;
 
-                Mvx.IoCProvider.RegisterSingleton<ViewModels.LapTimer.DriveInViewModel>(ViewModel);
+                MvvmCross.Mvx.IoCProvider.RegisterSingleton<ViewModels.LapTimer.DriveInViewModel>(ViewModel);
             }
         }
     }

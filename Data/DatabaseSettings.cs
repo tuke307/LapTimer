@@ -30,6 +30,23 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the file directory.
+        /// </summary>
+        /// <value>The file directory.</value>
+        public static string FileDirectory
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(nameof(FileDirectory), null);
+            }
+
+            set
+            {
+                AppSettings.AddOrUpdateValue(nameof(FileDirectory), value);
+            }
+        }
+
         private static ISettings AppSettings => CrossSettings.Current;
     }
 }

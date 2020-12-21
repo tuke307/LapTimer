@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <LangVersion>latest</LangVersion>
     <CodeAnalysisRuleSet>$(SolutionDir)Code Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 
@@ -16,11 +17,21 @@
     <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Location" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
     <PackageReference Include="Xam.Plugin.TabView" Version="1.1.1" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="TcxTools.NetStandard" Version="1.0.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+    <PackageReference Include="Sharpnado.Presentation.Forms" Version="1.7.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="XF.Material" Version="1.7.7" />
+    <PackageReference Include="TouchTracking.Forms" Version="1.1.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="4.1.0-beta" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj" />
+    <ProjectReference Include="..\SkiaSharpnado.Maps\SkiaSharpnado.Maps.csproj" />
+    <ProjectReference Include="..\SkiaSharpnado\SkiaSharpnado.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,6 +76,9 @@
     <Compile Update="Views\Rides\RidesTabView.xaml.cs">
       <DependentUpon>RidesTabView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\MainIndicatorsView.xaml.cs">
+      <DependentUpon>MainIndicatorsView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Rides\Tab\RideTracksView.xaml.cs">
       <DependentUpon>RideTracksView.xaml</DependentUpon>
     </Compile>
@@ -99,6 +113,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="CustomViews\SessionGraphView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\LapTimer\Pages\LapTimerTabView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -120,5 +137,9 @@
     <EmbeddedResource Update="Views\Settings\SettingsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

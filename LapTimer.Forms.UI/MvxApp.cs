@@ -1,5 +1,6 @@
 ﻿namespace LapTimer.Forms.UI
 {
+    using LapTimer.Forms.UI.Services;
     using MvvmCross;
     using MvvmCross.IoC;
     using MvvmCross.ViewModels;
@@ -15,13 +16,16 @@
         /// Any initialization steps that can be done in the background.
         /// </summary>
         public override void Initialize()
-        { // init des location services.
+        {
+            // init des location services.
             typeof(LapTimer.Forms.UI.Services.LocationService).Assembly.CreatableTypes()
                .EndingWith("Service")
                .AsInterfaces()
                .RegisterAsLazySingleton();
 
             Mvx.IoCProvider.RegisterSingleton(Plugin.Settings.CrossSettings.Current);
+            Mvx.IoCProvider.RegisterSingleton<ITcxActivityService>(() => new TcxActivityService());
+            Mvx.IoCProvider.RegisterSingleton<IDbActivityService>(() => new DbActivityService());
 
             this.RegisterAppStart<ViewModels.MainPageViewModel>();
 

@@ -52,6 +52,14 @@
 
         #endregion Commands
 
+        private int _selectedTabIndex;
+
+        public int SelectedTabIndex
+        {
+            get => _selectedTabIndex;
+            set => this.SetProperty(ref _selectedTabIndex, value);
+        }
+
         #endregion Values
     }
 }
