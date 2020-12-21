@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <CodeAnalysisRuleSet>$(SolutionDir)Code Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\flag-checkered-solid.svg" />
+    <None Remove="Images\stopwatch-solid.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\flag-checkered-solid.svg" />
+    <EmbeddedResource Include="Images\stopwatch-solid.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.8.0.1821" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\SkiaSharpnado\SkiaSharpnado.csproj" />
+  </ItemGroup>
+
+</Project>
