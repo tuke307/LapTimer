@@ -4,7 +4,7 @@ using System.Resources;
 
 namespace LapTimer.Forms.UI.Functions
 {
-    public static class Functions
+    public static class Resources
     {
         public static string GetLocalisedRes(Type resType, string resourceNameKey)
         {

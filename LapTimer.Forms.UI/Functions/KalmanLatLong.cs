@@ -1,4 +1,4 @@
-﻿namespace LapTimer.Forms.UI.Filter
+﻿namespace LapTimer.Forms.UI.Functions
 {
     using System;
 
@@ -77,7 +77,7 @@
                 // Kalman gain matrix K = Covarariance * Inverse(Covariance +
                 // MeasurementVariance)
                 // NB: because K is dimensionless, it doesn't matter that variance has
-                //     different units to lat and lng
+                // different units to lat and lng
                 float K = variance / (variance + accuracy * accuracy);
                 // apply K
                 lat += K * (lat_measurement - lat);
