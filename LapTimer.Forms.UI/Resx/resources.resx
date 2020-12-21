@@ -207,4 +207,16 @@
     <value>conditions</value>
     <comment>conditions</comment>
   </data>
+  <data name="NoValue" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="Altitude" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
 </root>

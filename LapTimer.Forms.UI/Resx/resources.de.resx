@@ -198,4 +198,16 @@
   <data name="STR_CONDITIONS" xml:space="preserve">
     <value>Verhältnisse</value>
   </data>
+  <data name="NoValue" xml:space="preserve">
+    <value>N/A</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>Geschwindigkeit</value>
+  </data>
+  <data name="Altitude" xml:space="preserve">
+    <value>Höhe</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Distanz</value>
+  </data>
 </root>
