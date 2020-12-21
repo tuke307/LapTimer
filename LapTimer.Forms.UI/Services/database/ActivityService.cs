@@ -8,12 +8,20 @@ using System.Threading.Tasks;
 
 namespace LapTimer.Forms.UI.Services
 {
+    /// <summary>
+    /// ActivityService.
+    /// </summary>
+    /// <seealso cref="LapTimer.Forms.UI.Services.IActivityService" />
     public class ActivityService : IActivityService
     {
         private readonly List<RideModel> _rides = new List<RideModel>();
 
         private readonly List<RouteModel> _routes = new List<RouteModel>();
 
+        /// <summary>
+        /// Gets the lap rides asynchronous.
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<RideModel>> GetLapRidesAsync()
         {
             if (_rides.Count == 0)
@@ -24,6 +32,10 @@ namespace LapTimer.Forms.UI.Services
             return _rides.Where(r => r.Route.RouteEnum == RouteEnum.Lap).ToList();
         }
 
+        /// <summary>
+        /// Gets the lap routes asynchronous.
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<RouteModel>> GetLapRoutesAsync()
         {
             if (_routes.Count == 0)
@@ -34,6 +46,10 @@ namespace LapTimer.Forms.UI.Services
             return _routes.Where(r => r.RouteEnum == RouteEnum.Lap).ToList();
         }
 
+        /// <summary>
+        /// Gets the track rides asynchronous.
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<RideModel>> GetTrackRidesAsync()
         {
             if (_rides.Count == 0)
@@ -44,6 +60,10 @@ namespace LapTimer.Forms.UI.Services
             return _rides.Where(r => r.Route.RouteEnum == RouteEnum.Track).ToList();
         }
 
+        /// <summary>
+        /// Gets the track routes asynchronous.
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<RouteModel>> GetTrackRoutesAsync()
         {
             if (_routes.Count == 0)
@@ -54,6 +74,9 @@ namespace LapTimer.Forms.UI.Services
             return _routes.Where(r => r.RouteEnum == RouteEnum.Track).ToList();
         }
 
+        /// <summary>
+        /// Loads the rides.
+        /// </summary>
         private async Task LoadRides()
         {
             using (var db = new DatabaseContext())
@@ -66,6 +89,9 @@ namespace LapTimer.Forms.UI.Services
             }
         }
 
+        /// <summary>
+        /// Loads the routes.
+        /// </summary>
         private async Task LoadRoutes()
         {
             using (var db = new DatabaseContext())

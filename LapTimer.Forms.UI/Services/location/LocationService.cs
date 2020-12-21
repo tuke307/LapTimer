@@ -6,6 +6,10 @@
     using MvvmCross.Plugin.Messenger;
     using System;
 
+    /// <summary>
+    /// LocationService.
+    /// </summary>
+    /// <seealso cref="LapTimer.Forms.UI.Services.ILocationService" />
     public class LocationService
        : ILocationService
     {
@@ -13,6 +17,12 @@
         private readonly IMvxMessenger _messenger;
         private readonly IMvxLocationWatcher _watcher;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LocationService" /> class.
+        /// </summary>
+        /// <param name="watcher">The watcher.</param>
+        /// <param name="messenger">The messenger.</param>
+        /// <param name="log">The log.</param>
         public LocationService(IMvxLocationWatcher watcher, IMvxMessenger messenger, IMvxLog log)
         {
             this._watcher = watcher;
@@ -30,11 +40,19 @@
             this._watcher.Start(options, this.OnLocation, this.OnError);
         }
 
+        /// <summary>
+        /// Called when [error].
+        /// </summary>
+        /// <param name="error">The error.</param>
         private void OnError(MvxLocationError error)
         {
             this._log.Warn($"Location Error: {error.Code} {error.ToString()}");
         }
 
+        /// <summary>
+        /// Called when [location].
+        /// </summary>
+        /// <param name="location">The location.</param>
         private void OnLocation(MvxGeoLocation location)
         {
             var message = new MvxLocationMessage(this,

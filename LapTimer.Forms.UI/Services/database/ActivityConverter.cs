@@ -7,8 +7,16 @@ using System.Text;
 
 namespace LapTimer.Forms.UI.Services
 {
+    /// <summary>
+    /// ActivityConverter.
+    /// </summary>
     public static class ActivityConverter
     {
+        /// <summary>
+        /// Converts to activityheader.
+        /// </summary>
+        /// <param name="ride">The ride.</param>
+        /// <returns></returns>
         public static ActivityHeader ToActivityHeader(this RideModel ride)
         {
             var lap = ride.Laps[0];

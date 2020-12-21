@@ -3,10 +3,22 @@
     using LapTimer.Forms.UI.Themes;
     using Xamarin.Forms;
 
+    /// <summary>
+    /// ThemeServiceBase.
+    /// </summary>
+    /// <seealso cref="LapTimer.Forms.UI.Services.IThemeService" />
     public class ThemeServiceBase : IThemeService
     {
+        /// <summary>
+        /// Gets the current runtime theme.
+        /// </summary>
+        /// <value>The current runtime theme.</value>
         public BaseTheme CurrentRuntimeTheme { get; private set; }
 
+        /// <summary>
+        /// Updates the theme.
+        /// </summary>
+        /// <param name="themeMode">The theme mode.</param>
         public virtual void UpdateTheme(BaseTheme themeMode)
         {
             switch (ColorSettings.Theme)
@@ -29,6 +41,10 @@
             }
         }
 
+        /// <summary>
+        /// Sets the colors.
+        /// </summary>
+        /// <param name="themeMode">The theme mode.</param>
         private void SetColors(BaseTheme themeMode)
         {
             //var colors = themeMode.ToResourceDictionary(CustomColors);
@@ -56,6 +72,10 @@
             XF.Material.Forms.Material.Use("Material.Configuration");
         }
 
+        /// <summary>
+        /// Sets the theme.
+        /// </summary>
+        /// <param name="themeMode">The theme mode.</param>
         private void SetTheme(BaseTheme themeMode)
         {
             if (CurrentRuntimeTheme == themeMode)
