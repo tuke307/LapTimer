@@ -52,4 +52,20 @@
 
     <Color x:Key="MaterialDesignTextAreaInactiveBorder">#1AFFFFFF</Color>
     <!-- 10% white -->
+
+    <Color x:Key="ColorEffortUnknown">#6c6c6c</Color>
+    <Color x:Key="ColorEffortLightest">#25c743</Color>
+    <Color x:Key="ColorEffortLight">#00b4d1</Color>
+    <Color x:Key="ColorEffortAerobic">#ffee58</Color>
+    <Color x:Key="ColorEffortAnaerobic">#ff7b00</Color>
+    <Color x:Key="ColorEffortMax">#de0a1c</Color>
+
+    <Color x:Key="ColorGraphHeartRate">#FF7597</Color>
+    <Color x:Key="ColorGraphSpeed">#ab47bc</Color>
+    <Color x:Key="ColorGraphAltitude">#AAFF66</Color>
+    <Color x:Key="ColorGraphAltitudeSurface">#40AAFF66</Color>
+
+    <Color x:Key="ColorGraphOverlay">#20FFFFFF</Color>
+
+    <Color x:Key="ColorEffortSpeedMin">#ffee58</Color>
 </ResourceDictionary>

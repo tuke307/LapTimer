@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:forms1="clr-namespace:TouchTracking.Forms;assembly=TouchTracking.Forms"
+             x:Class="LapTimer.Forms.UI.CustomViews.SessionGraphView">
+    <ContentView.Content>
+        <Grid>
+            <forms:SKCanvasView x:Name="Graph"
+                                PaintSurface="GraphOnPaintSurface" />
+            <Grid.Effects>
+                <forms1:TouchEffect Capture="True"
+                                    TouchAction="OnTouchEffectAction" />
+            </Grid.Effects>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
