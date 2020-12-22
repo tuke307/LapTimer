@@ -24,9 +24,9 @@ namespace LapTimer.Forms.UI.Functions
             return name != null;
         }
 
-        public static IEnumerable<string> GetAllDomainResources()
+        public static IEnumerable<string> GetAllResources()
         {
-            const string name = "Domain.Resources";
+            const string name = "Resources";
             return Resources.Where(n => n.Contains(name)).OrderBy(n => n);
         }
 

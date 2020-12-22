@@ -66,8 +66,7 @@
         </Grid>
 
         <customViews:TaskLoaderView TaskLoaderNotifier="{Binding Loader}"
-                                    AccentColor="{StaticResource SecondaryColor}"
-                                    TextColor="{StaticResource OnSurfaceColor}">
+                                    Style="{StaticResource Key=TaskLoaderViewStyle}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
@@ -84,7 +83,6 @@
                        CornerRadius="6"
                        Padding="15, 10"
                        HasShadow="False"
-                       BackgroundColor="{StaticResource DarkElevation2dp}"
                        Margin="15, 15, 15, 7">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -114,11 +112,6 @@
                                Text="{x:Static res:resources.Altitude}" />
 
                         <Label Grid.Row="1"
-                               Grid.Column="0"
-                               Style="{StaticResource MainIndicatorsValue}"
-                               Text="{Binding CurrentHeartRate}" />
-
-                        <Label Grid.Row="1"
                                Grid.Column="1"
                                Style="{StaticResource MainIndicatorsValue}"
                                Text="{Binding CurrentSpeed}" />
@@ -138,8 +131,7 @@
                        CornerRadius="6"
                        Margin="15, 8, 15, 15"
                        Padding="0"
-                       HasShadow="False"
-                       BackgroundColor="{StaticResource DarkElevation2dp}">
+                       HasShadow="False">
                     <graph:SessionGraphView x:Name="GraphView"
                                             CurrentCursorTime="{Binding CurrentTime, Mode=OneWayToSource}"
                                             SessionGraphInfo="{Binding GraphInfo}" />

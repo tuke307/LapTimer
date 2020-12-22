@@ -11,8 +11,6 @@
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    //[MvxContentPagePresentation(WrapInNavigationPage = true, NoHistory = false)]
-    //[MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Title = "Tracks", WrapInNavigationPage = true, NoHistory = false/*, HostViewModelType = typeof(RoutesTabHosterView)*/)]
     public partial class RouteTracksView : MvxContentView<ViewModels.Routes.RouteTracksViewModel>
     {
         public RouteTracksView()
@@ -35,6 +33,12 @@
 
                 Mvx.IoCProvider.RegisterSingleton<ViewModels.Routes.RouteTracksViewModel>(ViewModel);
             }
+        }
+
+        private void ListView_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        {
+            ViewModel.ActivityTappedCommand.Execute(e.Item);
+            ListView.SelectedItem = null;
         }
     }
 }

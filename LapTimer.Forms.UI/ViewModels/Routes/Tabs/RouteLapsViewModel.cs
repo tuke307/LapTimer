@@ -1,24 +1,23 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Routes
 {
-    using MvvmCross.Commands;
+    using global::LapTimer.Forms.UI.Services;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
-    using MvvmCross.ViewModels;
     using System.Threading.Tasks;
 
     /// <summary>
     /// RouteLapsViewModel.
     /// </summary>
     /// <seealso cref="MvvmCross.ViewModels.MvxNavigationViewModel" />
-    public class RouteLapsViewModel : MvxNavigationViewModel
+    public class RouteLapsViewModel : RouteTabViewModel
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RouteLapsViewModel" /> class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RouteLapsViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
-            : base(logProvider, navigationService)
+        public RouteLapsViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
+            : base(logProvider, navigationService, dbactivityService, tcxActivityService)
         {
         }
 
@@ -41,12 +40,14 @@
             base.Prepare();
         }
 
+        /// <summary>
+        /// Views the appeared.
+        /// </summary>
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+        }
+
         #endregion Methods
-
-        #region Values
-
-        public IMvxAsyncCommand SampleCommand { get; protected set; }
-
-        #endregion Values
     }
 }

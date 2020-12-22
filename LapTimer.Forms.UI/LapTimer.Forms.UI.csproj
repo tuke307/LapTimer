@@ -13,16 +13,36 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\1_dominique_20190714_0825.tcx" />
+    <None Remove="Resources\2_bart_20190615_1020.tcx" />
+    <None Remove="Resources\3_steven_20140705_1541.tcx" />
+    <None Remove="Resources\4_david_20190714_2042.tcx" />
+    <None Remove="Resources\5_glenn_20190715_1110.tcx" />
+    <None Remove="Resources\6_jean-marie_20190412_1605.tcx" />
+    <None Remove="Resources\7_jean-marie_20190616_0854.tcx" />
+    <None Remove="Resources\8_jean-marie_20190707_0902.tcx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\1_dominique_20190714_0825.tcx" />
+    <EmbeddedResource Include="Resources\2_bart_20190615_1020.tcx" />
+    <EmbeddedResource Include="Resources\3_steven_20140705_1541.tcx" />
+    <EmbeddedResource Include="Resources\4_david_20190714_2042.tcx" />
+    <EmbeddedResource Include="Resources\6_jean-marie_20190412_1605.tcx" />
+    <EmbeddedResource Include="Resources\7_jean-marie_20190616_0854.tcx" />
+    <EmbeddedResource Include="Resources\8_jean-marie_20190707_0902.tcx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MvvmCross" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Location" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
-    <PackageReference Include="Xam.Plugin.TabView" Version="1.1.1" />
     <PackageReference Include="TcxTools.NetStandard" Version="1.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
     <PackageReference Include="Sharpnado.Presentation.Forms" Version="1.7.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
     <PackageReference Include="XF.Material" Version="1.7.7" />
     <PackageReference Include="TouchTracking.Forms" Version="1.1.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="4.1.0-beta" />
@@ -32,6 +52,10 @@
     <ProjectReference Include="..\Data\Data.csproj" />
     <ProjectReference Include="..\SkiaSharpnado.Maps\SkiaSharpnado.Maps.csproj" />
     <ProjectReference Include="..\SkiaSharpnado\SkiaSharpnado.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\5_glenn_20190715_1110.tcx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,8 +97,8 @@
     <Compile Update="Views\Rides\Tab\RideLapsView.xaml.cs">
       <DependentUpon>RideLapsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Rides\RidesTabView.xaml.cs">
-      <DependentUpon>RidesTabView.xaml</DependentUpon>
+    <Compile Update="Views\Rides\RidesTabHosterView.xaml.cs">
+      <DependentUpon>RidesTabHosterView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\MainIndicatorsView.xaml.cs">
       <DependentUpon>MainIndicatorsView.xaml</DependentUpon>
@@ -91,8 +115,8 @@
     <Compile Update="Views\Routes\Tab\RouteLapsView.xaml.cs">
       <DependentUpon>RouteLapsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Routes\RoutesTabView.xaml.cs">
-      <DependentUpon>RoutesTabView.xaml</DependentUpon>
+    <Compile Update="Views\Routes\RoutesTabHosterView.xaml.cs">
+      <DependentUpon>RoutesTabHosterView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -137,9 +161,5 @@
     <EmbeddedResource Update="Views\Settings\SettingsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

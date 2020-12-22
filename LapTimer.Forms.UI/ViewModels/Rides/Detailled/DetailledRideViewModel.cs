@@ -29,7 +29,7 @@
         public DetailledRideViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
             : base(logProvider, navigationService)
         {
-            Loader = new TaskLoaderNotifier<SessionMapInfo>(/*emptyStateMessage: AppResources.EmptyActivityMessage*/);
+            Loader = new TaskLoaderNotifier<SessionMapInfo>();
         }
 
         #region Methods

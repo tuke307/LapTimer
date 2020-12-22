@@ -4,6 +4,7 @@
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:views1="clr-namespace:LapTimer.Forms.UI.Views"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
                       xmlns:skiaSharp="clr-namespace:SkiaSharpnado.SkiaSharp;assembly=SkiaSharpnado"
                       x:Class="LapTimer.Forms.UI.Views.Rides.RideTracksView"
                       x:TypeArguments="viewModels:Rides.RideTracksViewModel">
@@ -57,14 +58,19 @@
     </views:MvxContentView.Resources>
 
     <views:MvxContentView.Content>
-        <ListView x:Name="ListView"
-                  ItemTemplate="{StaticResource ActivityHeaderTemplate}"
-                  ItemsSource="{Binding Loader.Result}"
-                  BackgroundColor="Transparent"
-                  SeparatorVisibility="None"
-                  ItemTapped="ListView_ItemTapped"
-                  Margin="0, -5"
-                  RowHeight="150">
-        </ListView>
+        <StackLayout>
+            <customViews:TaskLoaderView TaskLoaderNotifier="{Binding Loader}"
+                                        Style="{StaticResource Key=TaskLoaderViewStyle}">
+                <ListView x:Name="ListView"
+                          ItemTemplate="{StaticResource ActivityHeaderTemplate}"
+                          ItemsSource="{Binding Loader.Result}"
+                          BackgroundColor="Transparent"
+                          SeparatorVisibility="None"
+                          ItemTapped="ListView_ItemTapped"
+                          Margin="0, -5"
+                          RowHeight="150">
+                </ListView>
+            </customViews:TaskLoaderView>
+        </StackLayout>
     </views:MvxContentView.Content>
 </views:MvxContentView>

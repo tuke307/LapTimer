@@ -52,12 +52,12 @@
 
         #endregion Commands
 
-        private int _selectedTabIndex;
+        private int _selectedViewModelIndex;
 
-        public int SelectedTabIndex
+        public int SelectedViewModelIndex
         {
-            get => _selectedTabIndex;
-            set => this.SetProperty(ref _selectedTabIndex, value);
+            get => _selectedViewModelIndex;
+            set => this.SetProperty(ref _selectedViewModelIndex, value);
         }
 
         #endregion Values

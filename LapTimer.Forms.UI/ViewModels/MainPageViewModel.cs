@@ -101,8 +101,8 @@
             var tasks = new List<Task>
             {
                 this.NavigationService.Navigate<ViewModels.LapTimer.LapTimerTabViewModel>(),
-                this.NavigationService.Navigate<ViewModels.Rides.RidesTabViewModel>(),
-                this.NavigationService.Navigate<ViewModels.Routes.RoutesTabViewModel>()
+                this.NavigationService.Navigate<ViewModels.Rides.RidesTabHosterViewModel>(),
+                this.NavigationService.Navigate<ViewModels.Routes.RoutesTabHosterViewModel>()
             };
             return Task.WhenAll(tasks);
         }

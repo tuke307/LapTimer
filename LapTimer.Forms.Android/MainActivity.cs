@@ -8,6 +8,7 @@
     using LapTimer.Forms.UI.Themes;
     using MvvmCross;
     using MvvmCross.Forms.Platforms.Android.Views;
+    using Sharpnado.Presentation.Forms.Droid;
     using System;
 
     [Activity(
@@ -61,10 +62,12 @@
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(bundle);
-
             Xamarin.Essentials.Platform.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);
+            Xamarin.FormsMaps.Init(this, bundle);
+            SharpnadoInitializer.Initialize(enableInternalDebugLogger: true);
+
+            base.OnCreate(bundle);
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace LapTimer.Forms.UI.Services
                 return _activities;
             }
 
-            foreach (var activityResourceName in EmbeddedResources.GetAllDomainResources())
+            foreach (var activityResourceName in EmbeddedResources.GetAllResources())
             {
                 var activity = await GetActivityByResourceName(activityResourceName);
 
