@@ -12,17 +12,58 @@
                       x:TypeArguments="viewModels:Routes.DetailledRouteViewModel">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Image Grid.Row="0" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
-        <material:MaterialIconButton Grid.Row="2"
-                                     HorizontalOptions="Center"
-                                     Command="{Binding PlusCommand}">
-        </material:MaterialIconButton>
+            <!--Name von Route-->
+            <material:MaterialTextField Grid.Column="0"
+                                        IsVisible="{Binding IsTrack}"
+                                        InputType="Text"
+                                        Placeholder="{x:Static res:resources.STR_TRACK}"
+                                        Text="{Binding RideName}"
+                                        IsEnabled="False" />
+
+            <material:MaterialTextField Grid.Column="0"
+                                        IsVisible="{Binding IsLap}"
+                                        InputType="Text"
+                                        Placeholder="{x:Static res:resources.STR_LAP}"
+                                        Text="{Binding RideName}"
+                                        IsEnabled="False" />
+
+            <!--Gesamtzeit-->
+            <material:MaterialTextField Grid.Column="0"
+                                        InputType="Default"
+                                        Placeholder="{x:Static res:resources.STR_TOTALTIME}"
+                                        Text="{Binding TotalTime}"
+                                        IsEnabled="False" />
+
+            <!--Temperatur-->
+            <material:MaterialTextField Grid.Column="1"
+                                        InputType="Numeric"
+                                        FloatingPlaceholderEnabled="True"
+                                        Placeholder="{x:Static res:resources.STR_TEMP}"
+                                        Text="{Binding Temperature}" />
+
+            <!--Boden-->
+            <material:MaterialLabel Grid.Column="1"
+                                    Text="{x:Static res:resources.STR_GROUND}" />
+            <material:MaterialCheckboxGroup Grid.Column="1"
+                                            SelectedIndices="{Binding SelectedIndices}"
+                                            Choices="{Binding Choices}">
+                <!--<material:MaterialCheckboxGroup.Choices>
+                <x:String xmlns="{x:Static res:resources.STR_SLIPPERY}" />
+                <x:String xmlns="{x:Static res:resources.STR_WET}" />
+                <x:String xmlns="{x:Static res:resources.STR_DRY}" />
+            </material:MaterialCheckboxGroup.Choices>-->
+            </material:MaterialCheckboxGroup>
+        </Grid>
 
         <customViews:TaskLoaderView TaskLoaderNotifier="{Binding Loader}"
                                     Style="{StaticResource Key=TaskLoaderViewStyle}">

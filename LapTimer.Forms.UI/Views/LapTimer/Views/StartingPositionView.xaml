@@ -19,7 +19,8 @@
                      HorizontalOptions="Center"
                      Orientation="Horizontal">
             <material:MaterialLabel TypeScale="H4"
-                                    Text="{x:Static res:resources.INS_PREPARESTART}" />
+                                    Text="{x:Static res:resources.INS_PREPARESTART}"
+                                    Style="{StaticResource MaterialLabelStyle}" />
         </StackLayout>
 
         <material:MaterialIconButton Grid.Row="1"

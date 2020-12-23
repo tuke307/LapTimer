@@ -1,18 +1,15 @@
-﻿using System;
-
-using SkiaSharp;
-
+﻿using SkiaSharp;
 using SkiaSharpnado.SkiaSharp;
+using System;
 
 namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 {
     public class MarkerShape : AShape
     {
         private int _arrowLength;
+        private double _opacity = 1;
         private SKPoint _p1;
         private SKPoint _p2;
-
-        private double _opacity = 1;
 
         public MarkerShape(TimeSpan time, int arrowLength)
         {
@@ -20,11 +17,15 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             _arrowLength = arrowLength;
         }
 
-        public MarkerShape UpdatePosition(SKPoint p1, SKPoint p2)
+        public override void Draw(SKCanvas canvas, SKPaint paint)
         {
-            _p1 = p1;
-            _p2 = p2;
-            return this;
+            float vx = _p2.X - _p1.X;
+            float vy = _p2.Y - _p1.Y;
+            float dist = (float)Math.Sqrt(vx * vx + vy * vy);
+            vx /= dist;
+            vy /= dist;
+
+            DrawArrowhead(canvas, paint, _p2, vx, vy, SkiaHelper.ToPixel(_arrowLength));
         }
 
         public void UpdateArrowLength(int arrowLength)
@@ -37,15 +38,11 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             _opacity = opacity;
         }
 
-        public override void Draw(SKCanvas canvas, SKPaint paint)
+        public MarkerShape UpdatePosition(SKPoint p1, SKPoint p2)
         {
-            float vx = _p2.X - _p1.X;
-            float vy = _p2.Y - _p1.Y;
-            float dist = (float)Math.Sqrt(vx * vx + vy * vy);
-            vx /= dist;
-            vy /= dist;
-
-            DrawArrowhead(canvas, paint, _p2, vx, vy, SkiaHelper.ToPixel(_arrowLength));
+            _p1 = p1;
+            _p2 = p2;
+            return this;
         }
 
         protected override SKRect ComputeBoundBox()

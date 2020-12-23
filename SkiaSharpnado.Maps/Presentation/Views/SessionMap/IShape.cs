@@ -1,17 +1,16 @@
-﻿using System;
-
-using SkiaSharp;
+﻿using SkiaSharp;
+using System;
 
 namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 {
     public interface IShape
     {
-        TimeSpan Time { get; }
-
         SKRect BoundingBox { get; }
 
-        void UpdateOpacity(double opacity);
+        TimeSpan Time { get; }
 
         void Draw(SKCanvas canvas, SKPaint paint);
+
+        void UpdateOpacity(double opacity);
     }
 }

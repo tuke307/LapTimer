@@ -1,6 +1,5 @@
-﻿using System;
-
-using SkiaSharp;
+﻿using SkiaSharp;
+using System;
 
 namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 {
@@ -17,9 +16,10 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             Time = time;
         }
 
-        public void UpdatePosition(SKPoint point)
+        public override void Draw(SKCanvas canvas, SKPaint paint)
         {
-            Point = point;
+            paint.Color = paint.Color.WithAlpha((byte)(_opacity * 255));
+            canvas.DrawText(_textDistance, Point.X, Point.Y, paint);
         }
 
         public override void UpdateOpacity(double opacity)
@@ -27,10 +27,9 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             _opacity = opacity;
         }
 
-        public override void Draw(SKCanvas canvas, SKPaint paint)
+        public void UpdatePosition(SKPoint point)
         {
-            paint.Color = paint.Color.WithAlpha((byte)(_opacity * 255));
-            canvas.DrawText(_textDistance, Point.X, Point.Y, paint);
+            Point = point;
         }
 
         protected override SKRect ComputeBoundBox()

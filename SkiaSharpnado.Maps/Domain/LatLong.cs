@@ -5,8 +5,12 @@ namespace SkiaSharpnado.Maps.Domain
     public struct LatLong
     {
         public static readonly LatLong Empty = new LatLong(double.NaN, double.NaN);
-        public static readonly LatLong Min = new LatLong(-90, -180);
         public static readonly LatLong Max = new LatLong(90, 180);
+        public static readonly LatLong Min = new LatLong(-90, -180);
+
+        public double Latitude { get; }
+
+        public double Longitude { get; }
 
         public LatLong(double latitude, double longitude)
         {
@@ -14,13 +18,9 @@ namespace SkiaSharpnado.Maps.Domain
             Longitude = Math.Min(Math.Max(longitude, -180.0), 180.0);
         }
 
-        public double Latitude { get; }
-
-        public double Longitude { get; }
-
-        public static bool operator ==(LatLong left, LatLong right)
+        public static LatLong operator -(LatLong left, LatLong right)
         {
-            return Equals(left, right);
+            return new LatLong(left.Latitude - right.Latitude, left.Longitude - right.Longitude);
         }
 
         public static bool operator !=(LatLong left, LatLong right)
@@ -28,9 +28,9 @@ namespace SkiaSharpnado.Maps.Domain
             return !Equals(left, right);
         }
 
-        public static LatLong operator -(LatLong left, LatLong right)
+        public static bool operator ==(LatLong left, LatLong right)
         {
-            return new LatLong(left.Latitude - right.Latitude, left.Longitude - right.Longitude);
+            return Equals(left, right);
         }
 
         public override bool Equals(object obj)

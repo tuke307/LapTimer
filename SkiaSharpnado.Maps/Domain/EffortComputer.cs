@@ -12,6 +12,8 @@ namespace SkiaSharpnado.Maps.Domain
 
         private double _defaultMaxEffortValue;
 
+        public EffortSpan LastSpan { get; }
+
         public EffortComputer(List<EffortSpan> effortSpans, double defaultMaxEffortValue)
         {
             if (effortSpans.Count < 2)
@@ -23,32 +25,6 @@ namespace SkiaSharpnado.Maps.Domain
             _defaultMaxEffortValue = defaultMaxEffortValue;
 
             LastSpan = _effortSpans.Last();
-        }
-
-        public EffortSpan LastSpan { get; }
-
-        public EffortComputer OverrideDefaultMaxValue(double defaultMaxValue)
-        {
-            _defaultMaxEffortValue = defaultMaxValue;
-            return this;
-        }
-
-        public EffortSpan GetSpan(double? effortValue)
-        {
-            double currentPercentage = (effortValue ?? 0) / _defaultMaxEffortValue;
-
-            EffortSpan previousSpan = _effortSpans[0];
-            foreach (var currentSpan in _effortSpans)
-            {
-                if (currentPercentage < currentSpan.Threshold)
-                {
-                    return previousSpan;
-                }
-
-                previousSpan = currentSpan;
-            }
-
-            return LastSpan;
         }
 
         public Color GetColor(double? effortValue, double? maxEffortValue = null)
@@ -89,6 +65,30 @@ namespace SkiaSharpnado.Maps.Domain
                 sourceColor.G + (percentToTarget * (targetColor.G - sourceColor.G)),
                 sourceColor.B + (percentToTarget * (targetColor.B - sourceColor.B)),
                 sourceColor.A + (percentToTarget * (targetColor.A - sourceColor.A)));
+        }
+
+        public EffortSpan GetSpan(double? effortValue)
+        {
+            double currentPercentage = (effortValue ?? 0) / _defaultMaxEffortValue;
+
+            EffortSpan previousSpan = _effortSpans[0];
+            foreach (var currentSpan in _effortSpans)
+            {
+                if (currentPercentage < currentSpan.Threshold)
+                {
+                    return previousSpan;
+                }
+
+                previousSpan = currentSpan;
+            }
+
+            return LastSpan;
+        }
+
+        public EffortComputer OverrideDefaultMaxValue(double defaultMaxValue)
+        {
+            _defaultMaxEffortValue = defaultMaxValue;
+            return this;
         }
     }
 }

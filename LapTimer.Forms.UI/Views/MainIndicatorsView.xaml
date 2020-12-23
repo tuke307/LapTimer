@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                      x:Class="LapTimer.Forms.UI.Views.MainIndicatorsView">
+                      xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+                      x:Class="LapTimer.Forms.UI.Views.MainIndicatorsView"
+                      Style="{StaticResource MvxContentViewStyle}">
     <views:MvxContentView.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -14,21 +17,25 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!--<Label Grid.Row="0"
-                   Grid.Column="0"
-                   Text="{localization:Translate DistanceKm}" />
+            <material:MaterialLabel Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource MainIndicatorsLabel}"
+                                    Text="{x:Static res:resources.Distance}" />
 
-            <Label Grid.Row="0"
-                   Grid.Column="1"
-                   Text="{localization:Translate Time}" />
+            <material:MaterialLabel Grid.Row="0"
+                                    Grid.Column="1"
+                                    Style="{StaticResource MainIndicatorsLabel}"
+                                    Text="{x:Static res:resources.Time}" />
 
-            <Label Grid.Row="1"
-                   Grid.Column="0"
-                   Text="{Binding DisplayableDistance}" />
+            <material:MaterialLabel Grid.Row="1"
+                                    Grid.Column="0"
+                                    Style="{StaticResource MainIndicatorsValue}"
+                                    Text="{Binding DisplayableDistance}" />
 
-            <Label Grid.Row="1"
-                   Grid.Column="1"
-                   Text="{Binding DisplayableTimeSpan}" />-->
+            <material:MaterialLabel Grid.Row="1"
+                                    Grid.Column="1"
+                                    Style="{StaticResource MainIndicatorsValue}"
+                                    Text="{Binding DisplayableTimeSpan}" />
         </Grid>
     </views:MvxContentView.Content>
 </views:MvxContentView>

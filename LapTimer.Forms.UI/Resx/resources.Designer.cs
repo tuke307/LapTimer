@@ -338,5 +338,14 @@ namespace LapTimer.Forms.UI.Resx {
                 return ResourceManager.GetString("STR_YES", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time (hrs).
+        /// </summary>
+        public static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
     }
 }

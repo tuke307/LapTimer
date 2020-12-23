@@ -9,7 +9,8 @@
                       xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
                       NavigationPage.HasNavigationBar="False"
                       x:Class="LapTimer.Forms.UI.Views.Rides.RidesTabHosterView"
-                      x:TypeArguments="viewModels:Rides.RidesTabHosterViewModel">
+                      x:TypeArguments="viewModels:Rides.RidesTabHosterViewModel"
+                      Style="{StaticResource MvxContentPageStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

@@ -1,6 +1,5 @@
-﻿using System;
-
-using SkiaSharp;
+﻿using SkiaSharp;
+using System;
 
 namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 {
@@ -8,13 +7,13 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
     {
         private SKRect _boundingBox = SKRect.Empty;
 
-        public TimeSpan Time { get; protected set; }
-
         public SKRect BoundingBox => _boundingBox == SKRect.Empty ? _boundingBox = ComputeBoundBox() : _boundingBox;
 
-        public abstract void UpdateOpacity(double opacity);
+        public TimeSpan Time { get; protected set; }
 
         public abstract void Draw(SKCanvas canvas, SKPaint paint);
+
+        public abstract void UpdateOpacity(double opacity);
 
         protected abstract SKRect ComputeBoundBox();
     }

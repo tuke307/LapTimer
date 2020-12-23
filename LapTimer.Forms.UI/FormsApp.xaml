@@ -7,6 +7,7 @@
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
              xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+             xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
              xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material"
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
              x:Class="LapTimer.Forms.UI.FormsApp">
@@ -25,35 +26,32 @@
                 <theme:Light x:Name="Light" />
                 <!--<ResourceDictionary Source="Themes/Base/Light.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
-
-            <mtrl:MaterialColorConfiguration x:Key="Theme"
-                                             OnBackground="{StaticResource MaterialDesignBody}"
-                                             OnError="{StaticResource MaterialDesignBody}"
-                                             OnPrimary="{StaticResource Primary700Foreground}"
-                                             OnSecondary="{StaticResource Accent700Foreground}"
-                                             OnSurface="{StaticResource MaterialDesignBody}"
-                                             Background="{StaticResource MaterialDesignPaper}"
-                                             Error="{StaticResource ValidationErrorColor}"
-                                             Primary="{StaticResource Primary200}"
-                                             PrimaryVariant="{StaticResource Primary700}"
-                                             Secondary="{StaticResource Accent200}"
-                                             SecondaryVariant="{StaticResource Accent700}"
-                                             Surface="{StaticResource MaterialDesignCardBackground}" />
         </ResourceDictionary>
 
-        <mtrl:MaterialConfiguration x:Key="Material.Configuration"
-                                    ColorConfiguration="{StaticResource Theme}" />
-
-        <!--<OnPlatform x:Key="FontFamily.RobotoRegular"
+        <OnPlatform x:Key="FontFamily.RobotoRegular"
                     x:TypeArguments="x:String"
                     Android="Fonts/Roboto-Regular.ttf#Roboto-Regular"
                     iOS="Roboto-Regular" />
         <OnPlatform x:Key="FontFamily.RobotoMedium"
                     x:TypeArguments="x:String"
                     Android="Fonts/Roboto-Medium.ttf#Roboto-Medium"
-                    iOS="Roboto-Medium" />-->
+                    iOS="Roboto-Medium" />
 
-        <!--<mtrltypo:MaterialFontConfiguration x:Key="Material.Font"
+        <mtrl:MaterialColorConfiguration x:Key="Theme"
+                                         OnBackground="{StaticResource MaterialDesignBody}"
+                                         OnError="{StaticResource MaterialDesignBody}"
+                                         OnPrimary="{StaticResource Primary700Foreground}"
+                                         OnSecondary="{StaticResource Accent700Foreground}"
+                                         OnSurface="{StaticResource MaterialDesignBody}"
+                                         Background="{StaticResource MaterialDesignPaper}"
+                                         Error="{StaticResource ValidationErrorColor}"
+                                         Primary="{StaticResource Primary700}"
+                                         PrimaryVariant="{StaticResource Primary200}"
+                                         Secondary="{StaticResource Accent700}"
+                                         SecondaryVariant="{StaticResource Accent200}"
+                                         Surface="{StaticResource MaterialDesignCardBackground}" />
+
+        <mtrltypo:MaterialFontConfiguration x:Key="Font"
                                             Body1="{StaticResource FontFamily.RobotoRegular}"
                                             Body2="{StaticResource FontFamily.RobotoRegular}"
                                             Button="{StaticResource FontFamily.RobotoMedium}"
@@ -66,22 +64,73 @@
                                             H6="{StaticResource FontFamily.RobotoMedium}"
                                             Overline="{StaticResource FontFamily.RobotoRegular}"
                                             Subtitle1="{StaticResource FontFamily.RobotoRegular}"
-                                            Subtitle2="{StaticResource FontFamily.RobotoMedium}" />-->
+                                            Subtitle2="{StaticResource FontFamily.RobotoMedium}" />
 
-        <!--<Style TargetType="{x:Type views:MvxContentPage}">
-            <Setter Property="BackgroundColor"
-                    Value="{DynamicResource MaterialDesignPaper}" />
-        </Style>-->
+        <mtrl:MaterialConfiguration x:Key="Material.Configuration"
+                                    ColorConfiguration="{StaticResource Theme}"
+                                    FontConfiguration="{StaticResource Font}" />
 
         <!--<Style TargetType="{x:Type Editor}">
             <Setter Property="BackgroundColor"
                     Value="{DynamicResource MaterialDesignBody}" />
         </Style>-->
 
+        <Style  x:Key="MvxContentPageStyle"
+                TargetType="{x:Type views:MvxContentPage}">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignPaper}" />
+        </Style>
+
+        <Style x:Key="MvxContentViewStyle"
+               TargetType="{x:Type views:MvxContentView}">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignPaper}" />
+        </Style>
+
         <Style x:Key="MaterialLabelStyle"
                TargetType="{x:Type material:MaterialLabel}">
             <Setter Property="TextColor"
                     Value="{StaticResource MaterialDesignBody}" />
+            <Setter Property="BackgroundColor"
+                    Value="Transparent" />
+        </Style>
+
+        <Style x:Key="MainIndicatorsLabel"
+               BasedOn="{StaticResource MaterialLabelStyle}"
+               TargetType="{x:Type material:MaterialLabel}">
+            <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+            <Setter Property="TypeScale"
+                    Value="Caption" />
+        </Style>
+
+        <Style x:Key="MainIndicatorsValue"
+               BasedOn="{StaticResource MaterialLabelStyle}"
+               TargetType="{x:Type material:MaterialLabel}">
+            <Setter Property="VerticalTextAlignment"
+                    Value="Start" />
+            <Setter Property="TypeScale"
+                    Value="H5" />
+            <Setter Property="Margin"
+                    Value="0,-10, 0, 0" />
+        </Style>
+
+        <Style x:Key="MaterialCardStyle"
+               TargetType="{x:Type material:MaterialCard}">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource MaterialDesignCardBackground}" />
+            <Setter Property="HasShadow"
+                    Value="True" />
+            <Setter Property="Margin"
+                    Value="15, 7" />
+            <Setter Property="IsClickable"
+                    Value="True" />
+            <Setter Property="CornerRadius"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="15, 10" />
+            <Setter Property="Elevation"
+                    Value="5" />
         </Style>
 
         <Style x:Key="TaskLoaderViewStyle"

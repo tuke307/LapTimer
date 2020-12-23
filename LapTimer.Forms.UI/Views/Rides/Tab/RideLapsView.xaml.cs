@@ -37,7 +37,7 @@
 
         private void ListView_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            ViewModel.ActivityTappedCommand.Execute(e.Item);
+            //ViewModel.ActivityTappedCommand.Execute(e.Item);
             ListView.SelectedItem = null;
         }
     }

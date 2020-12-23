@@ -6,6 +6,12 @@ namespace SkiaSharpnado.Maps.Domain
 {
     public struct EffortSpan
     {
+        public Color Color { get; }
+
+        public string Label { get; }
+
+        public double Threshold { get; }
+
         public EffortSpan(double threshold, Color color, string label)
         {
             if (threshold < 0 || threshold > 1)
@@ -17,11 +23,5 @@ namespace SkiaSharpnado.Maps.Domain
             Color = color;
             Label = label;
         }
-
-        public double Threshold { get; }
-
-        public Color Color { get; }
-
-        public string Label { get; }
     }
 }

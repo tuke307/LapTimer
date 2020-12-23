@@ -26,13 +26,16 @@
         <Image Grid.Row="0" />
 
         <material:MaterialLabel Text="{Binding Speed}"
+                                Style="{StaticResource MaterialLabelStyle}"
                                 Grid.Column="0"
                                 Grid.Row="1" />
 
         <StackLayout Grid.Column="1"
                      Grid.Row="1">
-            <material:MaterialLabel Text="{Binding LapTime, Converter={StaticResource TimeSpanToString}}" />
-            <material:MaterialLabel Text="{Binding TotalTime, Converter={StaticResource TimeSpanToString}}" />
+            <material:MaterialLabel Text="{Binding LapTime, Converter={StaticResource TimeSpanToString}}"
+                                    Style="{StaticResource MaterialLabelStyle}" />
+            <material:MaterialLabel Text="{Binding TotalTime, Converter={StaticResource TimeSpanToString}}"
+                                    Style="{StaticResource MaterialLabelStyle}" />
         </StackLayout>
 
         <!--Icon für GPS-Signalstärke-->

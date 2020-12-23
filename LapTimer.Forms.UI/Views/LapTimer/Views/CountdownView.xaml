@@ -20,6 +20,7 @@
 
         <material:MaterialLabel TypeScale="H4"
                                 Grid.Row="0"
+                                Style="{StaticResource MaterialLabelStyle}"
                                 Text="{Binding TimeSpanCountdown, Converter={StaticResource TimeSpanToString}}"
                                 VerticalOptions="Center"
                                 HorizontalOptions="Center" />

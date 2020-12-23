@@ -40,7 +40,8 @@
                                    VerticalOptions="FillAndExpand"
                                    HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                    <material:MaterialLabel Text="{x:Static res:resources.STR_LAP}" />
+                    <material:MaterialLabel Text="{x:Static res:resources.STR_LAP}"
+                                            Style="{StaticResource MaterialLabelStyle}" />
                     <Image Source="lap_structure" />
                 </StackLayout>
             </material:MaterialCard>
@@ -54,7 +55,8 @@
                                    VerticalOptions="FillAndExpand"
                                    HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                    <material:MaterialLabel Text="{x:Static res:resources.STR_TRACK}" />
+                    <material:MaterialLabel Text="{x:Static res:resources.STR_TRACK}"
+                                            Style="{StaticResource MaterialLabelStyle}" />
                     <Image Source="track_structure" />
                 </StackLayout>
             </material:MaterialCard>
@@ -80,18 +82,21 @@
 
             <material:MaterialLabel TypeScale="H4"
                                     HorizontalOptions="Center"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     Text="{x:Static res:resources.INS_DRIVETOSTART}">
             </material:MaterialLabel>
 
             <material:MaterialLabel FontAttributes="Bold"
                                     TypeScale="H4"
                                     HorizontalOptions="Center"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     IsVisible="{Binding LapSelected}"
                                     Text="{x:Static res:resources.STR_LAP}">
             </material:MaterialLabel>
 
             <material:MaterialLabel FontAttributes="Bold"
                                     TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     HorizontalOptions="Center"
                                     IsVisible="{Binding TrackSelected}"
                                     Text="{x:Static res:resources.STR_TRACK}">

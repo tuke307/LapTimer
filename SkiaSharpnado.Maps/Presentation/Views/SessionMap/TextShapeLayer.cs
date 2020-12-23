@@ -1,6 +1,5 @@
-﻿using System;
-
-using SkiaSharp;
+﻿using SkiaSharp;
+using System;
 
 namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 {
@@ -28,17 +27,6 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             // DrawLastDistance(canvas, paint, lastDrawableShapeIndex);
         }
 
-        private void DrawLastDistance(SKCanvas canvas, SKPaint paint, int lastDrawableShapeIndex)
-        {
-            if (Layer.Length == 0)
-            {
-                return;
-            }
-
-            IShape shape = Layer[lastDrawableShapeIndex];
-            shape.Draw(canvas, paint);
-        }
-
         private void DrawDistances(SKCanvas canvas, SKPaint paint, int lastDrawableShapeIndex, int lastMarkers)
         {
             int startIndex = lastDrawableShapeIndex - lastMarkers;
@@ -60,6 +48,17 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 
                 shape.Draw(canvas, paint);
             }
+        }
+
+        private void DrawLastDistance(SKCanvas canvas, SKPaint paint, int lastDrawableShapeIndex)
+        {
+            if (Layer.Length == 0)
+            {
+                return;
+            }
+
+            IShape shape = Layer[lastDrawableShapeIndex];
+            shape.Draw(canvas, paint);
         }
     }
 }

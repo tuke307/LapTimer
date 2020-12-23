@@ -1,36 +1,54 @@
-﻿using System;
-
-using SkiaSharpnado.Maps.Domain;
-
+﻿using SkiaSharpnado.Maps.Domain;
+using System;
 using Xamarin.Forms;
 
 namespace SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap
 {
     public interface ISessionDisplayablePoint
     {
-        TimeSpan Time { get; }
-
-        Color MapPointColor { get; }
-
         int? Altitude { get; }
 
-        int? HeartRate { get; }
-
-        double? Speed { get; }
-
-        LatLong Position { get; }
+        int? Distance { get; }
 
         bool HasMarker { get; }
 
+        int? HeartRate { get; }
+
         string Label { get; }
 
-        int? Distance { get; }
+        Color MapPointColor { get; }
+
+        LatLong Position { get; }
+
+        double? Speed { get; }
+
+        TimeSpan Time { get; }
     }
 
     public class SessionDisplayablePoint : ISessionDisplayablePoint
     {
+        public int? Altitude { get; }
+
+        public int? Distance { get; }
+
+        public bool HasMarker { get; }
+
+        public bool HasPosition => Position != LatLong.Empty;
+
+        public int? HeartRate { get; }
+
+        public string Label { get; }
+
+        public Color MapPointColor { get; private set; }
+
+        public LatLong Position { get; }
+
+        public double? Speed { get; }
+
+        public TimeSpan Time { get; }
+
         public SessionDisplayablePoint(
-            TimeSpan timeSpan,
+                                                                                            TimeSpan timeSpan,
             int? heartRate,
             int? distance,
             int? altitude,
@@ -51,26 +69,6 @@ namespace SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap
             HasMarker = hasMarker;
             Label = label;
         }
-
-        public TimeSpan Time { get; }
-
-        public Color MapPointColor { get; private set; }
-
-        public int? Altitude { get; }
-
-        public int? Distance { get; }
-
-        public int? HeartRate { get; }
-
-        public LatLong Position { get; }
-
-        public bool HasMarker { get; }
-
-        public string Label { get; }
-
-        public double? Speed { get; }
-
-        public bool HasPosition => Position != LatLong.Empty;
 
         public void SetPointColor(Color color)
         {

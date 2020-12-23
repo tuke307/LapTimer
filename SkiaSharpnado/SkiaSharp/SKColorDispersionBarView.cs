@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using SkiaSharp;
+using SkiaSharp.Views.Forms;
+using SkiaSharpnado.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using SkiaSharp;
-using SkiaSharp.Views.Forms;
-
-using SkiaSharpnado.ViewModels;
-
 using Xamarin.Forms;
 
 namespace SkiaSharpnado.SkiaSharp
@@ -24,11 +22,6 @@ namespace SkiaSharpnado.SkiaSharp
         {
             get => (List<IDispersionSpan>)GetValue(DispersionProperty);
             set => SetValue(DispersionProperty, value);
-        }
-        private static void DispersionPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
-        {
-            var barView = (SKColorDispersionBarView)bindable;
-            barView.InvalidateSurface();
         }
 
         protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
@@ -79,6 +72,12 @@ namespace SkiaSharpnado.SkiaSharp
                     currentX += (float)rectangleWidth + 1;
                 }
             }
+        }
+
+        private static void DispersionPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            var barView = (SKColorDispersionBarView)bindable;
+            barView.InvalidateSurface();
         }
     }
 }

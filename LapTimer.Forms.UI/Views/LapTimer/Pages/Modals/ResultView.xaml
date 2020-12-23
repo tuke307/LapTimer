@@ -32,7 +32,8 @@
         <StackLayout Grid.Row="1">
             <!--Fahrt-->
             <material:MaterialLabel TypeScale="H4"
-                                    Text="{x:Static res:resources.STR_RIDE}" />
+                                    Text="{x:Static res:resources.STR_RIDE}"
+                                    Style="{StaticResource MaterialLabelStyle}" />
 
             <!--Name-->
             <material:MaterialTextField InputType="Text"
@@ -40,6 +41,7 @@
                                         Text="{Binding Name}" />
 
             <material:MaterialLabel TypeScale="H5"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     Text="{x:Static res:resources.STR_CONDITIONS}" />
 
             <!--Temperatur-->
@@ -49,7 +51,8 @@
                                         Text="{Binding Temperature}" />
 
             <!--Boden-->
-            <material:MaterialLabel Text="{x:Static res:resources.STR_GROUND}" />
+            <material:MaterialLabel Text="{x:Static res:resources.STR_GROUND}"
+                                    Style="{StaticResource MaterialLabelStyle}" />
             <material:MaterialCheckboxGroup SelectedIndices="{Binding SelectedIndices}"
                                             Choices="{Binding Choices}">
                 <!--<material:MaterialCheckboxGroup.Choices>
@@ -61,6 +64,7 @@
 
             <!--Strecke-->
             <material:MaterialLabel TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     Text="{x:Static res:resources.STR_TRACK}" />
 
             <!--Strecke neu oder zuweisen-->

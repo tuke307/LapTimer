@@ -64,7 +64,7 @@
 
             Xamarin.Essentials.Platform.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);
-            Xamarin.FormsMaps.Init(this, bundle);
+            Xamarin.FormsGoogleMaps.Init(this, bundle);
             SharpnadoInitializer.Initialize(enableInternalDebugLogger: true);
 
             base.OnCreate(bundle);

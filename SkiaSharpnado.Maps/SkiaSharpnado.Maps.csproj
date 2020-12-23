@@ -20,7 +20,7 @@
     <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="4.8.0.1821" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />
   </ItemGroup>
   
   <ItemGroup>

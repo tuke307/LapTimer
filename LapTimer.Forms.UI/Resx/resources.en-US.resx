@@ -210,4 +210,7 @@
   <data name="Distance" xml:space="preserve">
     <value>Distance</value>
   </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time (hrs)</value>
+  </data>
 </root>

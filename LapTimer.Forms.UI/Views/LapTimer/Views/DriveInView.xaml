@@ -19,16 +19,20 @@
                      HorizontalOptions="Center"
                      Orientation="Horizontal">
             <material:MaterialLabel TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     Text="{x:Static res:resources.STR_DRIVEIN}" />
 
             <material:MaterialLabel TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     Text=" - " />
 
             <!--TRACK OR LAP-->
             <material:MaterialLabel TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     IsVisible="{Binding TrackSelected}"
                                     Text="{x:Static res:resources.STR_TRACK}" />
             <material:MaterialLabel TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
                                     IsVisible="{Binding LapSelected}"
                                     Text="{x:Static res:resources.STR_LAP}" />
         </StackLayout>

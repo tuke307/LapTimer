@@ -34,7 +34,7 @@
             _tcxActivityService = tcxActivityService;
 
             Loader = new TaskLoaderNotifier<List<ActivityHeaderModel>>();
-            ActivityTappedCommand = new MvxCommand<ActivityHeaderModel>(item => NavigationService.Navigate<DetailledRideViewModel>(item.Id));
+            ActivityTappedCommand = new MvxCommand<string>(item => NavigationService.Navigate<DetailledRideViewModel>(item));
         }
 
         #region Methods
@@ -218,7 +218,7 @@
         protected readonly IDbActivityService _dbactivityService;
         protected readonly ITcxActivityService _tcxActivityService;
 
-        public IMvxCommand ActivityTappedCommand { get; protected set; }
+        public IMvxCommand<string> ActivityTappedCommand { get; protected set; }
 
         public TaskLoaderNotifier<List<ActivityHeaderModel>> Loader { get; }
 
