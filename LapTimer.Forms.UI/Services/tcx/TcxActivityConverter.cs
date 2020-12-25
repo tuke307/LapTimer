@@ -24,7 +24,8 @@ namespace LapTimer.Forms.UI.Services
                 lap.Track.Last().Time,
                 TimeSpan.FromSeconds(lap.TotalTimeSeconds),
                 (int)lap.DistanceMeters,
-                lap.MaximumSpeed);
+                lap.MaximumSpeed,
+                hasSpeed);
         }
 
         public static List<ActivityPoint> ToActivityPoints(this Activity activity)
@@ -44,7 +45,6 @@ namespace LapTimer.Forms.UI.Services
                 result.Add(
                     new ActivityPoint(
                         point.Time,
-                        point.HeartRateBpm?.Value,
                         point.Position == null
                             ? LatLong.Empty
                             : new LatLong(point.Position.LatitudeDegrees, point.Position.LongitudeDegrees),

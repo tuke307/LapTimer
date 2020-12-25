@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TcxTools;
 
 namespace LapTimer.Forms.UI.Services
 {
@@ -28,7 +29,8 @@ namespace LapTimer.Forms.UI.Services
                 lap.Trackpoints.Last().CreatedDate.Value,
                 TimeSpan.FromSeconds(lap.TotalTimeSeconds),
                 (int)lap.DistanceMeters,
-                lap.MaximumSpeed);
+                lap.MaximumSpeed,
+                true);
         }
 
         //public static List<ActivityPoint> ToActivityPoints(this Activity activity)
@@ -45,10 +47,10 @@ namespace LapTimer.Forms.UI.Services
         //            speed = double.Parse(tpx.InnerText, System.Globalization.CultureInfo.InvariantCulture) * 3.6;
         //        }
 
-        // result.Add( new ActivityPoint( point.Time, point.HeartRateBpm?.Value,
-        // point.Position == null ? LatLong.Empty : new
-        // LatLong(point.Position.LatitudeDegrees, point.Position.LongitudeDegrees),
-        // (int)point.DistanceMeters, (int)point.AltitudeMeters, speed)); }
+        // result.Add( new ActivityPoint( point.Time, point.Position == null ?
+        // LatLong.Empty : new LatLong(point.Position.LatitudeDegrees,
+        // point.Position.LongitudeDegrees), (int)point.DistanceMeters,
+        // (int)point.AltitudeMeters, speed)); }
 
         //    return result;
         //}
