@@ -62,12 +62,12 @@
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            base.OnCreate(bundle);
+
             Xamarin.Essentials.Platform.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);
             Xamarin.FormsGoogleMaps.Init(this, bundle);
             SharpnadoInitializer.Initialize(enableInternalDebugLogger: true);
-
-            base.OnCreate(bundle);
         }
 
         /// <summary>

@@ -36,11 +36,11 @@
         /// Initializes this instance.
         /// </summary>
         /// <returns>Initialisierung.</returns>
-        public override Task Initialize()
+        public override async Task Initialize()
         {
-            this.InitializeDatabase.ExecuteAsync();
+            await base.Initialize();
 
-            return base.Initialize();
+            this.InitializeDatabase.Execute();
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Rides
 {
     using global::LapTimer.Forms.UI.Models;
+    using global::LapTimer.Forms.UI.Services;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
@@ -10,10 +11,10 @@
     using SkiaSharpnado.ViewModels;
     using System;
     using System.Collections.Generic;
-    using System.Drawing;
     using System.Globalization;
     using System.Linq;
     using System.Threading.Tasks;
+    using Xamarin.Forms;
 
     /// <summary>
     /// DetailledRideViewModel.
@@ -26,10 +27,13 @@
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public DetailledRideViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public DetailledRideViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, ITcxActivityService tcxactivityService)
             : base(logProvider, navigationService)
         {
+            DeleteRideCommand = new MvxAsyncCommand(DeleteRide);
+            CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
             Loader = new TaskLoaderNotifier<SessionMapInfo>();
+            _tcxActivityService = tcxactivityService;
         }
 
         #region Methods
@@ -48,104 +52,98 @@
         /// </summary>
         public override void Prepare(string activityId)
         {
-            //string activityId = parameters.GetValue<string>("activityId");
-
             var date = DateTime.ParseExact(activityId, "yyyyMMdd_HHmm", CultureInfo.InvariantCulture);
-            //Title = date.ToLongDateString();
+            Title = date.ToLongDateString();
 
             Loader.Load(() => LoadAsync(activityId));
         }
 
-        /// <summary>
-        /// Prepares this instance. called after construction.
-        /// </summary>
-        public override void Prepare()
+        private Task DeleteRide()
         {
-            base.Prepare();
+            throw new NotImplementedException();
         }
 
         private async Task<SessionMapInfo> LoadAsync(string activityId)
         {
-            //var activity = await _activityService.GetActivityAsync(activityId);
+            var activity = await _tcxActivityService.GetActivityAsync(activityId);
 
-            ////if (activity.Lap[0].Track.Count < 2)
-            ////{
-            ////    return null;
-            ////}
+            if (activity.Lap[0].Track.Count < 2)
+            {
+                return null;
+            }
 
-            ////var activityPoints = activity.ToActivityPoints();
-            ////var activityHeader = activity.ToActivityHeader();
-            ////Header = new ActivityHeaderViewModel(activityHeader, new List<IDispersionSpan>());
-            ////RaisePropertyChanged(nameof(Header));
+            var activityPoints = activity.ToActivityPoints();
+            var activityHeader = activity.ToActivityHeader();
+            Header = new ActivityHeaderModel(activityHeader, new List<IDispersionSpan>());
+            await RaisePropertyChanged(() => Header);
 
-            //double maxSpeed = activity.Lap[0].MaximumSpeed * 3.6f;
-            //Color? SelectColorBySpeed(ISessionDisplayablePoint point)
+            double maxSpeed = activity.Lap[0].MaximumSpeed * 3.6f;
+            Color? SelectColorBySpeed(ISessionDisplayablePoint point)
+            {
+                if (point.Speed == null)
+                {
+                    return null;
+                }
+
+                return HumanEffortComputer.BySpeed.GetColor(point.Speed, maxSpeed);
+            }
+
+            //Color? SelectColorByHeartRate(ISessionDisplayablePoint point)
             //{
-            //    if (point.Speed == null)
+            //    if (point.HeartRate == null)
             //    {
             //        return null;
             //    }
 
-            //    return HumanEffortComputer.BySpeed.GetColor(point.Speed, maxSpeed);
+            //    return HumanEffortComputer.ByHeartBeat.GetColor(point.HeartRate);
             //}
 
-            ////Color? SelectColorByHeartRate(ISessionDisplayablePoint point)
-            ////{
-            ////    if (point.HeartRate == null)
-            ////    {
-            ////        return null;
-            ////    }
+            //int markerInterval = 100;
+            //int distanceInternal = 100;
+            //int totalDistance = activityHeader.DistanceInMeters;
+            //if (totalDistance >= 100000)
+            //{
+            //    markerInterval = 5000;
+            //    distanceInternal = 10000;
+            //}
+            //else if (totalDistance >= 50000)
+            //{
+            //    markerInterval = 2000;
+            //    distanceInternal = 5000;
+            //}
+            //else if (totalDistance >= 10000)
+            //{
+            //    markerInterval = 1000;
+            //    distanceInternal = 2000;
+            //}
+            //else if (totalDistance >= 5000)
+            //{
+            //    markerInterval = 500;
+            //    distanceInternal = 1000;
+            //}
 
-            ////    return HumanEffortComputer.ByHeartBeat.GetColor(point.HeartRate);
-            ////}
+            SessionMapInfo mapInfo;
+            //if (Header.AverageHeartRate.HasValue)
+            //{
+            //    mapInfo = SessionMapInfo.Create(
+            //        activityPoints,
+            //        SelectColorByHeartRate,
+            //        markerInterval,
+            //        distanceInternal);
+            //}
+            //else
+            //{
+            mapInfo = SessionMapInfo.Create(
+                activityPoints,
+                SelectColorBySpeed,
+                1000,
+                1000);
+            //}
 
-            ////int markerInterval = 100;
-            ////int distanceInternal = 100;
-            ////int totalDistance = activityHeader.DistanceInMeters;
-            ////if (totalDistance >= 100000)
-            ////{
-            ////    markerInterval = 5000;
-            ////    distanceInternal = 10000;
-            ////}
-            ////else if (totalDistance >= 50000)
-            ////{
-            ////    markerInterval = 2000;
-            ////    distanceInternal = 5000;
-            ////}
-            ////else if (totalDistance >= 10000)
-            ////{
-            ////    markerInterval = 1000;
-            ////    distanceInternal = 2000;
-            ////}
-            ////else if (totalDistance >= 5000)
-            ////{
-            ////    markerInterval = 500;
-            ////    distanceInternal = 1000;
-            ////}
+            GraphInfo = SessionGraphInfo.CreateSessionGraphInfo(mapInfo.SessionPoints);
+            await RaisePropertyChanged(() => GraphInfo);
 
-            //SessionMapInfo mapInfo;
-            ////if (Header.AverageHeartRate.HasValue)
-            ////{
-            ////    mapInfo = SessionMapInfo.Create(
-            ////        activityPoints,
-            ////        SelectColorByHeartRate,
-            ////        markerInterval,
-            ////        distanceInternal);
-            ////}
-            ////else
-            ////{
-            //mapInfo = SessionMapInfo.Create(
-            //    activityPoints,
-            //    SelectColorBySpeed,
-            //    1000,
-            //    1000);
-            ////}
-
-            ////GraphInfo = SessionGraphInfo.CreateSessionGraphInfo(mapInfo.SessionPoints);
-            ////await RaisePropertyChanged(nameof(GraphInfo));
-
-            //return mapInfo;
-            return null;
+            return mapInfo;
         }
 
         private void OnCurrentTimeChanged()
@@ -168,10 +166,16 @@
 
         #region Values
 
+        protected readonly IDbActivityService _dbactivityService;
+        protected readonly ITcxActivityService _tcxActivityService;
         private string _currentAltitude;
         private string _currentDistance;
         private string _currentSpeed;
         private TimeSpan _currentTime;
+
+        private string _title;
+
+        public MvxAsyncCommand CloseSiteCommand { get; protected set; }
 
         public string CurrentAltitude
         {
@@ -201,11 +205,19 @@
             }
         }
 
+        public MvxAsyncCommand DeleteRideCommand { get; protected set; }
+
         public SessionGraphInfo GraphInfo { get; private set; }
 
         public ActivityHeaderModel Header { get; private set; }
 
         public TaskLoaderNotifier<SessionMapInfo> Loader { get; }
+
+        public string Title
+        {
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
 
         #endregion Values
     }
