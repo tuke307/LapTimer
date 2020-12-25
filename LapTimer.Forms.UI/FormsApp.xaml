@@ -115,6 +115,17 @@
                     Value="0,-10, 0, 0" />
         </Style>
 
+        <Style x:Key="TitleLabelStyle"
+               BasedOn="{StaticResource MaterialLabelStyle}"
+               TargetType="{x:Type material:MaterialLabel}">
+            <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+            <Setter Property="TypeScale"
+                    Value="H6" />
+            <Setter Property="Margin"
+                    Value="20, 0, 0, 0" />
+        </Style>
+
         <Style x:Key="MaterialCardStyle"
                TargetType="{x:Type material:MaterialCard}">
             <Setter Property="BackgroundColor"
@@ -124,7 +135,7 @@
             <Setter Property="Margin"
                     Value="15, 7" />
             <Setter Property="IsClickable"
-                    Value="True" />
+                    Value="False" />
             <Setter Property="CornerRadius"
                     Value="5" />
             <Setter Property="Padding"
