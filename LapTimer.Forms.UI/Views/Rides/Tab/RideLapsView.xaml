@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:behaviors="clr-namespace:LapTimer.Forms.UI.Behaviors"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:views1="clr-namespace:LapTimer.Forms.UI.Views"
+                      xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
                       xmlns:skiaSharp="clr-namespace:SkiaSharpnado.SkiaSharp;assembly=SkiaSharpnado"
@@ -18,17 +20,13 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="*" />
+
                                 <RowDefinition Height="3*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-
-                            <!--<Image Grid.Row="0"
-                                   Grid.Column="0"
-                                   Source="{Binding Sport, Converter={StaticResource SportToIconConverter}}" />-->
 
                             <material:MaterialLabel Grid.Row="0"
                                                     Grid.Column="0"
@@ -42,17 +40,10 @@
                                                     Style="{StaticResource MaterialLabelStyle}"
                                                     Text="{Binding DisplayableStartTime}" />
 
-                            <skiaSharp:SKColorDispersionBarView Grid.Row="1"
-                                                                Grid.Column="0"
-                                                                Grid.ColumnSpan="2"
-                                                                Margin="0, 10"
-                                                                Dispersion="{Binding Dispersion}" />
-
-                            <views1:MainIndicatorsView Grid.Row="2"
+                            <views1:MainIndicatorsView Grid.Row="1"
                                                        Grid.Column="0"
                                                        Grid.ColumnSpan="2"
-                                                       BackgroundColor="Transparent"
-                                                       Margin="0, 10, 0, 0" />
+                                                       BackgroundColor="Transparent" />
                         </Grid>
                     </material:MaterialCard>
                 </ViewCell>
@@ -64,15 +55,20 @@
         <StackLayout>
             <customViews:TaskLoaderView TaskLoaderNotifier="{Binding Loader}"
                                         Style="{StaticResource Key=TaskLoaderViewStyle}">
-                <ListView x:Name="ListView"
-                          ItemTemplate="{StaticResource ActivityHeaderTemplate}"
-                          ItemsSource="{Binding Loader.Result}"
-                          BackgroundColor="Transparent"
-                          SeparatorVisibility="None"
-                          ItemTapped="ListView_ItemTapped"
-                          Margin="0, -5"
-                          RowHeight="150">
-                </ListView>
+                <views:MvxListView  x:Name="ListView"
+                                    ItemTemplate="{StaticResource ActivityHeaderTemplate}"
+                                    ItemsSource="{Binding Loader.Result}"
+                                    BackgroundColor="Transparent"
+                                    SeparatorVisibility="None"
+                                    ItemTapped="ListViewOnItemTapped"
+                                    Margin="0, -5"
+                                    RowHeight="100">
+                    <ListView.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="ItemTapped"
+                                                          Command="{Binding ActivityTappedCommand}"
+                                                          EventArgsParameterPath="Item" />
+                    </ListView.Behaviors>
+                </views:MvxListView>
             </customViews:TaskLoaderView>
         </StackLayout>
     </views:MvxContentView.Content>

@@ -29,12 +29,12 @@
                           SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"
                           Grid.Row="0">
             <tabs:TabHostView.Tabs>
-                <tabs:BottomTabItem Label="{x:Static res:resources.STR_TRACK}"
-                                    Style="{StaticResource Key=BottomTabStyle}"
-                                    IconImageSource="track_structure" />
                 <tabs:BottomTabItem Label="{x:Static res:resources.STR_LAP}"
                                     Style="{StaticResource Key=BottomTabStyle}"
                                     IconImageSource="lap_structure" />
+                <tabs:BottomTabItem Label="{x:Static res:resources.STR_TRACK}"
+                                    Style="{StaticResource Key=BottomTabStyle}"
+                                    IconImageSource="track_structure" />
             </tabs:TabHostView.Tabs>
         </tabs:TabHostView>
 

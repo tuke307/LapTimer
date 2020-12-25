@@ -35,9 +35,8 @@
             }
         }
 
-        private void ListView_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+        private void ListViewOnItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
-            //ViewModel.ActivityTappedCommand < e.Item.ToString() >.Execute();
             ListView.SelectedItem = null;
         }
     }
