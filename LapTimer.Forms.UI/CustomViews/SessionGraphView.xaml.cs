@@ -31,7 +31,6 @@ namespace LapTimer.Forms.UI.CustomViews
 
         private static readonly SKColor AltitudeColor = ResourcesHelper.GetResourceColor("ColorGraphAltitude").ToSKColor();
         private static readonly SKColor AltitudeSurface = ResourcesHelper.GetResourceColor("ColorGraphAltitudeSurface").ToSKColor();
-        private static readonly SKColor BpmColor = ResourcesHelper.GetResourceColor("ColorGraphHeartRate").ToSKColor();
         private static readonly SKColor SpeedColor = ResourcesHelper.GetResourceColor("ColorGraphSpeed").ToSKColor();
         private SKPaint _cursorPaint;
         private SKPaint _curvePaint;
@@ -341,12 +340,12 @@ namespace LapTimer.Forms.UI.CustomViews
                 var pictureRecorder = new SKPictureRecorder();
                 var canvas = pictureRecorder.BeginRecording(e.Info.Rect);
 
-                //DrawCurve(
-                //    canvas,
-                //    sessionGraphInfo.SessionPoints,
-                //    sessionGraphInfo.Altitude,
-                //    AltitudeColor,
-                //    sessionPoint => sessionPoint.Altitude);
+                DrawCurve(
+                    canvas,
+                    sessionGraphInfo.SessionPoints,
+                    sessionGraphInfo.Altitude,
+                    AltitudeColor,
+                    sessionPoint => sessionPoint.Altitude);
 
                 DrawSurface(
                     canvas,
@@ -361,13 +360,6 @@ namespace LapTimer.Forms.UI.CustomViews
                     sessionGraphInfo.Speed,
                     SpeedColor,
                     sessionPoint => sessionPoint.Speed);
-
-                //DrawCurve(
-                //    canvas,
-                //    sessionGraphInfo.SessionPoints,
-                //   sessionGraphInfo.HeartRate,
-                //    BpmColor,
-                //    sessionPoint => sessionPoint.HeartRate);
 
                 _curvesPicture = pictureRecorder.EndRecording();
                 pictureRecorder.Dispose();

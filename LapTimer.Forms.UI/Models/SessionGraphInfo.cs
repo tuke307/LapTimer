@@ -34,7 +34,6 @@ namespace LapTimer.Forms.UI.Models
                 throw new ArgumentException();
             }
 
-            var heartRateBounds = new ValueBounds(points.Min(p => p.HeartRate ?? int.MaxValue), points.Max(p => p.HeartRate ?? 0));
             var speedBounds = new ValueBounds(points.Min(p => p.Speed ?? int.MaxValue), points.Max(p => p.Speed ?? 0));
             var altitudeBounds = new ValueBounds(points.Min(p => p.Altitude ?? int.MaxValue), points.Max(p => p.Altitude ?? 0));
 
