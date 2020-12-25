@@ -44,7 +44,7 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 
         private LatLong _bottomRightPosition;
         private LatLong _centerPosition;
-        private SKMatrix _currentMatrix = SKMatrix.MakeIdentity();
+        private SKMatrix _currentMatrix = SKMatrix.CreateIdentity();
         private SKPaint _distanceTextPaint;
         private int _drawingCount = 0;
         private SKSvg _endImage;
@@ -97,7 +97,7 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 
             // LayoutChanged += OnLayoutChanged;
 
-            GoogleMap.CameraChanged += GoogleMapCameraChanged;
+            GoogleMap.CameraIdled += GoogleMapCameraChanged;
         }
 
         public void OnDestroy()
@@ -149,8 +149,8 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             _previousCenter = centerPoint;
             _previousTopLeftBottomRightSquareDistance = squaredDistance;
 
-            var transformMatrix = SKMatrix.MakeIdentity();
-            transformMatrix.SetScaleTranslate((float)distanceRatio, (float)distanceRatio, translation.X, translation.Y);
+            var transformMatrix = SKMatrix.CreateIdentity();
+            transformMatrix = SKMatrix.CreateScaleTranslation((float)distanceRatio, (float)distanceRatio, translation.X, translation.Y);
 
             SKMatrix.Concat(ref _currentMatrix, _currentMatrix, transformMatrix);
 
@@ -185,8 +185,8 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             float svgStartMax = Math.Max(_startImage.Picture.CullRect.Width, _startImage.Picture.CullRect.Height);
             float startScale = _pictureSize / svgStartMax;
 
-            var startMatrix = SKMatrix.MakeIdentity();
-            startMatrix.SetScaleTranslate(
+            var startMatrix = SKMatrix.CreateIdentity();
+            startMatrix = SKMatrix.CreateScaleTranslation(
                 startScale,
                 startScale,
                 firstPoint.X - (_pictureSize / 2),
@@ -210,8 +210,8 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             float svgEndMax = Math.Max(_endImage.Picture.CullRect.Width, _endImage.Picture.CullRect.Height);
             float endScale = _pictureSize / svgEndMax;
 
-            var endMatrix = SKMatrix.MakeIdentity();
-            endMatrix.SetScaleTranslate(endScale, endScale, lastPoint.X, lastPoint.Y - _pictureSize);
+            var endMatrix = SKMatrix.CreateIdentity();
+            endMatrix = SKMatrix.CreateScaleTranslation(endScale, endScale, lastPoint.X, lastPoint.Y - _pictureSize);
 
             using (var picturePaint = new SKPaint()
             {
@@ -231,11 +231,19 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             canvas.DrawCircle(lastPoint.X, lastPoint.Y, SkiaHelper.ToPixel(3), _lastMarkerPaint);
         }
 
-        private void GoogleMapCameraChanged(object sender, CameraChangedEventArgs e)
+        private void GoogleMapCameraChanged(object sender, CameraIdledEventArgs e)
         {
             Debug.WriteLine($"CameraChanged: pos: {e.Position.Target.Latitude}, {e.Position.Target.Longitude}");
 
-            if (!_isCameraInitialized) { _isCameraInitialized = true; }
+            if (!_isCameraInitialized)
+            {
+                _isCameraInitialized = true;
+            }
+
+            if (_drawingCount == 0)
+            {
+                MapOverlay.InvalidateSurface();
+            }
         }
 
         private void Initialize()
@@ -274,7 +282,11 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             {
                 Debug.WriteLine($"InitializeMap");
 
-                GoogleMap.MoveToRegion(SessionMapInfo.Region);
+                Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
+                {
+                    GoogleMap.MoveToRegion(SessionMapInfo.Region, true);
+                    return false;
+                });
             }
         }
 
@@ -361,7 +373,7 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
                 return;
             }
 
-            //_positionConverter.UpdateCamera(GoogleMap, new Size(info.Width, info.Height), SkiaHelper.PixelPerUnit);
+            _positionConverter.UpdateCamera(GoogleMap, new Size(info.Width, info.Height), SkiaHelper.PixelPerUnit);
 
             var centerPoint = _positionConverter[_centerPosition].ToSKPoint();
             var topLeftPoint = _positionConverter[_topLeftPosition].ToSKPoint();
@@ -514,11 +526,6 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             Interlocked.Decrement(ref _drawingCount);
         }
 
-        //    if (_drawingCount == 0)
-        //    {
-        //        MapOverlay.InvalidateSurface();
-        //    }
-        //}
         private void ReleaseMapResources()
         {
             _markerPaint?.Dispose();
