@@ -99,7 +99,6 @@ namespace SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap
 
                 var currentPoint = sessionPoints[index] = new SessionDisplayablePoint(
                     elapsedTime,
-                    point.HeartRate,
                     point.DistanceInMeters,
                     point.AltitudeInMeters,
                     speed,

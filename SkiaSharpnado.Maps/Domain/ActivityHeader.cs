@@ -8,6 +8,8 @@ namespace SkiaSharpnado.Maps.Domain
 
         public TimeSpan Duration { get; }
 
+        public bool HasSpeed { get; }
+
         public string Id => LastPointTime.ToString("yyyyMMdd_HHmm");
 
         public DateTime LastPointTime { get; }
@@ -21,13 +23,14 @@ namespace SkiaSharpnado.Maps.Domain
             DateTime lastPointTime,
             TimeSpan duration,
             int distanceInMeters,
-            double maximumSpeed)
+            double maximumSpeed,
+            bool hasSpeed)
         {
             Name = name;
             LastPointTime = lastPointTime;
             Duration = duration;
             DistanceInMeters = distanceInMeters;
-            MaximumSpeed = maximumSpeed;
+            MaximumSpeed = maximumSpeed; HasSpeed = hasSpeed;
         }
     }
 }

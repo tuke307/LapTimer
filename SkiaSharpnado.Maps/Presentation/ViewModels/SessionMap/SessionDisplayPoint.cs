@@ -12,8 +12,6 @@ namespace SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap
 
         bool HasMarker { get; }
 
-        int? HeartRate { get; }
-
         string Label { get; }
 
         Color MapPointColor { get; }
@@ -35,8 +33,6 @@ namespace SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap
 
         public bool HasPosition => Position != LatLong.Empty;
 
-        public int? HeartRate { get; }
-
         public string Label { get; }
 
         public Color MapPointColor { get; private set; }
@@ -48,8 +44,7 @@ namespace SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap
         public TimeSpan Time { get; }
 
         public SessionDisplayablePoint(
-                                                                                            TimeSpan timeSpan,
-            int? heartRate,
+            TimeSpan timeSpan,
             int? distance,
             int? altitude,
             double? speed,
@@ -60,7 +55,6 @@ namespace SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap
             Time = timeSpan;
 
             Altitude = altitude;
-            HeartRate = heartRate;
             Speed = speed;
             Position = position;
             Distance = distance;
