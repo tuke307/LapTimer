@@ -1,9 +1,12 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
+    using Data.Enums;
+    using global::LapTimer.Forms.UI.Services;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -17,17 +20,34 @@
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public LapTimerTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public LapTimerTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IRideService rideService)
             : base(logProvider, navigationService)
         {
-            SelectLapCommand = new MvxCommand(() => this.LapSelected = true);
-            SelectTrackCommand = new MvxCommand(() => this.TrackSelected = true);
+            _rideService = rideService;
+            SelectLapCommand = new MvxCommand(HandleSelectLap);
+            SelectTrackCommand = new MvxCommand(HandleTrackSelected);
             OpenSettingsCommand = new MvxAsyncCommand(() => this.NavigationService.Navigate<ViewModels.Settings.SettingsViewModel>());
             OpenLapTimerHosterCommand = new MvxAsyncCommand(() => this.NavigationService.Navigate<ViewModels.LapTimer.LapTimerHosterViewModel>());
-            TrackSelected = true;
+
+            // voreingestellt
+            this.TrackSelected = true;
 
             //Routes
             //Route
+        }
+
+        private void HandleSelectLap()
+        {
+            this.LapSelected = true;
+            this.TrackSelected = false;
+            _rideService.SetRideMode(RouteEnum.Lap);
+        }
+
+        private void HandleTrackSelected()
+        {
+            this.LapSelected = false;
+            this.TrackSelected = true;
+            _rideService.SetRideMode(RouteEnum.Track);
         }
 
         #region Methods
@@ -55,6 +75,8 @@
 
         #region Commands
 
+        private IRideService _rideService;
+
         public IMvxAsyncCommand OpenLapTimerHosterCommand { get; protected set; }
 
         public IMvxAsyncCommand OpenSettingsCommand { get; protected set; }
@@ -72,15 +94,7 @@
         public bool LapSelected
         {
             get => this._lapSelected;
-            set
-            {
-                this.SetProperty(ref _lapSelected, value);
-
-                if (TrackSelected == LapSelected)
-                {
-                    TrackSelected = !LapSelected;
-                }
-            }
+            protected set => this.SetProperty(ref _lapSelected, value);
         }
 
         public bool RoutesEnabled
@@ -92,14 +106,7 @@
         public bool TrackSelected
         {
             get => this._trackSelected;
-            set
-            {
-                this.SetProperty(ref _trackSelected, value);
-                if (LapSelected == TrackSelected)
-                {
-                    LapSelected = !TrackSelected;
-                }
-            }
+            protected set => this.SetProperty(ref _trackSelected, value);
         }
 
         #endregion Values

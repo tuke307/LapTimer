@@ -15,21 +15,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <material:MaterialLabel TypeScale="H4"
-                                Grid.Row="0"
-                                Style="{StaticResource MaterialLabelStyle}"
-                                Text="{Binding TimeSpanCountdown, Converter={StaticResource TimeSpanToString}}"
-                                VerticalOptions="Center"
-                                HorizontalOptions="Center" />
+        <StackLayout Grid.Row="0"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center">
+            <material:MaterialLabel TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
+                                    Text="{Binding TimeSpanCountdown, Converter={StaticResource TimeSpanToString}}" />
 
-        <material:MaterialIconButton Grid.Row="1"
-                                     HorizontalOptions="Start"
-                                     Image="restore"
-                                     Command="{Binding ResetCommand}"
-                                     BackgroundColor="Transparent">
-        </material:MaterialIconButton>
+            <material:MaterialButton HorizontalOptions="Center"
+                                     Text="+10"
+                                     Command="{Binding ExtendCountdownCommand}">
+            </material:MaterialButton>
+        </StackLayout>
     </Grid>
 </views:MvxContentView>

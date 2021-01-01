@@ -1,5 +1,6 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
+    using global::LapTimer.Forms.UI.Services;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
@@ -18,7 +19,7 @@
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RouteViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public RouteViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IRideService rideService)
             : base(logProvider, navigationService)
         {
         }

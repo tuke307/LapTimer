@@ -1,9 +1,16 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
+    using Data.Enums;
+    using global::LapTimer.Forms.UI.Models;
+    using global::LapTimer.Forms.UI.Services;
+    using global::LapTimer.Forms.UI.Views.LapTimer;
+    using MvvmCross;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
+    using MvvmCross.Plugin.Messenger;
     using MvvmCross.ViewModels;
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -17,13 +24,13 @@
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public DriveInViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public DriveInViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IMvxMessenger messenger, IRideService rideService)
             : base(logProvider, navigationService)
         {
-            //ResetCommand = new MvxCommand(() => );
-            //StartCommand = new MvxCommand(() => );
-            //TrackSelected = ;
-            //LapSelected = ;
+            _rideService = rideService;
+            _messenger = messenger;
+            ResetCommand = new MvxCommand(ResetDriveIn);
+            StartCommand = new MvxCommand(() => _messenger.Publish(new MvxTabIndexMessenger(this, 1)));
         }
 
         #region Methods
@@ -45,6 +52,11 @@
             base.Prepare();
         }
 
+        private void ResetDriveIn()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion Methods
 
         #region Values
@@ -57,19 +69,17 @@
 
         #endregion Commands
 
-        private bool _lapSelected;
-        private bool _trackSelected;
+        private readonly IMvxMessenger _messenger;
+        private readonly IRideService _rideService;
 
         public bool LapSelected
         {
-            get => this._lapSelected;
-            set => this.SetProperty(ref _lapSelected, value);
+            get => _rideService.IsModeSelected(RouteEnum.Lap);
         }
 
         public bool TrackSelected
         {
-            get => this._trackSelected;
-            set => this.SetProperty(ref _trackSelected, value);
+            get => _rideService.IsModeSelected(RouteEnum.Track);
         }
 
         #endregion Values

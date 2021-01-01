@@ -26,7 +26,7 @@
         <material:MaterialIconButton Grid.Row="1"
                                      HorizontalOptions="Center"
                                      Image="motion_play_outline"
-                                     Command="{Binding StartCommand}">
+                                     Command="{Binding StartTimerCommand}">
         </material:MaterialIconButton>
     </Grid>
 </views:MvxContentView>

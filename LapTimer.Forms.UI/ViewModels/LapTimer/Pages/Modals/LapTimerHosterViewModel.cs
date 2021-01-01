@@ -1,9 +1,14 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
+    using global::LapTimer.Forms.UI.Models;
+    using global::LapTimer.Forms.UI.Views.LapTimer;
+    using MvvmCross;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
+    using MvvmCross.Plugin.Messenger;
     using MvvmCross.ViewModels;
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -17,10 +22,11 @@
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public LapTimerHosterViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+        public LapTimerHosterViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IMvxMessenger messenger)
             : base(logProvider, navigationService)
         {
             CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
+            _token = messenger.Subscribe<MvxTabIndexMessenger>(OnTabIndexMessage);
         }
 
         #region Methods
@@ -34,12 +40,50 @@
             return base.Initialize();
         }
 
-        /// <summary>
-        /// Prepares this instance. called after construction.
-        /// </summary>
         public override void Prepare()
         {
             base.Prepare();
+        }
+
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+
+            _viewAppeared = true;
+            FireTabViewAppeared();
+        }
+
+        protected void FireTabViewAppeared()
+        {
+            if (_viewAppeared)
+            {
+                switch (SelectedViewModelIndex)
+                {
+                    case 0:
+                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.DriveInViewModel>().ViewAppeared();
+                        break;
+
+                    case 1:
+                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.StartingPositionViewModel>().ViewAppeared();
+                        break;
+
+                    case 2:
+                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.CountdownViewModel>().ViewAppeared();
+                        break;
+
+                    case 3:
+                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.LapTimerViewModel>().ViewAppeared();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void OnTabIndexMessage(MvxTabIndexMessenger tabIndexMessage)
+        {
+            SelectedViewModelIndex = tabIndexMessage.TabIndex;
         }
 
         #endregion Methods
@@ -52,12 +96,18 @@
 
         #endregion Commands
 
+        private readonly MvxSubscriptionToken _token;
         private int _selectedViewModelIndex;
+        private bool _viewAppeared;
 
         public int SelectedViewModelIndex
         {
             get => _selectedViewModelIndex;
-            set => this.SetProperty(ref _selectedViewModelIndex, value);
+            set
+            {
+                SetProperty(ref _selectedViewModelIndex, value);
+                FireTabViewAppeared();
+            }
         }
 
         #endregion Values

@@ -61,13 +61,11 @@
                 switch (SelectedViewModelIndex)
                 {
                     case 0:
-                        var rideLapsViewModel = Mvx.IoCProvider.Resolve<ViewModels.Rides.RideLapsViewModel>();
-                        rideLapsViewModel.ViewAppeared();
+                        Mvx.IoCProvider.Resolve<ViewModels.Rides.RideLapsViewModel>().ViewAppeared();
                         break;
 
                     case 1:
-                        var rideTracksViewModel = Mvx.IoCProvider.Resolve<ViewModels.Rides.RideTracksViewModel>();
-                        rideTracksViewModel.ViewAppeared();
+                        Mvx.IoCProvider.Resolve<ViewModels.Rides.RideTracksViewModel>().ViewAppeared();
                         break;
 
                     default:
