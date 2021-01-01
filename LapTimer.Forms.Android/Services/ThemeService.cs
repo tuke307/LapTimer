@@ -1,4 +1,4 @@
-﻿namespace LapTimer.Forms.UI.Droid
+﻿namespace LapTimer.Forms.UI.Droid.Services
 {
     using Android.App;
     using Android.Support.V7.App;

@@ -26,6 +26,8 @@
             Mvx.IoCProvider.RegisterSingleton(Plugin.Settings.CrossSettings.Current);
             Mvx.IoCProvider.RegisterSingleton<ITcxActivityService>(() => new TcxActivityService());
             Mvx.IoCProvider.RegisterSingleton<IDbActivityService>(() => new DbActivityService());
+            Mvx.IoCProvider.RegisterSingleton<IRideService>(() => new RideService());
+            Mvx.IoCProvider.RegisterSingleton<ICountdownTimer>(() => new CountdownTimer());
 
             this.RegisterAppStart<ViewModels.MainPageViewModel>();
 
