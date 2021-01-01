@@ -1,6 +1,7 @@
 ﻿namespace LapTimer.Forms.UI.Droid
 {
     using LapTimer.Forms.UI;
+    using LapTimer.Forms.UI.Droid.Services;
     using LapTimer.Forms.UI.Services;
     using MvvmCross;
     using MvvmCross.Forms.Platforms.Android.Core;
@@ -20,6 +21,7 @@
         {
             base.InitializeLastChance();
             Mvx.IoCProvider.RegisterSingleton<IThemeService>(() => new ThemeService());
+            Mvx.IoCProvider.RegisterSingleton<ICloseApplicationService>(() => new CloseApplicationService());
         }
     }
 }

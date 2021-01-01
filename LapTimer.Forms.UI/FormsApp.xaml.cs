@@ -1,4 +1,8 @@
-﻿namespace LapTimer.Forms.UI
+﻿using LapTimer.Forms.UI.Functions;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+
+namespace LapTimer.Forms.UI
 {
     /// <summary>
     /// FormsApp.
@@ -31,6 +35,8 @@
         protected override void OnStart()
         {
             base.OnStart();
+
+            Device.BeginInvokeOnMainThread(async () => await Functions.Application.InitializeLapTimerApplication());
         }
     }
 }

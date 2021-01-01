@@ -11,27 +11,17 @@ namespace LapTimer.Forms.UI.Functions
         /// </summary>
         /// <typeparam name="TPermission">The type of the permission.</typeparam>
         /// <returns></returns>
-        public static async Task<bool> GetPermission<TPermission>()
+        public static async Task<PermissionStatus> GetPermission<TPermission>()
             where TPermission : BasePermission, new()
         {
-            var hasPermission = await CheckStatusAsync<TPermission>().ConfigureAwait(true);
+            var status = await CheckStatusAsync<TPermission>().ConfigureAwait(true);
 
-            if (hasPermission == PermissionStatus.Granted)
+            if (status != PermissionStatus.Granted)
             {
-                return true;
-            }
-            else if (hasPermission == PermissionStatus.Disabled)
-            {
-                return false;
+                status = await RequestAsync<TPermission>().ConfigureAwait(true);
             }
 
-            var result = await RequestAsync<TPermission>().ConfigureAwait(true);
-            if (result != PermissionStatus.Granted)
-            {
-                return false;
-            }
-
-            return true;
+            return status;
         }
     }
 }
