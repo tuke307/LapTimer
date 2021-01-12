@@ -5,76 +5,43 @@
                     x:Class="LapTimer.Forms.UI.Themes.Base.Light">
 
     <Color x:Key="ValidationErrorColor">#f44336</Color>
-    <Color x:Key="ValidationErrorBrush">#f44336</Color>
 
     <Color x:Key="MaterialDesignBackground">#FFFFFFFF</Color>
     <Color x:Key="MaterialDesignPaper">#FFfafafa</Color>
     <Color x:Key="MaterialDesignCardBackground">#FFFFFFFF</Color>
-    <Color x:Key="MaterialDesignToolBarBackground">#FFF5F5F5</Color>
     <Color x:Key="MaterialDesignBody">#DD000000</Color>
     <Color x:Key="MaterialDesignBodyLight">#89000000</Color>
     <Color x:Key="MaterialDesignColumnHeader">#BC000000</Color>
+
     <!-- 74% -->
+    <Color x:Key="MaterialDesignCheckBoxOff">#89000000</Color>
 
-    <Color x:Key="MaterialDesignCheckBoxOff">#89000000
-    </Color>
-    <Color x:Key="MaterialDesignCheckBoxDisabled">#FFBDBDBD
-    </Color>
-
-    <Color x:Key="MaterialDesignTextBoxBorder">#89000000
-    </Color>
+    <Color x:Key="MaterialDesignTextBoxBorder">#89000000</Color>
     <Color x:Key="MaterialDesignDivider">#1f000000</Color>
 
     <!--12%-->
+    <Color x:Key="MaterialDesignSelection">#FFDeDeDe</Color>
 
-    <Color x:Key="MaterialDesignSelection">#FFDeDeDe
-    </Color>
+    <Color x:Key="MaterialDesignToolForeground">#616161</Color>
+    <Color x:Key="MaterialDesignToolBackground">#e0e0e0</Color>
 
-    <Color x:Key="MaterialDesignToolForeground">#616161
-    </Color>
-    <Color x:Key="MaterialDesignToolBackground">#e0e0e0
-    </Color>
+    <Color x:Key="MaterialDesignFlatButtonClick">#FFDeDeDe</Color>
+    <Color x:Key="MaterialDesignFlatButtonRipple">#FFB6B6B6</Color>
 
-    <Color x:Key="MaterialDesignFlatButtonClick">#FFDeDeDe
-    </Color>
-    <Color x:Key="MaterialDesignFlatButtonRipple">#FFB6B6B6
-    </Color>
+    <Color x:Key="MaterialDesignToolTipBackground">#757575</Color>
+    <Color x:Key="MaterialDesignChipBackground">#12000000</Color>
+    <Color x:Key="MaterialDesignSnackbarBackground">#FF323232</Color>
+    <Color x:Key="MaterialDesignSnackbarRipple">#FFB6B6B6</Color>
 
-    <Color x:Key="MaterialDesignToolTipBackground">#757575
-    </Color>
-    <Color x:Key="MaterialDesignChipBackground">#12000000
-    </Color>
-    <Color x:Key="MaterialDesignSnackbarBackground">#FF323232
-    </Color>
-    <Color x:Key="MaterialDesignSnackbarMouseOver">#FF464642
-    </Color>
-    <Color x:Key="MaterialDesignSnackbarRipple">#FFB6B6B6
-    </Color>
-
-    <Color x:Key="MaterialDesignTextFieldBoxBackground">#0F000000
-    </Color>
-
-    <!--6% black-->
-
-    <Color x:Key="MaterialDesignTextFieldBoxHoverBackground">#14000000
-    </Color>
-
-    <!--8% black-->
-
-    <Color x:Key="MaterialDesignTextFieldBoxDisabledBackground">#08000000
-    </Color>
+    <Color x:Key="MaterialDesignTextFieldBoxBackground">#0F000000</Color>
 
     <!--3% black-->
-
-    <Color x:Key="MaterialDesignTextAreaBorder">#BC000000
-    </Color>
+    <Color x:Key="MaterialDesignTextAreaBorder">#BC000000</Color>
 
     <!--74% black-->
+    <Color x:Key="MaterialDesignTextAreaInactiveBorder">#0F000000</Color>
 
-    <Color x:Key="MaterialDesignTextAreaInactiveBorder">#0F000000
-    </Color>
     <!-- 6% black -->
-
     <Color x:Key="ColorEffortUnknown">#6c6c6c</Color>
     <Color x:Key="ColorEffortLightest">#25c743</Color>
     <Color x:Key="ColorEffortLight">#00b4d1</Color>

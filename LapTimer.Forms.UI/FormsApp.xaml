@@ -7,6 +7,7 @@
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
              xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
              xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
              xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material"
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
@@ -23,7 +24,7 @@
                 <!--<ResourceDictionary Source="Themes/Accent/Teal.xaml" />-->
 
                 <!--BASE THEME-->
-                <theme:Light x:Name="Light" />
+                <theme:Dark />
                 <!--<ResourceDictionary Source="Themes/Base/Light.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -71,12 +72,12 @@
                                     FontConfiguration="{StaticResource Font}" />
 
         <!--<Style TargetType="{x:Type Editor}">
-            <Setter Property="BackgroundColor"
-                    Value="{DynamicResource MaterialDesignBody}" />
-        </Style>-->
+      <Setter Property="BackgroundColor"
+          Value="{DynamicResource MaterialDesignBody}" />
+    </Style>-->
 
-        <Style  x:Key="MvxContentPageStyle"
-                TargetType="{x:Type views:MvxContentPage}">
+        <Style x:Key="MvxContentPageStyle"
+               TargetType="{x:Type views:MvxContentPage}">
             <Setter Property="BackgroundColor"
                     Value="{DynamicResource MaterialDesignPaper}" />
         </Style>
@@ -87,10 +88,30 @@
                     Value="{DynamicResource MaterialDesignPaper}" />
         </Style>
 
+        <Style x:Key="MaterialChipStyle"
+               TargetType="{x:Type material:MaterialChip}">
+            <Setter Property="TextColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignChipBackground}" />
+        </Style>
+
+        <Style x:Key="MaterialCheckboxStyle"
+               TargetType="{x:Type material:MaterialCheckbox}">
+            <Setter Property="TextColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignCardBackground}" />
+            <Setter Property="SelectedColor"
+                    Value="{DynamicResource Accent700}" />
+            <Setter Property="UnselectedColor"
+                    Value="{DynamicResource MaterialDesignCheckBoxOff}" />
+        </Style>
+
         <Style x:Key="MaterialLabelStyle"
                TargetType="{x:Type material:MaterialLabel}">
             <Setter Property="TextColor"
-                    Value="{StaticResource MaterialDesignBody}" />
+                    Value="{DynamicResource MaterialDesignBody}" />
             <Setter Property="BackgroundColor"
                     Value="Transparent" />
         </Style>
@@ -129,13 +150,9 @@
         <Style x:Key="MaterialCardStyle"
                TargetType="{x:Type material:MaterialCard}">
             <Setter Property="BackgroundColor"
-                    Value="{StaticResource MaterialDesignCardBackground}" />
+                    Value="{DynamicResource MaterialDesignCardBackground}" />
             <Setter Property="HasShadow"
                     Value="True" />
-            <Setter Property="Margin"
-                    Value="15, 7" />
-            <Setter Property="IsClickable"
-                    Value="False" />
             <Setter Property="CornerRadius"
                     Value="5" />
             <Setter Property="Padding"
@@ -149,27 +166,27 @@
             <Setter Property="TextColor"
                     Value="{DynamicResource MaterialDesignBody}" />
             <Setter Property="AccentColor"
-                    Value="{StaticResource Primary700}" />
+                    Value="{DynamicResource Primary700}" />
         </Style>
 
         <Style x:Key="SegmentedTabStyle"
                TargetType="{x:Type tabs:SegmentedTabItem}">
             <Setter Property="SelectedTabColor"
-                    Value="{StaticResource Primary700}" />
+                    Value="{DynamicResource Primary700}" />
             <Setter Property="LabelSize"
                     Value="14" />
             <Setter Property="SelectedLabelColor"
-                    Value="{StaticResource Accent200Foreground}" />
+                    Value="{DynamicResource Accent200Foreground}" />
             <Setter Property="UnselectedLabelColor"
-                    Value="{StaticResource MaterialDesignBody}" />
+                    Value="{DynamicResource MaterialDesignBody}" />
         </Style>
 
         <Style x:Key="BottomTabStyle"
                TargetType="{x:Type tabs:BottomTabItem}">
             <Setter Property="SelectedTabColor"
-                    Value="{StaticResource Primary700}" />
+                    Value="{DynamicResource Primary700}" />
             <Setter Property="UnselectedLabelColor"
-                    Value="{StaticResource MaterialDesignBody}" />
+                    Value="{DynamicResource MaterialDesignBody}" />
             <Setter Property="UnselectedIconColor"
                     Value="LightGray" />
             <Setter Property="LabelSize"
@@ -177,5 +194,51 @@
             <Setter Property="IconSize"
                     Value="28" />
         </Style>
+
+        <Style x:Key="TabHostViewStyle"
+               TargetType="{x:Type tabs:TabHostView}">
+            <Setter Property="TabType"
+                    Value="Fixed" />
+            <Setter Property="IsSegmented"
+                    Value="True" />
+            <Setter Property="CornerRadius"
+                    Value="20" />
+            <Setter Property="HeightRequest"
+                    Value="70" />
+            <Setter Property="Margin"
+                    Value="10" />
+            <Setter Property="VerticalOptions"
+                    Value="CenterAndExpand" />
+            <Setter Property="SegmentedHasSeparator"
+                    Value="True" />
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignCardBackground}" />
+        </Style>
+
+        <sh:SingleShade x:Key="ShadowTop"
+                        BlurRadius="6"
+                        Opacity="0.15"
+                        Offset="0,-8"
+                        Color="{StaticResource Accent700}" />
+
+        <sh:SingleShade x:Key="ShadowBottom"
+                        BlurRadius="6"
+                        Opacity="0.1"
+                        Offset="0,5"
+                        Color="{StaticResource Accent700}" />
+
+        <sh:SingleShade x:Key="ShadowAccentBottom"
+                        BlurRadius="6"
+                        Opacity="0.4"
+                        Offset="0,4"
+                        Color="{StaticResource Accent700}" />
+
+        <sh:ImmutableShades x:Key="ShadowNone" />
+
+        <sh:NeumorphismShades x:Key="ShadowNeumorphism" />
+
+        <sh:NeumorphismShades x:Key="ShadowThinNeumorphism"
+                              LowerOffset="8, 6"
+                              UpperOffset="-8,-6" />
     </Application.Resources>
 </Application>

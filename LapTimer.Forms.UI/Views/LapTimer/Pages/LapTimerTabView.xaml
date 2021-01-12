@@ -32,13 +32,12 @@
             </Grid.ColumnDefinitions>
 
             <material:MaterialCard Grid.Column="0"
-                                   CornerRadius="2"
-                                   Elevation="2"
                                    Margin="5"
                                    IsClickable="True"
                                    ClickCommand="{Binding SelectLapCommand}"
                                    VerticalOptions="FillAndExpand"
-                                   HorizontalOptions="FillAndExpand">
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource MaterialCardStyle}">
                 <StackLayout>
                     <material:MaterialLabel Text="{x:Static res:resources.STR_LAP}"
                                             Style="{StaticResource MaterialLabelStyle}" />
@@ -47,13 +46,12 @@
             </material:MaterialCard>
 
             <material:MaterialCard Grid.Column="1"
-                                   CornerRadius="2"
-                                   Elevation="2"
                                    Margin="5"
                                    IsClickable="True"
                                    ClickCommand="{Binding SelectTrackCommand}"
                                    VerticalOptions="FillAndExpand"
-                                   HorizontalOptions="FillAndExpand">
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource MaterialCardStyle}">
                 <StackLayout>
                     <material:MaterialLabel Text="{x:Static res:resources.STR_TRACK}"
                                             Style="{StaticResource MaterialLabelStyle}" />
@@ -66,7 +64,8 @@
 
             <material:MaterialCheckbox IsSelected="{Binding RoutesEnabled}"
                                        Text="{x:Static res:resources.STR_CHOOSEROUTE}"
-                                       HorizontalOptions="Center" />
+                                       HorizontalOptions="Center"
+                                       Style="{StaticResource MaterialCheckboxStyle}" />
 
             <material:MaterialTextField IsVisible="{Binding RoutesEnabled}"
                                         Placeholder="{x:Static res:resources.STR_ROUTES}"

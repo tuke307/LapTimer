@@ -9,17 +9,16 @@
     <Color x:Key="MaterialDesignBackground">#FF000000</Color>
     <Color x:Key="MaterialDesignPaper">#FF303030</Color>
     <Color x:Key="MaterialDesignCardBackground">#FF424242</Color>
-    <Color x:Key="MaterialDesignToolBarBackground">#FF212121</Color>
     <Color x:Key="MaterialDesignBody">#DDFFFFFF</Color>
     <Color x:Key="MaterialDesignBodyLight">#89FFFFFF</Color>
     <Color x:Key="MaterialDesignColumnHeader">#BCFFFFFF</Color>
-    <!-- 74% -->
 
+    <!-- 74% -->
     <Color x:Key="MaterialDesignCheckBoxOff">#89FFFFFF</Color>
-    <Color x:Key="MaterialDesignCheckBoxDisabled">#FF647076</Color>
 
     <Color x:Key="MaterialDesignTextBoxBorder">#89FFFFFF</Color>
     <Color x:Key="MaterialDesignDivider">#1FFFFFFF</Color>
+
     <!-- 12% -->
     <Color x:Key="MaterialDesignSelection">#757575</Color>
 
@@ -30,29 +29,19 @@
     <!-- 25% -->
     <Color x:Key="MaterialDesignFlatButtonRipple">#FFB6B6B6</Color>
 
-    <Color x:Key="MaterialDesignToolTipBackground">#eeeeee</Color>
     <Color x:Key="MaterialDesignChipBackground">#FF2E3C43</Color>
     <Color x:Key="MaterialDesignSnackbarBackground">#FFCDCDCD</Color>
-    <Color x:Key="MaterialDesignSnackbarMouseOver">#FFB9B9BD</Color>
     <Color x:Key="MaterialDesignSnackbarRipple">#FF494949</Color>
 
     <Color x:Key="MaterialDesignTextFieldBoxBackground">#1AFFFFFF</Color>
-    <!-- 10% white -->
-    <Color x:Key="MaterialDesignTextFieldBoxHoverBackground">#1FFFFFFF</Color>
-
-    <!-- 12% white -->
-
-    <Color x:Key="MaterialDesignTextFieldBoxDisabledBackground">#0DFFFFFF</Color>
 
     <!-- 5% white -->
-
     <Color x:Key="MaterialDesignTextAreaBorder">#BCFFFFFF</Color>
 
     <!-- 74% white -->
-
     <Color x:Key="MaterialDesignTextAreaInactiveBorder">#1AFFFFFF</Color>
-    <!-- 10% white -->
 
+    <!-- 10% white -->
     <Color x:Key="ColorEffortUnknown">#6c6c6c</Color>
     <Color x:Key="ColorEffortLightest">#25c743</Color>
     <Color x:Key="ColorEffortLight">#00b4d1</Color>
