@@ -4,7 +4,9 @@
     using MvvmCross;
     using MvvmCross.IoC;
     using MvvmCross.ViewModels;
+    using SkiaSharpnado.SkiaSharp;
     using System.Threading.Tasks;
+    using Xamarin.Essentials;
 
     /// <summary>
     /// MvxApp.
@@ -23,13 +25,18 @@
                .AsInterfaces()
                .RegisterAsLazySingleton();
 
+            // static registration => same instance
             Mvx.IoCProvider.RegisterSingleton(Plugin.Settings.CrossSettings.Current);
             Mvx.IoCProvider.RegisterSingleton<ITcxActivityService>(() => new TcxActivityService());
             Mvx.IoCProvider.RegisterSingleton<IDbActivityService>(() => new DbActivityService());
             Mvx.IoCProvider.RegisterSingleton<IRideService>(() => new RideService());
-            Mvx.IoCProvider.RegisterSingleton<ICountdownTimer>(() => new CountdownTimer());
+
+            // dynamic registration => new service on resolving
+            Mvx.IoCProvider.RegisterType<ICountdownService>(() => new CountdownService());
 
             this.RegisterAppStart<ViewModels.MainPageViewModel>();
+
+            SkiaHelper.Initialize((float)DeviceDisplay.MainDisplayInfo.Density);
 
             base.Initialize();
         }

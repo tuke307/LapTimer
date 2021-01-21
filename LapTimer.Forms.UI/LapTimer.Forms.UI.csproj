@@ -28,6 +28,7 @@
     <EmbeddedResource Include="Resources\2_bart_20190615_1020.tcx" />
     <EmbeddedResource Include="Resources\3_steven_20140705_1541.tcx" />
     <EmbeddedResource Include="Resources\4_david_20190714_2042.tcx" />
+    <EmbeddedResource Include="Resources\5_glenn_20190715_1110.tcx" />
     <EmbeddedResource Include="Resources\6_jean-marie_20190412_1605.tcx" />
     <EmbeddedResource Include="Resources\7_jean-marie_20190616_0854.tcx" />
     <EmbeddedResource Include="Resources\8_jean-marie_20190707_0902.tcx" />
@@ -40,7 +41,7 @@
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
     <PackageReference Include="TcxTools.NetStandard" Version="1.0.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1874" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
     <PackageReference Include="Sharpnado.Presentation.Forms" Version="1.7.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
     <PackageReference Include="XF.Material" Version="1.7.7" />
@@ -52,10 +53,6 @@
     <ProjectReference Include="..\Data\Data.csproj" />
     <ProjectReference Include="..\SkiaSharpnado.Maps\SkiaSharpnado.Maps.csproj" />
     <ProjectReference Include="..\SkiaSharpnado\SkiaSharpnado.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\5_glenn_20190715_1110.tcx" />
   </ItemGroup>
 
   <ItemGroup>

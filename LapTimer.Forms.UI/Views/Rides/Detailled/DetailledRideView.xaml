@@ -25,6 +25,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
+
             <material:MaterialIconButton Grid.Column="0"
                                          Image="close"
                                          BackgroundColor="Transparent"
@@ -119,11 +120,10 @@
                                 MaxTime="{Binding Source={x:Reference GraphView}, Path=CurrentCursorTime, Mode=TwoWay}" />
 
                 <material:MaterialCard Grid.Row="1"
-                                       CornerRadius="6"
-                                       Padding="15, 10"
                                        HasShadow="False"
-                                       Margin="15, 15, 15, 7">
-                    <Grid>
+                                       Margin="15, 15, 15, 7"
+                                       Style="{StaticResource MaterialCardStyle}">
+                    <Grid Padding="20, 0, 20, 0" VerticalOptions="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*" />
                             <RowDefinition Height="3*" />
@@ -167,10 +167,10 @@
                 </material:MaterialCard>
 
                 <material:MaterialCard Grid.Row="2"
-                                       CornerRadius="6"
                                        Margin="15, 8, 15, 15"
                                        Padding="0"
-                                       HasShadow="False">
+                                       HasShadow="False"
+                                       Style="{StaticResource MaterialCardStyle}">
                     <graph:SessionGraphView x:Name="GraphView"
                                             CurrentCursorTime="{Binding CurrentTime, Mode=OneWayToSource}"
                                             SessionGraphInfo="{Binding GraphInfo}" />

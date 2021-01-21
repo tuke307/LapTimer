@@ -215,22 +215,16 @@
                     Value="{DynamicResource MaterialDesignCardBackground}" />
         </Style>
 
-        <sh:SingleShade x:Key="ShadowTop"
+        <sh:SingleShade x:Key="ShadowAccentTop"
                         BlurRadius="6"
                         Opacity="0.15"
                         Offset="0,-8"
                         Color="{StaticResource Accent700}" />
 
-        <sh:SingleShade x:Key="ShadowBottom"
-                        BlurRadius="6"
-                        Opacity="0.1"
-                        Offset="0,5"
-                        Color="{StaticResource Accent700}" />
-
         <sh:SingleShade x:Key="ShadowAccentBottom"
                         BlurRadius="6"
-                        Opacity="0.4"
-                        Offset="0,4"
+                        Opacity="0.075"
+                        Offset="0,5"
                         Color="{StaticResource Accent700}" />
 
         <sh:ImmutableShades x:Key="ShadowNone" />

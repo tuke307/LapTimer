@@ -2,6 +2,7 @@
 using LapTimer.Forms.UI.Themes;
 using LapTimer.Forms.UI.ViewModels.Rides;
 using LapTimer.Forms.UI.Views.Rides;
+using MvvmCross.Forms.Views;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap;
@@ -15,7 +16,7 @@ using Xamarin.Forms.Xaml;
 namespace LapTimer.Forms.UI.CustomViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SessionGraphView : ContentView
+    public partial class SessionGraphView : MvxContentView
     {
         public static readonly BindableProperty CurrentCursorTimeProperty = BindableProperty.Create(
             nameof(CurrentCursorTime),
@@ -29,7 +30,6 @@ namespace LapTimer.Forms.UI.CustomViews
             typeof(SessionGraphView),
             propertyChanged: SessionGraphInfoChanged);
 
-        private static readonly SKColor AltitudeColor = ResourcesHelper.GetResourceColor("ColorGraphAltitude").ToSKColor();
         private static readonly SKColor AltitudeSurface = ResourcesHelper.GetResourceColor("ColorGraphAltitudeSurface").ToSKColor();
         private static readonly SKColor SpeedColor = ResourcesHelper.GetResourceColor("ColorGraphSpeed").ToSKColor();
         private SKPaint _cursorPaint;
@@ -52,8 +52,6 @@ namespace LapTimer.Forms.UI.CustomViews
             get => (SessionGraphInfo)GetValue(SessionGraphInfoProperty);
             set => SetValue(SessionGraphInfoProperty, value);
         }
-
-        public DetailledRideViewModel ViewModel => BindingContext as DetailledRideViewModel;
 
         public SessionGraphView()
         {
@@ -339,13 +337,6 @@ namespace LapTimer.Forms.UI.CustomViews
             {
                 var pictureRecorder = new SKPictureRecorder();
                 var canvas = pictureRecorder.BeginRecording(e.Info.Rect);
-
-                DrawCurve(
-                    canvas,
-                    sessionGraphInfo.SessionPoints,
-                    sessionGraphInfo.Altitude,
-                    AltitudeColor,
-                    sessionPoint => sessionPoint.Altitude);
 
                 DrawSurface(
                     canvas,

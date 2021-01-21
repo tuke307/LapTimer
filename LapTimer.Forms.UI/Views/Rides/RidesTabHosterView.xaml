@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
 
         <tabs:TabHostView Style="{StaticResource Key=TabHostViewStyle}"
-                          Shades="{StaticResource Key=ShadowThinNeumorphism}"
+                          Shades="{StaticResource Key=ShadowAccentBottom}"
                           SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"
                           Grid.Row="0">
             <tabs:TabHostView.Tabs>

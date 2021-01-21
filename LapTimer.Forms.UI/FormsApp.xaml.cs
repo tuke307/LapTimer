@@ -1,6 +1,4 @@
-﻿using LapTimer.Forms.UI.Functions;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace LapTimer.Forms.UI
 {

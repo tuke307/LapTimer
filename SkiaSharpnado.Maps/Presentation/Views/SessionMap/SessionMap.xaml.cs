@@ -95,14 +95,7 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
         {
             InitializeComponent();
 
-            // LayoutChanged += OnLayoutChanged;
-
             GoogleMap.CameraIdled += GoogleMapCameraChanged;
-        }
-
-        public void OnDestroy()
-        {
-            // LayoutChanged -= OnLayoutChanged;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

@@ -23,7 +23,7 @@
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public CountdownViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IMvxMessenger messenger, IRideService rideService, ICountdownTimer countdownTimer)
+        public CountdownViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IMvxMessenger messenger, IRideService rideService, ICountdownService countdownTimer)
             : base(logProvider, navigationService)
         {
             _countdownTimer = countdownTimer;
@@ -93,7 +93,7 @@
         private static double extendTimerDuration = 10.0;
         private static double timerDuration = 15.0;
         private static double vibrationDuration = 1.0;
-        private readonly ICountdownTimer _countdownTimer;
+        private readonly ICountdownService _countdownTimer;
         private readonly IMvxMessenger _messenger;
         private TimeSpan _timeSpanCountdown;
 
