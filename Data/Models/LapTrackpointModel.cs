@@ -38,11 +38,5 @@ namespace Data.Models
         /// </summary>
         /// <value>The longitude.</value>
         public double Longitude { get; set; }
-
-        /// <summary>
-        /// Gets or sets the speed.
-        /// </summary>
-        /// <value>The speed.</value>
-        public double? Speed { get; set; }
     }
 }
