@@ -8,8 +8,7 @@
     <ContentView.Content>
         <Grid RowSpacing="0">
             <maps:Map Grid.Row="0"
-                      x:Name="GoogleMap"
-                      MapType="Satellite" />
+                      x:Name="GoogleMap" />
 
             <forms:SKCanvasView Grid.Row="0"
                                 x:Name="MapOverlay"

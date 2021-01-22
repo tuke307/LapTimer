@@ -1,12 +1,17 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
+    using global::LapTimer.Forms.UI.Models;
     using global::LapTimer.Forms.UI.Services;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
+    using MvvmCross.Plugin.Messenger;
     using MvvmCross.ViewModels;
+    using Sharpnado.Presentation.Forms;
+    using SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap;
     using System;
     using System.Threading.Tasks;
+    using Xamarin.Forms.GoogleMaps;
 
     /// <summary>
     /// RouteViewModel.
@@ -19,9 +24,14 @@
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RouteViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IRideService rideService)
+        public RouteViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IRideService rideService, ILocationService locationService, IMvxMessenger messenger)
             : base(logProvider, navigationService)
         {
+            this._locationService = locationService;
+            this._messenger = messenger;
+            this._token = messenger.Subscribe<MvxLocationMessage>(this.OnLocationUpdated);
+            Loader = new TaskLoaderNotifier<SessionMapInfo>();
+            Loader.Load(() => LoadAsync());
         }
 
         #region Methods
@@ -43,6 +53,24 @@
             base.Prepare();
         }
 
+        private async Task<SessionMapInfo> LoadAsync()
+        {
+            SessionMapInfo mapInfo;
+
+            mapInfo = SessionMapInfo.Create(
+                null,
+                null,
+                1000,
+                1000);
+
+            return mapInfo;
+        }
+
+        private void OnLocationUpdated(MvxLocationMessage locationMessage)
+        {
+            CurrentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
+        }
+
         #endregion Methods
 
         #region Values
@@ -59,15 +87,35 @@
 
         #endregion Commands
 
+        private readonly ILocationService _locationService;
+
+        private readonly IMvxMessenger _messenger;
+
+        private readonly MvxSubscriptionToken _token;
+
+        private Position _currentPosition;
+
         private TimeSpan _lapTime;
+
+        private MvxLocationMessage _locationMessage;
+
         private double _speed;
+
         private TimeSpan _totalTime;
+
+        public Position CurrentPosition
+        {
+            get => this._currentPosition;
+            set => this.SetProperty(ref _currentPosition, value);
+        }
 
         public TimeSpan LapTime
         {
             get => this._lapTime;
             set => this.SetProperty(ref _lapTime, value);
         }
+
+        public TaskLoaderNotifier<SessionMapInfo> Loader { get; }
 
         public double Speed
         {

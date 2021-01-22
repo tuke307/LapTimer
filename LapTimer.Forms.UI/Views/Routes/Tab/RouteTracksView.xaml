@@ -14,7 +14,9 @@
         <ResourceDictionary>
             <DataTemplate x:Key="ActivityHeaderTemplate">
                 <ViewCell>
-                    <material:MaterialCard Style="{StaticResource MaterialCardStyle}">
+                    <material:MaterialCard Style="{StaticResource MaterialCardStyle}"
+                                           Margin="15, 7"
+                                           IsClickable="False">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
@@ -34,14 +36,13 @@
                             <material:MaterialLabel Grid.Row="0"
                                                     Grid.Column="1"
                                                     HorizontalOptions="End"
-                                                    Style="{StaticResource MaterialLabelStyle}"
-                                                    Text="{Binding DisplayableStartTime}" />
+                                                    Text="{Binding DisplayableStartTime}"
+                                                    Style="{StaticResource MaterialLabelStyle}" />
 
                             <views1:MainIndicatorsView Grid.Row="1"
                                                        Grid.Column="0"
                                                        Grid.ColumnSpan="2"
-                                                       BackgroundColor="Transparent"
-                                                       Margin="0, 10, 0, 0" />
+                                                       BackgroundColor="Transparent" />
                         </Grid>
                     </material:MaterialCard>
                 </ViewCell>
@@ -60,7 +61,7 @@
                                     SeparatorVisibility="None"
                                     ItemTapped="ListViewOnItemTapped"
                                     Margin="0, -5"
-                                    RowHeight="150">
+                                    RowHeight="110">
                     <ListView.Behaviors>
                         <behaviors:EventToCommandBehavior EventName="ItemTapped"
                                                           Command="{Binding ActivityTappedCommand}"

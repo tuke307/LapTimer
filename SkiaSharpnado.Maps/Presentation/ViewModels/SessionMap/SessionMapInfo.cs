@@ -19,7 +19,7 @@ namespace SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap
         public int TotalDurationInSeconds { get; }
 
         public SessionMapInfo(
-                                                    IReadOnlyList<SessionDisplayablePoint> sessionPoints,
+            IReadOnlyList<SessionDisplayablePoint> sessionPoints,
             Position bottomLeft,
             Position topRight,
             int totalDurationInSeconds)

@@ -15,13 +15,28 @@ using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
 namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
 {
-    public partial class SessionMap
+    public partial class SessionMap : ContentView
     {
+        #region BindableProperties
+
+        public static readonly BindableProperty CurrentPositionProperty = BindableProperty.Create(
+           nameof(CurrentPosition),
+           typeof(Position),
+           typeof(SessionMap),
+           defaultValue: null,
+           propertyChanged: CurrentPositionChanged);
+
         public static readonly BindableProperty InfoColorProperty = BindableProperty.Create(
-            nameof(InfoColor),
+                    nameof(InfoColor),
             typeof(Color),
             typeof(SessionMap),
-            Color.Default);
+            defaultValue: Color.Default);
+
+        public static readonly BindableProperty MapTypeProperty = BindableProperty.Create(
+            nameof(MapType),
+            typeof(MapType),
+            typeof(SessionMap),
+            defaultValue: MapType.Satellite);
 
         public static readonly BindableProperty MaxTimeProperty = BindableProperty.Create(
             nameof(MaxTime),
@@ -33,44 +48,37 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             nameof(PathThickness),
             typeof(int),
             typeof(SessionMap),
-            2,
+            defaultValue: 2,
             propertyChanged: InvalidateSurface);
 
         public static readonly BindableProperty SessionMapInfoProperty = BindableProperty.Create(
-                                    nameof(SessionMapInfo),
+            nameof(SessionMapInfo),
             typeof(SessionMapInfo),
             typeof(SessionMap),
             propertyChanged: SessionMapInfoChanged);
 
-        private LatLong _bottomRightPosition;
-        private LatLong _centerPosition;
-        private SKMatrix _currentMatrix = SKMatrix.CreateIdentity();
-        private SKPaint _distanceTextPaint;
-        private int _drawingCount = 0;
-        private SKSvg _endImage;
-        private SKColor _firstImageColor;
-        private bool _forceInvalidation;
-        private SKPaint _gradientPathPaint;
-        private bool _isCameraInitialized;
-        private SKColor _lastImageColor;
-        private SKPaint _lastMarkerPaint;
-        private int _markerArrowSize;
-        private MarkerShapeLayer _markerLayer;
+        public static readonly BindableProperty ShowCurrentPositionProperty = BindableProperty.Create(
+           nameof(ShowCurrentPosition),
+           typeof(bool),
+           typeof(SessionMap),
+           defaultValue: false);
 
-        private SKPaint _markerPaint;
-        private SKPicture _overlayPicture;
-        private float _pictureSize;
-        private PositionConverter _positionConverter;
-        private SKPoint _previousCenter;
-        private double _previousTopLeftBottomRightSquareDistance;
-        private SKSvg _startImage;
-        private TextShapeLayer _textDistanceLayer;
-        private LatLong _topLeftPosition;
+        public Position CurrentPosition
+        {
+            get => (Position)GetValue(CurrentPositionProperty);
+            set => SetValue(CurrentPositionProperty, value);
+        }
 
         public Color InfoColor
         {
             get => (Color)GetValue(InfoColorProperty);
             set => SetValue(InfoColorProperty, value);
+        }
+
+        public MapType MapType
+        {
+            get => (MapType)GetValue(MapTypeProperty);
+            set => SetValue(MapTypeProperty, value);
         }
 
         public TimeSpan MaxTime
@@ -91,11 +99,53 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             set => SetValue(SessionMapInfoProperty, value);
         }
 
+        public bool ShowCurrentPosition
+        {
+            get => (bool)GetValue(ShowCurrentPositionProperty);
+            set => SetValue(ShowCurrentPositionProperty, value);
+        }
+
+        #endregion BindableProperties
+
+        #region PrivateProperties
+
+        private LatLong _bottomRightPosition;
+        private LatLong _centerPosition;
+        private SKMatrix _currentMatrix = SKMatrix.CreateIdentity();
+
+        //private SKPaint _distanceTextPaint;
+        private int _drawingCount = 0;
+
+        private SKSvg _endImage;
+        private SKColor _firstImageColor;
+        private bool _forceInvalidation;
+        private SKPaint _gradientPathPaint;
+        private bool _isCameraInitialized;
+        private SKColor _lastImageColor;
+        private SKPaint _lastMarkerPaint;
+        private SKSvg _locationImage;
+        private int _markerArrowSize;
+        private MarkerShapeLayer _markerLayer;
+
+        private SKPaint _markerPaint;
+        private SKPicture _overlayPicture;
+        private float _pictureSize;
+        private PositionConverter _positionConverter;
+        private SKPoint _previousCenter;
+        private double _previousTopLeftBottomRightSquareDistance;
+        private SKSvg _startImage;
+        private TextShapeLayer _textDistanceLayer;
+        private LatLong _topLeftPosition;
+
+        #endregion PrivateProperties
+
         public SessionMap()
         {
             InitializeComponent();
 
             GoogleMap.CameraIdled += GoogleMapCameraChanged;
+
+            GoogleMap.MapType = MapType;
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -107,6 +157,11 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
                 _forceInvalidation = true;
                 MapOverlay.InvalidateSurface();
             }
+        }
+
+        private static void CurrentPositionChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            ((SessionMap)bindable).MapOverlay.InvalidateSurface();
         }
 
         private static void InvalidateSurface(BindableObject bindable, object oldvalue, object newvalue)
@@ -178,8 +233,7 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             float svgStartMax = Math.Max(_startImage.Picture.CullRect.Width, _startImage.Picture.CullRect.Height);
             float startScale = _pictureSize / svgStartMax;
 
-            var startMatrix = SKMatrix.CreateIdentity();
-            startMatrix = SKMatrix.CreateScaleTranslation(
+            var startMatrix = SKMatrix.CreateScaleTranslation(
                 startScale,
                 startScale,
                 firstPoint.X - (_pictureSize / 2),
@@ -203,8 +257,7 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             float svgEndMax = Math.Max(_endImage.Picture.CullRect.Width, _endImage.Picture.CullRect.Height);
             float endScale = _pictureSize / svgEndMax;
 
-            var endMatrix = SKMatrix.CreateIdentity();
-            endMatrix = SKMatrix.CreateScaleTranslation(endScale, endScale, lastPoint.X, lastPoint.Y - _pictureSize);
+            var endMatrix = SKMatrix.CreateScaleTranslation(endScale, endScale, lastPoint.X, lastPoint.Y - _pictureSize);
 
             using (var picturePaint = new SKPaint()
             {
@@ -222,6 +275,47 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
         private void DrawLastMarker(SKCanvas canvas, SKPoint lastPoint)
         {
             canvas.DrawCircle(lastPoint.X, lastPoint.Y, SkiaHelper.ToPixel(3), _lastMarkerPaint);
+        }
+
+        private bool DrawPositionMarker(SKCanvas canvas)
+        {
+            var point = _positionConverter[CurrentPosition.ToLatLong()].ToSKPoint();
+
+            float svgStartMax = Math.Max(_locationImage.Picture.CullRect.Width, _locationImage.Picture.CullRect.Height);
+            float startScale = _pictureSize / svgStartMax;
+
+            var startMatrix = SKMatrix.CreateScaleTranslation(
+                startScale,
+                startScale,
+                point.X - (_pictureSize / 2),
+                point.Y - (_pictureSize / 2));
+
+            using (var picturePaint = new SKPaint()
+            {
+                ColorFilter = SKColorFilter.CreateBlendMode(
+                        InfoColor == Color.Default ? _firstImageColor : InfoColor.ToSKColor(),
+                        SKBlendMode.SrcIn)
+            })
+            {
+                canvas.DrawPicture(_locationImage.Picture, ref startMatrix, picturePaint);
+            }
+
+            float svgEndMax = Math.Max(_endImage.Picture.CullRect.Width, _endImage.Picture.CullRect.Height);
+            float endScale = _pictureSize / svgEndMax;
+
+            var endMatrix = SKMatrix.CreateScaleTranslation(endScale, endScale, point.X, point.Y - _pictureSize);
+
+            using (var picturePaint = new SKPaint()
+            {
+                ColorFilter = SKColorFilter.CreateBlendMode(
+                        InfoColor == Color.Default ? _lastImageColor : InfoColor.ToSKColor(),
+                        SKBlendMode.SrcIn)
+            })
+            {
+                canvas.DrawPicture(_endImage.Picture, ref endMatrix, picturePaint);
+            }
+
+            return true;
         }
 
         private void GoogleMapCameraChanged(object sender, CameraIdledEventArgs e)
@@ -314,12 +408,12 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
                 Style = SKPaintStyle.Stroke,
             };
 
-            _distanceTextPaint = new SKPaint
-            {
-                Color = SKColors.White,
-                TextSize = SkiaHelper.ToPixel(12),
-                IsAntialias = true,
-            };
+            //_distanceTextPaint = new SKPaint
+            //{
+            //    Color = SKColors.White,
+            //    TextSize = SkiaHelper.ToPixel(12),
+            //    IsAntialias = true,
+            //};
 
             _markerArrowSize = (int)(PathThickness * 1.5);
         }
@@ -328,6 +422,7 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
         {
             const string StartImageName = "stopwatch-solid.svg";
             const string EndImageName = "flag-checkered-solid.svg";
+            const string LocationImageName = "current_location.png";
 
             using (var stream = Embedded.Load(StartImageName))
             {
@@ -339,6 +434,11 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             {
                 _endImage = new SKSvg();
                 _endImage.Load(stream);
+            }
+            using (var stream = Embedded.Load(LocationImageName))
+            {
+                _locationImage = new SKSvg();
+                _locationImage.Load(stream);
             }
 
             _pictureSize = SkiaHelper.ToPixel(20);
@@ -495,11 +595,16 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             }
 
             _textDistanceLayer.UpdateMaxTime(MaxTime);
-            _textDistanceLayer.Draw(canvas, _distanceTextPaint);
+            //_textDistanceLayer.Draw(canvas, _distanceTextPaint);
 
             //DrawDebugInfos(
             //    canvas,
             //    _positionConverter.ToString());
+
+            if (ShowCurrentPosition)
+            {
+                DrawPositionMarker(canvas);
+            }
 
             ReleaseMapResources();
 
@@ -530,8 +635,8 @@ namespace SkiaSharpnado.Maps.Presentation.Views.SessionMap
             _gradientPathPaint?.Dispose();
             _gradientPathPaint = null;
 
-            _distanceTextPaint?.Dispose();
-            _distanceTextPaint = null;
+            //_distanceTextPaint?.Dispose();
+            //_distanceTextPaint = null;
         }
     }
 }

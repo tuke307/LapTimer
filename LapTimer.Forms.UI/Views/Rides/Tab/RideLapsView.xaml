@@ -63,7 +63,7 @@
                                     SeparatorVisibility="None"
                                     ItemTapped="ListViewOnItemTapped"
                                     Margin="0, -5"
-                                    RowHeight="100">
+                                    RowHeight="110">
                     <ListView.Behaviors>
                         <behaviors:EventToCommandBehavior EventName="ItemTapped"
                                                           Command="{Binding ActivityTappedCommand}"
