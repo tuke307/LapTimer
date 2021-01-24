@@ -1,4 +1,5 @@
-﻿using SkiaSharpnado.Maps.Domain;
+﻿using LapTimer.SkiaSharp.Helpers;
+using LapTimer.SkiaSharp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

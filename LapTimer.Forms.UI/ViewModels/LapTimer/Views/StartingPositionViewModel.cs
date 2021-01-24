@@ -1,8 +1,7 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
+    using global::LapTimer.Core.Services;
     using global::LapTimer.Forms.UI.Models;
-    using global::LapTimer.Forms.UI.Services;
-    using MvvmCross;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;

@@ -170,6 +170,10 @@
     <AndroidResource Include="Resources\drawable-night-xhdpi\history.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LapTimer.Core\LapTimer.Core.csproj">
+      <Project>{c6d93dbf-1069-4a5d-9225-e070d1d40aac}</Project>
+      <Name>LapTimer.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LapTimer.Forms.UI\LapTimer.Forms.UI.csproj">
       <Project>{D2A34567-F469-4111-9F29-28839CC5B6CF}</Project>
       <Name>LapTimer.Forms.UI</Name>

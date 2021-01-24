@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LapTimer.Core.Services;
+using System;
 using Xamarin.Forms;
 
 namespace LapTimer.Forms.UI.Services

@@ -1,5 +1,6 @@
-﻿using SkiaSharpnado.Maps.Domain;
-using SkiaSharpnado.ViewModels;
+﻿using LapTimer.SkiaSharp.Helpers;
+using LapTimer.SkiaSharp.Models;
+using LapTimer.SkiaSharp.ViewModels;
 using System;
 using System.Collections.Generic;
 

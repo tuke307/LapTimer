@@ -1,5 +1,5 @@
-﻿using LapTimer.Forms.UI.Functions;
-using System;
+﻿using LapTimer.Core.Services;
+using LapTimer.Forms.UI.Functions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
@@ -11,7 +11,7 @@ namespace LapTimer.Forms.UI.Services
     /// <summary>
     /// TcxActivityService.
     /// </summary>
-    /// <seealso cref="LapTimer.Forms.UI.Services.ITcxActivityService" />
+    /// <seealso cref="LapTimer.Core.Services.ITcxActivityService" />
     public class TcxActivityService : ITcxActivityService
     {
         private const string RuntasticFileFormat = "{0}.tcx";

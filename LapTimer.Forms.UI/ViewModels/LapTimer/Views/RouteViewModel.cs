@@ -1,17 +1,22 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
-    using global::LapTimer.Forms.UI.Models;
-    using global::LapTimer.Forms.UI.Services;
+    using global::LapTimer.Core.Models;
+    using global::LapTimer.Core.Services;
+    using global::LapTimer.Forms.UI.Functions;
+    using global::LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
+    using MvvmCross;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.Plugin.Messenger;
     using MvvmCross.ViewModels;
     using Sharpnado.Presentation.Forms;
-    using SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Xamarin.Essentials;
     using Xamarin.Forms.GoogleMaps;
+    using XF.Material.Forms.UI.Dialogs;
 
     /// <summary>
     /// RouteViewModel.
@@ -31,7 +36,7 @@
             this._messenger = messenger;
             this._token = messenger.Subscribe<MvxLocationMessage>(this.OnLocationUpdated);
             Loader = new TaskLoaderNotifier<SessionMapInfo>();
-            Loader.Load(() => LoadAsync());
+            SessionDisplayablePoint = new List<SessionDisplayablePoint>();
         }
 
         #region Methods
@@ -40,9 +45,25 @@
         /// Initializes this instance.
         /// </summary>
         /// <returns>Initialisierung.</returns>
-        public override Task Initialize()
+        public override async Task Initialize()
         {
-            return base.Initialize();
+            await base.Initialize();
+
+            // permissions
+            PermissionStatus locationWhenInUse = await PermissionHelper.GetPermission<Permissions.LocationWhenInUse>().ConfigureAwait(true);
+
+            if (locationWhenInUse != PermissionStatus.Granted || locationWhenInUse != PermissionStatus.Granted)
+            {
+                var dialog = await MaterialDialog.Instance.ConfirmAsync(message: "Check your permission settings",
+                                   title: "Alert");
+
+                if (dialog.HasValue)
+                {
+                    Mvx.IoCProvider.Resolve<ICloseApplicationService>().CloseApplication();
+                }
+            }
+
+            Loader.Load(() => LoadAsync());
         }
 
         /// <summary>
@@ -57,18 +78,18 @@
         {
             SessionMapInfo mapInfo;
 
-            mapInfo = SessionMapInfo.Create(
-                null,
-                null,
-                1000,
-                1000);
+            mapInfo = new SessionMapInfo(
+                SessionDisplayablePoint,
+                new Position(10, 10),
+                new Position(10, 10),
+                0);
 
             return mapInfo;
         }
 
         private void OnLocationUpdated(MvxLocationMessage locationMessage)
         {
-            CurrentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
+            //CurrentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
         }
 
         #endregion Methods
@@ -99,15 +120,10 @@
 
         private MvxLocationMessage _locationMessage;
 
+        private List<SessionDisplayablePoint> _sessionDisplayablePoint;
         private double _speed;
 
         private TimeSpan _totalTime;
-
-        public Position CurrentPosition
-        {
-            get => this._currentPosition;
-            set => this.SetProperty(ref _currentPosition, value);
-        }
 
         public TimeSpan LapTime
         {
@@ -116,6 +132,12 @@
         }
 
         public TaskLoaderNotifier<SessionMapInfo> Loader { get; }
+
+        public List<SessionDisplayablePoint> SessionDisplayablePoint
+        {
+            get => this._sessionDisplayablePoint;
+            set => this.SetProperty(ref _sessionDisplayablePoint, value);
+        }
 
         public double Speed
         {

@@ -1,11 +1,12 @@
-﻿using LapTimer.Forms.UI.Models;
-using LapTimer.Forms.UI.Themes;
+﻿using LapTimer.Forms.UI.Themes;
 using LapTimer.Forms.UI.ViewModels.Rides;
 using LapTimer.Forms.UI.Views.Rides;
+using LapTimer.SkiaSharp.Helpers;
+using LapTimer.SkiaSharp.Models;
+using LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
 using MvvmCross.Forms.Views;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-using SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap;
 using SkiaSharpnado.SkiaSharp;
 using System;
 using System.Collections.Generic;

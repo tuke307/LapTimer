@@ -13,28 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\1_dominique_20190714_0825.tcx" />
-    <None Remove="Resources\2_bart_20190615_1020.tcx" />
-    <None Remove="Resources\3_steven_20140705_1541.tcx" />
-    <None Remove="Resources\4_david_20190714_2042.tcx" />
-    <None Remove="Resources\5_glenn_20190715_1110.tcx" />
-    <None Remove="Resources\6_jean-marie_20190412_1605.tcx" />
-    <None Remove="Resources\7_jean-marie_20190616_0854.tcx" />
-    <None Remove="Resources\8_jean-marie_20190707_0902.tcx" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\1_dominique_20190714_0825.tcx" />
-    <EmbeddedResource Include="Resources\2_bart_20190615_1020.tcx" />
-    <EmbeddedResource Include="Resources\3_steven_20140705_1541.tcx" />
-    <EmbeddedResource Include="Resources\4_david_20190714_2042.tcx" />
-    <EmbeddedResource Include="Resources\5_glenn_20190715_1110.tcx" />
-    <EmbeddedResource Include="Resources\6_jean-marie_20190412_1605.tcx" />
-    <EmbeddedResource Include="Resources\7_jean-marie_20190616_0854.tcx" />
-    <EmbeddedResource Include="Resources\8_jean-marie_20190707_0902.tcx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MvvmCross" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Location" Version="7.1.2" />
@@ -51,18 +29,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj" />
-    <ProjectReference Include="..\SkiaSharpnado.Maps\SkiaSharpnado.Maps.csproj" />
-    <ProjectReference Include="..\SkiaSharpnado\SkiaSharpnado.csproj" />
+    <ProjectReference Include="..\LapTimer.Core\LapTimer.Core.csproj" />
+    <ProjectReference Include="..\LapTimer.SkiaSharp\LapTimer.SkiaSharp.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="FormsApp.xaml.cs">
       <DependentUpon>FormsApp</DependentUpon>
-    </Compile>
-    <Compile Update="Resx\resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>resources.resx</DependentUpon>
     </Compile>
     <Compile Update="Views\LapTimer\Pages\LapTimerTabView.xaml.cs">
       <DependentUpon>LapTimerTabView.xaml</DependentUpon>
@@ -118,22 +91,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resx\resources.de-DE.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resx\resources.de.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resx\resources.en-US.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resx\resources.en.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resx\resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Update="CustomViews\SessionGraphView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

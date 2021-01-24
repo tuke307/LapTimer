@@ -2,9 +2,9 @@
 {
     using Android.App;
     using Android.Support.V7.App;
+    using LapTimer.Core.Services;
     using LapTimer.Forms.UI;
     using LapTimer.Forms.UI.Services;
-    using LapTimer.Forms.UI.Themes;
     using MvvmCross;
     using MvvmCross.Platforms.Android;
 

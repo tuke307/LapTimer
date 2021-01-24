@@ -1,8 +1,8 @@
 ﻿namespace LapTimer.Forms.UI.Droid
 {
+    using LapTimer.Core.Services;
     using LapTimer.Forms.UI;
     using LapTimer.Forms.UI.Droid.Services;
-    using LapTimer.Forms.UI.Services;
     using MvvmCross;
     using MvvmCross.Forms.Platforms.Android.Core;
     using MvvmCross.Plugin;

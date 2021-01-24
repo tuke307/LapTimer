@@ -1,6 +1,5 @@
 ﻿using Data;
-using LapTimer.Forms.UI.Services;
-using LapTimer.Forms.UI.Themes;
+using LapTimer.Core.Services;
 using Microsoft.EntityFrameworkCore;
 using MvvmCross;
 using System;

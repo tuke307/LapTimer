@@ -1,6 +1,6 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Routes
 {
-    using global::LapTimer.Forms.UI.Services;
+    using global::LapTimer.Core.Services;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using System.Threading.Tasks;

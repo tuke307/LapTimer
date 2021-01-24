@@ -4,9 +4,9 @@
                       xmlns:converters="clr-namespace:LapTimer.Forms.UI.Converters"
                       xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
+                      xmlns:map="clr-namespace:LapTimer.SkiaSharp.Presentation.Views.SessionMap;assembly=LapTimer.SkiaSharp"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
-                      xmlns:map="clr-namespace:SkiaSharpnado.Maps.Presentation.Views.SessionMap;assembly=SkiaSharpnado.Maps"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
                       x:Class="LapTimer.Forms.UI.Views.LapTimer.RouteView"
                       x:TypeArguments="viewModels:LapTimer.RouteViewModel">
@@ -26,13 +26,13 @@
         </Grid.RowDefinitions>
 
         <customViews:TaskLoaderView Grid.Row="0"
+                                    Grid.ColumnSpan="3"
                                     TaskLoaderNotifier="{Binding Loader}"
                                     Style="{StaticResource Key=TaskLoaderViewStyle}">
             <map:SessionMap x:Name="SessionMap"
                             PathThickness="4"
-                            SessionMapInfo="{Binding Loader.Result}"
+                            SessionMapInfo="{Binding SessionMapInfo}"
                             MapType="Satellite"
-                            CurrentPosition="{Binding CurrentPosition}"
                             ShowCurrentPosition="True" />
         </customViews:TaskLoaderView>
 

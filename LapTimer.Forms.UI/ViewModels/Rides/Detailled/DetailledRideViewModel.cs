@@ -1,14 +1,16 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Rides
 {
+    using global::LapTimer.Core.Services;
     using global::LapTimer.Forms.UI.Models;
     using global::LapTimer.Forms.UI.Services;
+    using global::LapTimer.SkiaSharp.Models;
+    using global::LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
+    using global::LapTimer.SkiaSharp.ViewModels;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
     using Sharpnado.Presentation.Forms;
-    using SkiaSharpnado.Maps.Presentation.ViewModels.SessionMap;
-    using SkiaSharpnado.ViewModels;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -156,10 +158,10 @@
             var currentPoint = GraphInfo.SessionPoints.First(p => p.Time >= CurrentTime);
 
             //CurrentHeartRate = currentPoint.HeartRate?.ToString() ?? Functions.Functions.GetLocalisedRes(typeof(Resx.resources), "NoValue");
-            CurrentSpeed = currentPoint.Speed?.ToString("0.0") ?? Functions.Resources.GetLocalisedRes(typeof(Resx.resources), nameof(Resx.resources.NoValue));
-            CurrentAltitude = currentPoint.Altitude?.ToString() ?? Functions.Resources.GetLocalisedRes(typeof(Resx.resources), nameof(Resx.resources.NoValue));
+            CurrentSpeed = currentPoint.Speed?.ToString("0.0") ?? Functions.Resources.GetLocalisedRes(typeof(Core.Resx.resources), nameof(Core.Resx.resources.NoValue));
+            CurrentAltitude = currentPoint.Altitude?.ToString() ?? Functions.Resources.GetLocalisedRes(typeof(Core.Resx.resources), nameof(Core.Resx.resources.NoValue));
             CurrentDistance = currentPoint.Distance != null
-                ? (currentPoint.Distance.Value / 1000f).ToString("0.0") : Functions.Resources.GetLocalisedRes(typeof(Resx.resources), nameof(Resx.resources.NoValue));
+                ? (currentPoint.Distance.Value / 1000f).ToString("0.0") : Functions.Resources.GetLocalisedRes(typeof(Core.Resx.resources), nameof(Core.Resx.resources.NoValue));
         }
 
         #endregion Methods

@@ -1,4 +1,5 @@
-﻿using Plugin.Settings;
+﻿using LapTimer.Core.Services;
+using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
 namespace LapTimer.Forms.UI
@@ -15,7 +16,7 @@ namespace LapTimer.Forms.UI
         {
             get
             {
-                return AppSettings.GetValueOrDefault(nameof(Primary), (int)Themes.PrimaryColor.Cyan, userFile);
+                return AppSettings.GetValueOrDefault(nameof(Primary), (int)PrimaryColor.Cyan, userFile);
             }
 
             set
@@ -32,7 +33,7 @@ namespace LapTimer.Forms.UI
         {
             get
             {
-                return AppSettings.GetValueOrDefault(nameof(Secondary), (int)Themes.SecondaryColor.Teal, userFile);
+                return AppSettings.GetValueOrDefault(nameof(Secondary), (int)SecondaryColor.Teal, userFile);
             }
 
             set
@@ -49,7 +50,7 @@ namespace LapTimer.Forms.UI
         {
             get
             {
-                return AppSettings.GetValueOrDefault(nameof(Theme), (int)Themes.BaseTheme.Inherit, userFile);
+                return AppSettings.GetValueOrDefault(nameof(Theme), (int)BaseTheme.Inherit, userFile);
             }
 
             set

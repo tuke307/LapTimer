@@ -1,15 +1,17 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Routes
 {
     using Data.Models;
+    using global::LapTimer.Core.Services;
     using global::LapTimer.Forms.UI.Models;
     using global::LapTimer.Forms.UI.Services;
+    using global::LapTimer.SkiaSharp.Helpers;
+    using global::LapTimer.SkiaSharp.Models;
+    using global::LapTimer.SkiaSharp.ViewModels;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using MvvmCross.ViewModels;
     using Sharpnado.Presentation.Forms;
-    using SkiaSharpnado.Maps.Domain;
-    using SkiaSharpnado.ViewModels;
     using System;
     using System.Collections.Generic;
     using System.Linq;

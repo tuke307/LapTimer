@@ -1,5 +1,6 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Settings
 {
+    using global::LapTimer.Core.Services;
     using global::LapTimer.Forms.UI.Services;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
@@ -25,7 +26,7 @@
             : base(logProvider, navigationService)
         {
             this._themeService = themeService;
-            BaseThemeValue = (Themes.BaseTheme)ColorSettings.Theme;
+            BaseThemeValue = (BaseTheme)ColorSettings.Theme;
 
             CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
         }
@@ -60,20 +61,20 @@
         #endregion Commands
 
         private readonly IThemeService _themeService;
-        private Array _baseTheme = Enum.GetValues(typeof(Themes.BaseTheme));
+        private Array _baseTheme = Enum.GetValues(typeof(BaseTheme));
 
-        private Themes.BaseTheme? _baseThemeValue;
+        private BaseTheme? _baseThemeValue;
 
-        public List<Themes.BaseTheme> BaseThemeList
+        public List<BaseTheme> BaseThemeList
         {
-            get => _baseTheme.OfType<Themes.BaseTheme>().ToList();
+            get => _baseTheme.OfType<BaseTheme>().ToList();
         }
 
         /// <summary>
         /// Gets or sets the base theme value.
         /// </summary>
         /// <value>The base theme value.</value>
-        public Themes.BaseTheme? BaseThemeValue
+        public BaseTheme? BaseThemeValue
         {
             get => _baseThemeValue;
             set

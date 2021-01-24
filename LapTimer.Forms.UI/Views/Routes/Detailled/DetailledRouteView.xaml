@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:res="clr-namespace:LapTimer.Core.Resx;assembly=LapTimer.Core"
                       xmlns:graph="clr-namespace:LapTimer.Forms.UI.CustomViews"
-                      xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
+                      xmlns:map="clr-namespace:LapTimer.SkiaSharp.Presentation.Views.SessionMap;assembly=LapTimer.SkiaSharp"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
-                      xmlns:map="clr-namespace:SkiaSharpnado.Maps.Presentation.Views.SessionMap;assembly=SkiaSharpnado.Maps"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
                       x:Class="LapTimer.Forms.UI.Views.Routes.DetailledRouteView"
                       x:TypeArguments="viewModels:Routes.DetailledRouteViewModel">

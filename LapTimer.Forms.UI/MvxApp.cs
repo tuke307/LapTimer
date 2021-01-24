@@ -1,5 +1,6 @@
 ﻿namespace LapTimer.Forms.UI
 {
+    using LapTimer.Core.Services;
     using LapTimer.Forms.UI.Services;
     using MvvmCross;
     using MvvmCross.IoC;
@@ -20,7 +21,7 @@
         public override void Initialize()
         {
             // init des location services.
-            typeof(LapTimer.Forms.UI.Services.LocationService).Assembly.CreatableTypes()
+            typeof(LocationService).Assembly.CreatableTypes()
                .EndingWith("Service")
                .AsInterfaces()
                .RegisterAsLazySingleton();

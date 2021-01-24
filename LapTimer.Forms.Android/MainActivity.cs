@@ -4,8 +4,7 @@
     using Android.Content.PM;
     using Android.Content.Res;
     using Android.OS;
-    using LapTimer.Forms.UI.Services;
-    using LapTimer.Forms.UI.Themes;
+    using LapTimer.Core.Services;
     using MvvmCross;
     using MvvmCross.Forms.Platforms.Android.Views;
     using Sharpnado.Presentation.Forms.Droid;

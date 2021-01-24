@@ -1,5 +1,5 @@
 ﻿using Android.App;
-using LapTimer.Forms.UI.Services;
+using LapTimer.Core.Services;
 using MvvmCross;
 using MvvmCross.Platforms.Android;
 

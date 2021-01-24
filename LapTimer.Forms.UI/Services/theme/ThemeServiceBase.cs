@@ -1,5 +1,6 @@
 ﻿namespace LapTimer.Forms.UI.Services
 {
+    using LapTimer.Core.Services;
     using LapTimer.Forms.UI.Themes;
     using Xamarin.Forms;
 
@@ -54,14 +55,14 @@
 
             switch (themeMode)
             {
-                case Themes.BaseTheme.Inherit:
+                case BaseTheme.Inherit:
                     break;
 
-                case Themes.BaseTheme.Light:
+                case BaseTheme.Light:
                     mergedDir.Add(new Themes.Base.Light());
                     break;
 
-                case Themes.BaseTheme.Dark:
+                case BaseTheme.Dark:
                     mergedDir.Add(new Themes.Base.Dark());
                     break;
 
