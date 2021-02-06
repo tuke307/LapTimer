@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace SkiaSharpnado.SkiaSharp
+namespace LapTimer.SkiaSharp.SkiaSharp
 {
     public static class ComputationHelper
     {

@@ -1,5 +1,5 @@
-﻿using SkiaSharp;
-using SkiaSharpnado.SkiaSharp;
+﻿using LapTimer.SkiaSharp.SkiaSharp;
+using SkiaSharp;
 using System;
 
 namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap

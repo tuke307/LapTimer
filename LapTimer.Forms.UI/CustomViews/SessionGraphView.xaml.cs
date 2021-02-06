@@ -4,10 +4,10 @@ using LapTimer.Forms.UI.Views.Rides;
 using LapTimer.SkiaSharp.Helpers;
 using LapTimer.SkiaSharp.Models;
 using LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
+using LapTimer.SkiaSharp.SkiaSharp;
 using MvvmCross.Forms.Views;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-using SkiaSharpnado.SkiaSharp;
 using System;
 using System.Collections.Generic;
 using TouchTracking;
@@ -27,7 +27,7 @@ namespace LapTimer.Forms.UI.CustomViews
 
         public static readonly BindableProperty SessionGraphInfoProperty = BindableProperty.Create(
             nameof(SessionGraphInfo),
-            typeof(SessionGraphInfo),
+            typeof(SessionGraph),
             typeof(SessionGraphView),
             propertyChanged: SessionGraphInfoChanged);
 
@@ -48,9 +48,9 @@ namespace LapTimer.Forms.UI.CustomViews
             set => SetValue(CurrentCursorTimeProperty, value);
         }
 
-        public SessionGraphInfo SessionGraphInfo
+        public SessionGraph SessionGraphInfo
         {
-            get => (SessionGraphInfo)GetValue(SessionGraphInfoProperty);
+            get => (SessionGraph)GetValue(SessionGraphInfoProperty);
             set => SetValue(SessionGraphInfoProperty, value);
         }
 
@@ -61,7 +61,7 @@ namespace LapTimer.Forms.UI.CustomViews
 
         private static void SessionGraphInfoChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            var sessionGraphInfo = newvalue as SessionGraphInfo;
+            var sessionGraphInfo = newvalue as SessionGraph;
             if (newvalue != null)
             {
                 ((SessionGraphView)bindable).Initialize(sessionGraphInfo);
@@ -112,7 +112,7 @@ namespace LapTimer.Forms.UI.CustomViews
 
         private void DrawCurve(
             SKCanvas canvas,
-            IReadOnlyList<ISessionDisplayablePoint> sessionPoints,
+            List<SessionDisplayablePoint> sessionPoints,
             ValueBounds valueBounds,
             SKColor color,
             Func<ISessionDisplayablePoint, double?> valueGetter)
@@ -179,7 +179,7 @@ namespace LapTimer.Forms.UI.CustomViews
 
         private void DrawSurface(
             SKCanvas canvas,
-            IReadOnlyList<ISessionDisplayablePoint> sessionPoints,
+            List<SessionDisplayablePoint> sessionPoints,
             ValueBounds valueBounds,
             SKColor color,
             Func<ISessionDisplayablePoint, double?> valueGetter)
@@ -370,7 +370,7 @@ namespace LapTimer.Forms.UI.CustomViews
             ReleaseGraphResources();
         }
 
-        private void Initialize(SessionGraphInfo sessionGraphInfo)
+        private void Initialize(SessionGraph sessionGraphInfo)
         {
             SessionGraphInfo = sessionGraphInfo;
             CurrentCursorTime = TimeSpan.FromSeconds(sessionGraphInfo.TotalDurationInSeconds);

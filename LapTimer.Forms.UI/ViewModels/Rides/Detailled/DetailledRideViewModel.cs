@@ -34,7 +34,7 @@
         {
             DeleteRideCommand = new MvxAsyncCommand(DeleteRide);
             CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
-            Loader = new TaskLoaderNotifier<SessionMapInfo>();
+            Loader = new TaskLoaderNotifier<SessionMap>();
             _tcxActivityService = tcxactivityService;
         }
 
@@ -65,7 +65,7 @@
             throw new NotImplementedException();
         }
 
-        private async Task<SessionMapInfo> LoadAsync(string activityId)
+        private async Task<SessionMap> LoadAsync(string activityId)
         {
             var activity = await _tcxActivityService.GetActivityAsync(activityId);
 
@@ -90,59 +90,13 @@
                 return HumanEffortComputer.BySpeed.GetColor(point.Speed, maxSpeed);
             }
 
-            //Color? SelectColorByHeartRate(ISessionDisplayablePoint point)
-            //{
-            //    if (point.HeartRate == null)
-            //    {
-            //        return null;
-            //    }
+            SessionMap mapInfo;
 
-            //    return HumanEffortComputer.ByHeartBeat.GetColor(point.HeartRate);
-            //}
-
-            //int markerInterval = 100;
-            //int distanceInternal = 100;
-            //int totalDistance = activityHeader.DistanceInMeters;
-            //if (totalDistance >= 100000)
-            //{
-            //    markerInterval = 5000;
-            //    distanceInternal = 10000;
-            //}
-            //else if (totalDistance >= 50000)
-            //{
-            //    markerInterval = 2000;
-            //    distanceInternal = 5000;
-            //}
-            //else if (totalDistance >= 10000)
-            //{
-            //    markerInterval = 1000;
-            //    distanceInternal = 2000;
-            //}
-            //else if (totalDistance >= 5000)
-            //{
-            //    markerInterval = 500;
-            //    distanceInternal = 1000;
-            //}
-
-            SessionMapInfo mapInfo;
-            //if (Header.AverageHeartRate.HasValue)
-            //{
-            //    mapInfo = SessionMapInfo.Create(
-            //        activityPoints,
-            //        SelectColorByHeartRate,
-            //        markerInterval,
-            //        distanceInternal);
-            //}
-            //else
-            //{
-            mapInfo = SessionMapInfo.Create(
+            mapInfo = SessionMap.Create(
                 activityPoints,
-                SelectColorBySpeed,
-                1000,
-                1000);
-            //}
+                SelectColorBySpeed);
 
-            GraphInfo = SessionGraphInfo.CreateSessionGraphInfo(mapInfo.SessionPoints);
+            GraphInfo = SessionGraph.CreateSessionGraphInfo(mapInfo.SessionPoints);
             await RaisePropertyChanged(() => GraphInfo);
 
             return mapInfo;
@@ -209,11 +163,11 @@
 
         public MvxAsyncCommand DeleteRideCommand { get; protected set; }
 
-        public SessionGraphInfo GraphInfo { get; private set; }
+        public SessionGraph GraphInfo { get; private set; }
 
         public ActivityHeaderModel Header { get; private set; }
 
-        public TaskLoaderNotifier<SessionMapInfo> Loader { get; }
+        public TaskLoaderNotifier<SessionMap> Loader { get; }
 
         public string Title
         {

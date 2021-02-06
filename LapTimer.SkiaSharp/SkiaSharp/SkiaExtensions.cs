@@ -2,16 +2,8 @@
 
 using Xamarin.Forms;
 
-namespace SkiaSharpnado.SkiaSharp
+namespace LapTimer.SkiaSharp.SkiaSharp
 {
-    public enum DarkeningAmount
-    {
-        Unchanged = 0,
-        Light = 10,
-        Mild = 20,
-        Strong = 30,
-    }
-
     public static class SkiaExtensions
     {
         public static SKColor Darken(this SKColor color, DarkeningAmount amount = DarkeningAmount.Light)

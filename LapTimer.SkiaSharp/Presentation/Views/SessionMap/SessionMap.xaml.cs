@@ -1,13 +1,12 @@
 ﻿using LapTimer.Core.Models;
 using LapTimer.Core.Services;
 using LapTimer.SkiaSharp.Helpers;
-using LapTimer.SkiaSharp.Images;
 using LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
+using LapTimer.SkiaSharp.SkiaSharp;
 using MvvmCross;
 using MvvmCross.Plugin.Messenger;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
-using SkiaSharpnado.SkiaSharp;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -19,6 +18,9 @@ using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 
 namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 {
+    /// <summary>
+    /// </summary>
+    /// <seealso cref="Xamarin.Forms.ContentView" />
     public partial class SessionMap : ContentView
     {
         #region BindableProperties
@@ -50,7 +52,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
         public static readonly BindableProperty SessionMapInfoProperty = BindableProperty.Create(
             nameof(SessionMapInfo),
-            typeof(SessionMapInfo),
+            typeof(ViewModels.SessionMap.SessionMap),
             typeof(SessionMap),
             propertyChanged: SessionMapInfoChanged);
 
@@ -85,9 +87,9 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             set => SetValue(PathThicknessProperty, value);
         }
 
-        public SessionMapInfo SessionMapInfo
+        public ViewModels.SessionMap.SessionMap SessionMapInfo
         {
-            get => (SessionMapInfo)GetValue(SessionMapInfoProperty);
+            get => (ViewModels.SessionMap.SessionMap)GetValue(SessionMapInfoProperty);
             set => SetValue(SessionMapInfoProperty, value);
         }
 
@@ -103,9 +105,6 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
         private LatLong _bottomRightPosition;
         private LatLong _centerPosition;
-        private SKMatrix _currentMatrix = SKMatrix.CreateIdentity();
-
-        //private SKPaint _distanceTextPaint;
         private int _drawingCount = 0;
 
         private bool _isCameraInitialized;
@@ -115,7 +114,6 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         private PositionConverter _positionConverter;
         private SKPoint _previousCenter;
         private double _previousTopLeftBottomRightSquareDistance;
-        private TextShapeLayer _textDistanceLayer;
         private MvxSubscriptionToken _token;
 
         #region Images
@@ -126,13 +124,8 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         private bool _forceInvalidation;
         private SKPaint _gradientPathPaint;
         private SKColor _lastImageColor;
-        private SKPaint _lastMarkerPaint;
-        private SKSvg _locationImage;
-        private int _markerArrowSize;
-        private MarkerShapeLayer _markerLayer;
-        private SKPaint _markerPaint;
         private SKPicture _overlayPicture;
-        private SKColor _positionImageColor = new SKColor(74, 142, 228);
+        private SKPaint _positionMarkerPaint;
         private SKSvg _startImage;
 
         #endregion Images
@@ -141,6 +134,9 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
         #endregion PrivateProperties
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SessionMap" /> class.
+        /// </summary>
         public SessionMap()
         {
             InitializeComponent();
@@ -148,6 +144,13 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             GoogleMap.CameraIdled += GoogleMapCameraChanged;
         }
 
+        #region Methods
+
+        /// <summary>
+        /// Method that is called when a bound property is changed.
+        /// </summary>
+        /// <param name="propertyName">The name of the bound property that changed.</param>
+        /// <remarks>To be added.</remarks>
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -159,11 +162,23 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             }
         }
 
+        /// <summary>
+        /// Invalidates the surface.
+        /// </summary>
+        /// <param name="bindable">The bindable.</param>
+        /// <param name="oldvalue">The oldvalue.</param>
+        /// <param name="newvalue">The newvalue.</param>
         private static void InvalidateSurface(BindableObject bindable, object oldvalue, object newvalue)
         {
             ((SessionMap)bindable).MapOverlay.InvalidateSurface();
         }
 
+        /// <summary>
+        /// Sessions the map information changed.
+        /// </summary>
+        /// <param name="bindable">The bindable.</param>
+        /// <param name="oldvalue">The oldvalue.</param>
+        /// <param name="newvalue">The newvalue.</param>
         private static void SessionMapInfoChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             if (newvalue != null)
@@ -172,52 +187,13 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             }
         }
 
-        //private void ApplyTransformation(SKCanvas canvas)
-        //{
-        //    var centerPoint = _positionConverter[_centerPosition].ToSKPoint();
-        //    var topLeftPoint = _positionConverter[_topLeftPosition].ToSKPoint();
-        //    var bottomRightPoint = _positionConverter[_bottomRightPosition].ToSKPoint();
-
-        // var translation = centerPoint - _previousCenter;
-
-        // double squaredDistance = SKPoint.DistanceSquared(topLeftPoint,
-        // bottomRightPoint); double distanceRatio = squaredDistance /
-        // _previousTopLeftBottomRightSquareDistance;
-
-        // if (distanceRatio == 1 && translation == new SKPoint(0, 0)) { return; }
-
-        // canvas.Clear(); _previousCenter = centerPoint;
-        // _previousTopLeftBottomRightSquareDistance = squaredDistance;
-
-        // var transformMatrix = SKMatrix.CreateIdentity(); transformMatrix =
-        // SKMatrix.CreateScaleTranslation((float)distanceRatio, (float)distanceRatio,
-        // translation.X, translation.Y);
-
-        // SKMatrix.Concat(ref _currentMatrix, _currentMatrix, transformMatrix);
-
-        //    canvas.SetMatrix(_currentMatrix);
-        //    canvas.DrawPicture(_overlayPicture);
-        //}
-
-        //private void DrawDebugInfos(SKCanvas canvas, string toString)
-        //{
-        //    using (var textPaint = new SKPaint { Color = SKColor.Parse("AAFF66"), TextSize = SkiaHelper.ToPixel(12) })
-        //    using (var framePaint = new SKPaint { Color = SKColors.Black })
-        //    {
-        //        var textBounds = new SKRect();
-        //        textPaint.MeasureText(toString, ref textBounds);
-        //        textBounds.Inflate(20, 20);
-
-        // canvas.DrawRect(textBounds, framePaint);
-
-        //        canvas.DrawText(
-        //            toString,
-        //            SkiaHelper.ToPixel(10),
-        //            SkiaHelper.ToPixel(10),
-        //            textPaint);
-        //    }
-        //}
-
+        /// <summary>
+        /// Zeichnet die Zielflagge als LastPoint und die Stoppuhr als FirstPoint.
+        /// </summary>
+        /// <param name="canvas">The canvas.</param>
+        /// <param name="firstSessionPoint">The first session point.</param>
+        /// <param name="lastSessionPoint">The last session point.</param>
+        /// <returns></returns>
         private bool DrawFirstAndLastMarker(SKCanvas canvas, ISessionDisplayablePoint firstSessionPoint, ISessionDisplayablePoint lastSessionPoint)
         {
             var firstPoint = _positionConverter[firstSessionPoint.Position].ToSKPoint();
@@ -242,6 +218,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 canvas.DrawPicture(_startImage.Picture, ref startMatrix, picturePaint);
             }
 
+            // wenn nicht am Ende der strecke dann wird gerade gescrollt
             if (lastSessionPoint.Time - MaxTime > TimeSpan.FromSeconds(20))
             {
                 return false;
@@ -265,37 +242,23 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             return true;
         }
 
-        private void DrawLastMarker(SKCanvas canvas, SKPoint lastPoint)
+        /// <summary>
+        /// Zeichnet den Positions-Marker.
+        /// </summary>
+        /// <param name="canvas">The canvas.</param>
+        /// <param name="positionPoint">Der Positions-Punkt.</param>
+        private void DrawPositionMarker(SKCanvas canvas, SKPoint positionPoint)
         {
-            canvas.DrawCircle(lastPoint.X, lastPoint.Y, SkiaHelper.ToPixel(3), _lastMarkerPaint);
+            canvas.DrawCircle(positionPoint.X, positionPoint.Y, SkiaHelper.ToPixel(3), _positionMarkerPaint);
         }
 
-        private bool DrawPositionMarker(SKCanvas canvas)
-        {
-            var point = _positionConverter[_currentPosition.ToLatLong()].ToSKPoint();
-
-            float svgStartMax = Math.Max(_locationImage.Picture.CullRect.Width, _locationImage.Picture.CullRect.Height);
-            float startScale = _pictureSize / svgStartMax;
-
-            var startMatrix = SKMatrix.CreateScaleTranslation(
-                startScale,
-                startScale,
-                point.X - (_pictureSize / 2),
-                point.Y - (_pictureSize / 2));
-
-            using (var picturePaint = new SKPaint()
-            {
-                ColorFilter = SKColorFilter.CreateBlendMode(
-                        InfoColor == Color.Default ? _positionImageColor : InfoColor.ToSKColor(),
-                        SKBlendMode.SrcIn)
-            })
-            {
-                canvas.DrawPicture(_locationImage.Picture, ref startMatrix, picturePaint);
-            }
-
-            return true;
-        }
-
+        /// <summary>
+        /// Googles the map camera changed.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">
+        /// The <see cref="CameraIdledEventArgs" /> instance containing the event data.
+        /// </param>
         private void GoogleMapCameraChanged(object sender, CameraIdledEventArgs e)
         {
             Debug.WriteLine($"CameraChanged: pos: {e.Position.Target.Latitude}, {e.Position.Target.Longitude}");
@@ -311,22 +274,17 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             }
         }
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         private void Initialize()
         {
             Debug.WriteLine($"Initializing {SessionMapInfo.SessionPoints.Count} points");
 
             _positionConverter = new PositionConverter();
 
-            int markerCount = SessionMapInfo.SessionPoints.Count(p => p.HasMarker);
-            int textDistanceCount = SessionMapInfo.SessionPoints.Count(p => !string.IsNullOrEmpty(p.Label));
-
+            // direkt auf maximal Zeit legen, damit alles gezeichnet wird
             MaxTime = TimeSpan.FromSeconds(SessionMapInfo.TotalDurationInSeconds);
-
-            _markerLayer = null;
-            _markerLayer = new MarkerShapeLayer(markerCount);
-
-            _textDistanceLayer = null;
-            _textDistanceLayer = new TextShapeLayer(textDistanceCount);
 
             var region = SessionMapInfo.Region;
             _centerPosition = new LatLong(region.Center.Latitude, region.Center.Longitude);
@@ -348,6 +306,9 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             InitializeMap();
         }
 
+        /// <summary>
+        /// Initializes the map.
+        /// </summary>
         private void InitializeMap()
         {
             GoogleMap.MapType = MapType;
@@ -364,6 +325,9 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             }
         }
 
+        /// <summary>
+        /// Initializes the map resources if needed.
+        /// </summary>
         private void InitializeMapResourcesIfNeeded()
         {
             if (_gradientPathPaint != null)
@@ -382,34 +346,21 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Solid, 2),
             };
 
-            _markerPaint = new SKPaint
-            {
-                IsAntialias = true,
-                Color = SKColors.White,
-            };
-
-            _lastMarkerPaint = new SKPaint
+            _positionMarkerPaint = new SKPaint
             {
                 Color = SKColors.White,
                 StrokeWidth = SkiaHelper.ToPixel(PathThickness * 1.5),
                 Style = SKPaintStyle.Stroke,
             };
-
-            //_distanceTextPaint = new SKPaint
-            //{
-            //    Color = SKColors.White,
-            //    TextSize = SkiaHelper.ToPixel(12),
-            //    IsAntialias = true,
-            //};
-
-            _markerArrowSize = (int)(PathThickness * 1.5);
         }
 
+        /// <summary>
+        /// Initializes the SVG images.
+        /// </summary>
         private void InitializeSvgImages()
         {
             const string StartImageName = "stopwatch-solid.svg";
             const string EndImageName = "flag-checkered-solid.svg";
-            const string LocationImageName = "current_location.svg";
 
             using (var stream = Embedded.Load(StartImageName))
             {
@@ -423,19 +374,31 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 _endImage.Load(stream);
             }
 
-            using (var stream = Embedded.Load(LocationImageName))
-            {
-                _locationImage = new SKSvg();
-                _locationImage.Load(stream);
-            }
-
             _pictureSize = SkiaHelper.ToPixel(20);
-            _firstImageColor = SessionMapInfo.SessionPoints.First().MapPointColor.ToSKColor();
-            _lastImageColor = SessionMapInfo.SessionPoints.Last().MapPointColor.ToSKColor();
+
+            if (SessionMapInfo.SessionPoints.Count > 0)
+            {
+                _firstImageColor = SessionMapInfo.SessionPoints.First().MapPointColor.ToSKColor();
+                _lastImageColor = SessionMapInfo.SessionPoints.Last().MapPointColor.ToSKColor();
+            }
+            else
+            {
+                _firstImageColor = Color.Default.ToSKColor();
+                _lastImageColor = Color.Default.ToSKColor();
+            }
         }
 
+        /// <summary>
+        /// Maps the on paint surface.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">
+        /// The <see cref="SKPaintSurfaceEventArgs" /> instance containing the event data.
+        /// </param>
         private void MapOnPaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
+            #region Initialization
+
             // var info = e.RenderTarget;
             SKImageInfo info = e.Info;
             SKSurface surface = e.Surface;
@@ -443,12 +406,19 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
             var stopWatch = Stopwatch.StartNew();
 
-            if (SessionMapInfo == null || !_isCameraInitialized)
+            if (/*!ShowCurrentPosition && */SessionMapInfo == null)
             {
-                Debug.WriteLine($"RETURNING: SessionMapInfo == null || !_isCameraInitialized");
+                Debug.WriteLine($"RETURNING: SessionMapInfo is null");
                 return;
             }
 
+            if (!_isCameraInitialized)
+            {
+                Debug.WriteLine($"RETURNING: Camera not Initialized");
+                return;
+            }
+
+            // already in drawing mode
             if (_drawingCount > 0)
             {
                 return;
@@ -465,7 +435,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             {
                 // Display view didn't changed
                 Debug.WriteLine($"RETURNING: Display view didn't changed");
-                //return;
+                return;
             }
 
             //Debug.WriteLine($"MapOnPaintSurface: pos: {GoogleMap.Camera.Position.Latitude}, {GoogleMap.Camera.Position.Longitude}");
@@ -480,10 +450,11 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
             InitializeMapResourcesIfNeeded();
 
-            var sessionPoints = SessionMapInfo.SessionPoints;
+            #endregion Initialization
 
-            _markerLayer.ResetIndex();
-            _textDistanceLayer.ResetIndex();
+            #region LineDrawing
+
+            var sessionPoints = SessionMapInfo.SessionPoints;
 
             SKPoint previousPoint = SKPoint.Empty;
             SKColor previousColor = SKColor.Empty;
@@ -532,36 +503,6 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                     linesDrawnCount++;
                 }
 
-                if (sessionPoint.HasMarker && previousPoint != SKPoint.Empty)
-                {
-                    if (!_markerLayer.HasShape)
-                    {
-                        _markerLayer.Add(new MarkerShape(sessionPoint.Time, _markerArrowSize));
-                    }
-
-                    _markerLayer
-                        .GetCurrentShape()
-                        .UpdatePosition(previousPoint, pathPoint)
-                        .UpdateArrowLength(_markerArrowSize);
-
-                    _markerLayer.IncrementIndex();
-                }
-
-                if (!string.IsNullOrEmpty(sessionPoint.Label))
-                {
-                    if (!_textDistanceLayer.HasShape)
-                    {
-                        _textDistanceLayer.Add(new TextShape(sessionPoint.Label, sessionPoint.Time));
-                    }
-
-                    _textDistanceLayer
-                        .GetCurrentShape()
-                        .UpdatePosition(
-                            new SKPoint(pathPoint.X, pathPoint.Y + SkiaHelper.ToPixel(14)));
-
-                    _textDistanceLayer.IncrementIndex();
-                }
-
                 if (isDistanceEnough)
                 {
                     previousPoint = pathPoint;
@@ -571,28 +512,35 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
             Debug.WriteLine($"MAP: {linesDrawnCount} lines drawn");
 
-            _markerLayer.UpdateMaxTime(MaxTime);
-            _markerLayer.Draw(canvas, _markerPaint);
+            #endregion LineDrawing
 
-            if (!DrawFirstAndLastMarker(
-                canvas,
-                sessionPoints.First(),
-                sessionPoints.Last()))
+            #region MarkerDrawing
+
+            // Session-Graph
+            if (sessionPoints.Count > 0)
             {
-                DrawLastMarker(canvas, previousPoint);
+                // wenn nutzer gerade im SessionGraph scrollt.
+                bool mooving = DrawFirstAndLastMarker(
+                    canvas,
+                    sessionPoints.First(),
+                    sessionPoints.Last());
+
+                // wenn nutzer zum Ende der Strecke gescrollt hat
+                if (!mooving)
+                {
+                    DrawPositionMarker(canvas, previousPoint);
+                }
             }
-
-            _textDistanceLayer.UpdateMaxTime(MaxTime);
-            //_textDistanceLayer.Draw(canvas, _distanceTextPaint);
-
-            //DrawDebugInfos(
-            //    canvas,
-            //    _positionConverter.ToString());
 
             if (ShowCurrentPosition)
             {
-                DrawPositionMarker(canvas);
+                previousPoint = _positionConverter[_currentPosition.ToLatLong()].ToSKPoint();
+                DrawPositionMarker(canvas, previousPoint);
             }
+
+            #endregion MarkerDrawing
+
+            #region Disposing
 
             ReleaseMapResources();
 
@@ -610,27 +558,39 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             Debug.WriteLine($"END OF => MapOnPaintSurface ({stopWatch.Elapsed})");
 
             Interlocked.Decrement(ref _drawingCount);
+
+            #endregion Disposing
         }
 
+        /// <summary>
+        /// Called when [location updated].
+        /// TODO: besser machen
+        /// </summary>
+        /// <param name="locationMessage">The location message.</param>
         private void OnLocationUpdated(MvxLocationMessage locationMessage)
         {
             _currentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
+            SessionMapInfo.Add(_currentPosition);
+
+            GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(_currentPosition, new Distance(100)), true);
+
+            // neu zeichnen
+            _forceInvalidation = true;
             MapOverlay.InvalidateSurface();
         }
 
+        /// <summary>
+        /// Releases the map resources.
+        /// </summary>
         private void ReleaseMapResources()
         {
-            _markerPaint?.Dispose();
-            _markerPaint = null;
-
-            _lastMarkerPaint?.Dispose();
-            _lastMarkerPaint = null;
+            _positionMarkerPaint?.Dispose();
+            _positionMarkerPaint = null;
 
             _gradientPathPaint?.Dispose();
             _gradientPathPaint = null;
-
-            //_distanceTextPaint?.Dispose();
-            //_distanceTextPaint = null;
         }
+
+        #endregion Methods
     }
 }

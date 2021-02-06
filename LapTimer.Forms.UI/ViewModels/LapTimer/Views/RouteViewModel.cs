@@ -15,6 +15,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Xamarin.Essentials;
+    using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
     using XF.Material.Forms.UI.Dialogs;
 
@@ -35,8 +36,7 @@
             this._locationService = locationService;
             this._messenger = messenger;
             this._token = messenger.Subscribe<MvxLocationMessage>(this.OnLocationUpdated);
-            Loader = new TaskLoaderNotifier<SessionMapInfo>();
-            SessionDisplayablePoint = new List<SessionDisplayablePoint>();
+            Loader = new TaskLoaderNotifier<SessionMap>();
         }
 
         #region Methods
@@ -74,21 +74,48 @@
             base.Prepare();
         }
 
-        private async Task<SessionMapInfo> LoadAsync()
+        /// <summary>
+        /// Behandelt die Signalstärke und ändert jenachdem das angezeigte Bild.
+        /// 0-5 - sehr gut
+        /// 6-15 - gut
+        /// >= 16 - schlecht
+        /// </summary>
+        /// <param name="value">The value.</param>
+        private void HandleAccuracy(double? value)
         {
-            SessionMapInfo mapInfo;
+            if (!value.HasValue)
+            {
+                return;
+            }
 
-            mapInfo = new SessionMapInfo(
-                SessionDisplayablePoint,
-                new Position(10, 10),
-                new Position(10, 10),
-                0);
+            // 0-5
+            if (value.Value >= 0 && value.Value <= 5)
+            {
+                AccuracyImage = ImageSource.FromFile(signal_cellular_3);
+            }
+            // 6-15
+            else if (value.Value >= 6 && value.Value <= 15)
+            {
+                AccuracyImage = ImageSource.FromFile(signal_cellular_2);
+            }
+            else if (value.Value >= 16)
+            {
+                AccuracyImage = ImageSource.FromFile(signal_cellular_1);
+            }
+        }
+
+        private async Task<SessionMap> LoadAsync()
+        {
+            SessionMap mapInfo;
+
+            mapInfo = new SessionMap();
 
             return mapInfo;
         }
 
         private void OnLocationUpdated(MvxLocationMessage locationMessage)
         {
+            HandleAccuracy(locationMessage.Accuracy);
             //CurrentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
         }
 
@@ -109,21 +136,29 @@
         #endregion Commands
 
         private readonly ILocationService _locationService;
-
         private readonly IMvxMessenger _messenger;
-
         private readonly MvxSubscriptionToken _token;
+        private readonly string signal_cellular_1 = "signal_cellular_1";
 
+        private readonly string signal_cellular_2 = "signal_cellular_2";
+
+        private readonly string signal_cellular_3 = "signal_cellular_3";
+        private ImageSource _accuracyImage;
         private Position _currentPosition;
 
         private TimeSpan _lapTime;
 
         private MvxLocationMessage _locationMessage;
 
-        private List<SessionDisplayablePoint> _sessionDisplayablePoint;
         private double _speed;
 
         private TimeSpan _totalTime;
+
+        public ImageSource AccuracyImage
+        {
+            get => this._accuracyImage;
+            set => this.SetProperty(ref _accuracyImage, value);
+        }
 
         public TimeSpan LapTime
         {
@@ -131,13 +166,7 @@
             set => this.SetProperty(ref _lapTime, value);
         }
 
-        public TaskLoaderNotifier<SessionMapInfo> Loader { get; }
-
-        public List<SessionDisplayablePoint> SessionDisplayablePoint
-        {
-            get => this._sessionDisplayablePoint;
-            set => this.SetProperty(ref _sessionDisplayablePoint, value);
-        }
+        public TaskLoaderNotifier<SessionMap> Loader { get; }
 
         public double Speed
         {

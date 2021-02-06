@@ -4,25 +4,6 @@ using Xamarin.Forms;
 
 namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
 {
-    public interface ISessionDisplayablePoint
-    {
-        int? Altitude { get; }
-
-        int? Distance { get; }
-
-        bool HasMarker { get; }
-
-        string Label { get; }
-
-        Color MapPointColor { get; }
-
-        LatLong Position { get; }
-
-        double? Speed { get; }
-
-        TimeSpan Time { get; }
-    }
-
     public class SessionDisplayablePoint : ISessionDisplayablePoint
     {
         public int? Altitude { get; }
@@ -32,8 +13,6 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
         public bool HasMarker { get; }
 
         public bool HasPosition => Position != LatLong.Empty;
-
-        public string Label { get; }
 
         public Color MapPointColor { get; private set; }
 
@@ -48,20 +27,15 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
             int? distance,
             int? altitude,
             double? speed,
-            LatLong position,
-            bool hasMarker = false,
-            string label = null)
+            LatLong position)
         {
             Time = timeSpan;
-
             Altitude = altitude;
             Speed = speed;
             Position = position;
             Distance = distance;
 
             MapPointColor = Color.Default;
-            HasMarker = hasMarker;
-            Label = label;
         }
 
         public void SetPointColor(Color color)

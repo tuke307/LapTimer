@@ -1,7 +1,7 @@
 ﻿using SkiaSharp;
 using System;
 
-namespace SkiaSharpnado.SkiaSharp
+namespace LapTimer.SkiaSharp.SkiaSharp
 {
     public static class SkiaHelper
     {

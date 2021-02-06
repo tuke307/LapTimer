@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-namespace SkiaSharpnado.SkiaSharp
+namespace LapTimer.SkiaSharp.SkiaSharp
 {
     public class SKColorDispersionBarView : SKCanvasView
     {

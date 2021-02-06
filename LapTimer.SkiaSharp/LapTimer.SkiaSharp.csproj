@@ -7,13 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\current_location.svg" />
     <None Remove="Images\flag-checkered-solid.svg" />
     <None Remove="Images\stopwatch-solid.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Images\current_location.svg" />
     <EmbeddedResource Include="Images\flag-checkered-solid.svg" />
     <EmbeddedResource Include="Images\stopwatch-solid.svg" />
   </ItemGroup>

@@ -2,10 +2,10 @@
 {
     using LapTimer.Core.Services;
     using LapTimer.Forms.UI.Services;
+    using LapTimer.SkiaSharp.SkiaSharp;
     using MvvmCross;
     using MvvmCross.IoC;
     using MvvmCross.ViewModels;
-    using SkiaSharpnado.SkiaSharp;
     using System.Threading.Tasks;
     using Xamarin.Essentials;
 

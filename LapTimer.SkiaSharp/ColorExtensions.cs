@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace SkiaSharpnado
+namespace LapTimer.SkiaSharp
 {
     public static class ColorExtensions
     {
