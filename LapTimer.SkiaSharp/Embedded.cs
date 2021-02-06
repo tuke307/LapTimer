@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace SkiaSharpnado
+namespace LapTimer.SkiaSharp
 {
     internal static class Embedded
     {
@@ -16,9 +16,16 @@ namespace SkiaSharpnado
             Resources = Assembly.GetManifestResourceNames();
         }
 
+        public static bool Exists(string name)
+        {
+            name = $".Images.{name}";
+            name = Resources.FirstOrDefault(n => n.EndsWith(name));
+            return name != null;
+        }
+
         public static Stream Load(string name)
         {
-            name = $".Resources.{name}";
+            name = $".Images.{name}";
             name = Resources.FirstOrDefault(n => n.EndsWith(name));
 
             Stream stream = null;
@@ -28,13 +35,6 @@ namespace SkiaSharpnado
             }
 
             return stream;
-        }
-
-        public static bool Exists(string name)
-        {
-            name = $".Resources.{name}";
-            name = Resources.FirstOrDefault(n => n.EndsWith(name));
-            return name != null;
         }
     }
 }
