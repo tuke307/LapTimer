@@ -46,7 +46,7 @@
         /// <param name="error">The error.</param>
         private void OnError(MvxLocationError error)
         {
-            this._log.Warn($"Location Error: {error.Code} {error.ToString()}");
+            this._log.Error($"ERROR: Location Error: {0}", error.Code);
         }
 
         /// <summary>
