@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:res="clr-namespace:LapTimer.Core.Resx;assembly=LapTimer.Core"
                       xmlns:converters="clr-namespace:LapTimer.Forms.UI.Converters"
-                      xmlns:res="clr-namespace:LapTimer.Forms.UI.Resx"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:map="clr-namespace:LapTimer.SkiaSharp.Presentation.Views.SessionMap;assembly=LapTimer.SkiaSharp"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
@@ -31,7 +31,7 @@
                                     Style="{StaticResource Key=TaskLoaderViewStyle}">
             <map:SessionMap x:Name="SessionMap"
                             PathThickness="4"
-                            SessionMapInfo="{Binding SessionMapInfo}"
+                            SessionMapInfo="{Binding Loader.Result}"
                             MapType="Satellite"
                             ShowCurrentPosition="True" />
         </customViews:TaskLoaderView>
@@ -52,7 +52,7 @@
         <!--Icon für GPS-Signalstärke-->
         <material:MaterialIcon Grid.Column="2"
                                Grid.Row="1"
-                               Source="signal_cellular_outline"
+                               Source="{Binding AccuracyImage}"
                                HorizontalOptions="End">
         </material:MaterialIcon>
     </Grid>
