@@ -43,8 +43,14 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             typeof(SessionMap),
             defaultValue: TimeSpan.MaxValue);
 
+        public static readonly BindableProperty MyLocationEnabledProperty = BindableProperty.Create(
+           nameof(MyLocationEnabled),
+           typeof(bool),
+           typeof(SessionMap),
+           defaultValue: false);
+
         public static readonly BindableProperty PathThicknessProperty = BindableProperty.Create(
-            nameof(PathThickness),
+                    nameof(PathThickness),
             typeof(int),
             typeof(SessionMap),
             defaultValue: 2,
@@ -55,13 +61,6 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             typeof(ViewModels.SessionMap.SessionMap),
             typeof(SessionMap),
             propertyChanged: SessionMapInfoChanged);
-
-        public static readonly BindableProperty ShowCurrentPositionProperty = BindableProperty.Create(
-           nameof(ShowCurrentPosition),
-           typeof(bool),
-           typeof(SessionMap),
-           defaultValue: false,
-           propertyChanged: InvalidateSurface);
 
         public Color InfoColor
         {
@@ -81,6 +80,12 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             set => SetValue(MaxTimeProperty, value);
         }
 
+        public bool MyLocationEnabled
+        {
+            get => (bool)GetValue(MyLocationEnabledProperty);
+            set => SetValue(MyLocationEnabledProperty, value);
+        }
+
         public int PathThickness
         {
             get => (int)GetValue(PathThicknessProperty);
@@ -93,22 +98,19 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             set => SetValue(SessionMapInfoProperty, value);
         }
 
-        public bool ShowCurrentPosition
-        {
-            get => (bool)GetValue(ShowCurrentPositionProperty);
-            set => SetValue(ShowCurrentPositionProperty, value);
-        }
-
         #endregion BindableProperties
 
         #region PrivateProperties
 
         private LatLong _bottomRightPosition;
         private LatLong _centerPosition;
-        private int _drawingCount = 0;
+        private bool _drawingMode = false;
 
-        private bool _isCameraInitialized;
+        private int _lastSessionPointsCount;
+
+        //private bool _isCameraInitialized;
         private ILocationService _locationService;
+
         private IMvxMessenger _messenger;
         private float _pictureSize;
         private PositionConverter _positionConverter;
@@ -131,6 +133,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         #endregion Images
 
         private LatLong _topLeftPosition;
+        private bool _zoomToMyLocation;
 
         #endregion PrivateProperties
 
@@ -140,8 +143,6 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         public SessionMap()
         {
             InitializeComponent();
-
-            GoogleMap.CameraIdled += GoogleMapCameraChanged;
         }
 
         #region Methods
@@ -253,25 +254,49 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         }
 
         /// <summary>
-        /// Googles the map camera changed.
+        /// Fires when GoogleMap camera changed.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">
         /// The <see cref="CameraIdledEventArgs" /> instance containing the event data.
         /// </param>
-        private void GoogleMapCameraChanged(object sender, CameraIdledEventArgs e)
+        private void GoogleMapCameraIdled(object sender, CameraIdledEventArgs e)
         {
-            Debug.WriteLine($"CameraChanged: pos: {e.Position.Target.Latitude}, {e.Position.Target.Longitude}");
+            Debug.WriteLine($"CameraIdled: pos: {e.Position.Target.Latitude}, {e.Position.Target.Longitude}");
 
-            if (!_isCameraInitialized)
-            {
-                _isCameraInitialized = true;
-            }
+            //if (!_isCameraInitialized)
+            //{
+            //    _isCameraInitialized = true;
+            //}
 
-            if (_drawingCount == 0)
+            if (!_drawingMode)
             {
                 MapOverlay.InvalidateSurface();
             }
+        }
+
+        /// <summary>
+        /// Googles the map camera move started.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="CameraMoveStartedEventArgs"/> instance containing the event data.</param>
+        private void GoogleMapCameraMoveStarted(object sender, CameraMoveStartedEventArgs e)
+        {
+            if (e.IsGesture)
+            {
+                _zoomToMyLocation = false;
+            }
+        }
+
+        /// <summary>
+        /// Fires when GoogleMap MyLocation-Button clicked.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="MyLocationButtonClickedEventArgs"/> instance containing the event data.</param>
+        /// <exception cref="NotImplementedException"></exception>
+        private void GoogleMapMyLocationButtonClicked(object sender, MyLocationButtonClickedEventArgs e)
+        {
+            _zoomToMyLocation = true;
         }
 
         /// <summary>
@@ -294,7 +319,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             _previousCenter = SKPoint.Empty;
             _previousTopLeftBottomRightSquareDistance = 1;
 
-            if (ShowCurrentPosition)
+            if (MyLocationEnabled)
             {
                 _locationService = Mvx.IoCProvider.Resolve<ILocationService>();
                 _messenger = Mvx.IoCProvider.Resolve<IMvxMessenger>();
@@ -311,18 +336,28 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         /// </summary>
         private void InitializeMap()
         {
+            Debug.WriteLine($"InitializeMap");
+
+            GoogleMap.MyLocationEnabled = MyLocationEnabled;
+            GoogleMap.UiSettings.MyLocationButtonEnabled = MyLocationEnabled;
             GoogleMap.MapType = MapType;
 
+            // events
+            GoogleMap.CameraIdled += GoogleMapCameraIdled;
+            GoogleMap.CameraMoveStarted += GoogleMapCameraMoveStarted;
+            GoogleMap.MyLocationButtonClicked += GoogleMapMyLocationButtonClicked;
+
+            // move to SessionMapInfo region
             if (SessionMapInfo != null)
             {
-                Debug.WriteLine($"InitializeMap");
-
                 Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
                 {
                     GoogleMap.MoveToRegion(SessionMapInfo.Region, true);
                     return false;
                 });
             }
+
+            Debug.WriteLine($"END InitializeMap");
         }
 
         /// <summary>
@@ -359,6 +394,8 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         /// </summary>
         private void InitializeSvgImages()
         {
+            Debug.WriteLine($"InitializeSvgImages");
+
             const string StartImageName = "stopwatch-solid.svg";
             const string EndImageName = "flag-checkered-solid.svg";
 
@@ -386,6 +423,8 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 _firstImageColor = Color.Default.ToSKColor();
                 _lastImageColor = Color.Default.ToSKColor();
             }
+
+            Debug.WriteLine($"END InitializeSvgImages");
         }
 
         /// <summary>
@@ -406,20 +445,14 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
             var stopWatch = Stopwatch.StartNew();
 
-            if (/*!ShowCurrentPosition && */SessionMapInfo == null)
+            if (SessionMapInfo == null)
             {
                 Debug.WriteLine($"RETURNING: SessionMapInfo is null");
                 return;
             }
 
-            if (!_isCameraInitialized)
-            {
-                Debug.WriteLine($"RETURNING: Camera not Initialized");
-                return;
-            }
-
             // already in drawing mode
-            if (_drawingCount > 0)
+            if (_drawingMode)
             {
                 return;
             }
@@ -440,7 +473,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
             //Debug.WriteLine($"MapOnPaintSurface: pos: {GoogleMap.Camera.Position.Latitude}, {GoogleMap.Camera.Position.Longitude}");
 
-            Interlocked.Increment(ref _drawingCount);
+            _drawingMode = true;
 
             _previousCenter = centerPoint;
             _previousTopLeftBottomRightSquareDistance = squaredDistance;
@@ -459,24 +492,30 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             SKPoint previousPoint = SKPoint.Empty;
             SKColor previousColor = SKColor.Empty;
 
-            int linesDrawnCount = 0;
-            for (int index = 0; index < sessionPoints.Count; index++)
+            //int linesDrawnCount = 0;
+            for (int index = _lastSessionPointsCount; index < sessionPoints.Count; index++)
             {
                 ISessionDisplayablePoint sessionPoint = sessionPoints[index];
 
-                if (sessionPoint.Time > MaxTime)
-                {
-                    break;
-                }
+                // TODO: only for testing
+                //if (sessionPoint.Time > MaxTime)
+                //{
+                //    break;
+                //}
 
                 SKPoint pathPoint = sessionPoint.Position != LatLong.Empty
                     ? _positionConverter[sessionPoint.Position].ToSKPoint()
                     : SKPoint.Empty;
 
+                // TODO: implemented for testing
+                //if ((_lastSessionPointsCount - sessionPoints.Count) == 1)
+                //{
+                //    previousPoint = pathPoint;
+                //}
+
                 var pointColor = sessionPoint.MapPointColor.ToSKColor();
 
-                // we won't trace line between points with a distance < 1 dp: this is
-                // silly
+                // don't draw line between points with a distance < 1 dp
                 bool isDistanceEnough = Math.Abs(pathPoint.X - previousPoint.X) > SkiaHelper.ToPixel(4)
                     || Math.Abs(pathPoint.Y - previousPoint.Y) > SkiaHelper.ToPixel(4);
 
@@ -500,7 +539,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                         _gradientPathPaint.Shader = null;
                     }
 
-                    linesDrawnCount++;
+                    //linesDrawnCount++;
                 }
 
                 if (isDistanceEnough)
@@ -510,7 +549,10 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 }
             }
 
-            Debug.WriteLine($"MAP: {linesDrawnCount} lines drawn");
+            //Debug.WriteLine($"MAP: {linesDrawnCount} lines drawn");
+
+            // für nächstes malen speichern
+            _lastSessionPointsCount = sessionPoints.Count;
 
             #endregion LineDrawing
 
@@ -532,11 +574,11 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 }
             }
 
-            if (ShowCurrentPosition)
-            {
-                previousPoint = _positionConverter[_currentPosition.ToLatLong()].ToSKPoint();
-                DrawPositionMarker(canvas, previousPoint);
-            }
+            //if (MyLocationEnabled)
+            //{
+            //    previousPoint = _positionConverter[_currentPosition.ToLatLong()].ToSKPoint();
+            //    DrawPositionMarker(canvas, previousPoint);
+            //}
 
             #endregion MarkerDrawing
 
@@ -557,7 +599,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             stopWatch.Stop();
             Debug.WriteLine($"END OF => MapOnPaintSurface ({stopWatch.Elapsed})");
 
-            Interlocked.Decrement(ref _drawingCount);
+            _drawingMode = false;
 
             #endregion Disposing
         }
@@ -572,7 +614,11 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             _currentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
             SessionMapInfo.Add(_currentPosition);
 
-            GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(_currentPosition, new Distance(100)), true);
+            // nur wenn auf MyLocation gedrückt wurde, wird postion verfolgt
+            if (_zoomToMyLocation)
+            {
+                GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(_currentPosition, Distance.FromMeters(50)), true);
+            }
 
             // neu zeichnen
             _forceInvalidation = true;

@@ -7,7 +7,15 @@
              x:Class="LapTimer.SkiaSharp.Presentation.Views.SessionMap.SessionMap">
     <ContentView.Content>
         <Grid RowSpacing="0">
+            <!--
+            Initial CameraUpdate
+              Location = Mittelpunkt Deutschlands (51.163361°, 10.447683°)
+              Zoom = 5
+              Rotation = 0
+              Tilt = 0
+            -->
             <maps:Map Grid.Row="0"
+                      InitialCameraUpdate="51.16, 10.45, 5, 0, 0"
                       x:Name="GoogleMap" />
 
             <forms:SKCanvasView Grid.Row="0"
