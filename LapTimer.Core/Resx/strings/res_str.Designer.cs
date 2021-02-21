@@ -133,11 +133,11 @@ namespace LapTimer.Core.Resx.strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Free Ride.
+        ///   Looks up a localized string similar to freeride.
         /// </summary>
-        public static string FREE_RIDE {
+        public static string FREERIDE {
             get {
-                return ResourceManager.GetString("FREE_RIDE", resourceCulture);
+                return ResourceManager.GetString("FREERIDE", resourceCulture);
             }
         }
         
