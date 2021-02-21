@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:res="clr-namespace:LapTimer.Core.Resx;assembly=LapTimer.Core"
+                      xmlns:res="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:routes="clr-namespace:LapTimer.Forms.UI.Views.Routes"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
@@ -22,10 +22,10 @@
                           SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"
                           Grid.Row="0">
             <tabs:TabHostView.Tabs>
-                <tabs:BottomTabItem Label="{x:Static res:resources.STR_LAP}"
+                <tabs:BottomTabItem Label="{x:Static res:res_str.LAP}"
                                     Style="{StaticResource Key=BottomTabStyle}"
                                     IconImageSource="lap_structure" />
-                <tabs:BottomTabItem Label="{x:Static res:resources.STR_TRACK}"
+                <tabs:BottomTabItem Label="{x:Static res:res_str.TRACK}"
                                     Style="{StaticResource Key=BottomTabStyle}"
                                     IconImageSource="track_structure" />
             </tabs:TabHostView.Tabs>

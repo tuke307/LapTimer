@@ -11,5 +11,10 @@
         /// Runde.
         /// </summary>
         Lap = 2,
+
+        /// <summary>
+        /// Freie Fahrt.
+        /// </summary>
+        FreeRide = 3,
     }
 }

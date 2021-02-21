@@ -1,5 +1,6 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.LapTimer
 {
+    using Data.Models;
     using global::LapTimer.Core.Models;
     using global::LapTimer.Core.Services;
     using global::LapTimer.Forms.UI.Functions;
@@ -33,6 +34,7 @@
         public RouteViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IRideService rideService, ILocationService locationService, IMvxMessenger messenger)
             : base(logProvider, navigationService)
         {
+            this._rideService = rideService;
             this._locationService = locationService;
             this._messenger = messenger;
             this._token = messenger.Subscribe<MvxLocationMessage>(this.OnLocationUpdated);
@@ -117,6 +119,9 @@
         {
             HandleAccuracy(locationMessage.Accuracy);
             //CurrentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
+            TrackpointModel trackpoint = new TrackpointModel();
+            trackpoint.Altitude = locationMessage.Altitude;
+            this._rideService.AddTrackpoint(trackpoint);
         }
 
         #endregion Methods
@@ -124,6 +129,8 @@
         #region Values
 
         #region Commands
+
+        private readonly IRideService _rideService;
 
         public IMvxAsyncCommand OpenSettingsCommand { get; protected set; }
 

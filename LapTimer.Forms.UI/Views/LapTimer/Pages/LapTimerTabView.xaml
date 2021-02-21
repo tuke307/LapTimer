@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:res="clr-namespace:LapTimer.Core.Resx;assembly=LapTimer.Core"
+                      xmlns:instructions="clr-namespace:LapTimer.Core.Resx.instructions;assembly=LapTimer.Core"
+                      xmlns:strings="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
@@ -29,6 +30,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <material:MaterialCard Grid.Column="0"
@@ -39,7 +41,7 @@
                                    HorizontalOptions="FillAndExpand"
                                    Style="{StaticResource MaterialCardStyle}">
                 <StackLayout>
-                    <material:MaterialLabel Text="{x:Static res:resources.STR_LAP}"
+                    <material:MaterialLabel Text="{x:Static strings:res_str.LAP}"
                                             Style="{StaticResource MaterialLabelStyle}" />
                     <Image Source="lap_structure" />
                 </StackLayout>
@@ -53,9 +55,23 @@
                                    HorizontalOptions="FillAndExpand"
                                    Style="{StaticResource MaterialCardStyle}">
                 <StackLayout>
-                    <material:MaterialLabel Text="{x:Static res:resources.STR_TRACK}"
+                    <material:MaterialLabel Text="{x:Static strings:res_str.TRACK}"
                                             Style="{StaticResource MaterialLabelStyle}" />
                     <Image Source="track_structure" />
+                </StackLayout>
+            </material:MaterialCard>
+
+            <material:MaterialCard Grid.Column="2"
+                                   Margin="5"
+                                   IsClickable="True"
+                                   ClickCommand="{Binding SelectFreeRideCommand}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource MaterialCardStyle}">
+                <StackLayout>
+                    <material:MaterialLabel Text="{x:Static strings:res_str.FREERIDE}"
+                                            Style="{StaticResource MaterialLabelStyle}" />
+                    <Image Source="free_ride_structure" />
                 </StackLayout>
             </material:MaterialCard>
         </Grid>
@@ -64,12 +80,12 @@
                      Margin="20">
 
             <material:MaterialCheckbox IsSelected="{Binding RoutesEnabled}"
-                                       Text="{x:Static res:resources.STR_CHOOSEROUTE}"
+                                       Text="{x:Static strings:res_str.CHOOSEROUTE}"
                                        HorizontalOptions="Center"
                                        Style="{StaticResource MaterialCheckboxStyle}" />
 
             <material:MaterialTextField IsVisible="{Binding RoutesEnabled}"
-                                        Placeholder="{x:Static res:resources.STR_ROUTES}"
+                                        Placeholder="{x:Static strings:res_str.ROUTES}"
                                         FloatingPlaceholderEnabled="True"
                                         InputType="Choice"
                                         HorizontalOptions="Center"
@@ -83,7 +99,7 @@
             <material:MaterialLabel TypeScale="H4"
                                     HorizontalOptions="Center"
                                     Style="{StaticResource MaterialLabelStyle}"
-                                    Text="{x:Static res:resources.INS_DRIVETOSTART}">
+                                    Text="{x:Static instructions:res_ins.DRIVETOSTART}">
             </material:MaterialLabel>
 
             <material:MaterialLabel FontAttributes="Bold"
@@ -91,7 +107,7 @@
                                     HorizontalOptions="Center"
                                     Style="{StaticResource MaterialLabelStyle}"
                                     IsVisible="{Binding LapSelected}"
-                                    Text="{x:Static res:resources.STR_LAP}">
+                                    Text="{x:Static strings:res_str.LAP}">
             </material:MaterialLabel>
 
             <material:MaterialLabel FontAttributes="Bold"
@@ -99,7 +115,15 @@
                                     Style="{StaticResource MaterialLabelStyle}"
                                     HorizontalOptions="Center"
                                     IsVisible="{Binding TrackSelected}"
-                                    Text="{x:Static res:resources.STR_TRACK}">
+                                    Text="{x:Static strings:res_str.TRACK}">
+            </material:MaterialLabel>
+
+            <material:MaterialLabel FontAttributes="Bold"
+                                    TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
+                                    HorizontalOptions="Center"
+                                    IsVisible="{Binding FreeRideSelected}"
+                                    Text="{x:Static strings:res_str.FREERIDE}">
             </material:MaterialLabel>
         </StackLayout>
 

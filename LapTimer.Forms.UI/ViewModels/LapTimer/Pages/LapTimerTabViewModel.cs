@@ -23,22 +23,32 @@
             : base(logProvider, navigationService)
         {
             _rideService = rideService;
-            SelectLapCommand = new MvxCommand(HandleSelectLap);
+            SelectLapCommand = new MvxCommand(HandleLapSelected);
             SelectTrackCommand = new MvxCommand(HandleTrackSelected);
+            SelectFreeRideCommand = new MvxCommand(HandleFreeRideSelected);
             OpenSettingsCommand = new MvxAsyncCommand(() => this.NavigationService.Navigate<ViewModels.Settings.SettingsViewModel>());
             OpenLapTimerHosterCommand = new MvxAsyncCommand(() => this.NavigationService.Navigate<ViewModels.LapTimer.LapTimerHosterViewModel>());
 
             // voreingestellt
-            this.TrackSelected = true;
+            this.FreeRideSelected = true;
 
             //Routes
             //Route
         }
 
-        private void HandleSelectLap()
+        private void HandleFreeRideSelected()
+        {
+            this.LapSelected = false;
+            this.TrackSelected = false;
+            this.FreeRideSelected = true;
+            _rideService.SetRideMode(RouteEnum.FreeRide);
+        }
+
+        private void HandleLapSelected()
         {
             this.LapSelected = true;
             this.TrackSelected = false;
+            this.FreeRideSelected = false;
             _rideService.SetRideMode(RouteEnum.Lap);
         }
 
@@ -46,6 +56,7 @@
         {
             this.LapSelected = false;
             this.TrackSelected = true;
+            this.FreeRideSelected = false;
             _rideService.SetRideMode(RouteEnum.Track);
         }
 
@@ -80,15 +91,24 @@
 
         public IMvxAsyncCommand OpenSettingsCommand { get; protected set; }
 
+        public IMvxCommand SelectFreeRideCommand { get; protected set; }
+
         public IMvxCommand SelectLapCommand { get; protected set; }
 
         public IMvxCommand SelectTrackCommand { get; protected set; }
 
         #endregion Commands
 
+        private bool _freeRideSelected;
         private bool _lapSelected;
         private bool _routesEnabled;
         private bool _trackSelected;
+
+        public bool FreeRideSelected
+        {
+            get => this._freeRideSelected;
+            protected set => this.SetProperty(ref _freeRideSelected, value);
+        }
 
         public bool LapSelected
         {

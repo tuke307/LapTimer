@@ -41,17 +41,44 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resx\resources.Designer.cs">
-      <DependentUpon>resources.resx</DependentUpon>
+    <Compile Update="Resx\strings\res_str.Designer.cs">
+      <DependentUpon>res_str.resx</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resx\errors\res_err.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>res_err.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resx\instructions\res_ins.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>res_ins.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resx\questions\res_qes.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>res_qes.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resx\resources.resx">
-      <LastGenOutput>resources.Designer.cs</LastGenOutput>
+    <EmbeddedResource Update="Resx\strings\res_str.resx">
+      <LastGenOutput>res_str.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\errors\res_err.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>res_err.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\instructions\res_ins.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>res_ins.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resx\questions\res_qes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>res_qes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

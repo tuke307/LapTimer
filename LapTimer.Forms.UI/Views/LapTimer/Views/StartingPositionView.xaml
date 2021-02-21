@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:res="clr-namespace:LapTimer.Core.Resx;assembly=LapTimer.Core"
+                      xmlns:instructions="clr-namespace:LapTimer.Core.Resx.instructions;assembly=LapTimer.Core"
+                      xmlns:strings="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
@@ -19,7 +20,7 @@
                      HorizontalOptions="Center"
                      Orientation="Horizontal">
             <material:MaterialLabel TypeScale="H4"
-                                    Text="{x:Static res:resources.INS_PREPARESTART}"
+                                    Text="{x:Static instructions:res_ins.PREPARESTART}"
                                     Style="{StaticResource MaterialLabelStyle}" />
         </StackLayout>
 

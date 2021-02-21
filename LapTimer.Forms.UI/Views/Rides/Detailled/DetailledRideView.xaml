@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:res="clr-namespace:LapTimer.Core.Resx;assembly=LapTimer.Core"
+                      xmlns:res="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
                       xmlns:graph="clr-namespace:LapTimer.Forms.UI.CustomViews"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:map="clr-namespace:LapTimer.SkiaSharp.Presentation.Views.SessionMap;assembly=LapTimer.SkiaSharp"
@@ -57,14 +57,14 @@
             <material:MaterialTextField Grid.Column="0"
                                         IsVisible="{Binding IsTrack}"
                                         InputType="Text"
-                                        Placeholder="{x:Static res:resources.STR_TRACK}"
+                                        Placeholder="{x:Static res:res_str.TRACK}"
                                         Text="{Binding RideName}"
                                         IsEnabled="False" />
 
             <material:MaterialTextField Grid.Column="0"
                                         IsVisible="{Binding IsLap}"
                                         InputType="Text"
-                                        Placeholder="{x:Static res:resources.STR_LAP}"
+                                        Placeholder="{x:Static res:res_str.LAP}"
                                         Text="{Binding RideName}"
                                         IsEnabled="False" />
 
@@ -73,7 +73,7 @@
         <!--
             <material:MaterialTextField Grid.Column="0"
                                         InputType="Default"
-                                        Placeholder="{x:Static res:resources.STR_TOTALTIME}"
+                                        Placeholder="{x:Static res:res_str.TOTALTIME}"
                                         Text="{Binding TotalTime}"
                                         IsEnabled="False" />
 
@@ -83,22 +83,22 @@
             <material:MaterialTextField Grid.Column="1"
                                         InputType="Numeric"
                                         FloatingPlaceholderEnabled="True"
-                                        Placeholder="{x:Static res:resources.STR_TEMP}"
+                                        Placeholder="{x:Static res:res_str.TEMP}"
                                         Text="{Binding Temperature}" />
 
             -->
         <!--Boden-->
         <!--
             <material:MaterialLabel Grid.Column="1"
-                                    Text="{x:Static res:resources.STR_GROUND}" />
+                                    Text="{x:Static res:res_str.GROUND}" />
             <material:MaterialCheckboxGroup Grid.Column="1"
                                             SelectedIndices="{Binding SelectedIndices}"
                                             Choices="{Binding Choices}">
                 -->
         <!--<material:MaterialCheckboxGroup.Choices>
-                <x:String xmlns="{x:Static res:resources.STR_SLIPPERY}" />
-                <x:String xmlns="{x:Static res:resources.STR_WET}" />
-                <x:String xmlns="{x:Static res:resources.STR_DRY}" />
+                <x:String xmlns="{x:Static res:res_str.SLIPPERY}" />
+                <x:String xmlns="{x:Static res:res_str.WET}" />
+                <x:String xmlns="{x:Static res:res_str.DRY}" />
             </material:MaterialCheckboxGroup.Choices>-->
         <!--
             </material:MaterialCheckboxGroup>
@@ -138,17 +138,17 @@
                         <material:MaterialLabel Grid.Row="0"
                                                 Grid.Column="0"
                                                 Style="{StaticResource MainIndicatorsLabel}"
-                                                Text="{x:Static res:resources.Speed}" />
+                                                Text="{x:Static res:res_str.Speed}" />
 
                         <material:MaterialLabel Grid.Row="0"
                                                 Grid.Column="1"
                                                 Style="{StaticResource MainIndicatorsLabel}"
-                                                Text="{x:Static res:resources.Distance}" />
+                                                Text="{x:Static res:res_str.Distance}" />
 
                         <material:MaterialLabel Grid.Row="0"
                                                 Grid.Column="2"
                                                 Style="{StaticResource MainIndicatorsLabel}"
-                                                Text="{x:Static res:resources.Altitude}" />
+                                                Text="{x:Static res:res_str.Altitude}" />
 
                         <material:MaterialLabel Grid.Row="1"
                                                 Grid.Column="0"

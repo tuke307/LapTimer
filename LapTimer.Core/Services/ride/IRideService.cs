@@ -8,6 +8,8 @@ namespace LapTimer.Core.Services
 {
     public interface IRideService
     {
+        void AddTrackpoint(TrackpointModel trackpoint);
+
         RideModel GetRide();
 
         bool IsModeSelected(RouteEnum routeEnum);

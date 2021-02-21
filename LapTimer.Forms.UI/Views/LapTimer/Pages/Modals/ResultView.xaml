@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:res="clr-namespace:LapTimer.Core.Resx;assembly=LapTimer.Core"
+                      xmlns:res="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
                       xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
@@ -32,40 +32,40 @@
         <StackLayout Grid.Row="1">
             <!--Fahrt-->
             <material:MaterialLabel TypeScale="H4"
-                                    Text="{x:Static res:resources.STR_RIDE}"
+                                    Text="{x:Static res:res_str.RIDE}"
                                     Style="{StaticResource MaterialLabelStyle}" />
 
             <!--Name-->
             <material:MaterialTextField InputType="Text"
-                                        Placeholder="{x:Static res:resources.STR_NAME}"
+                                        Placeholder="{x:Static res:res_str.NAME}"
                                         Text="{Binding Name}" />
 
             <material:MaterialLabel TypeScale="H5"
                                     Style="{StaticResource MaterialLabelStyle}"
-                                    Text="{x:Static res:resources.STR_CONDITIONS}" />
+                                    Text="{x:Static res:res_str.CONDITIONS}" />
 
             <!--Temperatur-->
             <material:MaterialTextField InputType="Numeric"
                                         FloatingPlaceholderEnabled="True"
-                                        Placeholder="{x:Static res:resources.STR_TEMP}"
+                                        Placeholder="{x:Static res:res_str.TEMP}"
                                         Text="{Binding Temperature}" />
 
             <!--Boden-->
-            <material:MaterialLabel Text="{x:Static res:resources.STR_GROUND}"
+            <material:MaterialLabel Text="{x:Static res:res_str.GROUND}"
                                     Style="{StaticResource MaterialLabelStyle}" />
             <material:MaterialCheckboxGroup SelectedIndices="{Binding SelectedIndices}"
                                             Choices="{Binding Choices}">
                 <!--<material:MaterialCheckboxGroup.Choices>
-                <x:String xmlns="{x:Static res:resources.STR_SLIPPERY}" />
-                <x:String xmlns="{x:Static res:resources.STR_WET}" />
-                <x:String xmlns="{x:Static res:resources.STR_DRY}" />
+                <x:String xmlns="{x:Static res:res_str.SLIPPERY}" />
+                <x:String xmlns="{x:Static res:res_str.WET}" />
+                <x:String xmlns="{x:Static res:res_str.DRY}" />
             </material:MaterialCheckboxGroup.Choices>-->
             </material:MaterialCheckboxGroup>
 
             <!--Strecke-->
             <material:MaterialLabel TypeScale="H4"
                                     Style="{StaticResource MaterialLabelStyle}"
-                                    Text="{x:Static res:resources.STR_TRACK}" />
+                                    Text="{x:Static res:res_str.TRACK}" />
 
             <!--Strecke neu oder zuweisen-->
             <material:MaterialRadioButtonGroup Choices="{Binding Routes}"
@@ -74,13 +74,13 @@
             <!--Name-->
             <material:MaterialTextField IsVisible="{Binding RouteNameVis}"
                                         InputType="Text"
-                                        Placeholder="{x:Static res:resources.STR_NAME}"
+                                        Placeholder="{x:Static res:res_str.NAME}"
                                         Text="{Binding Name}" />
 
             <!--Strecken-->
             <material:MaterialTextField IsVisible="{Binding RouteChoicesVis}"
                                         InputType="Choice"
-                                        Placeholder="{x:Static res:resources.STR_NAME}"
+                                        Placeholder="{x:Static res:res_str.NAME}"
                                         FloatingPlaceholderEnabled="True"
                                         Choices="{Binding Routes}"
                                         SelectedChoice="{Binding Route}" />

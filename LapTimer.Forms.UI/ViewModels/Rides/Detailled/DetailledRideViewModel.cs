@@ -112,10 +112,10 @@
             var currentPoint = GraphInfo.SessionPoints.First(p => p.Time >= CurrentTime);
 
             //CurrentHeartRate = currentPoint.HeartRate?.ToString() ?? Functions.Functions.GetLocalisedRes(typeof(Resx.resources), "NoValue");
-            CurrentSpeed = currentPoint.Speed?.ToString("0.0") ?? Functions.Resources.GetLocalisedRes(typeof(Core.Resx.resources), nameof(Core.Resx.resources.NoValue));
-            CurrentAltitude = currentPoint.Altitude?.ToString() ?? Functions.Resources.GetLocalisedRes(typeof(Core.Resx.resources), nameof(Core.Resx.resources.NoValue));
+            CurrentSpeed = currentPoint.Speed?.ToString("0.0") ?? Functions.Resources.GetLocalisedRes(typeof(Core.Resx.strings.res_str), nameof(Core.Resx.strings.res_str.NoValue));
+            CurrentAltitude = currentPoint.Altitude?.ToString() ?? Functions.Resources.GetLocalisedRes(typeof(Core.Resx.strings.res_str), nameof(Core.Resx.strings.res_str.NoValue));
             CurrentDistance = currentPoint.Distance != null
-                ? (currentPoint.Distance.Value / 1000f).ToString("0.0") : Functions.Resources.GetLocalisedRes(typeof(Core.Resx.resources), nameof(Core.Resx.resources.NoValue));
+                ? (currentPoint.Distance.Value / 1000f).ToString("0.0") : Functions.Resources.GetLocalisedRes(typeof(Core.Resx.strings.res_str), nameof(Core.Resx.strings.res_str.NoValue));
         }
 
         #endregion Methods

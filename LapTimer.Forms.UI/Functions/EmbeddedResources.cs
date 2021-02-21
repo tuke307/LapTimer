@@ -13,7 +13,7 @@ namespace LapTimer.Forms.UI.Functions
 
         static EmbeddedResources()
         {
-            Assembly = typeof(LapTimer.Core.Resx.resources).GetTypeInfo().Assembly;
+            Assembly = typeof(LapTimer.Core.Models.MvxLocationMessage).GetTypeInfo().Assembly;
             Resources = Assembly.GetManifestResourceNames();
         }
 

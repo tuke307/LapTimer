@@ -6,14 +6,8 @@ namespace Data.Models
     /// TrackpointModel.
     /// </summary>
     /// <seealso cref="Data.Models.BaseEntityModel" />
-    public class LapTrackpointModel : BaseEntityModel
+    public class LapTrackpointModel : TrackpointModel
     {
-        /// <summary>
-        /// Gets or sets the altitude.
-        /// </summary>
-        /// <value>The altitude.</value>
-        public double? Altitude { get; set; }
-
         /// <summary>
         /// Gets or sets the ride.
         /// </summary>
@@ -26,17 +20,5 @@ namespace Data.Models
         /// </summary>
         /// <value>The ride identifier.</value>
         public int LapId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the latitude.
-        /// </summary>
-        /// <value>The latitude.</value>
-        public double Latitude { get; set; }
-
-        /// <summary>
-        /// Gets or sets the longitude.
-        /// </summary>
-        /// <value>The longitude.</value>
-        public double Longitude { get; set; }
     }
 }
