@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:behaviors="clr-namespace:LapTimer.Forms.UI.Behaviors"
+                      xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
+                      xmlns:views1="clr-namespace:LapTimer.Forms.UI.Views"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+                      xmlns:skiaSharp="clr-namespace:SkiaSharpnado.SkiaSharp;assembly=SkiaSharpnado"
+                      xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+                      x:Class="LapTimer.Forms.UI.Views.Routes.RouteTracksView"
+                      x:TypeArguments="viewModels:Routes.RouteTracksViewModel">
+    <views:MvxContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="ActivityHeaderTemplate">
+                <ViewCell>
+                    <material:MaterialCard Style="{StaticResource MaterialCardStyle}"
+                                           Margin="15, 7"
+                                           IsClickable="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="3*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <material:MaterialLabel Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    HorizontalOptions="Start"
+                                                    Text="{Binding Name}"
+                                                    Style="{StaticResource MaterialLabelStyle}" />
+
+                            <material:MaterialLabel Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    HorizontalOptions="End"
+                                                    Text="{Binding DisplayableStartTime}"
+                                                    Style="{StaticResource MaterialLabelStyle}" />
+
+                            <views1:MainIndicatorsView Grid.Row="1"
+                                                       Grid.Column="0"
+                                                       Grid.ColumnSpan="2"
+                                                       BackgroundColor="Transparent" />
+                        </Grid>
+                    </material:MaterialCard>
+                </ViewCell>
+            </DataTemplate>
+        </ResourceDictionary>
+    </views:MvxContentView.Resources>
+
+    <views:MvxContentView.Content>
+        <StackLayout>
+            <customViews:TaskLoaderView TaskLoaderNotifier="{Binding Loader}"
+                                        Style="{StaticResource Key=TaskLoaderViewStyle}">
+                <views:MvxListView  x:Name="ListView"
+                                    ItemTemplate="{StaticResource ActivityHeaderTemplate}"
+                                    ItemsSource="{Binding Loader.Result}"
+                                    BackgroundColor="Transparent"
+                                    SeparatorVisibility="None"
+                                    ItemTapped="ListViewOnItemTapped"
+                                    Margin="0, -5"
+                                    RowHeight="110">
+                    <ListView.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="ItemTapped"
+                                                          Command="{Binding ActivityTappedCommand}"
+                                                          EventArgsParameterPath="Item" />
+                    </ListView.Behaviors>
+                </views:MvxListView>
+            </customViews:TaskLoaderView>
+        </StackLayout>
+    </views:MvxContentView.Content>
+</views:MvxContentView>

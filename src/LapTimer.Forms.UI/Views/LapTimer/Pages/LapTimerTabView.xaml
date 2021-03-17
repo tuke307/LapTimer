@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:instructions="clr-namespace:LapTimer.Core.Resx.instructions;assembly=LapTimer.Core"
+                      xmlns:strings="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
+                      xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+                      x:Class="LapTimer.Forms.UI.Views.LapTimer.LapTimerTabView"
+                      NavigationPage.HasNavigationBar="False"
+                      x:TypeArguments="viewModels:LapTimer.LapTimerTabViewModel">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <material:MaterialIconButton Grid.Row="0"
+                                     HorizontalOptions="End"
+                                     Image="cog"
+                                     BackgroundColor="Transparent"
+                                     Command="{Binding OpenSettingsCommand}">
+        </material:MaterialIconButton>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <material:MaterialCard Grid.Column="0"
+                                   Margin="5"
+                                   IsClickable="True"
+                                   ClickCommand="{Binding SelectLapCommand}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource MaterialCardStyle}">
+                <StackLayout>
+                    <material:MaterialLabel Text="{x:Static strings:res_str.LAP}"
+                                            Style="{StaticResource MaterialLabelStyle}" />
+                    <Image Source="lap_structure" />
+                </StackLayout>
+            </material:MaterialCard>
+
+            <material:MaterialCard Grid.Column="1"
+                                   Margin="5"
+                                   IsClickable="True"
+                                   ClickCommand="{Binding SelectTrackCommand}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource MaterialCardStyle}">
+                <StackLayout>
+                    <material:MaterialLabel Text="{x:Static strings:res_str.TRACK}"
+                                            Style="{StaticResource MaterialLabelStyle}" />
+                    <Image Source="track_structure" />
+                </StackLayout>
+            </material:MaterialCard>
+
+            <material:MaterialCard Grid.Column="2"
+                                   Margin="5"
+                                   IsClickable="True"
+                                   ClickCommand="{Binding SelectFreeRideCommand}"
+                                   VerticalOptions="FillAndExpand"
+                                   HorizontalOptions="FillAndExpand"
+                                   Style="{StaticResource MaterialCardStyle}">
+                <StackLayout>
+                    <material:MaterialLabel Text="{x:Static strings:res_str.FREERIDE}"
+                                            Style="{StaticResource MaterialLabelStyle}" />
+                    <Image Source="free_ride_structure" />
+                </StackLayout>
+            </material:MaterialCard>
+        </Grid>
+
+        <StackLayout Grid.Row="2"
+                     Margin="20">
+
+            <material:MaterialCheckbox IsSelected="{Binding RoutesEnabled}"
+                                       Text="{x:Static strings:res_str.CHOOSEROUTE}"
+                                       HorizontalOptions="Center"
+                                       Style="{StaticResource MaterialCheckboxStyle}" />
+
+            <material:MaterialTextField IsVisible="{Binding RoutesEnabled}"
+                                        Placeholder="{x:Static strings:res_str.ROUTES}"
+                                        FloatingPlaceholderEnabled="True"
+                                        InputType="Choice"
+                                        HorizontalOptions="Center"
+                                        ChoicesBindingName="Name"
+                                        Choices="{Binding Routes}"
+                                        SelectedChoice="{Binding Route}" />
+        </StackLayout>
+
+        <StackLayout Grid.Row="3">
+
+            <material:MaterialLabel TypeScale="H4"
+                                    HorizontalOptions="Center"
+                                    Style="{StaticResource MaterialLabelStyle}"
+                                    Text="{x:Static instructions:res_ins.DRIVETOSTART}">
+            </material:MaterialLabel>
+
+            <material:MaterialLabel FontAttributes="Bold"
+                                    TypeScale="H4"
+                                    HorizontalOptions="Center"
+                                    Style="{StaticResource MaterialLabelStyle}"
+                                    IsVisible="{Binding LapSelected}"
+                                    Text="{x:Static strings:res_str.LAP}">
+            </material:MaterialLabel>
+
+            <material:MaterialLabel FontAttributes="Bold"
+                                    TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
+                                    HorizontalOptions="Center"
+                                    IsVisible="{Binding TrackSelected}"
+                                    Text="{x:Static strings:res_str.TRACK}">
+            </material:MaterialLabel>
+
+            <material:MaterialLabel FontAttributes="Bold"
+                                    TypeScale="H4"
+                                    Style="{StaticResource MaterialLabelStyle}"
+                                    HorizontalOptions="Center"
+                                    IsVisible="{Binding FreeRideSelected}"
+                                    Text="{x:Static strings:res_str.FREERIDE}">
+            </material:MaterialLabel>
+        </StackLayout>
+
+        <material:MaterialButton Grid.Row="4"
+                                 HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand"
+                                 Image="motion_play_outline"
+                                 WidthRequest="100"
+                                 HeightRequest="100"
+                                 Command="{Binding OpenLapTimerHosterCommand}">
+        </material:MaterialButton>
+    </Grid>
+</views:MvxContentPage>

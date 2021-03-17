@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:res="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
+                      xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
+                      xmlns:rides="clr-namespace:LapTimer.Forms.UI.Views.Rides"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
+                      NavigationPage.HasNavigationBar="False"
+                      x:Class="LapTimer.Forms.UI.Views.Rides.RidesTabHosterView"
+                      x:TypeArguments="viewModels:Rides.RidesTabHosterViewModel"
+                      Style="{StaticResource MvxContentPageStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <tabs:TabHostView Style="{StaticResource Key=TabHostViewStyle}"
+                          Shades="{StaticResource Key=ShadowAccentBottom}"
+                          SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"
+                          Grid.Row="0">
+            <tabs:TabHostView.Tabs>
+                <tabs:BottomTabItem Label="{x:Static res:res_str.LAP}"
+                                    Style="{StaticResource Key=BottomTabStyle}"
+                                    IconImageSource="lap_structure" />
+                <tabs:BottomTabItem Label="{x:Static res:res_str.TRACK}"
+                                    Style="{StaticResource Key=BottomTabStyle}"
+                                    IconImageSource="track_structure" />
+            </tabs:TabHostView.Tabs>
+        </tabs:TabHostView>
+
+        <tabs:ViewSwitcher Animate="True"
+                           Grid.Row="1"
+                           x:Name="Switcher"
+                           SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}">
+            <rides:RideLapsView />
+            <rides:RideTracksView />
+        </tabs:ViewSwitcher>
+    </Grid>
+</views:MvxContentPage>

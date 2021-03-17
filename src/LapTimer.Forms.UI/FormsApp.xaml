@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:accent="clr-namespace:LapTimer.Forms.UI.Themes.Accent"
+             xmlns:theme="clr-namespace:LapTimer.Forms.UI.Themes.Base"
+             xmlns:primary="clr-namespace:LapTimer.Forms.UI.Themes.Primary"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
+             xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+             xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
+             xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+             x:Class="LapTimer.Forms.UI.FormsApp">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--Primary COLOR-->
+                <primary:Green />
+                <!--<ResourceDictionary Source="Themes/Primary/Cyan.xaml" />-->
+
+                <!--Secondary COLOR-->
+                <accent:Green />
+                <!--<ResourceDictionary Source="Themes/Accent/Teal.xaml" />-->
+
+                <!--BASE THEME-->
+                <theme:Dark />
+                <!--<ResourceDictionary Source="Themes/Base/Light.xaml" />-->
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+        <OnPlatform x:Key="FontFamily.RobotoRegular"
+                    x:TypeArguments="x:String"
+                    Android="Fonts/Roboto-Regular.ttf#Roboto-Regular"
+                    iOS="Roboto-Regular" />
+        <OnPlatform x:Key="FontFamily.RobotoMedium"
+                    x:TypeArguments="x:String"
+                    Android="Fonts/Roboto-Medium.ttf#Roboto-Medium"
+                    iOS="Roboto-Medium" />
+
+        <mtrl:MaterialColorConfiguration x:Key="Theme"
+                                         OnBackground="{StaticResource MaterialDesignBody}"
+                                         OnError="{StaticResource MaterialDesignBody}"
+                                         OnPrimary="{StaticResource Primary700Foreground}"
+                                         OnSecondary="{StaticResource Accent700Foreground}"
+                                         OnSurface="{StaticResource MaterialDesignBody}"
+                                         Background="{StaticResource MaterialDesignPaper}"
+                                         Error="{StaticResource ValidationErrorColor}"
+                                         Primary="{StaticResource Primary700}"
+                                         PrimaryVariant="{StaticResource Primary200}"
+                                         Secondary="{StaticResource Accent700}"
+                                         SecondaryVariant="{StaticResource Accent200}"
+                                         Surface="{StaticResource MaterialDesignCardBackground}" />
+
+        <mtrltypo:MaterialFontConfiguration x:Key="Font"
+                                            Body1="{StaticResource FontFamily.RobotoRegular}"
+                                            Body2="{StaticResource FontFamily.RobotoRegular}"
+                                            Button="{StaticResource FontFamily.RobotoMedium}"
+                                            Caption="{StaticResource FontFamily.RobotoRegular}"
+                                            H1="{StaticResource FontFamily.RobotoRegular}"
+                                            H2="{StaticResource FontFamily.RobotoRegular}"
+                                            H3="{StaticResource FontFamily.RobotoRegular}"
+                                            H4="{StaticResource FontFamily.RobotoRegular}"
+                                            H5="{StaticResource FontFamily.RobotoRegular}"
+                                            H6="{StaticResource FontFamily.RobotoMedium}"
+                                            Overline="{StaticResource FontFamily.RobotoRegular}"
+                                            Subtitle1="{StaticResource FontFamily.RobotoRegular}"
+                                            Subtitle2="{StaticResource FontFamily.RobotoMedium}" />
+
+        <mtrl:MaterialConfiguration x:Key="Material.Configuration"
+                                    ColorConfiguration="{StaticResource Theme}"
+                                    FontConfiguration="{StaticResource Font}" />
+
+        <!--<Style TargetType="{x:Type Editor}">
+      <Setter Property="BackgroundColor"
+          Value="{DynamicResource MaterialDesignBody}" />
+    </Style>-->
+
+        <Style x:Key="MvxContentPageStyle"
+               TargetType="{x:Type views:MvxContentPage}">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignPaper}" />
+        </Style>
+
+        <Style x:Key="MvxContentViewStyle"
+               TargetType="{x:Type views:MvxContentView}">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignPaper}" />
+        </Style>
+
+        <Style x:Key="MaterialChipStyle"
+               TargetType="{x:Type material:MaterialChip}">
+            <Setter Property="TextColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignChipBackground}" />
+        </Style>
+
+        <Style x:Key="MaterialCheckboxStyle"
+               TargetType="{x:Type material:MaterialCheckbox}">
+            <Setter Property="TextColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignCardBackground}" />
+            <Setter Property="SelectedColor"
+                    Value="{DynamicResource Accent700}" />
+            <Setter Property="UnselectedColor"
+                    Value="{DynamicResource MaterialDesignCheckBoxOff}" />
+        </Style>
+
+        <Style x:Key="MaterialLabelStyle"
+               TargetType="{x:Type material:MaterialLabel}">
+            <Setter Property="TextColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="BackgroundColor"
+                    Value="Transparent" />
+        </Style>
+
+        <Style x:Key="MainIndicatorsLabel"
+               BasedOn="{StaticResource MaterialLabelStyle}"
+               TargetType="{x:Type material:MaterialLabel}">
+            <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+            <Setter Property="TypeScale"
+                    Value="Caption" />
+            <Setter Property="FontAttributes"
+                    Value="Italic" />
+        </Style>
+
+        <Style x:Key="MainIndicatorsValue"
+               BasedOn="{StaticResource MaterialLabelStyle}"
+               TargetType="{x:Type material:MaterialLabel}">
+            <Setter Property="VerticalTextAlignment"
+                    Value="Start" />
+            <Setter Property="TypeScale"
+                    Value="H5" />
+            <Setter Property="Margin"
+                    Value="0, 0, 0, 0" />
+        </Style>
+
+        <Style x:Key="TitleLabelStyle"
+               BasedOn="{StaticResource MaterialLabelStyle}"
+               TargetType="{x:Type material:MaterialLabel}">
+            <Setter Property="VerticalTextAlignment"
+                    Value="Center" />
+            <Setter Property="TypeScale"
+                    Value="H6" />
+            <Setter Property="Margin"
+                    Value="20, 0, 0, 0" />
+        </Style>
+
+        <Style x:Key="MaterialCardStyle"
+               TargetType="{x:Type material:MaterialCard}">
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignCardBackground}" />
+            <Setter Property="HasShadow"
+                    Value="True" />
+            <Setter Property="CornerRadius"
+                    Value="5" />
+            <Setter Property="Padding"
+                    Value="15, 10" />
+            <Setter Property="Elevation"
+                    Value="5" />
+        </Style>
+
+        <Style x:Key="TaskLoaderViewStyle"
+               TargetType="{x:Type customViews:TaskLoaderView}">
+            <Setter Property="TextColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="AccentColor"
+                    Value="{DynamicResource Primary700}" />
+        </Style>
+
+        <Style x:Key="SegmentedTabStyle"
+               TargetType="{x:Type tabs:SegmentedTabItem}">
+            <Setter Property="SelectedTabColor"
+                    Value="{DynamicResource Primary700}" />
+            <Setter Property="LabelSize"
+                    Value="14" />
+            <Setter Property="SelectedLabelColor"
+                    Value="{DynamicResource Accent200Foreground}" />
+            <Setter Property="UnselectedLabelColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+        </Style>
+
+        <Style x:Key="BottomTabStyle"
+               TargetType="{x:Type tabs:BottomTabItem}">
+            <Setter Property="SelectedTabColor"
+                    Value="{DynamicResource Primary700}" />
+            <Setter Property="UnselectedLabelColor"
+                    Value="{DynamicResource MaterialDesignBody}" />
+            <Setter Property="UnselectedIconColor"
+                    Value="LightGray" />
+            <Setter Property="LabelSize"
+                    Value="14" />
+            <Setter Property="IconSize"
+                    Value="28" />
+        </Style>
+
+        <Style x:Key="TabHostViewStyle"
+               TargetType="{x:Type tabs:TabHostView}">
+            <Setter Property="TabType"
+                    Value="Fixed" />
+            <Setter Property="IsSegmented"
+                    Value="True" />
+            <Setter Property="CornerRadius"
+                    Value="20" />
+            <Setter Property="HeightRequest"
+                    Value="70" />
+            <Setter Property="Margin"
+                    Value="10" />
+            <Setter Property="VerticalOptions"
+                    Value="CenterAndExpand" />
+            <Setter Property="SegmentedHasSeparator"
+                    Value="True" />
+            <Setter Property="BackgroundColor"
+                    Value="{DynamicResource MaterialDesignCardBackground}" />
+        </Style>
+
+        <sh:SingleShade x:Key="ShadowAccentTop"
+                        BlurRadius="6"
+                        Opacity="0.15"
+                        Offset="0,-8"
+                        Color="{StaticResource Accent700}" />
+
+        <sh:SingleShade x:Key="ShadowAccentBottom"
+                        BlurRadius="6"
+                        Opacity="0.075"
+                        Offset="0,5"
+                        Color="{StaticResource Accent700}" />
+
+        <sh:ImmutableShades x:Key="ShadowNone" />
+
+        <sh:NeumorphismShades x:Key="ShadowNeumorphism" />
+
+        <sh:NeumorphismShades x:Key="ShadowThinNeumorphism"
+                              LowerOffset="8, 6"
+                              UpperOffset="-8,-6" />
+    </Application.Resources>
+</Application>

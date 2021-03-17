@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:res="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+                      x:Class="LapTimer.Forms.UI.Views.MainIndicatorsView"
+                      Style="{StaticResource MvxContentViewStyle}">
+    <views:MvxContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <material:MaterialLabel Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource MainIndicatorsLabel}"
+                                    Text="{x:Static res:res_str.Distance}" />
+
+            <material:MaterialLabel Grid.Row="0"
+                                    Grid.Column="1"
+                                    Style="{StaticResource MainIndicatorsLabel}"
+                                    Text="{x:Static res:res_str.Time}" />
+
+            <material:MaterialLabel Grid.Row="1"
+                                    Grid.Column="0"
+                                    Style="{StaticResource MainIndicatorsValue}"
+                                    Text="{Binding DisplayableDistance}" />
+
+            <material:MaterialLabel Grid.Row="1"
+                                    Grid.Column="1"
+                                    Style="{StaticResource MainIndicatorsValue}"
+                                    Text="{Binding DisplayableTimeSpan}" />
+        </Grid>
+    </views:MvxContentView.Content>
+</views:MvxContentView>
