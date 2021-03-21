@@ -13,24 +13,12 @@ namespace LapTimer.Core.Services
         /// Gets the lap rides asynchronous.
         /// </summary>
         /// <returns></returns>
-        Task<List<RideModel>> GetLapRidesAsync();
+        Task<List<RideModel>> GetRidesAsync();
 
         /// <summary>
         /// Gets the lap routes asynchronous.
         /// </summary>
         /// <returns></returns>
-        Task<List<RouteModel>> GetLapRoutesAsync();
-
-        /// <summary>
-        /// Gets the track rides asynchronous.
-        /// </summary>
-        /// <returns></returns>
-        Task<List<RideModel>> GetTrackRidesAsync();
-
-        /// <summary>
-        /// Gets the track routes asynchronous.
-        /// </summary>
-        /// <returns></returns>
-        Task<List<RouteModel>> GetTrackRoutesAsync();
+        Task<List<RouteModel>> GetRoutesAsync();
     }
 }

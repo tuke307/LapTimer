@@ -12,9 +12,9 @@ namespace LapTimer.Core.Services
 
         RideModel GetRide();
 
-        bool IsModeSelected(RouteEnum routeEnum);
+        bool IsModeSelected(RouteMode routeEnum);
 
-        void SetRideMode(RouteEnum routeEnum);
+        void SetRideMode(RouteMode routeEnum);
 
         void SetRoute(RouteModel route);
     }

@@ -12,7 +12,7 @@ namespace LapTimer.Core.Services
         private RideModel _ride;
         private List<RideModel> _rides = new List<RideModel>();
         private RouteModel _route;
-        private RouteEnum _routeEnum;
+        private RouteMode _routeEnum;
         private List<RouteModel> _routes = new List<RouteModel>();
 
         public RideService(DatabaseContext context)
@@ -41,12 +41,12 @@ namespace LapTimer.Core.Services
             return _route;
         }
 
-        public bool IsModeSelected(RouteEnum routeEnum)
+        public bool IsModeSelected(RouteMode routeEnum)
         {
             return false;
         }
 
-        public void SetRideMode(RouteEnum routeEnum)
+        public void SetRideMode(RouteMode routeEnum)
         {
             this._routeEnum = routeEnum;
         }
