@@ -1,3 +1,3 @@
-[![Build Status](https://dev.azure.com/tonymeissner70/Test/_apis/build/status/tuke307.LapTimer?branchName=master)](https://dev.azure.com/tonymeissner70/Test/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://dev.azure.com/tuke307/LapTimer/_apis/build/status/tuke307.LapTimer?branchName=master)](https://dev.azure.com/tuke307/LapTimer/_build/latest?definitionId=2&branchName=master)
 
 # LapTimer
