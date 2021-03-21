@@ -72,12 +72,12 @@
 
         public bool LapSelected
         {
-            get => _rideService.IsModeSelected(RouteEnum.Lap);
+            get => _rideService.IsModeSelected(RouteMode.LapMode);
         }
 
         public bool TrackSelected
         {
-            get => _rideService.IsModeSelected(RouteEnum.Track);
+            get => _rideService.IsModeSelected(RouteMode.TrackMode);
         }
 
         #endregion Values

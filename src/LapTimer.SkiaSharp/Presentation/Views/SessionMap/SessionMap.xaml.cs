@@ -106,8 +106,6 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         private LatLong _centerPosition;
         private bool _drawingMode = false;
 
-        private int _lastSessionPointsCount;
-
         //private bool _isCameraInitialized;
         private ILocationService _locationService;
 
@@ -350,7 +348,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             // move to SessionMapInfo region
             if (SessionMapInfo != null)
             {
-                Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
+                Device.StartTimer(TimeSpan.FromMilliseconds(1000), () =>
                 {
                     GoogleMap.MoveToRegion(SessionMapInfo.Region, true);
                     return false;
@@ -492,34 +490,25 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             SKPoint previousPoint = SKPoint.Empty;
             SKColor previousColor = SKColor.Empty;
 
-            //int linesDrawnCount = 0;
-            for (int index = _lastSessionPointsCount; index < sessionPoints.Count; index++)
+            int linesDrawnCount = 0;
+            for (int index = 0; index < sessionPoints.Count; index++)
             {
                 ISessionDisplayablePoint sessionPoint = sessionPoints[index];
 
-                // TODO: only for testing
-                //if (sessionPoint.Time > MaxTime)
-                //{
-                //    break;
-                //}
+                if (sessionPoint.Time > MaxTime)
+                {
+                    break;
+                }
 
                 SKPoint pathPoint = sessionPoint.Position != LatLong.Empty
                     ? _positionConverter[sessionPoint.Position].ToSKPoint()
                     : SKPoint.Empty;
-
-                // TODO: implemented for testing
-                //if ((_lastSessionPointsCount - sessionPoints.Count) == 1)
-                //{
-                //    previousPoint = pathPoint;
-                //}
 
                 var pointColor = sessionPoint.MapPointColor.ToSKColor();
 
                 // don't draw line between points with a distance < 1 dp
                 bool isDistanceEnough = Math.Abs(pathPoint.X - previousPoint.X) > SkiaHelper.ToPixel(4)
                     || Math.Abs(pathPoint.Y - previousPoint.Y) > SkiaHelper.ToPixel(4);
-
-                // bool isDistanceEnough = true;
 
                 if (previousPoint != SKPoint.Empty
                     && pathPoint != SKPoint.Empty
@@ -539,7 +528,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                         _gradientPathPaint.Shader = null;
                     }
 
-                    //linesDrawnCount++;
+                    linesDrawnCount++;
                 }
 
                 if (isDistanceEnough)
@@ -548,11 +537,6 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                     previousColor = pointColor;
                 }
             }
-
-            //Debug.WriteLine($"MAP: {linesDrawnCount} lines drawn");
-
-            // für nächstes malen speichern
-            _lastSessionPointsCount = sessionPoints.Count;
 
             #endregion LineDrawing
 

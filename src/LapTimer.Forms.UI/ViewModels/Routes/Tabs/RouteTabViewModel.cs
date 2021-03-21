@@ -188,7 +188,7 @@
 
         protected async Task<List<ActivityHeaderModel>> LoadAsync()
         {
-            var rides = await _dbactivityService.GetLapRidesAsync();
+            var rides = await _dbactivityService.GetRidesAsync();
             var activities = await _tcxActivityService.GetActivitiesAsync();
 
             var result = new List<ActivityHeaderModel>();

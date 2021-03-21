@@ -23,10 +23,13 @@
             <tabs:TabHostView.Tabs>
                 <tabs:BottomTabItem Label="{x:Static res:res_str.LAP}"
                                     Style="{StaticResource Key=BottomTabStyle}"
-                                    IconImageSource="lap_structure" />
+                                    IconImageSource="lap_mode" />
                 <tabs:BottomTabItem Label="{x:Static res:res_str.TRACK}"
                                     Style="{StaticResource Key=BottomTabStyle}"
-                                    IconImageSource="track_structure" />
+                                    IconImageSource="track_mode" />
+                <tabs:BottomTabItem Label="{x:Static res:res_str.FREERIDE}"
+                                    Style="{StaticResource Key=BottomTabStyle}"
+                                    IconImageSource="freeride_mode" />
             </tabs:TabHostView.Tabs>
         </tabs:TabHostView>
 

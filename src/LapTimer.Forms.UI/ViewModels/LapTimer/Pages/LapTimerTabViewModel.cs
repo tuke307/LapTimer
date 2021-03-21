@@ -41,7 +41,7 @@
             this.LapSelected = false;
             this.TrackSelected = false;
             this.FreeRideSelected = true;
-            _rideService.SetRideMode(RouteEnum.FreeRide);
+            _rideService.SetRideMode(RouteMode.FreeRideMode);
         }
 
         private void HandleLapSelected()
@@ -49,7 +49,7 @@
             this.LapSelected = true;
             this.TrackSelected = false;
             this.FreeRideSelected = false;
-            _rideService.SetRideMode(RouteEnum.Lap);
+            _rideService.SetRideMode(RouteMode.LapMode);
         }
 
         private void HandleTrackSelected()
@@ -57,7 +57,7 @@
             this.LapSelected = false;
             this.TrackSelected = true;
             this.FreeRideSelected = false;
-            _rideService.SetRideMode(RouteEnum.Track);
+            _rideService.SetRideMode(RouteMode.TrackMode);
         }
 
         #region Methods

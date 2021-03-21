@@ -13,7 +13,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
-            <RowDefinition Height="1.5*" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -43,7 +43,7 @@
                 <StackLayout>
                     <material:MaterialLabel Text="{x:Static strings:res_str.LAP}"
                                             Style="{StaticResource MaterialLabelStyle}" />
-                    <Image Source="lap_structure" />
+                    <Image Source="lap_mode" />
                 </StackLayout>
             </material:MaterialCard>
 
@@ -57,7 +57,7 @@
                 <StackLayout>
                     <material:MaterialLabel Text="{x:Static strings:res_str.TRACK}"
                                             Style="{StaticResource MaterialLabelStyle}" />
-                    <Image Source="track_structure" />
+                    <Image Source="track_mode" />
                 </StackLayout>
             </material:MaterialCard>
 
@@ -71,7 +71,7 @@
                 <StackLayout>
                     <material:MaterialLabel Text="{x:Static strings:res_str.FREERIDE}"
                                             Style="{StaticResource MaterialLabelStyle}" />
-                    <Image Source="free_ride_structure" />
+                    <Image Source="freeride_mode" />
                 </StackLayout>
             </material:MaterialCard>
         </Grid>
@@ -85,7 +85,7 @@
                                        Style="{StaticResource MaterialCheckboxStyle}" />
 
             <material:MaterialTextField IsVisible="{Binding RoutesEnabled}"
-                                        Placeholder="{x:Static strings:res_str.ROUTES}"
+                                        Placeholder="{x:Static strings:res_str.ROUTE}"
                                         FloatingPlaceholderEnabled="True"
                                         InputType="Choice"
                                         HorizontalOptions="Center"
@@ -95,7 +95,6 @@
         </StackLayout>
 
         <StackLayout Grid.Row="3">
-
             <material:MaterialLabel TypeScale="H4"
                                     HorizontalOptions="Center"
                                     Style="{StaticResource MaterialLabelStyle}"
@@ -106,24 +105,7 @@
                                     TypeScale="H4"
                                     HorizontalOptions="Center"
                                     Style="{StaticResource MaterialLabelStyle}"
-                                    IsVisible="{Binding LapSelected}"
-                                    Text="{x:Static strings:res_str.LAP}">
-            </material:MaterialLabel>
-
-            <material:MaterialLabel FontAttributes="Bold"
-                                    TypeScale="H4"
-                                    Style="{StaticResource MaterialLabelStyle}"
-                                    HorizontalOptions="Center"
-                                    IsVisible="{Binding TrackSelected}"
-                                    Text="{x:Static strings:res_str.TRACK}">
-            </material:MaterialLabel>
-
-            <material:MaterialLabel FontAttributes="Bold"
-                                    TypeScale="H4"
-                                    Style="{StaticResource MaterialLabelStyle}"
-                                    HorizontalOptions="Center"
-                                    IsVisible="{Binding FreeRideSelected}"
-                                    Text="{x:Static strings:res_str.FREERIDE}">
+                                    Text="{x:Static strings:res_str.ROUTES}">
             </material:MaterialLabel>
         </StackLayout>
 
