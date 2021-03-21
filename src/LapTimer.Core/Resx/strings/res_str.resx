@@ -206,4 +206,7 @@
   <data name="FREERIDE" xml:space="preserve">
     <value>freeride</value>
   </data>
+  <data name="ROUTE" xml:space="preserve">
+    <value>route</value>
+  </data>
 </root>

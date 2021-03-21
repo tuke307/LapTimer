@@ -201,4 +201,7 @@
   <data name="YES" xml:space="preserve">
     <value>yes</value>
   </data>
+  <data name="ROUTE" xml:space="preserve">
+    <value>route</value>
+  </data>
 </root>

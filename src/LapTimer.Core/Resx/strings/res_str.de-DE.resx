@@ -201,4 +201,7 @@
   <data name="FREERIDE" xml:space="preserve">
     <value>Freie Fahrt</value>
   </data>
+  <data name="ROUTE" xml:space="preserve">
+    <value>Route</value>
+  </data>
 </root>

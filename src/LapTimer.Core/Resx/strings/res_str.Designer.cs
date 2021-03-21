@@ -212,7 +212,16 @@ namespace LapTimer.Core.Resx.strings {
                 return ResourceManager.GetString("RIDES", resourceCulture);
             }
         }
-        
+        /// <summary>
+        ///   Looks up a localized string similar to route.
+        /// </summary>
+        public static string ROUTE
+        {
+            get
+            {
+                return ResourceManager.GetString("ROUTE", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to routes.
         /// </summary>
