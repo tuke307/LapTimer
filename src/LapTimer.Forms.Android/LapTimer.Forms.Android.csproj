@@ -207,9 +207,6 @@
     <AndroidResource Include="Resources\drawable-night-mdpi\history.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\lap_structure.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\check.png" />
   </ItemGroup>
   <ItemGroup>
@@ -676,65 +673,114 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\freeride_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\lap_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\track_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\freeride_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\lap_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\track_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\freeride_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\lap_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\track_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-xxxhdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\freeride_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-xxxhdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\lap_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-hdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\track_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-hdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\freeride_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-mdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\lap_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-mdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\track_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-xxhdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\freeride_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-xxhdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\lap_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-xhdpi\lap_structure.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\track_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-xhdpi\track_structure.png" />
+    <AndroidResource Include="Resources\drawable-night-xxhdpi\freeride_mode.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-night-ldpi\free_ride_structure.png" />
+    <AndroidResource Include="Resources\drawable-night-xxhdpi\lap_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-xxhdpi\track_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-xhdpi\freeride_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-xhdpi\lap_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-xhdpi\track_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-hdpi\freeride_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-hdpi\lap_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-hdpi\track_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-xxxhdpi\freeride_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-xxxhdpi\lap_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-xxxhdpi\track_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-ldpi\freeride_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-ldpi\lap_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-ldpi\track_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-mdpi\freeride_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-mdpi\lap_mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-night-mdpi\track_mode.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
