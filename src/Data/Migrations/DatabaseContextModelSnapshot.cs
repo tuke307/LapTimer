@@ -14,9 +14,41 @@ namespace Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9");
+                .HasAnnotation("ProductVersion", "5.0.4");
 
             modelBuilder.Entity("Data.Models.ConditionModel", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool?>("Clouds")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool?>("Precipation")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RideId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("Wind")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RideId")
+                        .IsUnique();
+
+                    b.ToTable("Conditions");
+                });
+
+            modelBuilder.Entity("Data.Models.GroundModel", b =>
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
@@ -25,24 +57,15 @@ namespace Data.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Ground")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("RideId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("Temperature")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RideId")
-                        .IsUnique();
-
-                    b.ToTable("Conditions");
+                    b.ToTable("Grounds");
                 });
 
             modelBuilder.Entity("Data.Models.LapModel", b =>
@@ -59,9 +82,6 @@ namespace Data.Migrations
 
                     b.Property<double>("MaximumSpeed")
                         .HasColumnType("REAL");
-
-                    b.Property<bool>("MaximumSpeedSpecified")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("RideId")
                         .HasColumnType("INTEGER");
@@ -82,40 +102,6 @@ namespace Data.Migrations
                     b.ToTable("Laps");
                 });
 
-            modelBuilder.Entity("Data.Models.LapTrackpointModel", b =>
-                {
-                    b.Property<int?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double?>("Altitude")
-                        .HasColumnType("REAL");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("LapId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("REAL");
-
-                    b.Property<double?>("Speed")
-                        .HasColumnType("REAL");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LapId");
-
-                    b.ToTable("LapTrackpoints");
-                });
-
             modelBuilder.Entity("Data.Models.RideModel", b =>
                 {
                     b.Property<int?>("Id")
@@ -128,16 +114,37 @@ namespace Data.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<double>("DistanceMeters")
+                        .HasColumnType("REAL");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("GroundId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<double>("MaximumSpeed")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("RouteEnum")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("RouteId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GroundId")
+                        .IsUnique();
 
                     b.HasIndex("RouteId");
 
@@ -156,11 +163,11 @@ namespace Data.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<double>("DistanceMeters")
+                        .HasColumnType("REAL");
+
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("RouteEnum")
-                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("TEXT");
@@ -170,7 +177,7 @@ namespace Data.Migrations
                     b.ToTable("Routes");
                 });
 
-            modelBuilder.Entity("Data.Models.RouteTrackpointModel", b =>
+            modelBuilder.Entity("Data.Models.TrackpointModel", b =>
                 {
                     b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
@@ -182,26 +189,28 @@ namespace Data.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("LapModelId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<double>("Latitude")
                         .HasColumnType("REAL");
 
                     b.Property<double>("Longitude")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("RouteId")
+                    b.Property<int?>("RouteModelId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<double?>("Speed")
-                        .HasColumnType("REAL");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RouteId");
+                    b.HasIndex("LapModelId");
 
-                    b.ToTable("RouteTrackpoints");
+                    b.HasIndex("RouteModelId");
+
+                    b.ToTable("Trackpoints");
                 });
 
             modelBuilder.Entity("Data.Models.ConditionModel", b =>
@@ -211,6 +220,8 @@ namespace Data.Migrations
                         .HasForeignKey("Data.Models.ConditionModel", "RideId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Ride");
                 });
 
             modelBuilder.Entity("Data.Models.LapModel", b =>
@@ -220,31 +231,58 @@ namespace Data.Migrations
                         .HasForeignKey("RideId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("Data.Models.LapTrackpointModel", b =>
-                {
-                    b.HasOne("Data.Models.LapModel", "Lap")
-                        .WithMany("Trackpoints")
-                        .HasForeignKey("LapId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Ride");
                 });
 
             modelBuilder.Entity("Data.Models.RideModel", b =>
                 {
+                    b.HasOne("Data.Models.GroundModel", "Ground")
+                        .WithOne("Ride")
+                        .HasForeignKey("Data.Models.RideModel", "GroundId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Data.Models.RouteModel", "Route")
                         .WithMany("Rides")
                         .HasForeignKey("RouteId");
+
+                    b.Navigation("Ground");
+
+                    b.Navigation("Route");
                 });
 
-            modelBuilder.Entity("Data.Models.RouteTrackpointModel", b =>
+            modelBuilder.Entity("Data.Models.TrackpointModel", b =>
                 {
-                    b.HasOne("Data.Models.RouteModel", "Route")
+                    b.HasOne("Data.Models.LapModel", null)
                         .WithMany("Trackpoints")
-                        .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LapModelId");
+
+                    b.HasOne("Data.Models.RouteModel", null)
+                        .WithMany("Trackpoints")
+                        .HasForeignKey("RouteModelId");
+                });
+
+            modelBuilder.Entity("Data.Models.GroundModel", b =>
+                {
+                    b.Navigation("Ride");
+                });
+
+            modelBuilder.Entity("Data.Models.LapModel", b =>
+                {
+                    b.Navigation("Trackpoints");
+                });
+
+            modelBuilder.Entity("Data.Models.RideModel", b =>
+                {
+                    b.Navigation("Condition");
+                });
+
+            modelBuilder.Entity("Data.Models.RouteModel", b =>
+                {
+                    b.Navigation("Rides");
+
+                    b.Navigation("Trackpoints");
                 });
 #pragma warning restore 612, 618
         }

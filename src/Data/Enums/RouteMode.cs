@@ -1,20 +1,20 @@
 ﻿namespace Data.Enums
 {
-    public enum RouteEnum
+    public enum RouteMode
     {
         /// <summary>
         /// Strecke.
         /// </summary>
-        Track = 1,
+        TrackMode = 1,
 
         /// <summary>
         /// Runde.
         /// </summary>
-        Lap = 2,
+        LapMode = 2,
 
         /// <summary>
         /// Freie Fahrt.
         /// </summary>
-        FreeRide = 3,
+        FreeRideMode = 3,
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Data.Models
 {
     public class TrackpointModel : BaseEntityModel
     {

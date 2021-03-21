@@ -20,16 +20,18 @@
         public DbSet<ConditionModel> Conditions { get; set; }
 
         /// <summary>
+        /// Gets or sets the grounds.
+        /// </summary>
+        /// <value>
+        /// The grounds.
+        /// </value>
+        public DbSet<GroundModel> Grounds { get; set; }
+
+        /// <summary>
         /// Gets or sets the laps.
         /// </summary>
         /// <value>The laps.</value>
         public DbSet<LapModel> Laps { get; set; }
-
-        /// <summary>
-        /// Gets or sets the lap trackpoints.
-        /// </summary>
-        /// <value>The lap trackpoints.</value>
-        public DbSet<LapTrackpointModel> LapTrackpoints { get; set; }
 
         /// <summary>
         /// Gets or sets the rides.
@@ -44,10 +46,10 @@
         public DbSet<RouteModel> Routes { get; set; }
 
         /// <summary>
-        /// Gets or sets the route trackpoints.
+        /// Gets or sets the trackpoints.
         /// </summary>
-        /// <value>The route trackpoints.</value>
-        public DbSet<RouteTrackpointModel> RouteTrackpoints { get; set; }
+        /// <value>The trackpoints.</value>
+        public DbSet<TrackpointModel> Trackpoints { get; set; }
 
         #endregion DataSets
 

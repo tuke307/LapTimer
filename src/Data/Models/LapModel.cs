@@ -23,14 +23,6 @@ namespace Data.Models
         public double MaximumSpeed { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether [maximum speed specified].
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if [maximum speed specified]; otherwise, <c>false</c>.
-        /// </value>
-        public bool MaximumSpeedSpecified { get; set; }
-
-        /// <summary>
         /// Gets or sets the ride.
         /// </summary>
         /// <value>The ride.</value>
@@ -59,6 +51,6 @@ namespace Data.Models
         /// Gets or sets the trackpoints from the lap.
         /// </summary>
         /// <value>The trackpoints.</value>
-        public List<LapTrackpointModel> Trackpoints { get; set; }
+        public List<TrackpointModel> Trackpoints { get; set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Data.Enums;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Models
 {
@@ -11,10 +9,20 @@ namespace Data.Models
     public class ConditionModel : BaseEntityModel
     {
         /// <summary>
-        /// Gets or sets the ground.
+        /// Gets or sets the clouds.
         /// </summary>
-        /// <value>The ground.</value>
-        public GroundEnum? Ground { get; set; }
+        /// <value>
+        /// The clouds.
+        /// </value>
+        public bool? Clouds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the precipation.
+        /// </summary>
+        /// <value>
+        /// The precipation.
+        /// </value>
+        public bool? Precipation { get; set; }
 
         /// <summary>
         /// Gets or sets the ride.
@@ -30,9 +38,11 @@ namespace Data.Models
         public int RideId { get; set; }
 
         /// <summary>
-        /// Gets or sets the temperature.
+        /// Gets or sets the wind.
         /// </summary>
-        /// <value>The temperature.</value>
-        public int? Temperature { get; set; }
+        /// <value>
+        /// The wind.
+        /// </value>
+        public int? Wind { get; set; }
     }
 }
