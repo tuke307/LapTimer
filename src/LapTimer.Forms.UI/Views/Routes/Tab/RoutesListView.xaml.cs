@@ -1,4 +1,4 @@
-﻿namespace LapTimer.Forms.UI.Views.Rides
+﻿namespace LapTimer.Forms.UI.Views.Routes
 {
     using MvvmCross;
     using MvvmCross.Forms.Presenters.Attributes;
@@ -7,19 +7,22 @@
     using Xamarin.Forms.Xaml;
 
     /// <summary>
-    /// RideTracksView.
+    /// RouteTracksView.
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RideTracksView : MvxContentView<ViewModels.Rides.RideTracksViewModel>
+    public partial class RoutesListView : MvxContentView<ViewModels.Routes.RoutesListViewModel>
     {
-        public RideTracksView()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RoutesListView"/> class.
+        /// </summary>
+        public RoutesListView()
         {
             InitializeComponent();
 
-            if (!(ViewModel is ViewModels.Rides.RideTracksViewModel))
+            if (!(ViewModel is ViewModels.Routes.RoutesListViewModel))
             {
-                if (Mvx.IoCProvider.TryResolve<ViewModels.Rides.RideTracksViewModel>(out var miniPlayerViewModel))
+                if (Mvx.IoCProvider.TryResolve<ViewModels.Routes.RoutesListViewModel>(out var miniPlayerViewModel))
                 {
                     ViewModel = miniPlayerViewModel;
                     return;
@@ -27,11 +30,11 @@
 
                 var _viewModelLoader = Mvx.IoCProvider.Resolve<IMvxViewModelLoader>(); var
                 request = new
-                MvxViewModelInstanceRequest(typeof(ViewModels.Rides.RideTracksViewModel));
+                MvxViewModelInstanceRequest(typeof(ViewModels.Routes.RoutesListViewModel));
                 request.ViewModelInstance = _viewModelLoader.LoadViewModel(request, null);
-                ViewModel = request.ViewModelInstance as ViewModels.Rides.RideTracksViewModel;
+                ViewModel = request.ViewModelInstance as ViewModels.Routes.RoutesListViewModel;
 
-                Mvx.IoCProvider.RegisterSingleton<ViewModels.Rides.RideTracksViewModel>(ViewModel);
+                Mvx.IoCProvider.RegisterSingleton<ViewModels.Routes.RoutesListViewModel>(ViewModel);
             }
         }
 

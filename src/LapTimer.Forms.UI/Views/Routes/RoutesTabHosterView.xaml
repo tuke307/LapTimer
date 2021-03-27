@@ -19,7 +19,7 @@
 
         <tabs:TabHostView Style="{StaticResource Key=TabHostViewStyle}"
                           Shades="{StaticResource Key=ShadowAccentBottom}"
-                          SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"
+                          SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}"
                           Grid.Row="0">
             <tabs:TabHostView.Tabs>
                 <tabs:BottomTabItem Label="{x:Static res:res_str.LAP}"
@@ -34,12 +34,14 @@
             </tabs:TabHostView.Tabs>
         </tabs:TabHostView>
 
-        <tabs:ViewSwitcher Animate="True"
+        <!--<tabs:ViewSwitcher Animate="True"
                            Grid.Row="1"
                            x:Name="Switcher"
                            SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}">
             <routes:RouteLapsView />
             <routes:RouteTracksView />
-        </tabs:ViewSwitcher>
+        </tabs:ViewSwitcher>-->
+
+        <routes:RoutesListView Grid.Row="1" />
     </Grid>
 </views:MvxContentPage>

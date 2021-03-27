@@ -1,4 +1,4 @@
-﻿namespace LapTimer.Forms.UI.ViewModels.Routes
+﻿namespace LapTimer.Forms.UI.ViewModels.Rides
 {
     using global::LapTimer.Core.Services;
     using MvvmCross.Logging;
@@ -6,17 +6,17 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RouteLapsViewModel.
+    /// RideTracksViewModel.
     /// </summary>
     /// <seealso cref="MvvmCross.ViewModels.MvxNavigationViewModel" />
-    public class RouteLapsViewModel : RouteTabViewModel
+    public class RidesListViewModel : RideTabViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RouteLapsViewModel" /> class.
+        /// Initializes a new instance of the <see cref="RidesListViewModel" /> class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RouteLapsViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
+        public RidesListViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
             : base(logProvider, navigationService, dbactivityService, tcxActivityService)
         {
         }

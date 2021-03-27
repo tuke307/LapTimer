@@ -8,9 +8,8 @@
                       xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
                       xmlns:skiaSharp="clr-namespace:SkiaSharpnado.SkiaSharp;assembly=SkiaSharpnado"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
-                      x:Class="LapTimer.Forms.UI.Views.Rides.RideTracksView"
-                      x:TypeArguments="viewModels:Rides.RideTracksViewModel"
-                      Style="{StaticResource MvxContentViewStyle}">
+                      x:Class="LapTimer.Forms.UI.Views.Routes.RoutesListView"
+                      x:TypeArguments="viewModels:Routes.RoutesListViewModel">
     <views:MvxContentView.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="ActivityHeaderTemplate">

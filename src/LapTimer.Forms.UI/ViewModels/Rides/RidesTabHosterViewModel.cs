@@ -58,19 +58,7 @@
         {
             if (_viewAppeared)
             {
-                switch (SelectedViewModelIndex)
-                {
-                    case 0:
-                        Mvx.IoCProvider.Resolve<ViewModels.Rides.RideLapsViewModel>().ViewAppeared();
-                        break;
-
-                    case 1:
-                        Mvx.IoCProvider.Resolve<ViewModels.Rides.RideTracksViewModel>().ViewAppeared();
-                        break;
-
-                    default:
-                        break;
-                }
+                Mvx.IoCProvider.Resolve<ViewModels.Rides.RidesListViewModel>().ViewAppeared();
             }
         }
 
