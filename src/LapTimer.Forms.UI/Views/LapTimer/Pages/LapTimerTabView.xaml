@@ -105,7 +105,7 @@
                                     TypeScale="H4"
                                     HorizontalOptions="Center"
                                     Style="{StaticResource MaterialLabelStyle}"
-                                    Text="{x:Static strings:res_str.ROUTES}">
+                                    Text="{x:Static strings:res_str.ROUTE}">
             </material:MaterialLabel>
         </StackLayout>
 

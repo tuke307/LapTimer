@@ -39,10 +39,17 @@
         <material:MaterialLabel Text="{Binding Speed}"
                                 Style="{StaticResource MaterialLabelStyle}"
                                 Grid.Column="0"
-                                Grid.Row="1" />
+                                Grid.Row="1"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                Margin="5" />
 
         <StackLayout Grid.Column="1"
-                     Grid.Row="1">
+                     Grid.Row="1"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     IsVisible="{Binding TimerNeeded}"
+                     Margin="5">
             <material:MaterialLabel Text="{Binding LapTime, Converter={StaticResource TimeSpanToString}}"
                                     Style="{StaticResource MaterialLabelStyle}" />
             <material:MaterialLabel Text="{Binding TotalTime, Converter={StaticResource TimeSpanToString}}"
@@ -53,7 +60,9 @@
         <material:MaterialIcon Grid.Column="2"
                                Grid.Row="1"
                                Source="{Binding AccuracyImage}"
-                               HorizontalOptions="End">
+                               HorizontalOptions="End"
+                               VerticalOptions="Center"
+                               Margin="5">
         </material:MaterialIcon>
     </Grid>
 </views:MvxContentView>
