@@ -56,14 +56,7 @@
         private void OnLocation(MvxGeoLocation location)
         {
             var message = new MvxLocationMessage(this,
-                                                    location.Coordinates.Latitude,
-                                                    location.Coordinates.Longitude,
-                                                    location.Coordinates.Accuracy,
-                                                    location.Coordinates.Altitude,
-                                                    location.Coordinates.AltitudeAccuracy,
-                                                    location.Coordinates.Heading,
-                                                    location.Coordinates.HeadingAccuracy,
-                                                    location.Coordinates.Speed);
+                                                 location.Coordinates);
 
             this._messenger.Publish(message);
         }

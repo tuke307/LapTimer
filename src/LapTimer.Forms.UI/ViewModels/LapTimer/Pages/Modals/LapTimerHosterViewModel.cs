@@ -26,7 +26,7 @@
             : base(logProvider, navigationService)
         {
             CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
-            _token = messenger.Subscribe<MvxTabIndexMessenger>(OnTabIndexMessage);
+            _token = messenger.Subscribe<MvxTabIndexMessenger>(OnTabIndexUpdated);
         }
 
         #region Methods
@@ -81,7 +81,7 @@
             }
         }
 
-        private void OnTabIndexMessage(MvxTabIndexMessenger tabIndexMessage)
+        private void OnTabIndexUpdated(MvxTabIndexMessenger tabIndexMessage)
         {
             SelectedViewModelIndex = tabIndexMessage.TabIndex;
         }

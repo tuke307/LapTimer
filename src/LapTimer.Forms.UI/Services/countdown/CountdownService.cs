@@ -61,7 +61,6 @@ namespace LapTimer.Forms.UI.Services
         public void Start(TimeSpan CountdownTime)
         {
             _TimeRemaining = CountdownTime;
-            _Stopped = false;
 
             Start();
         }

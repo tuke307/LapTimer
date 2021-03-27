@@ -22,7 +22,7 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Sharpnado.Presentation.Forms" Version="1.7.1" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="XF.Material" Version="1.7.7" />
+    <PackageReference Include="XF.Material" Version="1.7.8" />
     <PackageReference Include="TouchTracking.Forms" Version="1.1.0" />
     <PackageReference Include="Xam.Plugins.Settings" Version="4.1.0-beta" />
   </ItemGroup>
@@ -64,26 +64,20 @@
     <Compile Update="Views\Rides\Detailled\DetailledRideView.xaml.cs">
       <DependentUpon>DetailledRideView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Rides\Tab\RideLapsView.xaml.cs">
-      <DependentUpon>RideLapsView.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\Rides\RidesTabHosterView.xaml.cs">
       <DependentUpon>RidesTabHosterView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\MainIndicatorsView.xaml.cs">
       <DependentUpon>MainIndicatorsView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Rides\Tab\RideTracksView.xaml.cs">
-      <DependentUpon>RideTracksView.xaml</DependentUpon>
+    <Compile Update="Views\Rides\Tab\RidesListView.xaml.cs">
+      <DependentUpon>RidesListView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Routes\Detailled\DetailledRouteView.xaml.cs">
       <DependentUpon>DetailledRouteView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Routes\Tab\RouteTracksView.xaml.cs">
-      <DependentUpon>RouteTracksView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Routes\Tab\RouteLapsView.xaml.cs">
-      <DependentUpon>RouteLapsView.xaml</DependentUpon>
+    <Compile Update="Views\Routes\Tab\RoutesListView.xaml.cs">
+      <DependentUpon>RoutesListView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Routes\RoutesTabHosterView.xaml.cs">
       <DependentUpon>RoutesTabHosterView.xaml</DependentUpon>
@@ -106,10 +100,7 @@
     <EmbeddedResource Update="Views\Rides\Detailled\DetailledRideView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Rides\Tab\RideTracksView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Routes\Tab\RouteLapsView.xaml">
+    <EmbeddedResource Update="Views\Rides\Tab\RidesListView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Settings\SettingsView.xaml">

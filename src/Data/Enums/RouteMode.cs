@@ -1,5 +1,8 @@
 ﻿namespace Data.Enums
 {
+    /// <summary>
+    /// RouteMode.
+    /// </summary>
     public enum RouteMode
     {
         /// <summary>

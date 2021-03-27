@@ -4,6 +4,7 @@
     using global::LapTimer.Core.Models;
     using global::LapTimer.Core.Services;
     using global::LapTimer.Forms.UI.Functions;
+    using global::LapTimer.Forms.UI.Models;
     using global::LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
     using MvvmCross;
     using MvvmCross.Commands;
@@ -13,7 +14,7 @@
     using MvvmCross.ViewModels;
     using Sharpnado.Presentation.Forms;
     using System;
-    using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Threading.Tasks;
     using Xamarin.Essentials;
     using Xamarin.Forms;
@@ -38,6 +39,11 @@
             this._locationService = locationService;
             this._messenger = messenger;
             this._token = messenger.Subscribe<MvxLocationMessage>(this.OnLocationUpdated);
+            this._token = messenger.Subscribe<MvxTabIndexMessenger>(this.OnTabIndexUpdated);
+
+            stopwatch = new Stopwatch();
+            stopwatch.Reset();
+
             Loader = new TaskLoaderNotifier<SessionMap>();
         }
 
@@ -117,11 +123,53 @@
 
         private void OnLocationUpdated(MvxLocationMessage locationMessage)
         {
-            HandleAccuracy(locationMessage.Accuracy);
+            HandleAccuracy(locationMessage.MvxCoordinates.Accuracy);
             //CurrentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
-            TrackpointModel trackpoint = new TrackpointModel();
-            trackpoint.Altitude = locationMessage.Altitude;
+
+            TrackpointModel trackpoint = new TrackpointModel(locationMessage.MvxCoordinates);
+
             this._rideService.AddTrackpoint(trackpoint);
+        }
+
+        private void OnTabIndexUpdated(MvxTabIndexMessenger tabIndexMessage)
+        {
+            switch (tabIndexMessage.TabIndex)
+            {
+                case 0:
+                    TimerNeeded = false;
+                    break;
+
+                case 1:
+                    TimerNeeded = false;
+                    break;
+
+                case 2:
+                    TimerNeeded = false;
+                    break;
+
+                case 3:
+                    TimerNeeded = true;
+                    StartTimer();
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        private void StartTimer()
+        {
+            stopwatch.Start();
+
+            Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
+            {
+                TotalTime = stopwatch.Elapsed;
+
+                if (stopwatch.IsRunning)
+                    return true;
+                else
+                    return false;
+            });
         }
 
         #endregion Methods
@@ -152,14 +200,12 @@
         private readonly string signal_cellular_3 = "signal_cellular_3";
         private ImageSource _accuracyImage;
         private Position _currentPosition;
-
         private TimeSpan _lapTime;
-
         private MvxLocationMessage _locationMessage;
-
         private double _speed;
-
+        private bool _timerNeeded;
         private TimeSpan _totalTime;
+        private Stopwatch stopwatch;
 
         public ImageSource AccuracyImage
         {
@@ -179,6 +225,12 @@
         {
             get => this._speed;
             set => this.SetProperty(ref _speed, value);
+        }
+
+        public bool TimerNeeded
+        {
+            get => this._timerNeeded;
+            set => this.SetProperty(ref _timerNeeded, value);
         }
 
         public TimeSpan TotalTime

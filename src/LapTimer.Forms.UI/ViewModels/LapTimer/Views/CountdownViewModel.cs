@@ -11,6 +11,7 @@
     using MvvmCross.ViewModels;
     using System;
     using System.Threading.Tasks;
+    using System.Timers;
     using Xamarin.Essentials;
 
     /// <summary>
@@ -55,10 +56,13 @@
         public override void ViewAppeared()
         {
             base.ViewAppeared();
+
             //start timer after navigating
             _countdownTimer.Ticked += CountdownTimerTicked;
             _countdownTimer.Completed += CountdownTimerCompleted;
-            _countdownTimer.Start(TimeSpan.FromSeconds(timerDuration), TimeSpan.FromSeconds(1));
+
+            // aller 1/10 sekunde wird zeit aktualisiert
+            _countdownTimer.Start(TimeSpan.FromSeconds(timerDuration), TimeSpan.FromMilliseconds(100));
         }
 
         private void CountdownTimerCompleted(object sender, EventArgs e)

@@ -595,7 +595,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         /// <param name="locationMessage">The location message.</param>
         private void OnLocationUpdated(MvxLocationMessage locationMessage)
         {
-            _currentPosition = new Position(locationMessage.Latitude, locationMessage.Longitude);
+            _currentPosition = new Position(locationMessage.MvxCoordinates.Latitude, locationMessage.MvxCoordinates.Longitude);
             SessionMapInfo.Add(_currentPosition);
 
             // nur wenn auf MyLocation gedrückt wurde, wird postion verfolgt

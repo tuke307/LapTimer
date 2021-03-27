@@ -1,7 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MvvmCross.Plugin.Location;
 
 namespace Data.Models
 {
+    /// <summary>
+    /// TrackpointModel.
+    /// </summary>
+    /// <seealso cref="Data.Models.BaseEntityModel" />
     public class TrackpointModel : BaseEntityModel
     {
         /// <summary>
@@ -21,5 +25,16 @@ namespace Data.Models
         /// </summary>
         /// <value>The longitude.</value>
         public double Longitude { get; set; }
+
+        public TrackpointModel()
+        {
+        }
+
+        public TrackpointModel(MvxCoordinates mvxCoordinates)
+        {
+            Altitude = mvxCoordinates.Altitude;
+            Latitude = mvxCoordinates.Latitude;
+            Longitude = mvxCoordinates.Longitude;
+        }
     }
 }
