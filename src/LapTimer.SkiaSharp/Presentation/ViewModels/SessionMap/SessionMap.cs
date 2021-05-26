@@ -12,15 +12,31 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
 {
     public class SessionMap : SessionList<SessionDisplayablePoint>
     {
-        public Position BottomLeft { get; }
+        public Position BottomLeft { get; private set; }
 
-        public MapSpan Region { get; }
+        public MapSpan Region { get; private set; }
 
         public List<SessionDisplayablePoint> SessionPoints { get; }
 
-        public Position TopRight { get; }
+        public Position TopRight { get; private set; }
 
-        public int TotalDurationInSeconds { get; }
+        public int TotalDurationInSeconds
+        {
+            get
+            {
+                if (SessionPoints.Count > 0)
+                {
+                    var lastPoint = SessionPoints.Last();
+
+                    if (lastPoint.Time != null)
+                    {
+                        return (int)lastPoint.Time.TotalSeconds;
+                    }
+                }
+
+                return 0;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SessionMap" /> class.
@@ -50,14 +66,12 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
         public SessionMap(
             List<SessionDisplayablePoint> sessionPoints,
             Position bottomLeft,
-            Position topRight,
-            int totalDurationInSeconds)
+            Position topRight)
         {
             SessionPoints = sessionPoints;
             BottomLeft = bottomLeft;
             TopRight = topRight;
             Region = GeoCalculation.BoundsToMapSpan(bottomLeft, topRight);
-            TotalDurationInSeconds = totalDurationInSeconds;
         }
 
         /// <summary>
@@ -140,17 +154,19 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
             return new SessionMap(
                 sessionPoints.ToList(),
                 new Position(bottomLatitude, leftLongitude),
-                new Position(topLatitude, rightLongitude),
-                previousPoint != null ? (int)previousPoint.Time.TotalSeconds : 0);
+                new Position(topLatitude, rightLongitude));
         }
 
         /// <summary>
         /// Adds the specified session displayable point.
         /// </summary>
         /// <param name="sessionDisplayablePoint">The session displayable point.</param>
-        public new void Add(ActivityPoint point)
+        public void Add(ActivityPoint point)
         {
-            SessionDisplayablePoint previousPoint = SessionPoints.Last();
+            SessionDisplayablePoint previousPoint =
+                SessionPoints.Count > 0
+                ? SessionPoints.Last()
+                : null;
             DateTime startTime = point.TimeStamp;
             SessionDisplayablePoint sessionDisplayablePoint;
             TimeSpan elapsedTime = point.TimeStamp - startTime;
@@ -177,34 +193,13 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
                     speed,
                     point.Position);
 
-            SessionPoints.Add(sessionDisplayablePoint);
-        }
-
-        public new void Add(Position position)
-        {
-            SessionDisplayablePoint sessionDisplayablePoint;
-
-            //double? speed = point.Speed;
-            //if (speed == null
-            //    && previousPoint != null
-            //    && previousPoint.HasPosition
-            //    && previousPoint.Distance.HasValue
-            //    && point.Position != LatLong.Empty
-            //    && point.DistanceInMeters > 0
-            //    && elapsedTime.TotalSeconds > 0)
-            //{
-            //    double kilometersTraveled =
-            //        GeoCalculation.HaversineDistance(previousPoint.Position, position.ToLatLong());
-            //    double hoursElapsed = (elapsedTime - previousPoint.Time).TotalHours;
-            //    speed = kilometersTraveled / hoursElapsed;
-            //}
-
-            sessionDisplayablePoint = new SessionDisplayablePoint(
-                   TimeSpan.FromMilliseconds(1),
-                    0,
-                    0,
-                    0,
-                    position.ToLatLong());
+            if (GeoCalculation.IsPointNewLeftBottom(BottomLeft, sessionDisplayablePoint.Position.ToPosition()) ||
+                GeoCalculation.IsPointNewTopRight(TopRight, sessionDisplayablePoint.Position.ToPosition()))
+            {
+                BottomLeft = sessionDisplayablePoint.Position.ToPosition();
+                TopRight = sessionDisplayablePoint.Position.ToPosition();
+                Region = GeoCalculation.BoundsToMapSpan(BottomLeft, TopRight);
+            }
 
             SessionPoints.Add(sessionDisplayablePoint);
         }
@@ -213,43 +208,19 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
         /// Adds the range.
         /// </summary>
         /// <param name="sessionDisplayablePoints">The session displayable points.</param>
-        public new void AddRange(List<ActivityPoint> points,
-            Func<ISessionDisplayablePoint, Color?> colorBaseValueSelector)
+        public void AddRange(List<ActivityPoint> points)
         {
-            //SessionDisplayablePoint previousPoint = SessionPoints.Last();
-            //DateTime startTime = point.TimeStamp;
-            //SessionDisplayablePoint sessionDisplayablePoint;
-            //TimeSpan elapsedTime = point.TimeStamp - startTime;
+            if (points == null)
+            {
+                Debug.WriteLine("SessionMap points is null");
+                //throw new ArgumentException();
+                return;
+            }
 
-            //double? speed = point.Speed;
-            //if (speed == null
-            //    && previousPoint != null
-            //    && previousPoint.HasPosition
-            //    && previousPoint.Distance.HasValue
-            //    && point.Position != LatLong.Empty
-            //    && point.DistanceInMeters > 0
-            //    && elapsedTime.TotalSeconds > 0)
-            //{
-            //    double kilometersTraveled =
-            //        GeoCalculation.HaversineDistance(previousPoint.Position, point.Position);
-            //    double hoursElapsed = (elapsedTime - previousPoint.Time).TotalHours;
-            //    speed = kilometersTraveled / hoursElapsed;
-            //}
-
-            //sessionDisplayablePoint = new SessionDisplayablePoint(
-            //        elapsedTime,
-            //        point.DistanceInMeters,
-            //        point.AltitudeInMeters,
-            //        speed,
-            //        point.Position);
-
-            //Color mapPointColor =
-            //    colorBaseValueSelector(sessionDisplayablePoint) ?? previousPoint?.MapPointColor ?? Color.Gray;
-
-            //sessionDisplayablePoint.SetPointColor(mapPointColor);
-            //previousPoint = sessionDisplayablePoint;
-
-            //SessionPoints.Add(sessionDisplayablePoint);
+            foreach (var point in points)
+            {
+                Add(point);
+            }
         }
     }
 }
