@@ -8,7 +8,9 @@
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
                       x:Class="LapTimer.Forms.UI.Views.LapTimer.LapTimerTabView"
                       NavigationPage.HasNavigationBar="False"
-                      x:TypeArguments="viewModels:LapTimer.LapTimerTabViewModel">
+                      IconImageSource="{StaticResource IconTimerMedium}"
+                      x:TypeArguments="viewModels:LapTimer.LapTimerTabViewModel"
+                      Style="{StaticResource MvxContentPageStyle}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,9 +22,12 @@
         </Grid.RowDefinitions>
 
         <material:MaterialIconButton Grid.Row="0"
+                                     Style="{StaticResource MaterialIconButtonMediumRoundStyle}"
+                                     HeightRequest="{StaticResource SizeMediumButton}"
+                                     WidthRequest="{StaticResource SizeMediumButton}"
                                      HorizontalOptions="End"
-                                     Image="cog"
-                                     BackgroundColor="Transparent"
+                                     ButtonType="Text"
+                                     Image="{StaticResource IconSettingsMedium}"
                                      Command="{Binding OpenSettingsCommand}">
         </material:MaterialIconButton>
 
@@ -34,7 +39,7 @@
             </Grid.ColumnDefinitions>
 
             <material:MaterialCard Grid.Column="0"
-                                   Margin="5"
+                                   Margin="5, 5, 0, 5"
                                    IsClickable="True"
                                    ClickCommand="{Binding SelectLapCommand}"
                                    VerticalOptions="FillAndExpand"
@@ -48,7 +53,7 @@
             </material:MaterialCard>
 
             <material:MaterialCard Grid.Column="1"
-                                   Margin="5"
+                                   Margin="5, 5, 5, 5"
                                    IsClickable="True"
                                    ClickCommand="{Binding SelectTrackCommand}"
                                    VerticalOptions="FillAndExpand"
@@ -62,7 +67,7 @@
             </material:MaterialCard>
 
             <material:MaterialCard Grid.Column="2"
-                                   Margin="5"
+                                   Margin="0, 5, 5, 5"
                                    IsClickable="True"
                                    ClickCommand="{Binding SelectFreeRideCommand}"
                                    VerticalOptions="FillAndExpand"
@@ -109,13 +114,15 @@
             </material:MaterialLabel>
         </StackLayout>
 
-        <material:MaterialButton Grid.Row="4"
-                                 HorizontalOptions="CenterAndExpand"
-                                 VerticalOptions="CenterAndExpand"
-                                 Image="motion_play_outline"
-                                 WidthRequest="100"
-                                 HeightRequest="100"
-                                 Command="{Binding OpenLapTimerHosterCommand}">
-        </material:MaterialButton>
+        <material:MaterialIconButton Grid.Row="4"
+                                     Style="{StaticResource MaterialIconButtonLargeRoundStyle}"
+                                     HorizontalOptions="Center"
+                                     VerticalOptions="Center"
+                                     ButtonType="Text"
+                                     HeightRequest="{StaticResource SizeLargeButton}"
+                                     WidthRequest="{StaticResource SizeLargeButton}"
+                                     Image="{StaticResource IconPlayCircleOutlineLarge}"
+                                     Command="{Binding OpenLapTimerHosterCommand}">
+        </material:MaterialIconButton>
     </Grid>
 </views:MvxContentPage>

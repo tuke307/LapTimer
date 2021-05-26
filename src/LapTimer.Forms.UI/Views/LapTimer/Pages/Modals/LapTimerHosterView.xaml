@@ -8,7 +8,8 @@
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
                       x:Class="LapTimer.Forms.UI.Views.LapTimer.LapTimerHosterView"
                       NavigationPage.HasNavigationBar="False"
-                      x:TypeArguments="viewModels:LapTimer.LapTimerHosterViewModel">
+                      x:TypeArguments="viewModels:LapTimer.LapTimerHosterViewModel"
+                      Style="{StaticResource MvxContentPageStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -21,7 +22,7 @@
         <!--Cancel-->
         <material:MaterialIconButton Grid.Row="0"
                                      HorizontalOptions="Start"
-                                     Image="close"
+                                     Image="{StaticResource IconCloseMedium}"
                                      BackgroundColor="Transparent"
                                      Command="{Binding CloseSiteCommand}">
         </material:MaterialIconButton>

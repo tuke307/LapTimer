@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:styles="clr-namespace:LapTimer.Forms.UI.Styles">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <OnPlatform x:Key="MaterialDesign"
+                x:TypeArguments="x:String">
+        <OnPlatform.Platforms>
+            <On Platform="Android"
+                Value="MaterialIcons-Regular.ttf#Material Design Icons" />
+            <!--<On Platform="iOS"
+                Value="Material Design Icons" />
+            <On Platform="UWP"
+                Value="Assets/Fonts/MaterialIcons-Regular.ttf#Material Design Icons" />-->
+        </OnPlatform.Platforms>
+    </OnPlatform>
+
+    <!--<Color x:Key="ColorTabIcon">Gray</Color>-->
+
+    <x:Double x:Key="SizeSmallIcon">15</x:Double>
+    <x:Double x:Key="SizeMediumIcon">35</x:Double>
+    <x:Double x:Key="SizeLargeIcon">90</x:Double>
+
+    <!--<x:Double x:Key="SizeTabIcon">24</x:Double>-->
+
+    <FontImageSource x:Key="IconCheckMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Check}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconCloseMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Close}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconSettingsMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Settings}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconFlagMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Flag}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconHistoryMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.History}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconMapMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Map}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconPlayCircleOutlineMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.PlayCircleOutline}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconPlayCircleOutlineLarge"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.PlayCircleOutline}"
+                     Size="{StaticResource SizeLargeIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconAddMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Add}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconRestoreMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Restore}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconSignalCellularNullMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.SignalCellularNull}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconStopMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Stop}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconTimerMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Timer}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+
+    <FontImageSource x:Key="IconDeleteMedium"
+                     FontFamily="{StaticResource MaterialDesign}"
+                     Glyph="{x:Static styles:MaterialDesignIcons.Delete}"
+                     Size="{StaticResource SizeMediumIcon}"
+                     Color="{StaticResource Accent700}" />
+</ResourceDictionary>

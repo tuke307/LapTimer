@@ -9,7 +9,8 @@
                       xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
                       xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
                       x:Class="LapTimer.Forms.UI.Views.Routes.DetailledRouteView"
-                      x:TypeArguments="viewModels:Routes.DetailledRouteViewModel">
+                      x:TypeArguments="viewModels:Routes.DetailledRouteViewModel"
+                      Style="{StaticResource MvxContentPageStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

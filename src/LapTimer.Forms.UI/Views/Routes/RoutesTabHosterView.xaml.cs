@@ -9,7 +9,7 @@
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxTabbedPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Icon = "map_outline", WrapInNavigationPage = true, NoHistory = false)]
+    [MvxTabbedPagePresentation(Position = TabbedPosition.Tab, WrapInNavigationPage = true, NoHistory = false)]
     public partial class RoutesTabHosterView : MvxContentPage<ViewModels.Routes.RoutesTabHosterViewModel>
     {
         public RoutesTabHosterView()

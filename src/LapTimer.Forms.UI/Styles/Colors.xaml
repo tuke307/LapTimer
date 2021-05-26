@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Accent/Green.xaml" />
+        <ResourceDictionary Source="Primary/Orange.xaml" />
+        <ResourceDictionary Source="Base/Dark.xaml" />
+        <ResourceDictionary Source="Base/Light.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Color x:Key="ValidationErrorColor">#f44336</Color>
+
+    <Color x:Key="ColorEffortUnknown">#6c6c6c</Color>
+    <Color x:Key="ColorEffortLightest">#25c743</Color>
+    <Color x:Key="ColorEffortLight">#00b4d1</Color>
+    <Color x:Key="ColorEffortAerobic">#ffee58</Color>
+    <Color x:Key="ColorEffortAnaerobic">#ff7b00</Color>
+    <Color x:Key="ColorEffortMax">#de0a1c</Color>
+
+    <Color x:Key="ColorGraphSpeed">#ab47bc</Color>
+    <Color x:Key="ColorGraphAltitude">#AAFF66</Color>
+    <Color x:Key="ColorGraphAltitudeSurface">#40AAFF66</Color>
+
+    <Color x:Key="ColorGraphOverlay">#20FFFFFF</Color>
+
+    <Color x:Key="ColorEffortSpeedMin">#ffee58</Color>
+
+    <!--
+    from https://github.com/Baseflow/XF-Material-Library#color
+
+    Primary - Displayed most frequently across your app. MaterialNavigationPage uses this color as its default BarBackgroundColor.
+    PrimaryVariant - A tonal variation of the Primary color. Used for coloring the status bar.
+    Secondary - Accents select parts of your UI. If not defined, it will use the Primary color. MaterialButton (including the buttons in Alert Dialogs), MaterialTextField and MaterialCircularLoadingView uses this color value as their default accent color.
+    SecondaryVariant - A tonal variation of the Secondary color.
+    Background - The underlying color of an app's content. The root page and pages pushed by the MaterialNavigationPage control will have their BackgroundColor property set to this value by default, unless there is already a value defined in the page.
+    Error - The color used to indicate error status.
+    Surface - The color of surfaces such as cards. MaterialCard uses this color value as its BackgroundColor.
+    OnPrimary - A color that passes accessibility guidelines for text/iconography when drawn on top of the Primary color. MaterialNavigationPage uses this color as its BarTextColor by default.
+    OnSecondary - A color that passes accessibility guidelines for text/iconography when drawn on top of the Secondary color. MaterialButton types Elevated and Flat use this color value as their default TextColor.
+    OnBackground - A color that passes accessibility guidelines for text/iconography when drawn on top of the Background color.
+    OnError - A color that passes accessibility guidelines for text/iconography when drawn on top of the Error color.
+    OnSurface - A color that passes accessibility guidelines for text/iconography when drawn on top of the Surface color.
+    -->
+    <mtrl:MaterialColorConfiguration x:Key="Theme"
+                                     Primary="{StaticResource Primary700}"
+                                     PrimaryVariant="{StaticResource Primary200}"
+                                     Secondary="{StaticResource Accent700}"
+                                     SecondaryVariant="{StaticResource Accent200}"
+                                     Background="{AppThemeBinding Light={StaticResource MaterialDesignPaperLight}, Dark={StaticResource MaterialDesignPaperDark}}"
+                                     OnBackground="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}"
+                                     OnError="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}"
+                                     OnPrimary="{StaticResource Primary700Foreground}"
+                                     OnSecondary="{StaticResource Accent700Foreground}"
+                                     OnSurface="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}"
+                                     Error="{StaticResource ValidationErrorColor}"
+                                     Surface="{AppThemeBinding Light={StaticResource MaterialDesignCardBackgroundLight}, Dark={StaticResource MaterialDesignCardBackgroundDark}}" />
+</ResourceDictionary>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:mtrltypo="clr-namespace:XF.Material.Forms.Resources.Typography;assembly=XF.Material"
+                    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <OnPlatform x:Key="FontFamily.RobotoRegular"
+                x:TypeArguments="x:String"
+                Android="Fonts/Roboto-Regular.ttf#Roboto-Regular"
+                iOS="Roboto-Regular" />
+    <OnPlatform x:Key="FontFamily.RobotoMedium"
+                x:TypeArguments="x:String"
+                Android="Fonts/Roboto-Medium.ttf#Roboto-Medium"
+                iOS="Roboto-Medium" />
+
+    <mtrltypo:MaterialFontConfiguration x:Key="Font"
+                                        Body1="{StaticResource FontFamily.RobotoRegular}"
+                                        Body2="{StaticResource FontFamily.RobotoRegular}"
+                                        Button="{StaticResource FontFamily.RobotoMedium}"
+                                        Caption="{StaticResource FontFamily.RobotoRegular}"
+                                        H1="{StaticResource FontFamily.RobotoRegular}"
+                                        H2="{StaticResource FontFamily.RobotoRegular}"
+                                        H3="{StaticResource FontFamily.RobotoRegular}"
+                                        H4="{StaticResource FontFamily.RobotoRegular}"
+                                        H5="{StaticResource FontFamily.RobotoRegular}"
+                                        H6="{StaticResource FontFamily.RobotoMedium}"
+                                        Overline="{StaticResource FontFamily.RobotoRegular}"
+                                        Subtitle1="{StaticResource FontFamily.RobotoRegular}"
+                                        Subtitle2="{StaticResource FontFamily.RobotoMedium}" />
+
+    <Style x:Key="MaterialLabelStyle"
+           TargetType="{x:Type material:MaterialLabel}">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}" />
+        <Setter Property="BackgroundColor"
+                Value="Transparent" />
+    </Style>
+
+    <Style x:Key="MainIndicatorsLabel"
+           BasedOn="{StaticResource MaterialLabelStyle}"
+           TargetType="{x:Type material:MaterialLabel}">
+        <Setter Property="VerticalTextAlignment"
+                Value="Center" />
+        <Setter Property="TypeScale"
+                Value="Caption" />
+        <Setter Property="FontAttributes"
+                Value="Italic" />
+    </Style>
+
+    <Style x:Key="MainIndicatorsValue"
+           BasedOn="{StaticResource MaterialLabelStyle}"
+           TargetType="{x:Type material:MaterialLabel}">
+        <Setter Property="VerticalTextAlignment"
+                Value="Start" />
+        <Setter Property="TypeScale"
+                Value="H5" />
+        <Setter Property="Margin"
+                Value="0, 0, 0, 0" />
+    </Style>
+
+    <Style x:Key="TitleLabelStyle"
+           BasedOn="{StaticResource MaterialLabelStyle}"
+           TargetType="{x:Type material:MaterialLabel}">
+        <Setter Property="VerticalTextAlignment"
+                Value="Center" />
+        <Setter Property="TypeScale"
+                Value="H6" />
+        <Setter Property="Margin"
+                Value="20, 0, 0, 0" />
+    </Style>
+</ResourceDictionary>

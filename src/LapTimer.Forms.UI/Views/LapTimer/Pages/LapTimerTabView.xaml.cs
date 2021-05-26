@@ -2,7 +2,6 @@
 {
     using MvvmCross.Forms.Presenters.Attributes;
     using MvvmCross.Forms.Views;
-    using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
     /// <summary>
@@ -10,7 +9,7 @@
     /// </summary>
     /// <seealso cref="MvvmCross.Forms.Views.MvxContentPage" />
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxTabbedPagePresentationAttribute(Position = TabbedPosition.Tab, Icon = "timer_outline", WrapInNavigationPage = true, NoHistory = false)]
+    [MvxTabbedPagePresentation(Position = TabbedPosition.Tab, WrapInNavigationPage = true, NoHistory = false)]
     public partial class LapTimerTabView : MvxContentPage<ViewModels.LapTimer.LapTimerTabViewModel>
     {
         public LapTimerTabView()

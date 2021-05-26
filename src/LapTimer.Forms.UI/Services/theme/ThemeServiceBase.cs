@@ -1,7 +1,10 @@
 ﻿namespace LapTimer.Forms.UI.Services
 {
     using LapTimer.Core.Services;
-    using LapTimer.Forms.UI.Themes;
+    using LapTimer.Forms.UI.Styles;
+    using Sharpnado.MaterialFrame;
+    using System;
+    using System.Reflection;
     using Xamarin.Forms;
 
     /// <summary>
@@ -15,6 +18,41 @@
         /// </summary>
         /// <value>The current runtime theme.</value>
         public BaseTheme CurrentRuntimeTheme { get; private set; }
+
+        //public static void SetDarkMode()
+        //{
+        //    //foreach (FieldInfo field in typeof(IBaseTheme).GetFields(/*BindingFlags.Static | BindingFlags.Public*/))
+        //    //{
+        //    //    SetDynamicResource(field.Name, field.Name + "Dark");
+        //    //}
+
+        //    MaterialFrame.ChangeGlobalTheme(MaterialFrame.Theme.Dark);
+        //}
+
+        //public static void SetDynamicResource(string targetResourceName, string sourceResourceName)
+        //{
+        //    if (!Application.Current.Resources.TryGetValue(sourceResourceName, out var value))
+        //    {
+        //        throw new InvalidOperationException($"key {sourceResourceName} not found in the resource dictionary");
+        //    }
+
+        //    Application.Current.Resources[targetResourceName] = value;
+        //}
+
+        //public static void SetDynamicResource<T>(string targetResourceName, T value)
+        //{
+        //    Application.Current.Resources[targetResourceName] = value;
+        //}
+
+        //public static void SetLightMode()
+        //{
+        //    //foreach (FieldInfo field in typeof(IBaseTheme).GetFields(/*BindingFlags.Static | BindingFlags.Public*/))
+        //    //{
+        //    //    SetDynamicResource(field.Name, field.Name + "Light");
+        //    //}
+
+        //    MaterialFrame.ChangeGlobalTheme(MaterialFrame.Theme.Light);
+        //}
 
         /// <summary>
         /// Updates the theme.
@@ -46,32 +84,25 @@
         /// Sets the colors.
         /// </summary>
         /// <param name="themeMode">The theme mode.</param>
-        private void SetColors(BaseTheme themeMode)
-        {
-            //var colors = themeMode.ToResourceDictionary(CustomColors);
+        //private void SetColors(BaseTheme themeMode)
+        //{
+        //    switch (themeMode)
+        //    {
+        //        case BaseTheme.Inherit:
+        //            break;
 
-            var mergedDir = Application.Current.Resources.MergedDictionaries;
-            //mergedDir.Remove(mergedDir.Where(x => x.Keys.Contains(nameof(DarkTheme.MaterialDesignBackground))).First());
+        //        case BaseTheme.Light:
+        //            SetLightMode();
+        //            break;
 
-            switch (themeMode)
-            {
-                case BaseTheme.Inherit:
-                    break;
+        //        case BaseTheme.Dark:
+        //            SetDarkMode();
+        //            break;
 
-                case BaseTheme.Light:
-                    mergedDir.Add(new Themes.Base.Light());
-                    break;
-
-                case BaseTheme.Dark:
-                    mergedDir.Add(new Themes.Base.Dark());
-                    break;
-
-                default:
-                    break;
-            }
-
-            XF.Material.Forms.Material.Use("Material.Configuration");
-        }
+        //        default:
+        //            break;
+        //    }
+        //}
 
         /// <summary>
         /// Sets the theme.
@@ -84,7 +115,7 @@
                 return;
             }
 
-            this.SetColors(themeMode);
+            //this.SetColors(themeMode);
 
             CurrentRuntimeTheme = themeMode;
         }

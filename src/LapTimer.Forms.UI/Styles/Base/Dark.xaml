@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <Color x:Key="MaterialDesignBackgroundDark">#FF000000</Color>
+    <Color x:Key="MaterialDesignPaperDark">#FF303030</Color>
+    <Color x:Key="MaterialDesignCardBackgroundDark">#FF424242</Color>
+    <Color x:Key="MaterialDesignBodyDark">#DDFFFFFF</Color>
+    <Color x:Key="MaterialDesignBodyLightDark">#89FFFFFF</Color>
+    <Color x:Key="MaterialDesignColumnHeaderDark">#BCFFFFFF</Color>
+    <Color x:Key="MaterialDesignCheckBoxOffDark">#89FFFFFF</Color>
+    <Color x:Key="MaterialDesignTextBoxBorderDark">#89FFFFFF</Color>
+    <Color x:Key="MaterialDesignDividerDark">#1FFFFFFF</Color>
+    <Color x:Key="MaterialDesignSelectionDark">#757575</Color>
+    <Color x:Key="MaterialDesignToolForegroundDark">#616161</Color>
+    <Color x:Key="MaterialDesignToolBackgroundDark">#e0e0e0</Color>
+    <Color x:Key="MaterialDesignFlatButtonClickDark">#19757575</Color>
+    <Color x:Key="MaterialDesignFlatButtonRippleDark">#FFB6B6B6</Color>
+    <Color x:Key="MaterialDesignChipBackgroundDark">#FF2E3C43</Color>
+    <Color x:Key="MaterialDesignSnackbarBackgroundDark">#FFCDCDCD</Color>
+    <Color x:Key="MaterialDesignSnackbarRippleDark">#FF494949</Color>
+    <Color x:Key="MaterialDesignTextFieldBoxBackgroundDark">#1AFFFFFF</Color>
+    <Color x:Key="MaterialDesignTextAreaBorderDark">#BCFFFFFF</Color>
+    <Color x:Key="MaterialDesignTextAreaInactiveBorderDark">#1AFFFFFF</Color>
+</ResourceDictionary>

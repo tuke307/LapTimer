@@ -27,7 +27,7 @@
             </Grid.ColumnDefinitions>
 
             <material:MaterialIconButton Grid.Column="0"
-                                         Image="close"
+                                         Image="{StaticResource IconCloseMedium}"
                                          BackgroundColor="Transparent"
                                          VerticalOptions="Center"
                                          Command="{Binding CloseSiteCommand}">
@@ -38,7 +38,7 @@
                                     Text="{Binding Title}" />
 
             <material:MaterialIconButton Grid.Column="2"
-                                         Image="trash_can_outline"
+                                         Image="{StaticResource IconDeleteMedium}"
                                          TintColor="DarkRed"
                                          BackgroundColor="Transparent"
                                          VerticalOptions="Center"

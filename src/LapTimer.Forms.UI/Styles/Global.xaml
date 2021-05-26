@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                    xmlns:tabs="clr-namespace:Sharpnado.Presentation.Forms.CustomViews.Tabs;assembly=Sharpnado.Presentation.Forms"
+                    xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+                    xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+                    xmlns:mtrl="clr-namespace:XF.Material.Forms.Resources;assembly=XF.Material"
+                    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Colors.xaml" />
+        <ResourceDictionary Source="Text.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <x:Double x:Key="SizeSmallButton">25</x:Double>
+    <x:Double x:Key="SizeMediumButton">45</x:Double>
+    <x:Double x:Key="SizeLargeButton">100</x:Double>
+
+    <!--#region Pages-->
+    <Style x:Key="MvxContentPageStyle"
+           TargetType="{x:Type views:MvxContentPage}">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignPaperLight}, Dark={StaticResource MaterialDesignPaperDark}}" />
+    </Style>
+
+    <Style x:Key="MvxContentViewStyle"
+           TargetType="{x:Type views:MvxContentView}">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignPaperLight}, Dark={StaticResource MaterialDesignPaperDark}}" />
+    </Style>
+    <!--#endregion Pages-->
+
+    <!--#region Round_MaterialIconButton-->
+    <Style x:Key="MaterialIconButtonSmallRoundStyle"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeSmallButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeSmallButton}" />
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <Style x:Key="MaterialIconButtonMediumRoundStyle"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeMediumButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeMediumButton}" />
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <Style x:Key="MaterialIconButtonLargeRoundStyle"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeLargeButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeLargeButton}" />
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <!--#endregion Round_MaterialIconButton-->
+
+    <!--#region Round_MaterialButton-->
+    <Style x:Key="MaterialButtonSmallRoundStyle"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeSmallButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeSmallButton}" />
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+
+    <Style x:Key="MaterialButtonMediumRoundStyle"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeMediumButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeMediumButton}" />
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+
+    <Style x:Key="MaterialButtonLargeRoundStyle"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeLargeButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeLargeButton}" />
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <!--#endregion Round_MaterialButton-->
+
+    <!--#region MaterialButton-->
+    <Style x:Key="MaterialButtonSmallStyle"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeSmallButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeSmallButton}" />
+    </Style>
+
+    <Style x:Key="MaterialButtonMediumStyle"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeMediumButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeMediumButton}" />
+    </Style>
+
+    <Style x:Key="MaterialButtonLargeStyle"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeLargeButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeLargeButton}" />
+    </Style>
+    <!--#endregion MaterialButton-->
+
+    <Style x:Key="MaterialChipStyle"
+           TargetType="{x:Type material:MaterialChip}">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignChipBackgroundLight}, Dark={StaticResource MaterialDesignChipBackgroundDark}}" />
+    </Style>
+
+    <Style x:Key="MaterialCheckboxStyle"
+           TargetType="{x:Type material:MaterialCheckbox}">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignCardBackgroundLight}, Dark={StaticResource MaterialDesignCardBackgroundDark}}" />
+        <Setter Property="SelectedColor"
+                Value="{StaticResource Accent700}" />
+        <Setter Property="UnselectedColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignCheckBoxOffLight}, Dark={StaticResource MaterialDesignCheckBoxOffDark}}" />
+    </Style>
+
+    <Style x:Key="MaterialCardStyle"
+           TargetType="{x:Type material:MaterialCard}">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignCardBackgroundLight}, Dark={StaticResource MaterialDesignCardBackgroundDark}}" />
+        <Setter Property="HasShadow"
+                Value="True" />
+        <Setter Property="CornerRadius"
+                Value="5" />
+        <Setter Property="Padding"
+                Value="15, 10" />
+        <Setter Property="Elevation"
+                Value="5" />
+    </Style>
+
+    <Style x:Key="TaskLoaderViewStyle"
+           TargetType="{x:Type customViews:TaskLoaderView}">
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}" />
+        <Setter Property="AccentColor"
+                Value="{StaticResource Primary700}" />
+    </Style>
+
+    <Style x:Key="SegmentedTabStyle"
+           TargetType="{x:Type tabs:SegmentedTabItem}">
+        <Setter Property="SelectedTabColor"
+                Value="{StaticResource Primary700}" />
+        <Setter Property="LabelSize"
+                Value="14" />
+        <Setter Property="SelectedLabelColor"
+                Value="{StaticResource Accent200Foreground}" />
+        <Setter Property="UnselectedLabelColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}" />
+    </Style>
+
+    <Style x:Key="BottomTabStyle"
+           TargetType="{x:Type tabs:BottomTabItem}">
+        <Setter Property="SelectedTabColor"
+                Value="{StaticResource Primary700}" />
+        <Setter Property="UnselectedLabelColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}" />
+        <Setter Property="UnselectedIconColor"
+                Value="LightGray" />
+        <Setter Property="LabelSize"
+                Value="14" />
+        <Setter Property="IconSize"
+                Value="28" />
+    </Style>
+
+    <Style x:Key="TabHostViewStyle"
+           TargetType="{x:Type tabs:TabHostView}">
+        <Setter Property="TabType"
+                Value="Fixed" />
+        <Setter Property="IsSegmented"
+                Value="True" />
+        <Setter Property="CornerRadius"
+                Value="20" />
+        <Setter Property="HeightRequest"
+                Value="70" />
+        <Setter Property="Margin"
+                Value="10" />
+        <Setter Property="VerticalOptions"
+                Value="CenterAndExpand" />
+        <Setter Property="SegmentedHasSeparator"
+                Value="True" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignCardBackgroundLight}, Dark={StaticResource MaterialDesignCardBackgroundDark}}" />
+    </Style>
+
+    <!--#region Shades -->
+    <sh:SingleShade x:Key="ShadowAccentTop"
+                    BlurRadius="6"
+                    Opacity="0.15"
+                    Offset="0,-8"
+                    Color="{StaticResource Accent700}" />
+
+    <sh:SingleShade x:Key="ShadowAccentBottom"
+                    BlurRadius="6"
+                    Opacity="0.075"
+                    Offset="0,5"
+                    Color="{StaticResource Accent700}" />
+    <!--#endregion Shades-->
+
+    <!--#region Shadows -->
+    <sh:ImmutableShades x:Key="ShadowNone" />
+
+    <sh:NeumorphismShades x:Key="ShadowNeumorphism" />
+
+    <sh:NeumorphismShades x:Key="ShadowThinNeumorphism"
+                          LowerOffset="8, 6"
+                          UpperOffset="-8,-6" />
+    <!--#endregion Shadows-->
+</ResourceDictionary>

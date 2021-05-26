@@ -9,6 +9,7 @@
                       xmlns:sh="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
                       x:Class="LapTimer.Forms.UI.Views.Routes.RoutesTabHosterView"
                       NavigationPage.HasNavigationBar="False"
+                      IconImageSource="{StaticResource IconMapMedium}"
                       x:TypeArguments="viewModels:Routes.RoutesTabHosterViewModel"
                       Style="{StaticResource MvxContentPageStyle}">
     <Grid>
