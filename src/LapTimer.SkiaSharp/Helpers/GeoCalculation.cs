@@ -127,6 +127,26 @@ namespace LapTimer.SkiaSharp.Helpers
             return HaversineDistance(pointA.Latitude, pointA.Longitude, pointB.Latitude, pointB.Longitude);
         }
 
+        public static bool IsPointNewLeftBottom(Position startPoint, Position checkPoint)
+        {
+            var bottomLatitude = Math.Min(checkPoint.Latitude, startPoint.Latitude);
+            var leftLongitude = Math.Min(checkPoint.Longitude, startPoint.Longitude);
+
+            if (bottomLatitude == checkPoint.Latitude && leftLongitude == checkPoint.Longitude) return true;
+
+            return false;
+        }
+
+        public static bool IsPointNewTopRight(Position startPoint, Position checkPoint)
+        {
+            var topLatitude = Math.Max(checkPoint.Latitude, startPoint.Latitude);
+            var rightLongitude = Math.Max(checkPoint.Longitude, startPoint.Longitude);
+
+            if (topLatitude == checkPoint.Latitude && rightLongitude == checkPoint.Longitude) return true;
+
+            return false;
+        }
+
         /// <summary>
         /// Squares the distance.
         /// Warning: this method is poorly accurate.
