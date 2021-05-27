@@ -656,7 +656,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
         /// <summary>
         /// Called when [location updated].
-        /// TODO: besser machen
+        /// BUG: bei [_zoomToMyLocation] aktiviert, wird die verfolungslinie komisch gezeichnet.
         /// </summary>
         /// <param name="locationMessage">The location message.</param>
         private void OnLocationUpdated(MvxLocationMessage locationMessage)
