@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:MvxContentView xmlns="http://xamarin.com/schemas/2014/forms"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                      xmlns:res="clr-namespace:LapTimer.Core.Resx.strings;assembly=LapTimer.Core"
+                      xmlns:viewModels="clr-namespace:LapTimer.Forms.UI.ViewModels"
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+                      x:Class="LapTimer.Forms.UI.Views.LapTimer.RouteDecisionView"
+                      x:TypeArguments="viewModels:LapTimer.RouteDecisionViewModel"
+                      Style="{StaticResource MvxContentViewStyle}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <!--Route Decision-->
+        <StackLayout Grid.Row="0"
+                     Margin="20">
+
+            <material:MaterialRadioButtonGroup Choices="{Binding RouteChoices}"
+                                               SelectedIndex="{Binding RouteChoicesIndex}" />
+
+            <!--<material:MaterialCheckbox IsSelected="{Binding RoutesEnabled}"
+                                       Text="{x:Static strings:res_str.CHOOSEROUTE}"
+                                       HorizontalOptions="Center"
+                                       Style="{StaticResource MaterialCheckboxStyle}" />-->
+
+            <!--<material:MaterialTextField IsVisible="{Binding RoutesEnabled}"
+                                        Placeholder="{x:Static strings:res_str.ROUTE}"
+                                        FloatingPlaceholderEnabled="True"
+                                        InputType="Choice"
+                                        HorizontalOptions="Center"
+                                        ChoicesBindingName="Name"
+                                        Choices="{Binding Routes}"
+                                        SelectedChoice="{Binding Route}" />-->
+        </StackLayout>
+
+        <material:MaterialIconButton Grid.Row="1"
+                                     Image="{StaticResource IconFlagMedium}"
+                                     HorizontalOptions="End"
+                                     Command="{Binding StartCommand}">
+        </material:MaterialIconButton>
+    </Grid>
+</views:MvxContentView>

@@ -60,18 +60,22 @@
                 switch (SelectedViewModelIndex)
                 {
                     case 0:
-                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.DriveInViewModel>().ViewAppeared();
+                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.RouteDecisionViewModel>().ViewAppeared();
                         break;
 
                     case 1:
-                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.StartingPositionViewModel>().ViewAppeared();
+                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.DriveInViewModel>().ViewAppeared();
                         break;
 
                     case 2:
-                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.CountdownViewModel>().ViewAppeared();
+                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.StartingPositionViewModel>().ViewAppeared();
                         break;
 
                     case 3:
+                        Mvx.IoCProvider.Resolve<ViewModels.LapTimer.CountdownViewModel>().ViewAppeared();
+                        break;
+
+                    case 4:
                         Mvx.IoCProvider.Resolve<ViewModels.LapTimer.LapTimerViewModel>().ViewAppeared();
                         break;
 

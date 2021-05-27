@@ -53,6 +53,7 @@
                            x:Name="Switcher"
                            Animate="True"
                            SelectedIndex="{Binding SelectedViewModelIndex, Mode=TwoWay}">
+            <local:RouteDecisionView />
             <local:DriveInView />
             <local:StartingPositionView />
             <local:CountdownView />
