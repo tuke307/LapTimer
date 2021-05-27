@@ -10,16 +10,50 @@ using Xamarin.Forms.GoogleMaps;
 
 namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
 {
+    /// <summary>
+    /// SessionMap.
+    /// </summary>
+    /// <seealso cref="LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap.SessionList{LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap.SessionDisplayablePoint}" />
     public class SessionMap : SessionList<SessionDisplayablePoint>
     {
+        /// <summary>
+        /// Gets the bottom left.
+        /// </summary>
+        /// <value>
+        /// The bottom left.
+        /// </value>
         public Position BottomLeft { get; private set; }
 
+        /// <summary>
+        /// Gets the region.
+        /// </summary>
+        /// <value>
+        /// The region.
+        /// </value>
         public MapSpan Region { get; private set; }
 
+        /// <summary>
+        /// Gets the session points.
+        /// </summary>
+        /// <value>
+        /// The session points.
+        /// </value>
         public List<SessionDisplayablePoint> SessionPoints { get; }
 
+        /// <summary>
+        /// Gets the top right.
+        /// </summary>
+        /// <value>
+        /// The top right.
+        /// </value>
         public Position TopRight { get; private set; }
 
+        /// <summary>
+        /// Gets the total duration in seconds.
+        /// </summary>
+        /// <value>
+        /// The total duration in seconds.
+        /// </value>
         public int TotalDurationInSeconds
         {
             get
@@ -76,6 +110,18 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
 
         /// <summary>
         /// Creation with ActivityPoints.
+        /// </summary>
+        /// <param name="points">The points.</param>
+        public static SessionMap Create(List<ActivityPoint> points)
+        {
+            double maxSpeed = (double)(points.Max(s => s.Speed) * 3.6f);
+            Func<ISessionDisplayablePoint, Color?> colorBaseValueSelector = SelectColorBySpeed(maxSpeed);
+
+            return Create(points, colorBaseValueSelector);
+        }
+
+        /// <summary>
+        /// Creation with ActivityPoints and custom ColorSelector.
         /// </summary>
         /// <param name="points">The points.</param>
         /// <param name="colorBaseValueSelector">The color base value selector.</param>
@@ -145,7 +191,9 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
                     point.Position);
 
                 Color mapPointColor =
-                    colorBaseValueSelector(currentPoint) ?? previousPoint?.MapPointColor ?? Color.Gray;
+                    colorBaseValueSelector(currentPoint)
+                    ?? previousPoint?.MapPointColor
+                    ?? Color.Gray;
 
                 currentPoint.SetPointColor(mapPointColor);
                 previousPoint = currentPoint;
@@ -202,24 +250,60 @@ namespace LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap
             }
 
             SessionPoints.Add(sessionDisplayablePoint);
+            RefreshColors();
+        }
+
+        /// <summary>
+        /// Selects the color by speed.
+        /// </summary>
+        /// <param name="maxSpeed">The maximum speed.</param>
+        /// <returns></returns>
+        private static Func<ISessionDisplayablePoint, Color?> SelectColorBySpeed(double maxSpeed)
+        {
+            Color? SelectColorBySpeed(ISessionDisplayablePoint point)
+            {
+                if (point.Speed == null)
+                {
+                    return null;
+                }
+
+                return HumanEffortComputer.BySpeed.GetColor(point.Speed, maxSpeed);
+            }
+
+            return SelectColorBySpeed;
         }
 
         /// <summary>
         /// Adds the range.
         /// </summary>
         /// <param name="sessionDisplayablePoints">The session displayable points.</param>
-        public void AddRange(List<ActivityPoint> points)
-        {
-            if (points == null)
-            {
-                Debug.WriteLine("SessionMap points is null");
-                //throw new ArgumentException();
-                return;
-            }
+        //public void AddRange(List<ActivityPoint> points)
+        //{
+        //    if (points == null)
+        //    {
+        //        Debug.WriteLine("SessionMap points is null");
+        //        //throw new ArgumentException();
+        //        return;
+        //    }
 
-            foreach (var point in points)
+        //    foreach (var point in points)
+        //    {
+        //        Add(point);
+        //    }
+        //}
+
+        private void RefreshColors()
+        {
+            Color mapPointColor;
+            double maxSpeed = (double)(SessionPoints.Max(s => s.Speed) * 3.6f);
+            Func<ISessionDisplayablePoint, Color?> colorBaseValueSelector = SelectColorBySpeed(maxSpeed);
+
+            foreach (var sessionpoint in SessionPoints)
             {
-                Add(point);
+                mapPointColor =
+                    colorBaseValueSelector(sessionpoint) ?? Color.Gray;
+
+                sessionpoint.SetPointColor(mapPointColor);
             }
         }
     }
