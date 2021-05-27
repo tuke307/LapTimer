@@ -79,22 +79,9 @@
             Header = new ActivityHeaderModel(activityHeader, new List<IDispersionSpan>());
             await RaisePropertyChanged(() => Header);
 
-            double maxSpeed = activity.Lap[0].MaximumSpeed * 3.6f;
-            Color? SelectColorBySpeed(ISessionDisplayablePoint point)
-            {
-                if (point.Speed == null)
-                {
-                    return null;
-                }
-
-                return HumanEffortComputer.BySpeed.GetColor(point.Speed, maxSpeed);
-            }
-
             SessionMap mapInfo;
 
-            mapInfo = SessionMap.Create(
-                activityPoints,
-                SelectColorBySpeed);
+            mapInfo = SessionMap.Create(activityPoints);
 
             GraphInfo = SessionGraph.CreateSessionGraphInfo(mapInfo.SessionPoints);
             await RaisePropertyChanged(() => GraphInfo);
