@@ -28,7 +28,7 @@
     public class RouteViewModel : MvxNavigationViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LapTimerTabViewModel" /> class.
+        /// Initializes a new instance of the <see cref="RouteViewModel" /> class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
@@ -202,6 +202,7 @@
         private Position _currentPosition;
         private TimeSpan _lapTime;
         private MvxLocationMessage _locationMessage;
+        private bool _routeDrawing;
         private double _speed;
         private bool _timerNeeded;
         private TimeSpan _totalTime;
@@ -220,6 +221,12 @@
         }
 
         public TaskLoaderNotifier<SessionMap> Loader { get; }
+
+        public bool RouteDrawing
+        {
+            get => this._routeDrawing;
+            set => this.SetProperty(ref _routeDrawing, value);
+        }
 
         public double Speed
         {

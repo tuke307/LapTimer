@@ -18,7 +18,7 @@
     public class DriveInViewModel : MvxNavigationViewModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="LapTimerTabViewModel" /> class.
+        /// Initializes a new instance of the <see cref="DriveInViewModel" /> class.
         /// </summary>
         /// <param name="logProvider">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>

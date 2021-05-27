@@ -21,6 +21,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!--Settings Button-->
         <material:MaterialIconButton Grid.Row="0"
                                      Style="{StaticResource MaterialIconButtonMediumRoundStyle}"
                                      HeightRequest="{StaticResource SizeMediumButton}"
@@ -31,6 +32,7 @@
                                      Command="{Binding OpenSettingsCommand}">
         </material:MaterialIconButton>
 
+        <!--RouteMode Cards-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -80,24 +82,6 @@
                 </StackLayout>
             </material:MaterialCard>
         </Grid>
-
-        <StackLayout Grid.Row="2"
-                     Margin="20">
-
-            <material:MaterialCheckbox IsSelected="{Binding RoutesEnabled}"
-                                       Text="{x:Static strings:res_str.CHOOSEROUTE}"
-                                       HorizontalOptions="Center"
-                                       Style="{StaticResource MaterialCheckboxStyle}" />
-
-            <material:MaterialTextField IsVisible="{Binding RoutesEnabled}"
-                                        Placeholder="{x:Static strings:res_str.ROUTE}"
-                                        FloatingPlaceholderEnabled="True"
-                                        InputType="Choice"
-                                        HorizontalOptions="Center"
-                                        ChoicesBindingName="Name"
-                                        Choices="{Binding Routes}"
-                                        SelectedChoice="{Binding Route}" />
-        </StackLayout>
 
         <StackLayout Grid.Row="3">
             <material:MaterialLabel TypeScale="H4"

@@ -33,7 +33,8 @@
                             PathThickness="4"
                             SessionMapInfo="{Binding Loader.Result}"
                             MapType="Satellite"
-                            MyLocationEnabled="True" />
+                            MyLocationEnabled="True"
+                            RouteDrawing="{Binding RouteDrawing}" />
         </customViews:TaskLoaderView>
 
         <material:MaterialLabel Text="{Binding Speed}"
