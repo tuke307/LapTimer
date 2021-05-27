@@ -20,36 +20,52 @@ using SKSvg = SkiaSharp.Extended.Svg.SKSvg;
 namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 {
     /// <summary>
+    /// SessionMap.
     /// </summary>
     /// <seealso cref="Xamarin.Forms.ContentView" />
     public partial class SessionMap : ContentView
     {
         #region BindableProperties
 
+        /// <summary>
+        /// The information color property
+        /// </summary>
         public static readonly BindableProperty InfoColorProperty = BindableProperty.Create(
             nameof(InfoColor),
             typeof(Color),
             typeof(SessionMap),
             defaultValue: Color.Default);
 
+        /// <summary>
+        /// The map type property
+        /// </summary>
         public static readonly BindableProperty MapTypeProperty = BindableProperty.Create(
             nameof(MapType),
             typeof(MapType),
             typeof(SessionMap),
             defaultValue: MapType.Satellite);
 
+        /// <summary>
+        /// The maximum time property
+        /// </summary>
         public static readonly BindableProperty MaxTimeProperty = BindableProperty.Create(
             nameof(MaxTime),
             typeof(TimeSpan),
             typeof(SessionMap),
             defaultValue: TimeSpan.MaxValue);
 
+        /// <summary>
+        /// My location enabled property
+        /// </summary>
         public static readonly BindableProperty MyLocationEnabledProperty = BindableProperty.Create(
            nameof(MyLocationEnabled),
            typeof(bool),
            typeof(SessionMap),
            defaultValue: false);
 
+        /// <summary>
+        /// The path thickness property
+        /// </summary>
         public static readonly BindableProperty PathThicknessProperty = BindableProperty.Create(
                     nameof(PathThickness),
             typeof(int),
@@ -57,42 +73,81 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             defaultValue: 2,
             propertyChanged: InvalidateSurface);
 
+        /// <summary>
+        /// The session map information property
+        /// </summary>
         public static readonly BindableProperty SessionMapInfoProperty = BindableProperty.Create(
             nameof(SessionMapInfo),
             typeof(ViewModels.SessionMap.SessionMap),
             typeof(SessionMap),
             propertyChanged: SessionMapInfoChanged);
 
+        /// <summary>
+        /// Gets or sets the color of the information.
+        /// </summary>
+        /// <value>
+        /// The color of the information.
+        /// </value>
         public Color InfoColor
         {
             get => (Color)GetValue(InfoColorProperty);
             set => SetValue(InfoColorProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the type of the map.
+        /// </summary>
+        /// <value>
+        /// The type of the map.
+        /// </value>
         public MapType MapType
         {
             get => (MapType)GetValue(MapTypeProperty);
             set => SetValue(MapTypeProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the maximum time.
+        /// </summary>
+        /// <value>
+        /// The maximum time.
+        /// </value>
         public TimeSpan MaxTime
         {
             get => (TimeSpan)GetValue(MaxTimeProperty);
             set => SetValue(MaxTimeProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [my location enabled].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [my location enabled]; otherwise, <c>false</c>.
+        /// </value>
         public bool MyLocationEnabled
         {
             get => (bool)GetValue(MyLocationEnabledProperty);
             set => SetValue(MyLocationEnabledProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the path thickness.
+        /// </summary>
+        /// <value>
+        /// The path thickness.
+        /// </value>
         public int PathThickness
         {
             get => (int)GetValue(PathThicknessProperty);
             set => SetValue(PathThicknessProperty, value);
         }
 
+        /// <summary>
+        /// Gets or sets the session map information.
+        /// </summary>
+        /// <value>
+        /// The session map information.
+        /// </value>
         public ViewModels.SessionMap.SessionMap SessionMapInfo
         {
             get => (ViewModels.SessionMap.SessionMap)GetValue(SessionMapInfoProperty);
