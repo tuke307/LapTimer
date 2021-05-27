@@ -440,6 +440,9 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         {
             #region Initialization
 
+            _log.Debug($"---MapOnPaintSurface");
+            _log.Debug($"CameraPosition: {GoogleMap.CameraPosition.Target.Latitude}, {GoogleMap.CameraPosition.Target.Longitude}");
+
             // var info = e.RenderTarget;
             SKImageInfo info = e.Info;
             SKSurface surface = e.Surface;
@@ -449,17 +452,19 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
             if (SessionMapInfo == null)
             {
-                _log.Debug($"RETURNING: SessionMapInfo is null");
+                _log.Debug($"---RETURNING: SessionMapInfo is null");
                 return;
             }
 
             // already in drawing mode
             if (_drawingMode)
             {
+                _log.Debug($"---RETURNING: already in drawing mode");
                 return;
             }
 
             _positionConverter.UpdateCamera(GoogleMap, new Size(info.Width, info.Height), SkiaHelper.PixelPerUnit);
+            _log.Debug($"Camera updated: {_positionConverter.ToString()}");
 
             var centerPoint = _positionConverter[_centerPosition].ToSKPoint();
             var topLeftPoint = _positionConverter[_topLeftPosition].ToSKPoint();
@@ -469,11 +474,9 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             if (!_forceInvalidation && _previousCenter == centerPoint && _previousTopLeftBottomRightSquareDistance == squaredDistance)
             {
                 // Display view didn't changed
-                _log.Debug($"RETURNING: Display view didn't changed");
+                _log.Debug($"---RETURNING: Display view didn't changed");
                 return;
             }
-
-            //_log.Debug($"MapOnPaintSurface: pos: {GoogleMap.Camera.Position.Latitude}, {GoogleMap.Camera.Position.Longitude}");
 
             _drawingMode = true;
 
@@ -490,6 +493,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             #region LineDrawing
 
             var sessionPoints = SessionMapInfo.SessionPoints;
+            _log.Debug($"LineDrawing: {sessionPoints.Count} sessionPoints to draw");
 
             SKPoint previousPoint = SKPoint.Empty;
             SKColor previousColor = SKColor.Empty;
@@ -548,8 +552,10 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             #region MarkerDrawing
 
             // Session-Graph
-            if (sessionPoints.Count > 0)
+            if (sessionPoints.Count > 0 && !MyLocationEnabled)
             {
+                _log.Debug($"MarkerDrawing");
+
                 // wenn nutzer gerade im SessionGraph scrollt.
                 bool mooving = DrawFirstAndLastMarker(
                     canvas,
@@ -586,7 +592,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             _forceInvalidation = false;
 
             stopWatch.Stop();
-            _log.Debug($"END OF => MapOnPaintSurface ({stopWatch.Elapsed})");
+            _log.Debug($"---END OF => MapOnPaintSurface ({stopWatch.Elapsed})");
 
             _drawingMode = false;
 
