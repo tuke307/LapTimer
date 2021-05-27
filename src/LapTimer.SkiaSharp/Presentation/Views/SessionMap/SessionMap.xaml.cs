@@ -74,6 +74,15 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             propertyChanged: InvalidateSurface);
 
         /// <summary>
+        /// The route drawing property
+        /// </summary>
+        public static readonly BindableProperty RouteDrawingProperty = BindableProperty.Create(
+           nameof(RouteDrawing),
+           typeof(bool),
+           typeof(SessionMap),
+           defaultValue: false);
+
+        /// <summary>
         /// The session map information property
         /// </summary>
         public static readonly BindableProperty SessionMapInfoProperty = BindableProperty.Create(
@@ -140,6 +149,18 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         {
             get => (int)GetValue(PathThicknessProperty);
             set => SetValue(PathThicknessProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [route drawing].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [route drawing]; otherwise, <c>false</c>.
+        /// </value>
+        public bool RouteDrawing
+        {
+            get => (bool)GetValue(RouteDrawingProperty);
+            set => SetValue(RouteDrawingProperty, value);
         }
 
         /// <summary>
@@ -665,22 +686,29 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 locationMessage.MvxCoordinates.Latitude,
                 locationMessage.MvxCoordinates.Longitude);
 
-            SessionMapInfo.Add(new ActivityPoint(
-                DateTime.Now,
-                _currentPosition.ToLatLong(),
-                0,
-                (int)locationMessage.MvxCoordinates.Altitude,
-                locationMessage.MvxCoordinates.Speed));
+            if (RouteDrawing)
+            {
+                SessionMapInfo.Add(new ActivityPoint(
+                   DateTime.Now,
+                   _currentPosition.ToLatLong(),
+                   0,
+                   (int)locationMessage.MvxCoordinates.Altitude,
+                   locationMessage.MvxCoordinates.Speed));
+
+                // neu zeichnen
+                _forceInvalidation = true;
+                MapOverlay.InvalidateSurface();
+            }
 
             // nur wenn auf MyLocation gedrückt wurde, wird position verfolgt
             if (_zoomToMyLocation)
             {
-                GoogleMap.MoveToRegion(MapSpan.FromCenterAndRadius(_currentPosition, Distance.FromMeters(50)), true);
+                GoogleMap.MoveToRegion(
+                    MapSpan.FromCenterAndRadius(
+                        _currentPosition,
+                        Distance.FromMeters(100)), //GoogleMap.VisibleRegion.Radius
+                        true);
             }
-
-            // neu zeichnen
-            _forceInvalidation = true;
-            MapOverlay.InvalidateSurface();
         }
 
         /// <summary>
