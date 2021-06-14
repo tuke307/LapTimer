@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="DIPS.Xamarin.UI" Version="6.9.0" />
-    <PackageReference Include="MvvmCross" Version="7.1.2" />
+    <PackageReference Include="MvvmCross" Version="8.0.1" />
     <PackageReference Include="MvvmCross.Forms" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Location" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
