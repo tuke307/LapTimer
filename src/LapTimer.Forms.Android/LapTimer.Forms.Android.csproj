@@ -84,7 +84,7 @@
       <Version>7.1.2</Version>
     </PackageReference>
     <PackageReference Include="MvvmCross.Plugin.Location.Fused">
-      <Version>7.1.2</Version>
+      <Version>8.0.1</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp.Views.Forms">
       <Version>2.80.2</Version>
