@@ -15,7 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Code Rules.ruleset = Code Rules.ruleset
 		CodeMaid.config = CodeMaid.config
-		..\..\..\..\OneDrive\Anwendungen\Programme\LapTimer\Motocross LapTimer.xd = ..\..\..\..\OneDrive\Anwendungen\Programme\LapTimer\Motocross LapTimer.xd
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
@@ -35,6 +34,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{96B7EB20-8254-
 		..\.github\workflows\dotnet-core.yml = ..\.github\workflows\dotnet-core.yml
 		..\.github\workflows\pre-release.yml = ..\.github\workflows\pre-release.yml
 		..\.github\workflows\tagged-release.yml = ..\.github\workflows\tagged-release.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "planning", "planning", "{02D1DA7A-092D-401F-A4C8-348403F73DD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{922DEFB5-DACA-4A5C-9CA5-6D207AF2B5D4}"
+	ProjectSection(SolutionItems) = preProject
+		..\Planning\Database\ERD.drawio = ..\Planning\Database\ERD.drawio
+		..\Planning\Database\ERD.png = ..\Planning\Database\ERD.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App-Design", "App-Design", "{74735E14-A43E-4CD0-A257-285F1D79B5D6}"
+	ProjectSection(SolutionItems) = preProject
+		..\planning\App-Design\Motocross LapTimer.xd = ..\planning\App-Design\Motocross LapTimer.xd
 	EndProjectSection
 EndProject
 Global
@@ -85,6 +97,8 @@ Global
 		{C1483E68-0FC9-4BAA-975D-927FA113B9C2} = {D4A6D182-84A9-4507-AC0F-453CEF377BF8}
 		{EB042B31-FFA1-4385-B69A-3BA852413472} = {0486218D-FCDA-41EA-A567-ACEE28066C88}
 		{C6D93DBF-1069-4A5D-9225-E070D1D40AAC} = {0486218D-FCDA-41EA-A567-ACEE28066C88}
+		{922DEFB5-DACA-4A5C-9CA5-6D207AF2B5D4} = {02D1DA7A-092D-401F-A4C8-348403F73DD2}
+		{74735E14-A43E-4CD0-A257-285F1D79B5D6} = {02D1DA7A-092D-401F-A4C8-348403F73DD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {52350CA1-8FBE-4D45-90B5-2656E82F082C}
