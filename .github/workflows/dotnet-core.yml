@@ -1,0 +1,32 @@
+# Build and Run .NET Tests on new pull requests
+# The action uses the on: pull_request trigger which accepts the branches you want to run the workflow
+# actions/checkout@v2 and actions/setup-dotnet@v1 are community actions that will get your code and setup dotnet
+# The run steps make the calls the the dotnet cli to restore, build and test
+# Be sure to run on ubuntu rather than Windows for better stability and more minutes
+
+name: Build & Test
+
+# Triggers the workflow on push or pull request events
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
