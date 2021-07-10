@@ -27,6 +27,6 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore .../.../src/LapTimer.sln
+      run: dotnet build --configuration Release --no-restore src/LapTimer.sln
     - name: Test
-      run: dotnet test --no-restore --verbosity normal .../.../src/LapTimer.sln
+      run: dotnet test --no-restore --verbosity normal src/LapTimer.sln
