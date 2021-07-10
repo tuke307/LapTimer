@@ -29,6 +29,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LapTimer.Test", "LapTimer.T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LapTimer.Core", "LapTimer.Core\LapTimer.Core.csproj", "{C6D93DBF-1069-4A5D-9225-E070D1D40AAC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ci", "ci", "{96B7EB20-8254-4288-9087-FBAAC40BE9B3}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\dependabot.yml = ..\.github\workflows\dependabot.yml
+		..\.github\workflows\dotnet-core.yml = ..\.github\workflows\dotnet-core.yml
+		..\.github\workflows\pre-release.yml = ..\.github\workflows\pre-release.yml
+		..\.github\workflows\tagged-release.yml = ..\.github\workflows\tagged-release.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
