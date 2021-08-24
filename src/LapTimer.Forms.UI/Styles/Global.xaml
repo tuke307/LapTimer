@@ -34,61 +34,64 @@
 
     <!--#region Round_MaterialIconButton-->
     <Style x:Key="MaterialIconButtonSmallRoundStyle"
+           BasedOn="{StaticResource MaterialIconButtonSmallStyle}"
            TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="HeightRequest"
-                Value="{StaticResource SizeSmallButton}" />
-        <Setter Property="WidthRequest"
-                Value="{StaticResource SizeSmallButton}" />
         <Setter Property="CornerRadius"
                 Value="100" />
     </Style>
     <Style x:Key="MaterialIconButtonMediumRoundStyle"
+           BasedOn="{StaticResource MaterialIconButtonMediumStyle}"
            TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="HeightRequest"
-                Value="{StaticResource SizeMediumButton}" />
-        <Setter Property="WidthRequest"
-                Value="{StaticResource SizeMediumButton}" />
         <Setter Property="CornerRadius"
                 Value="100" />
     </Style>
     <Style x:Key="MaterialIconButtonLargeRoundStyle"
+           BasedOn="{StaticResource MaterialIconButtonLargeStyle}"
            TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="HeightRequest"
-                Value="{StaticResource SizeLargeButton}" />
-        <Setter Property="WidthRequest"
-                Value="{StaticResource SizeLargeButton}" />
         <Setter Property="CornerRadius"
                 Value="100" />
     </Style>
     <!--#endregion Round_MaterialIconButton-->
 
+    <!--#region Round_MaterialIcon-->
+    <Style x:Key="MaterialIconSmallRoundStyle"
+           BasedOn="{StaticResource MaterialIconSmallStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <Style x:Key="MaterialIconMediumRoundStyle"
+           BasedOn="{StaticResource MaterialIconMediumStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <Style x:Key="MaterialIconLargeRoundStyle"
+           BasedOn="{StaticResource MaterialIconLargeStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <!--#endregion Round_MaterialIcon-->
+
     <!--#region Round_MaterialButton-->
     <Style x:Key="MaterialButtonSmallRoundStyle"
+           BasedOn="{StaticResource MaterialButtonSmallStyle}"
            TargetType="{x:Type material:MaterialButton}">
-        <Setter Property="HeightRequest"
-                Value="{StaticResource SizeSmallButton}" />
-        <Setter Property="WidthRequest"
-                Value="{StaticResource SizeSmallButton}" />
         <Setter Property="CornerRadius"
                 Value="100" />
     </Style>
 
     <Style x:Key="MaterialButtonMediumRoundStyle"
+           BasedOn="{StaticResource MaterialButtonMediumStyle}"
            TargetType="{x:Type material:MaterialButton}">
-        <Setter Property="HeightRequest"
-                Value="{StaticResource SizeMediumButton}" />
-        <Setter Property="WidthRequest"
-                Value="{StaticResource SizeMediumButton}" />
         <Setter Property="CornerRadius"
                 Value="100" />
     </Style>
 
     <Style x:Key="MaterialButtonLargeRoundStyle"
+           BasedOn="{StaticResource MaterialButtonLargeStyle}"
            TargetType="{x:Type material:MaterialButton}">
-        <Setter Property="HeightRequest"
-                Value="{StaticResource SizeLargeButton}" />
-        <Setter Property="WidthRequest"
-                Value="{StaticResource SizeLargeButton}" />
         <Setter Property="CornerRadius"
                 Value="100" />
     </Style>
@@ -119,6 +122,58 @@
                 Value="{StaticResource SizeLargeButton}" />
     </Style>
     <!--#endregion MaterialButton-->
+
+    <!--#region MaterialIcon-->
+    <Style x:Key="MaterialIconSmallStyle"
+           TargetType="{x:Type material:MaterialIcon}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeSmallButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeSmallButton}" />
+    </Style>
+
+    <Style x:Key="MaterialIconMediumStyle"
+           TargetType="{x:Type material:MaterialIcon}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeMediumButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeMediumButton}" />
+    </Style>
+
+    <Style x:Key="MaterialIconLargeStyle"
+           TargetType="{x:Type material:MaterialIcon}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeLargeButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeLargeButton}" />
+    </Style>
+    <!--#endregion MaterialIcon-->
+
+    <!--#region MaterialIconButton-->
+    <Style x:Key="MaterialIconButtonSmallStyle"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeSmallButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeSmallButton}" />
+    </Style>
+
+    <Style x:Key="MaterialIconButtonMediumStyle"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeMediumButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeMediumButton}" />
+    </Style>
+
+    <Style x:Key="MaterialIconButtonLargeStyle"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="HeightRequest"
+                Value="{StaticResource SizeLargeButton}" />
+        <Setter Property="WidthRequest"
+                Value="{StaticResource SizeLargeButton}" />
+    </Style>
+    <!--#endregion MaterialIconButton-->
 
     <Style x:Key="MaterialChipStyle"
            TargetType="{x:Type material:MaterialChip}">
