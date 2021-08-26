@@ -31,72 +31,7 @@
                 Value="{AppThemeBinding Light={StaticResource MaterialDesignPaperLight}, Dark={StaticResource MaterialDesignPaperDark}}" />
     </Style>
     <!--#endregion Pages-->
-
-    <!--#region Round_MaterialIconButton-->
-    <Style x:Key="MaterialIconButtonSmallRoundStyle"
-           BasedOn="{StaticResource MaterialIconButtonSmallStyle}"
-           TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-    <Style x:Key="MaterialIconButtonMediumRoundStyle"
-           BasedOn="{StaticResource MaterialIconButtonMediumStyle}"
-           TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-    <Style x:Key="MaterialIconButtonLargeRoundStyle"
-           BasedOn="{StaticResource MaterialIconButtonLargeStyle}"
-           TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-    <!--#endregion Round_MaterialIconButton-->
-
-    <!--#region Round_MaterialIcon-->
-    <Style x:Key="MaterialIconSmallRoundStyle"
-           BasedOn="{StaticResource MaterialIconSmallStyle}"
-           TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-    <Style x:Key="MaterialIconMediumRoundStyle"
-           BasedOn="{StaticResource MaterialIconMediumStyle}"
-           TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-    <Style x:Key="MaterialIconLargeRoundStyle"
-           BasedOn="{StaticResource MaterialIconLargeStyle}"
-           TargetType="{x:Type material:MaterialIconButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-    <!--#endregion Round_MaterialIcon-->
-
-    <!--#region Round_MaterialButton-->
-    <Style x:Key="MaterialButtonSmallRoundStyle"
-           BasedOn="{StaticResource MaterialButtonSmallStyle}"
-           TargetType="{x:Type material:MaterialButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-
-    <Style x:Key="MaterialButtonMediumRoundStyle"
-           BasedOn="{StaticResource MaterialButtonMediumStyle}"
-           TargetType="{x:Type material:MaterialButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-
-    <Style x:Key="MaterialButtonLargeRoundStyle"
-           BasedOn="{StaticResource MaterialButtonLargeStyle}"
-           TargetType="{x:Type material:MaterialButton}">
-        <Setter Property="CornerRadius"
-                Value="100" />
-    </Style>
-    <!--#endregion Round_MaterialButton-->
-
+    
     <!--#region MaterialButton-->
     <Style x:Key="MaterialButtonSmallStyle"
            TargetType="{x:Type material:MaterialButton}">
@@ -174,6 +109,71 @@
                 Value="{StaticResource SizeLargeButton}" />
     </Style>
     <!--#endregion MaterialIconButton-->
+    
+    <!--#region Round_MaterialIconButton-->
+    <Style x:Key="MaterialIconButtonSmallRoundStyle"
+           BasedOn="{StaticResource MaterialIconButtonSmallStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <Style x:Key="MaterialIconButtonMediumRoundStyle"
+           BasedOn="{StaticResource MaterialIconButtonMediumStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <Style x:Key="MaterialIconButtonLargeRoundStyle"
+           BasedOn="{StaticResource MaterialIconButtonLargeStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <!--#endregion Round_MaterialIconButton-->
+
+    <!--#region Round_MaterialIcon-->
+    <Style x:Key="MaterialIconSmallRoundStyle"
+           BasedOn="{StaticResource MaterialIconSmallStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <Style x:Key="MaterialIconMediumRoundStyle"
+           BasedOn="{StaticResource MaterialIconMediumStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <Style x:Key="MaterialIconLargeRoundStyle"
+           BasedOn="{StaticResource MaterialIconLargeStyle}"
+           TargetType="{x:Type material:MaterialIconButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <!--#endregion Round_MaterialIcon-->
+
+    <!--#region Round_MaterialButton-->
+    <Style x:Key="MaterialButtonSmallRoundStyle"
+           BasedOn="{StaticResource MaterialButtonSmallStyle}"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+
+    <Style x:Key="MaterialButtonMediumRoundStyle"
+           BasedOn="{StaticResource MaterialButtonMediumStyle}"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+
+    <Style x:Key="MaterialButtonLargeRoundStyle"
+           BasedOn="{StaticResource MaterialButtonLargeStyle}"
+           TargetType="{x:Type material:MaterialButton}">
+        <Setter Property="CornerRadius"
+                Value="100" />
+    </Style>
+    <!--#endregion Round_MaterialButton-->
 
     <Style x:Key="MaterialChipStyle"
            TargetType="{x:Type material:MaterialChip}">
@@ -227,6 +227,8 @@
                 Value="{StaticResource Accent200Foreground}" />
         <Setter Property="UnselectedLabelColor"
                 Value="{AppThemeBinding Light={StaticResource MaterialDesignBodyLight}, Dark={StaticResource MaterialDesignBodyDark}}" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource MaterialDesignBodyDark}, Dark={StaticResource MaterialDesignPaperDark}}" />
     </Style>
 
     <Style x:Key="BottomTabStyle"
