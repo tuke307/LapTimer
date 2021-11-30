@@ -4,6 +4,7 @@ using LapTimer.SkiaSharp.Helpers;
 using LapTimer.SkiaSharp.Models;
 using LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
 using LapTimer.SkiaSharp.SkiaSharp;
+using Microsoft.Extensions.Logging;
 using MvvmCross;
 using MvvmCross.Logging;
 using MvvmCross.Plugin.Messenger;
@@ -179,7 +180,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
         #region PrivateProperties
 
-        private readonly IMvxLog _log;
+        private readonly ILogger _log;
         private LatLong _bottomRightPosition;
         private LatLong _centerPosition;
         private bool _drawingMode = false;
@@ -220,7 +221,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         {
             InitializeComponent();
 
-            _log = Mvx.IoCProvider.Resolve<IMvxLog>();
+            _log = Mvx.IoCProvider.Resolve<ILogger>();
         }
 
         #region Methods
@@ -340,7 +341,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         /// </param>
         private void GoogleMapCameraIdled(object sender, CameraIdledEventArgs e)
         {
-            _log.Debug($"CameraIdled: pos: {e.Position.Target.Latitude}, {e.Position.Target.Longitude}");
+            _log.LogDebug($"CameraIdled: pos: {e.Position.Target.Latitude}, {e.Position.Target.Longitude}");
 
             //if (!_isCameraInitialized)
             //{
@@ -382,7 +383,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         /// </summary>
         private void Initialize()
         {
-            _log.Debug($"Initializing {SessionMapInfo.SessionPoints.Count} points");
+            _log.LogDebug($"Initializing {SessionMapInfo.SessionPoints.Count} points");
 
             _positionConverter = new PositionConverter();
 
@@ -414,7 +415,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         /// </summary>
         private void InitializeMap()
         {
-            _log.Debug($"InitializeMap");
+            _log.LogDebug($"InitializeMap");
 
             GoogleMap.MyLocationEnabled = MyLocationEnabled;
             GoogleMap.UiSettings.MyLocationButtonEnabled = MyLocationEnabled;
@@ -435,7 +436,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 });
             }
 
-            _log.Debug($"END InitializeMap");
+            _log.LogDebug($"END InitializeMap");
         }
 
         /// <summary>
@@ -472,7 +473,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         /// </summary>
         private void InitializeSvgImages()
         {
-            _log.Debug($"InitializeSvgImages");
+            _log.LogDebug($"InitializeSvgImages");
 
             const string StartImageName = "stopwatch-solid.svg";
             const string EndImageName = "flag-checkered-solid.svg";
@@ -502,7 +503,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
                 _lastImageColor = Color.Default.ToSKColor();
             }
 
-            _log.Debug($"END InitializeSvgImages");
+            _log.LogDebug($"END InitializeSvgImages");
         }
 
         /// <summary>
@@ -516,8 +517,8 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
         {
             #region Initialization
 
-            _log.Debug($"---MapOnPaintSurface");
-            _log.Debug($"CameraPosition: {GoogleMap.CameraPosition.Target.Latitude}, {GoogleMap.CameraPosition.Target.Longitude}");
+            _log.LogDebug($"---MapOnPaintSurface");
+            _log.LogDebug($"CameraPosition: {GoogleMap.CameraPosition.Target.Latitude}, {GoogleMap.CameraPosition.Target.Longitude}");
 
             // var info = e.RenderTarget;
             SKImageInfo info = e.Info;
@@ -528,19 +529,19 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
 
             if (SessionMapInfo == null)
             {
-                _log.Debug($"---RETURNING: SessionMapInfo is null");
+                _log.LogDebug($"---RETURNING: SessionMapInfo is null");
                 return;
             }
 
             // already in drawing mode
             if (_drawingMode)
             {
-                _log.Debug($"---RETURNING: already in drawing mode");
+                _log.LogDebug($"---RETURNING: already in drawing mode");
                 return;
             }
 
             _positionConverter.UpdateCamera(GoogleMap, new Size(info.Width, info.Height), SkiaHelper.PixelPerUnit);
-            _log.Debug($"Camera updated: {_positionConverter.ToString()}");
+            _log.LogDebug($"Camera updated: {_positionConverter.ToString()}");
 
             var centerPoint = _positionConverter[_centerPosition].ToSKPoint();
             var topLeftPoint = _positionConverter[_topLeftPosition].ToSKPoint();
@@ -550,7 +551,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             if (!_forceInvalidation && _previousCenter == centerPoint && _previousTopLeftBottomRightSquareDistance == squaredDistance)
             {
                 // Display view didn't changed
-                _log.Debug($"---RETURNING: Display view didn't changed");
+                _log.LogDebug($"---RETURNING: Display view didn't changed");
                 return;
             }
 
@@ -569,7 +570,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             #region LineDrawing
 
             var sessionPoints = SessionMapInfo.SessionPoints;
-            _log.Debug($"LineDrawing: {sessionPoints.Count} sessionPoints to draw");
+            _log.LogDebug($"LineDrawing: {sessionPoints.Count} sessionPoints to draw");
 
             SKPoint previousPoint = SKPoint.Empty;
             SKColor previousColor = SKColor.Empty;
@@ -630,7 +631,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             // Session-Graph
             if (sessionPoints.Count > 0 && !MyLocationEnabled)
             {
-                _log.Debug($"MarkerDrawing");
+                _log.LogDebug($"MarkerDrawing");
 
                 // wenn nutzer gerade im SessionGraph scrollt.
                 bool mooving = DrawFirstAndLastMarker(
@@ -668,7 +669,7 @@ namespace LapTimer.SkiaSharp.Presentation.Views.SessionMap
             _forceInvalidation = false;
 
             stopWatch.Stop();
-            _log.Debug($"---END OF => MapOnPaintSurface ({stopWatch.Elapsed})");
+            _log.LogDebug($"---END OF => MapOnPaintSurface ({stopWatch.Elapsed})");
 
             _drawingMode = false;
 

@@ -2,6 +2,7 @@
 {
     using global::LapTimer.Forms.UI.Models;
     using global::LapTimer.Forms.UI.Views.LapTimer;
+    using Microsoft.Extensions.Logging;
     using MvvmCross;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
@@ -20,10 +21,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="LapTimerTabViewModel" /> class.
         /// </summary>
-        /// <param name="logProvider">The log provider.</param>
+        /// <param name="logFactory">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public LapTimerHosterViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IMvxMessenger messenger)
-            : base(logProvider, navigationService)
+        public LapTimerHosterViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService, IMvxMessenger messenger)
+            : base(logFactory, navigationService)
         {
             CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));
             _token = messenger.Subscribe<MvxTabIndexMessenger>(OnTabIndexUpdated);

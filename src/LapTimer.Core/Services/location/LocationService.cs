@@ -1,6 +1,7 @@
 ﻿namespace LapTimer.Core.Services
 {
     using LapTimer.Core.Models;
+    using Microsoft.Extensions.Logging;
     using MvvmCross.Logging;
     using MvvmCross.Plugin.Location;
     using MvvmCross.Plugin.Messenger;
@@ -13,7 +14,7 @@
     public class LocationService
        : ILocationService
     {
-        private readonly IMvxLog _log;
+        private readonly ILogger _log;
         private readonly IMvxMessenger _messenger;
         private readonly IMvxLocationWatcher _watcher;
 
@@ -23,7 +24,7 @@
         /// <param name="watcher">The watcher.</param>
         /// <param name="messenger">The messenger.</param>
         /// <param name="log">The log.</param>
-        public LocationService(IMvxLocationWatcher watcher, IMvxMessenger messenger, IMvxLog log)
+        public LocationService(IMvxLocationWatcher watcher, IMvxMessenger messenger, ILogger log)
         {
             this._watcher = watcher;
             this._messenger = messenger;
@@ -46,7 +47,7 @@
         /// <param name="error">The error.</param>
         private void OnError(MvxLocationError error)
         {
-            this._log.Error($"ERROR: Location Error: {0}", error.Code);
+            this._log.LogError($"ERROR: Location Error: {0}", error.Code);
         }
 
         /// <summary>

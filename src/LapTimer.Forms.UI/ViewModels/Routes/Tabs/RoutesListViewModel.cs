@@ -1,6 +1,7 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Routes
 {
     using global::LapTimer.Core.Services;
+    using Microsoft.Extensions.Logging;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
     using System.Threading.Tasks;
@@ -14,10 +15,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="RoutesListViewModel" /> class.
         /// </summary>
-        /// <param name="logProvider">The log provider.</param>
+        /// <param name="logFactory">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RoutesListViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
-            : base(logProvider, navigationService, dbactivityService, tcxActivityService)
+        public RoutesListViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
+            : base(logFactory, navigationService, dbactivityService, tcxActivityService)
         {
         }
 

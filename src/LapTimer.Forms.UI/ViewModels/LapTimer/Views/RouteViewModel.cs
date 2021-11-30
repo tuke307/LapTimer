@@ -6,6 +6,7 @@
     using global::LapTimer.Forms.UI.Functions;
     using global::LapTimer.Forms.UI.Models;
     using global::LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
+    using Microsoft.Extensions.Logging;
     using MvvmCross;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
@@ -30,10 +31,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="RouteViewModel" /> class.
         /// </summary>
-        /// <param name="logProvider">The log provider.</param>
+        /// <param name="logFactory">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RouteViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IRideService rideService, ILocationService locationService, IMvxMessenger messenger)
-            : base(logProvider, navigationService)
+        public RouteViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService, IRideService rideService, ILocationService locationService, IMvxMessenger messenger)
+            : base(logFactory, navigationService)
         {
             this._rideService = rideService;
             this._locationService = locationService;

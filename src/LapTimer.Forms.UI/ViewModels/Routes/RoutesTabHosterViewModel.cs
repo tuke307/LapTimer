@@ -1,5 +1,6 @@
 ﻿namespace LapTimer.Forms.UI.ViewModels.Routes
 {
+    using Microsoft.Extensions.Logging;
     using MvvmCross;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
@@ -17,10 +18,10 @@
         /// Initializes a new instance of the <see cref="RoutesTabHosterViewModel" />
         /// class.
         /// </summary>
-        /// <param name="logProvider">The log provider.</param>
+        /// <param name="logFactory">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RoutesTabHosterViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
-            : base(logProvider, navigationService)
+        public RoutesTabHosterViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService)
+            : base(logFactory, navigationService)
         {
         }
 

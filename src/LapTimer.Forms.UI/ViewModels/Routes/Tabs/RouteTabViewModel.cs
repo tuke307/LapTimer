@@ -7,6 +7,7 @@
     using global::LapTimer.SkiaSharp.Helpers;
     using global::LapTimer.SkiaSharp.Models;
     using global::LapTimer.SkiaSharp.ViewModels;
+    using Microsoft.Extensions.Logging;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
@@ -24,8 +25,8 @@
     /// <seealso cref="MvvmCross.ViewModels.MvxNavigationViewModel" />
     public class RouteTabViewModel : MvxNavigationViewModel
     {
-        public RouteTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
-             : base(logProvider, navigationService)
+        public RouteTabViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
+             : base(logFactory, navigationService)
         {
             _dbactivityService = dbactivityService;
             _tcxActivityService = tcxActivityService;

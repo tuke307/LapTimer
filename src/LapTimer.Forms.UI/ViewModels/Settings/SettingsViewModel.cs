@@ -2,6 +2,7 @@
 {
     using global::LapTimer.Core.Services;
     using global::LapTimer.Forms.UI.Services;
+    using Microsoft.Extensions.Logging;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
@@ -20,10 +21,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="SettingsViewModel" /> class.
         /// </summary>
-        /// <param name="logProvider">The log provider.</param>
+        /// <param name="logFactory">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public SettingsViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IThemeService themeService)
-            : base(logProvider, navigationService)
+        public SettingsViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService, IThemeService themeService)
+            : base(logFactory, navigationService)
         {
             this._themeService = themeService;
             BaseThemeValue = (BaseTheme)ColorSettings.Theme;

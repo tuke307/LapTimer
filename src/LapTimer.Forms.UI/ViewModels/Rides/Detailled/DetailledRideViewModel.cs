@@ -6,6 +6,7 @@
     using global::LapTimer.SkiaSharp.Models;
     using global::LapTimer.SkiaSharp.Presentation.ViewModels.SessionMap;
     using global::LapTimer.SkiaSharp.ViewModels;
+    using Microsoft.Extensions.Logging;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
@@ -27,10 +28,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="DetailledRideViewModel" /> class.
         /// </summary>
-        /// <param name="logProvider">The log provider.</param>
+        /// <param name="logFactory">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public DetailledRideViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, ITcxActivityService tcxactivityService)
-            : base(logProvider, navigationService)
+        public DetailledRideViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService, ITcxActivityService tcxactivityService)
+            : base(logFactory, navigationService)
         {
             DeleteRideCommand = new MvxAsyncCommand(DeleteRide);
             CloseSiteCommand = new MvxAsyncCommand(() => this.NavigationService.Close(this));

@@ -2,6 +2,7 @@
 {
     using global::LapTimer.Core.Services;
     using global::LapTimer.Forms.UI.Models;
+    using Microsoft.Extensions.Logging;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
@@ -18,10 +19,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="LapTimerTabViewModel" /> class.
         /// </summary>
-        /// <param name="logProvider">The log provider.</param>
+        /// <param name="logFactory">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public StartingPositionViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IMvxMessenger messenger, IRideService rideService)
-            : base(logProvider, navigationService)
+        public StartingPositionViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService, IMvxMessenger messenger, IRideService rideService)
+            : base(logFactory, navigationService)
         {
             _messenger = messenger;
             StartTimerCommand = new MvxCommand(() => _messenger.Publish(new MvxTabIndexMessenger(this, 2)));

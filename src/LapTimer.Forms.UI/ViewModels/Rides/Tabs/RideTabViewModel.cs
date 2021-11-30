@@ -7,6 +7,7 @@
     using global::LapTimer.SkiaSharp.Helpers;
     using global::LapTimer.SkiaSharp.Models;
     using global::LapTimer.SkiaSharp.ViewModels;
+    using Microsoft.Extensions.Logging;
     using MvvmCross.Commands;
     using MvvmCross.Logging;
     using MvvmCross.Navigation;
@@ -27,10 +28,10 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="RideLapsViewModel" /> class.
         /// </summary>
-        /// <param name="logProvider">The log provider.</param>
+        /// <param name="logFactory">The log provider.</param>
         /// <param name="navigationService">The navigation service.</param>
-        public RideTabViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
-            : base(logProvider, navigationService)
+        public RideTabViewModel(ILoggerFactory logFactory, IMvxNavigationService navigationService, IDbActivityService dbactivityService, ITcxActivityService tcxActivityService)
+            : base(logFactory, navigationService)
         {
             _dbactivityService = dbactivityService;
             _tcxActivityService = tcxActivityService;
