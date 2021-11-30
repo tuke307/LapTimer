@@ -8,10 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MvvmCross" Version="7.1.2" />
-    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
+    <PackageReference Include="MvvmCross" Version="8.0.2" />
+    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="8.0.2" />
     <PackageReference Include="TcxTools.NetStandard" Version="1.0.0" />
-    <PackageReference Include="MvvmCross.Plugin.Location" Version="7.1.2" />
+    <PackageReference Include="MvvmCross.Plugin.Location" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
